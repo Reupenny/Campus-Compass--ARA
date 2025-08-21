@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>AI Chat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        #chat-container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        #chat-window,
+        #ai-show {
+            height: 400px;
+            padding: 10px;
+            overflow-y: scroll;
+            border-bottom: 1px solid #ddd;
+        }
+
+        #ai-show {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+
+        .message {
+            padding: 8px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+        }
+
+        .user-message {
+            background-color: #e2f0ff;
+            text-align: right;
+        }
+
+        .bot-message {
+            background-color: #f9f9f9;
+            text-align: left;
+        }
+
+        #input-area {
+            padding: 10px;
+            display: flex;
+        }
+
+        #user-input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        #send-button {
+            padding: 8px 12px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* AI SHOW CSS */
+
+        .contactTemplate {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .contactTemplate h2 {
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+
+        .contactTemplate p {
+            margin: 5px 0;
+        }
+
+        .contactTemplate .contact-button {
+            background-color: #4CAF50;
+            /* Green */
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .buttons {
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .rooms {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        /* CSS */
+        .contactTemplate {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .contactTemplate h2 {
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+
+        .contactTemplate p {
+            margin: 5px 0;
+        }
+
+        .contactTemplate .contact-button {
+            background-color: #4CAF50;
+            /* Green */
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .buttons {
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .rooms {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="chat-container">
+        <div id="chat-window">
+            <!-- Chat messages will be displayed here -->
+        </div>
+        <form id="input-form">
+            <div id="input-area">
+                <input type="text" id="user-input" placeholder="Type your message here...">
+                <button id="send-button">Send</button>
+            </div>
+        </form>
+        <div id="ai-show">
+            <!-- Chat messages will be displayed here -->
+        </div>
+    </div>
+    <script src="config.js" type="module"></script>
+    <script src="chat.js" type="module"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</body>
+
+</html>

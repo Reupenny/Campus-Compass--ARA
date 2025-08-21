@@ -1,0 +1,248 @@
+{
+    "ara_information": {
+        "name": "ARA Institute of Canterbury",
+        "location": "Christchurch, New Zealand",
+        "type": "Vocational Education Provider",
+        "description": "ARA provides a wide range of programs, including foundation studies, certificates, diplomas, degrees, and graduate diplomas."
+    },
+    "ara_campus_map": {
+        "streets": [
+            {
+                "name": "Tuam St",
+                "position": "north",
+                "details": "one way going east"
+            },
+            {
+                "name": "St Asaph St",
+                "position": "north-central",
+                "details": "one way going west"
+            },
+            {
+                "name": "High St",
+                "position": "northwest",
+                "details": "starts on the corner of madras st and st asaph st"
+            },
+            {
+                "name": "Madras St",
+                "position": "west-central",
+                "details": "one way going north"
+            },
+            {
+                "name": "Southwark St",
+                "position": "west-central",
+                "details": "south of st asaph st, starts at madras st"
+            },
+            {
+                "name": "Allen St",
+                "position": "southwest-central",
+                "details": "south of Southwark St, starts at madras st"
+            },
+            {
+                "name": "Ferry Rd",
+                "position": "northeast",
+                "details": "starts half way down st asaph st to barbadoes st"
+            },
+            {
+                "name": "Coventry St",
+                "position": "east-central",
+                "details": "short street starting on barbodoes st and turns at 90 degress into willliams st"
+            },
+            {
+                "name": "Williams St",
+                "position": "central",
+                "details": "short street starting on ferry road and turns at 90 degress into Coventry St"
+            },
+            {
+                "name": "Barbadoes St",
+                "position": "east",
+                "details": "one way going south"
+            },
+            {
+                "name": "Moorhouse Ave",
+                "position": "south",
+                "details": "big main road"
+            }
+        ],
+        "buildings": [
+            {
+                "label": "PX",
+                "name": "Hairdressing",
+                "location": "northwest corner on High St and Tuam St",
+                "description": ""
+            },
+            {
+                "label": "JZ",
+                "name": "Music Arts",
+                "location": "northwest corner, below PX on High St and Madras St",
+                "description": "The specialised building for music programs, including performance spaces, practice rooms, and recording studios for jazz and other music disciplines.",
+                "number_of_floors": "3"
+            },
+            {
+                "label": "P",
+                "name": "Plains FM",
+                "location": "northwest of buildings S & N on Madras st, off the corner of St Asaph st",
+                "description": "home of broadcasting school and the plains fm radio station along with the student radio station"
+            },
+            {
+                "label": "T",
+                "name": null,
+                "location": "next to G and U buildings, east of main courtyard",
+                "description": "IT and printing services"
+            },
+            {
+                "label": "OH",
+                "name": null,
+                "location": "north-central over St Asaph st on the corner of Madrass and st Asaph st",
+                "description": "on site accommodation for students"
+            },
+            {
+                "label": "OEDT",
+                "name": null,
+                "location": "north-central next to OH",
+                "description": "on site accommodation for students"
+            },
+            {
+                "label": "U",
+                "name": null,
+                "location": "northeast of main courtyard, near Ferry Rd",
+                "description": "contains cafe run by students and staff of rhe cullenery school also located in the same building",
+                "number_of_floors": "1"
+            },
+            {
+                "label": "S",
+                "name": "S & N block",
+                "location": "central, southwest of building U,west of main courtyard, near Madras St above N building",
+                "description": "Computing department building and health sciences, 7 story building, shares elivators and cener of building with N building",
+                "number_of_floors": "7"
+            },
+            {
+                "label": "N",
+                "name": "S & N block",
+                "location": "west of main courtyard, near Madras St, above X building and attached to S building",
+                "description": "Home to the business, building and nursing departments, 7 story building",
+                "number_of_floors": "7"
+            },
+            {
+                "label": "D",
+                "name": "Design Block",
+                "location": "Above moorhouse ave on madras st",
+                "description": "Home to the creative arts programs, including graphic design, fashion, and visual arts. It contains studios, workshops, 4 story building",
+                "number_of_floors": "4"
+            },
+            {
+                "label": "L",
+                "name": "Library",
+                "location": "apart of the Rakia center, below the main courtyard east of X building",
+                "description": "The main campus library, offering a variety of resources, study spaces, and support services for students. contains disability services, 2 story building",
+                "number_of_floors": "2"
+            },
+            {
+                "label": "X",
+                "name": "Student Support",
+                "location": "apart of the Rakia center, east of madras st main carpark, below N building",
+                "description": "dedicated computer labs and has student services on the ground floor. It also houses classrooms for the Adult English program. 3 stroy building which also contains the elivators for the RAkia center",
+                "number_of_floors": "3"
+            },
+            {
+                "label": "A",
+                "name": "Administration",
+                "location": "apart of the Rakia center, below L block above C block, west of CH building",
+                "description": "The main administrative building"
+            },
+            {
+                "label": "G",
+                "name": null,
+                "location": "on williams st, below and atached to T building east-central, above TM",
+                "description": "the rest of the administration"
+            },
+            {
+                "label": "TM",
+                "name": "Te Puna Wānaka",
+                "location": "east-central, above CH",
+                "description": "The centre for Māori, Pacific, and indigenous studies.",
+                "number_of_floors": "1"
+            },
+            {
+                "label": "CH",
+                "name": "Child care center",
+                "location": "east-central, above W and E buildings",
+                "description": "early childhood center so you can easily drop your kids here while you study",
+                "number_of_floors": "1"
+            },
+            {
+                "label": "W",
+                "name": "Whareora",
+                "location": "southeast, large building above Moorhouse Ave and barbadose st, car park below and north east",
+                "description": "contains a gym, a sports court, doctors and some classrooms, is a 2 story building",
+                "number_of_floors": "2"
+            },
+            {
+                "label": "K",
+                "name": null,
+                "location": "southeast, large building north of Moorhouse Ave and west of barbadose st, car park below and north east",
+                "description": "contains a gym, a sports court, doctors and some classrooms, is a 2 story building",
+                "number_of_floors": "2"
+            },
+            {
+                "label": "E",
+                "name": "NASDA",
+                "location": "above K building and west of W building which it shares an entrace with",
+                "description": "Houses the National Academy of Singing and Dramatic Arts, is a 2 story building",
+                "number_of_floors": "2"
+            },
+            {
+                "label": "C",
+                "name": null,
+                "location": "south-central, above D and DL, on Madras st",
+                "description": "Houses the fashion department and also is the student space, good dry place to have lunch, often activities at the stat of term, 2 story building.",
+                "number_of_floors": "2"
+            },
+            {
+                "label": "DL",
+                "name": "Madras",
+                "location": "southwest on Madras st above D building",
+                "description": "A large, dedicated lecture hall next to the D building, primarily used for lectures and presentations related to the design and creative arts programs.",
+                "number_of_floors": "1"
+            },
+            {
+                "name": "Rakia center",
+                "location": "",
+                "description": "An interconnected atrium that combines L, A and X buildings into one space, it is a central hub for student services, including enrollment services, finance, academic support, an information desk, counseling and a cafe"
+            },
+            {
+                "name": "main courtyard",
+                "location": "surrounded by N S U T G L and X buildings",
+                "description": "A nice grass area, with seating and trees"
+            }
+        ],
+        "parking_areas": [
+            {
+                "name": "Madras st main carpark",
+                "location": "west-central, between Madras St and X building, north of C building, south of N building",
+                "details": "limited guest parking and drop off area"
+            },
+            {
+                "name": "Allen St Parking",
+                "location": "East, large lot on Allen St"
+            },
+            {
+                "name": "Main student parking",
+                "location": "southeast, on the corner of barbadoes st and moornouse ave, surounds W bouiding along Barbadoes st past CH and TM buildings"
+            },
+            {
+                "name": "Madras",
+                "location": "southeast, along Barbadoes St near W"
+            }
+        ],
+        "public_transport": [
+            {
+                "type": "bus_stop",
+                "location": "along Ferry road"
+            },
+            {
+                "type": "bus_stop",
+                "location": "west along Moorhouse Ave"
+            }
+        ]
+    }
+}

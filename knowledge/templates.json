@@ -1,0 +1,5 @@
+{
+  "buttons": "<button class='buttons'>Click Me</button>",
+  "rooms": "<div class='rooms'><h3>{roomNumber}</h3><p>Building: {buildingName} ({buildingLetter})</p><p>Location: {location}</p></div>",
+  "contactTemplate": "<div class='contactTemplate'>\n  <h2>{name}</h2>\n  <button class='buttons email'><a href=\"mailto: {email}\">Email</a></button>\n  <button class='buttons call'><a href=\"tel: {phone}\">Call</a></button>\n  <p>Email: <a href=\"mailto:{email}\">{email}</a></p>\n  <p>Phone: <a href=\"tel:{phone}\">{phone}</a></p>\n  <p>Hours: {hours}</p>\n  <p>Office: {officeNumber}</p>\n  <p>Job Title: {jobTitle}</p>\n</div>"
+}
