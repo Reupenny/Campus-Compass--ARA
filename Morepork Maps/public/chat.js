@@ -60,10 +60,12 @@ function appendMessage(sender, text) {
     conversationHistory += `${sender}: ${text}\n`;
 }
 function appendTemplate(template) {
-    const templateDiv = document.createElement("div");
-    templateDiv.innerHTML = template;
-    aiShow.appendChild(templateDiv);
-    aiShow.scrollTop = aiShow.scrollHeight;
+    if (template) {
+        const templateDiv = document.createElement("div");
+        templateDiv.innerHTML = template;
+        aiShow.appendChild(templateDiv);
+        aiShow.scrollTop = aiShow.scrollHeight;
+    }
 }
 
 async function sendMessageToGemini(userMessage) {
