@@ -4,10 +4,15 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "1.Install": "npm install",
+    "2.Admin": "vite --config admin/vite.config.ts",
+    "3.Preview": "vite",
+    "4.deploy-git": "git add . && git commit -m \"update information\" && git push",
+    "-------------": "",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "update-git": "git pull"
   },
   "dependencies": {
     "marzipano": "^0.10.2",
