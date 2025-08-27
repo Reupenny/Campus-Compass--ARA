@@ -6,10 +6,79 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + React + TS</title>
+    <style>
+        body {
+            background: #f0f7ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .input-wrapper {
+            background: linear-gradient(to right, #1e60ff, #a1c4fd);
+            padding: .3em;
+            border-radius: 999px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        .input-inner {
+            background-color: white;
+            border-radius: 999px;
+            display: flex;
+            align-items: center;
+            padding: 12px 18px;
+        }
+
+        input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .send-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .send-icon::before {
+            content: 'GO';
+            /* Simple arrow (can be replaced with an SVG icon) */
+            font-size: 16px;
+            color: #333;
+            transform: rotate(-45deg);
+        }
+
+        .send-icon::after {
+            content: '✨';
+            font-size: 12px;
+            color: #1e60ff;
+            position: absolute;
+            top: -6px;
+            right: -10px;
+        }
+    </style>
 </head>
 
 <body>
     <div id="root"></div>
+
+
+    <div class="input-wrapper">
+        <div class="input-inner">
+            <input type="text" placeholder="Ask me anything...">
+            <div class="send-icon"></div>
+        </div>
+    </div>
+
 
     <script type="module" src="/src/main.tsx"></script>
     <script type="speculationrules">

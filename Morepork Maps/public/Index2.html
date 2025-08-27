@@ -5,70 +5,105 @@
     <title>AI Chat</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            background: #f0f7ff;
+            display: flex;
+            /* justify-content: center;
+            align-items: center; */
+            height: 100vh;
             margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+
+        .input-wrapper {
+            background: linear-gradient(to right, #1e60ff, #a1c4fd);
+            padding: .3em;
+            border-radius: 999px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            position: fixed;
+            bottom: 30px;
+        }
+
+        .input-inner {
+            background-color: white;
+            border-radius: 999px;
+            display: flex;
+            align-items: center;
+            padding: 12px 18px;
+        }
+
+        input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            color: #555;
         }
 
         #chat-container {
             width: 80%;
             margin: 20px auto;
-            background-color: #fff;
-            border: 1px solid #ddd;
             border-radius: 5px;
             overflow: hidden;
+            flex-direction: column-reverse;
+            display: flex;
         }
 
-        #chat-window,
-        #ai-show {
-            height: 400px;
+        #chat-window {
+            /* height: 400px; */
             padding: 10px;
             overflow-y: scroll;
-            border-bottom: 1px solid #ddd;
+            padding-bottom: 7em;
         }
 
         #ai-show {
             display: flex;
-            flex-direction: column-reverse;
+            position: fixed;
+            top: 10px;
+            width: 100%;
+            justify-content: center;
         }
 
         .message {
-            padding: 8px;
+            padding: .5em 1.5em;
             margin-bottom: 5px;
-            border-radius: 5px;
+            border-radius: 50px;
         }
 
         .user-message {
-            background-color: #e2f0ff;
+            background-color: #c3daf1;
             text-align: right;
+            align-items: flex-end;
+            max-width: 80%;
+            margin-left: auto;
         }
 
         .bot-message {
-            background-color: #f9f9f9;
+            background-color: #ffffff;
             text-align: left;
+            align-items: flex-start;
+            max-width: 80%;
+            margin-right: auto;
         }
+
 
         #input-area {
             padding: 10px;
             display: flex;
         }
 
-        #user-input {
-            flex: 1;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin-right: 10px;
-        }
-
         #send-button {
             padding: 8px 12px;
             border: none;
-            background-color: #007bff;
-            color: white;
-            border-radius: 5px;
             cursor: pointer;
+            border-radius: 999px;
+            background-color: #1e60ff;
+            color: white;
+        }
+
+        #input-form {
+            display: flex;
+            justify-content: center;
         }
 
         /* AI SHOW CSS */
@@ -155,19 +190,23 @@
 </head>
 
 <body>
+    <div id="ai-show">
+        <!-- Chat messages will be displayed here -->
+        <h1>Get Started</h1>
+    </div>
     <div id="chat-container">
         <div id="chat-window">
             <!-- Chat messages will be displayed here -->
         </div>
         <form id="input-form">
-            <div id="input-area">
-                <input type="text" id="user-input" placeholder="Type your message here...">
-                <button id="send-button">Send</button>
+            <div class="input-wrapper">
+                <div class="input-inner" id="input-area">
+                    <input type="text" id="user-input" placeholder="Ask me anything...">
+                    <button id="send-button">Send</button>
+                </div>
             </div>
+
         </form>
-        <div id="ai-show">
-            <!-- Chat messages will be displayed here -->
-        </div>
     </div>
     <!-- <script src="config.js" type="module"></script> -->
     <script src="chat.js" type="module"></script>
