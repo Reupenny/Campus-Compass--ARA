@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "1.Install": "npm install",
-    "2.Admin": "vite --config admin/vite.config.ts",
+    "2.Admin": "vite --config admin/vite.config.ts && express admin/server.js",
+    "a2.Admin": "node admin/server.js",
     "3.Preview": "vite",
     "4.deploy-git": "git add . && git commit -m \"update information\" && git push",
     "-------------": "",
@@ -17,7 +18,10 @@
   "dependencies": {
     "marzipano": "^0.10.2",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "body-parser": "^2.2.0",
+    "express": "^5.1.0",
+    "fs": "^0.0.1-security"
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",

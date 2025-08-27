@@ -1,0 +1,14 @@
+body {
+    font-family: sans-serif;
+}
+
+#contacts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#contacts-list div {
+    border: 1px solid #ccc;
+    padding: 10px;
+}

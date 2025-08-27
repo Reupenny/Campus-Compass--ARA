@@ -1,0 +1,32 @@
+{
+  "contacts": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "phone": "123-456-7890",
+      "hours": "40",
+      "officeNumber": "101",
+      "jobTitle": "Software Engineer"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "email": "jane.smith@example.com",
+      "phone": "987-654-3210",
+      "hours": "35",
+      "officeNumber": "20233",
+      "jobTitle": "Data Scientist"
+    },
+    {
+      "id": 5,
+      "name": "adsf",
+      "email": "adf",
+      "phone": "asdf",
+      "hours": "adsf",
+      "officeNumber": "adsf",
+      "jobTitle": "adsf"
+    }
+  ],
+  "lastId": 5
+}
