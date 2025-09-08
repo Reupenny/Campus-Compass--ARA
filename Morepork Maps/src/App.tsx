@@ -2,80 +2,82 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import Marzipano from 'marzipano';
 
+interface HotspotData {
+  type: string;
+  pitch: number;
+  yaw: number;
+  text: string;
+  target?: string;
+  description?: string;
+}
+
+interface SceneData {
+  id: string;
+  name: string;
+  imageUrl: string;
+  geometry: { width: number };
+  hotspots: HotspotData[];
+}
+
+interface TourData {
+  scenes: SceneData[];
+}
+
 function App() {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    // This code runs after the component has rendered
-    var panoElement = document.getElementById('pano');
+    const panoElement = document.getElementById('pano');
+    const viewer = new Marzipano.Viewer(panoElement);
 
-    // Create a Marzipano viewer
-    var viewer = new Marzipano.Viewer(panoElement);
-
-    // --- Define the zoom limiter once for both scenes ---
-    // Set a wider, more noticeable zoom range
-    var minZoomInVFOV = 40; // Example: Zoom in to a 40-degree vertical field of view
-    var maxZoomOutVFOV = 120; // Example: Zoom out to a 120-degree vertical field of view
-
-    var zoomLimiter = Marzipano.RectilinearView.limit.traditional(
-      minZoomInVFOV * Math.PI / 180, // Convert degrees to radians
-      maxZoomOutVFOV * Math.PI / 180  // Convert degrees to radians
+    const minZoomInVFOV = 40;
+    const maxZoomOutVFOV = 120;
+    const zoomLimiter = Marzipano.RectilinearView.limit.traditional(
+      minZoomInVFOV * Math.PI / 180,
+      maxZoomOutVFOV * Math.PI / 180
     );
-    // --- Create a separate scene for each image ---
 
-    // Scene 1: Main Panorama
-    var scene1 = viewer.createScene({
-      source: Marzipano.ImageUrlSource.fromString("pano1.jpg"),
-      geometry: new Marzipano.EquirectGeometry([{ width: 4000 }]),
-      view: new Marzipano.RectilinearView(null, zoomLimiter) // Apply the limiter here
-    });
+    fetch('/data/tour.json')
+      .then(response => response.json())
+      .then((data: TourData) => {
+        const scenes: { [key: string]: Marzipano.Scene } = {};
 
-    // Scene 2: Second Panorama
-    var scene2 = viewer.createScene({
-      source: Marzipano.ImageUrlSource.fromString("pano2.jpg"),
-      geometry: new Marzipano.EquirectGeometry([{ width: 4000 }]),
-      view: new Marzipano.RectilinearView(null, zoomLimiter) // Apply the limiter here
-    });
+        data.scenes.forEach(sceneData => {
+          const scene = viewer.createScene({
+            source: Marzipano.ImageUrlSource.fromString(sceneData.imageUrl),
+            geometry: new Marzipano.EquirectGeometry([{ width: sceneData.geometry.width }]),
+            view: new Marzipano.RectilinearView(null, zoomLimiter)
+          });
+          scenes[sceneData.id] = scene;
+        });
 
-    // --- Add the info hotspot to Scene 1 ---
-    var infoHotspotElement = document.createElement('div');
-    infoHotspotElement.className = 'hotspot-info';
-    infoHotspotElement.innerHTML = '<h2>Info Here</h2>';
-    infoHotspotElement.addEventListener('click', function () {
-      alert('You clicked the info hotspot!');
-    });
-    scene1.hotspotContainer().createHotspot(infoHotspotElement, {
-      yaw: 0.5,
-      pitch: -0.1
-    });
+        data.scenes.forEach(sceneData => {
+          const scene = scenes[sceneData.id];
+          sceneData.hotspots.forEach(hotspotData => {
+            const hotspotElement = document.createElement('div');
+            hotspotElement.className = `hotspot-${hotspotData.type}`;
+            hotspotElement.innerHTML = hotspotData.text;
 
-    // --- Add a WAYPOINT to Scene 1 to go to Scene 2 ---
-    var waypoint1Element = document.createElement('div');
-    waypoint1Element.className = 'hotspot-waypoint';
-    waypoint1Element.innerHTML = '<h2>Go to Scene 2</h2>';
-    waypoint1Element.addEventListener('click', function () {
-      scene2.switchTo(); // The key to switching scenes!
-    });
-    scene1.hotspotContainer().createHotspot(waypoint1Element, {
-      yaw: 1.5, // Adjust this position
-      pitch: 0
-    });
+            if (hotspotData.type === 'waypoint' && hotspotData.target) {
+              hotspotElement.addEventListener('click', () => {
+                scenes[hotspotData.target!].switchTo();
+              });
+            } else if (hotspotData.type === 'info') {
+              if (hotspotData.description) {
+                hotspotElement.innerHTML += hotspotData.description;
+              }
+              // No interaction as requested
+            }
 
-    // --- Add a WAYPOINT to Scene 2 to go back to Scene 1 ---
-    var waypoint2Element = document.createElement('div');
-    waypoint2Element.className = 'hotspot-waypoint';
-    waypoint2Element.innerHTML = '<h2>Go Back</h2>';
-    waypoint2Element.addEventListener('click', function () {
-      scene1.switchTo(); // The key to switching scenes!
-    });
-    scene2.hotspotContainer().createHotspot(waypoint2Element, {
-      yaw: 0.1, // Adjust this position
-      pitch: 0
-    });
+            scene.hotspotContainer().createHotspot(hotspotElement, {
+              yaw: hotspotData.yaw,
+              pitch: hotspotData.pitch
+            });
+          });
+        });
 
-    // Start with the first scene displayed
-    scene1.switchTo();
-
+        scenes[data.scenes[0].id].switchTo();
+      });
   }, []);
 
   return (
