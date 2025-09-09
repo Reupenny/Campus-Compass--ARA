@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "1.Install": "npm install",
-    "2.Admin": "vite --config admin/vite.config.ts && express admin/server.js",
-    "a2.Admin": "node admin/server.js",
+    "2.admin": "node admin/server.js",
+    "2.build-admin": "vite build --config admin/vite.config.ts",
     "3.Preview": "vite",
     "4.deploy-git": "git add . && git commit -m \"update information\" && git push",
     "-------------": "",
@@ -19,8 +19,7 @@
     "marzipano": "^0.10.2",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "body-parser": "^2.2.0",
-    "express": "^5.1.0",
+    "express": "^4.18.0",
     "fs": "^0.0.1-security"
   },
   "devDependencies": {

@@ -37,7 +37,7 @@ function App() {
       maxZoomOutVFOV * Math.PI / 180
     );
 
-    fetch('/data/tour.json')
+    fetch('/admin/data/tour.json')
       .then(response => response.json())
       .then((data: TourData) => {
         const scenes: { [key: string]: Marzipano.Scene } = {};

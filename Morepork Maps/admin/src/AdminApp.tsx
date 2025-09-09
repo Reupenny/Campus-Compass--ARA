@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import Edit360 from './edit360';
 
 interface ContactType {
     id: number;
@@ -80,21 +81,37 @@ function AddContactForm({ addContact }: { addContact: (newContact: Omit<ContactT
 function App() {
     const [contacts, setContacts] = useState<ContactType[]>([]);
     const [lastId, setLastId] = useState<number>(0);
+    const [currentView, setCurrentView] = useState<'contacts' | '360-editor'>('contacts');
 
     useEffect(() => {
-        loadContacts();
+        fetchContacts();
     }, []);
 
-    async function loadContacts() {
-        const response = await fetch('/knowledge/contacts.json');
-        const data = await response.json();
-        setContacts(data.contacts);
-        setLastId(data.lastId);
+    async function fetchContacts() {
+        try {
+            const response = await fetch('/knowledge/contacts.json');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const text = await response.text();
+            if (!text.trim()) {
+                throw new Error('Empty response from server');
+            }
+            const data = JSON.parse(text);
+            setContacts(data.contacts || []);
+            setLastId(data.lastId || 0);
+        } catch (error) {
+            console.error('Error fetching contacts:', error);
+            setContacts([]);
+            setLastId(0);
+        }
     }
 
     async function addContact(newContact: Omit<ContactType, 'id'>) {
         const updatedLastId = lastId + 1;
-        const updatedContacts = [...contacts, { id: updatedLastId, ...newContact }];
+        const contactWithId = { ...newContact, id: updatedLastId };
+        const updatedContacts = [...contacts, contactWithId];
+
         await saveContacts(updatedContacts, updatedLastId);
         setContacts(updatedContacts);
         setLastId(updatedLastId);
@@ -140,11 +157,56 @@ function App() {
     }
 
     return (
-        <>
-            <h1>Admin App</h1>
-            <AddContactForm addContact={addContact} />
-            <ContactList contacts={contacts} saveContact={saveContact} deleteContact={deleteContact} />
-        </>
+        <div style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
+            {/* Navigation Header */}
+            <header style={{
+                padding: '10px 20px',
+                backgroundColor: '#f8f9fa',
+                borderBottom: '1px solid #ddd',
+                display: 'flex',
+                gap: '10px'
+            }}>
+                <h1 style={{ margin: 0, marginRight: '20px' }}>Admin Panel</h1>
+                <button
+                    onClick={() => setCurrentView('contacts')}
+                    style={{
+                        padding: '8px 16px',
+                        backgroundColor: currentView === 'contacts' ? '#007bff' : '#fff',
+                        color: currentView === 'contacts' ? '#fff' : '#000',
+                        border: '1px solid #007bff',
+                        borderRadius: '4px',
+                        cursor: 'pointer'
+                    }}
+                >
+                    📧 Contacts
+                </button>
+                <button
+                    onClick={() => setCurrentView('360-editor')}
+                    style={{
+                        padding: '8px 16px',
+                        backgroundColor: currentView === '360-editor' ? '#007bff' : '#fff',
+                        color: currentView === '360-editor' ? '#fff' : '#000',
+                        border: '1px solid #007bff',
+                        borderRadius: '4px',
+                        cursor: 'pointer'
+                    }}
+                >
+                    🌐 360° Editor
+                </button>
+            </header>
+
+            {/* Main Content */}
+            <main style={{ flex: 1, overflow: 'hidden' }}>
+                {currentView === 'contacts' ? (
+                    <div style={{ padding: '20px', height: '100%', overflow: 'auto' }}>
+                        <AddContactForm addContact={addContact} />
+                        <ContactList contacts={contacts} saveContact={saveContact} deleteContact={deleteContact} />
+                    </div>
+                ) : (
+                    <Edit360 />
+                )}
+            </main>
+        </div>
     );
 }
 
