@@ -1,0 +1,86 @@
+{
+  "scenes": [
+    {
+      "id": "scene1",
+      "name": "Gym",
+      "imageUrl": "pano1.jpg",
+      "geometry": {
+        "width": 4000
+      },
+      "hotspots": [
+        {
+          "type": "info",
+          "pitch": 0.02353512028973448,
+          "yaw": 2.1375617172987464,
+          "text": "Gym",
+          "description": "<p>This is the first panorama</p>"
+        },
+        {
+          "type": "waypoint",
+          "pitch": 0.02889845640177313,
+          "yaw": -3.1158679367351123,
+          "text": "<h2>Go to S/N elivators</h2>",
+          "target": "scene2"
+        },
+        {
+          "type": "waypoint",
+          "pitch": 0.017330812541271,
+          "yaw": 0.3623009171702929,
+          "text": "Gymnasiem",
+          "target": "scene1757475696805"
+        }
+      ],
+      "defaultView": {
+        "yaw": 0.28202958741759865,
+        "pitch": 0.04737048176561842,
+        "fov": 1.5707963267948966
+      }
+    },
+    {
+      "id": "scene2",
+      "name": "S/N Elivator",
+      "imageUrl": "pano2.jpg",
+      "geometry": {
+        "width": 4000
+      },
+      "hotspots": [
+        {
+          "type": "waypoint",
+          "pitch": -0.042072538612565324,
+          "yaw": 0.06049787555756758,
+          "text": "New Waypoint",
+          "target": "scene1"
+        },
+        {
+          "type": "waypoint",
+          "pitch": 0.20891320921725054,
+          "yaw": -3.0173770417793975,
+          "text": "New Waypoint",
+          "target": "scene1"
+        }
+      ],
+      "defaultView": {
+        "yaw": 0.08023492988529313,
+        "pitch": 0.07160565876521474,
+        "fov": 1.7453292519943295
+      }
+    },
+    {
+      "id": "scene1757475696805",
+      "name": "New Scene",
+      "imageUrl": "pano1.jpg",
+      "geometry": {
+        "width": 4000
+      },
+      "hotspots": [
+        {
+          "type": "info",
+          "pitch": 0.16628945360212555,
+          "yaw": -1.673491580880313,
+          "text": "New Info Point",
+          "description": "Description here"
+        }
+      ]
+    }
+  ]
+}

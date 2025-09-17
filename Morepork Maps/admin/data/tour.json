@@ -1,69 +1,37 @@
 {
-    "scenes": [
+  "scenes": [
+    {
+      "id": "scene1",
+      "name": "Main Panorama",
+      "imageUrl": "pano1.jpg",
+      "geometry": {
+        "width": 4000
+      },
+      "hotspots": [
         {
-            "id": "scene1",
-            "name": "Main Panorama",
-            "imageUrl": "pano1.jpg",
-            "geometry": {
-                "width": 4000
-            },
-            "hotspots": [
-                {
-                    "type": "info",
-                    "pitch": -0.1,
-                    "yaw": 0.5,
-                    "text": "<h2>More INformation here</h2>",
-                    "description": "<p>This is the first panorama</p>"
-                },
-                {
-                    "type": "waypoint",
-                    "pitch": 0,
-                    "yaw": 1.5,
-                    "text": "<h2>Go to S/N elivators</h2>",
-                    "target": "scene2"
-                }
-            ]
+          "type": "info",
+          "pitch": -0.28300000000000003,
+          "yaw": -2.104,
+          "text": "<h2>More INformation here</h2>",
+          "description": "<p>This is the first panorama</p>"
         },
         {
-            "id": "scene2",
-            "name": "Second Panorama",
-            "imageUrl": "pano2.jpg",
-            "geometry": {
-                "width": 4000
-            },
-            "hotspots": [
-                {
-                    "type": "waypoint",
-                    "pitch": 0,
-                    "yaw": 0.1,
-                    "text": "<h2>Go Back</h2>",
-                    "target": "scene1"
-                },
-                {
-                    "type": "waypoint",
-                    "pitch": 0.5,
-                    "yaw": 0.1,
-                    "text": "<h2>Go to 3</h2>",
-                    "target": "scene3"
-                }
-            ]
-        },
-        {
-            "id": "scene3",
-            "name": "Second Panorama",
-            "imageUrl": "pano2.jpg",
-            "geometry": {
-                "width": 4000
-            },
-            "hotspots": [
-                {
-                    "type": "waypoint",
-                    "pitch": 0,
-                    "yaw": 0.1,
-                    "text": "<h2>Go Back</h2>",
-                    "target": "scene2"
-                }
-            ]
+          "type": "waypoint",
+          "pitch": 0,
+          "yaw": 1.5,
+          "text": "<h2>Go to S/N elivators</h2>",
+          "target": "scene2"
         }
-    ]
+      ]
+    },
+    {
+      "id": "scene2",
+      "name": "Second Panorama",
+      "imageUrl": "pano2.jpg",
+      "geometry": {
+        "width": 4000
+      },
+      "hotspots": []
+    }
+  ]
 }

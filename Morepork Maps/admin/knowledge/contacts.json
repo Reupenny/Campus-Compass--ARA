@@ -23,7 +23,7 @@
       "name": "Alice Johnson",
       "email": "alice.johnson@example.com",
       "phone": "555-123-4567",
-      "hours": "9am - 5p",
+      "hours": "9am - 5pm",
       "officeNumber": "A201",
       "jobTitle": "Marketing Manager"
     },
@@ -62,7 +62,16 @@
       "hours": "10am - 6pm",
       "officeNumber": "E605",
       "jobTitle": "Financial Analyst"
+    },
+    {
+      "name": "aaa",
+      "email": "aaa",
+      "phone": "aaa",
+      "hours": "aaa",
+      "officeNumber": "aaa",
+      "jobTitle": "aaa",
+      "id": 8
     }
   ],
-  "lastId": 7
+  "lastId": 8
 }

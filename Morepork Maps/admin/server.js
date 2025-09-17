@@ -8,8 +8,8 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = 3000;
-const contactsFile = path.join(__dirname, 'knowledge/contacts.json');
-const tourFile = path.join(__dirname, 'data/tour.json');
+const contactsFile = path.join(__dirname, '../public/knowledge/contacts.json');
+const tourFile = path.join(__dirname, '../public/data/tour.json');
 
 app.use(express.json());
 
@@ -36,14 +36,14 @@ function ensureContactsFile() {
     }
 }
 
-// Helper: ensure data/tour.json exists
+// Helper: ensure /data/tour.json exists
 function ensureTourFile() {
     if (!fs.existsSync(tourFile)) {
         const defaultTour = {
             scenes: []
         };
         fs.writeFileSync(tourFile, JSON.stringify(defaultTour, null, 2));
-        console.log('Created new data/tour.json file.');
+        console.log('Created new /data/tour.json file.');
     }
 }
 
@@ -85,17 +85,27 @@ app.post('/api/save-tour', (req, res) => {
     });
 });
 
+// Admin API to save tour data (alternative endpoint)
+app.post('/admin/api/tour', (req, res) => {
+    ensureTourFile();
+    const data = req.body;
+    fs.writeFile(tourFile, JSON.stringify(data, null, 2), err => {
+        if (err) return res.status(500).send('Error saving tour data.');
+        res.send({ message: 'Tour data saved successfully' });
+    });
+});
+
 // Handle SPA routing - serve index.html for all non-API routes
 app.get('*', (req, res) => {
     if (req.url.startsWith('/api/') || req.url.startsWith('/knowledge/') || req.url.startsWith('/data/')) {
         return res.status(404).send('Not found');
     }
-    
+
     const distPath = path.join(__dirname, 'dist');
-    const indexPath = fs.existsSync(distPath) 
+    const indexPath = fs.existsSync(distPath)
         ? path.join(distPath, 'index.html')
         : path.join(__dirname, 'index.html');
-    
+
     res.sendFile(indexPath);
 });
 

@@ -18,6 +18,11 @@ interface Scene {
     geometry: {
         width: number;
     };
+    defaultView?: {
+        yaw: number;
+        pitch: number;
+        fov: number;
+    };
     hotspots: Hotspot[];
 }
 
@@ -25,13 +30,25 @@ interface TourData {
     scenes: Scene[];
 }
 
+interface EditingHotspot {
+    sceneId: string;
+    hotspotIndex: number;
+    hotspot: Hotspot;
+}
+
 const Edit360: React.FC = () => {
     const [tourData, setTourData] = useState<TourData | null>(null);
     const [selectedScene, setSelectedScene] = useState<Scene | null>(null);
     const [viewer, setViewer] = useState<any>(null);
     const [currentScene, setCurrentScene] = useState<any>(null);
-    const [placementMode, setPlacementMode] = useState<'info' | 'waypoint' | null>(null);
+    const [editingHotspot, setEditingHotspot] = useState<EditingHotspot | null>(null);
+    const [selectedHotspotIndex, setSelectedHotspotIndex] = useState<number | null>(null);
+    const [isDragging, setIsDragging] = useState(false);
+    const [preventSceneReload, setPreventSceneReload] = useState(false);
+    const [showSceneEditor, setShowSceneEditor] = useState(false);
+    const [editingScene, setEditingScene] = useState<Scene | null>(null);
     const viewerRef = useRef<HTMLDivElement>(null);
+    const hotspotRefs = useRef<{ [key: string]: any }>({});
 
     // Load tour data
     useEffect(() => {
@@ -78,13 +95,23 @@ const Edit360: React.FC = () => {
 
     // Load scene when selected
     useEffect(() => {
-        if (viewer && selectedScene) {
+        if (viewer && selectedScene && !preventSceneReload) {
             loadScene(selectedScene);
         }
-    }, [viewer, selectedScene]);
+    }, [viewer, selectedScene, preventSceneReload]);
+
+    // Auto-select first scene when tour data is loaded
+    useEffect(() => {
+        if (tourData && tourData.scenes.length > 0 && !selectedScene) {
+            setSelectedScene(tourData.scenes[0]);
+        }
+    }, [tourData, selectedScene]);
 
     const loadScene = (scene: Scene) => {
         if (!viewer) return;
+
+        // Clear previous hotspot refs
+        hotspotRefs.current = {};
 
         // Create geometry for equirectangular panorama
         const geometry = new Marzipano.EquirectGeometry([
@@ -94,8 +121,12 @@ const Edit360: React.FC = () => {
         // Create image source
         const source = Marzipano.ImageUrlSource.fromString(`/${scene.imageUrl}`);
 
-        // Create view
-        const initialView = {
+        // Create view with default view settings if available
+        const initialView = scene.defaultView ? {
+            yaw: scene.defaultView.yaw,
+            pitch: scene.defaultView.pitch,
+            fov: scene.defaultView.fov
+        } : {
             yaw: 0,
             pitch: 0,
             fov: 90 * Math.PI / 180
@@ -117,71 +148,239 @@ const Edit360: React.FC = () => {
         // Switch to scene
         marzipanoScene.switchTo();
         setCurrentScene(marzipanoScene);
-
-        // Add click listener for placing new hotspots
-        viewerRef.current?.addEventListener('click', handleViewerClick);
-
-        return () => {
-            viewerRef.current?.removeEventListener('click', handleViewerClick);
-        };
     };
 
     const addHotspotToScene = (marzipanoScene: any, hotspot: Hotspot, index: number) => {
         const element = document.createElement('div');
         element.className = `hotspot hotspot-${hotspot.type}`;
-        element.innerHTML = hotspot.type === 'info' ? '📍' : '🚪';
-        element.style.cssText = `
-      width: 30px;
-      height: 30px;
-      background: ${hotspot.type === 'info' ? '#007bff' : '#28a745'};
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 16px;
-    `;
 
+        // Create inner content
+        const icon = document.createElement('div');
+        icon.innerHTML = hotspot.type === 'info' ? '📍' : '🚪';
+        icon.style.cssText = `
+            width: 30px;
+            height: 30px;
+            background: ${hotspot.type === 'info' ? '#007bff' : '#28a745'};
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 16px;
+            border: 2px solid #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            transition: all 0.2s;
+            position: relative;
+        `;
+
+        // Create action buttons (initially hidden)
+        const actionPanel = document.createElement('div');
+        actionPanel.style.cssText = `
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255,255,255,0.95);
+            padding: 5px;
+            border-radius: 15px;
+            display: none;
+            gap: 5px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            z-index: 10;
+        `;
+
+        const editBtn = document.createElement('button');
+        editBtn.innerHTML = '✏️';
+        editBtn.style.cssText = `
+            width: 25px;
+            height: 25px;
+            border: none;
+            border-radius: 50%;
+            background: #ffc107;
+            cursor: pointer;
+            font-size: 12px;
+        `;
+
+        const dragBtn = document.createElement('button');
+        dragBtn.innerHTML = '🤏';
+        dragBtn.style.cssText = `
+            width: 25px;
+            height: 25px;
+            border: none;
+            border-radius: 50%;
+            background: #17a2b8;
+            cursor: move;
+            font-size: 12px;
+        `;
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.innerHTML = '🗑️';
+        deleteBtn.style.cssText = `
+            width: 25px;
+            height: 25px;
+            border: none;
+            border-radius: 50%;
+            background: #dc3545;
+            color: #fff;
+            cursor: pointer;
+            font-size: 12px;
+        `;
+
+        actionPanel.appendChild(editBtn);
+        actionPanel.appendChild(dragBtn);
+        actionPanel.appendChild(deleteBtn);
+
+        element.appendChild(icon);
+        element.appendChild(actionPanel);
+
+        element.style.cssText = `
+            position: relative;
+            cursor: pointer;
+        `;
+
+        // Click to show/hide action panel
+        let clickTimeout: number | undefined;
         element.addEventListener('click', (e) => {
             e.stopPropagation();
-            alert(`${hotspot.type}: ${hotspot.text}`);
+
+            // Clear any existing timeout
+            if (clickTimeout) clearTimeout(clickTimeout);
+
+            if (!isDragging) {
+                // Hide all other action panels
+                document.querySelectorAll('.hotspot').forEach(el => {
+                    const panel = el.querySelector('div:last-child') as HTMLElement;
+                    if (panel && panel !== actionPanel) {
+                        panel.style.display = 'none';
+                    }
+                });
+
+                // Toggle this action panel
+                if (actionPanel.style.display === 'none' || !actionPanel.style.display) {
+                    actionPanel.style.display = 'flex';
+                    icon.style.transform = 'scale(1.2)';
+                    setSelectedHotspotIndex(index);
+                } else {
+                    actionPanel.style.display = 'none';
+                    icon.style.transform = 'scale(1)';
+                    setSelectedHotspotIndex(null);
+                }
+            }
         });
 
-        const position = { yaw: hotspot.yaw, pitch: hotspot.pitch };
-        marzipanoScene.hotspotContainer().createHotspot(element, position);
-    };
+        // Delete button click
+        deleteBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (confirm('Are you sure you want to delete this hotspot?')) {
+                deleteHotspot(index);
+            }
+        });
 
-    const handleViewerClick = (event: MouseEvent) => {
-        if (!placementMode || !currentScene) return;
+        // Edit button click
+        editBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (selectedScene) {
+                setEditingHotspot({
+                    sceneId: selectedScene.id,
+                    hotspotIndex: index,
+                    hotspot: hotspot
+                });
+                actionPanel.style.display = 'none';
+                icon.style.transform = 'scale(1)';
+            }
+        });
 
-        const rect = viewerRef.current?.getBoundingClientRect();
-        if (!rect) return;
+        // Drag functionality
+        let isDraggingThis = false;
+        let startPos: { x: number, y: number } | null = null;
+        let startHotspotPos: { yaw: number, pitch: number } | null = null;
+        let startViewParams: any = null; // Store initial view state
 
-        const x = event.clientX - rect.left;
-        const y = event.clientY - rect.top;
+        const startDrag = (e: MouseEvent) => {
+            e.preventDefault();
+            e.stopPropagation();
+            isDraggingThis = true;
+            setIsDragging(true);
 
-        // Convert screen coordinates to yaw/pitch
-        const view = currentScene.view();
-        const coords = view.screenToCoordinates({ x, y });
+            startPos = { x: e.clientX, y: e.clientY };
+            startHotspotPos = { yaw: hotspot.yaw, pitch: hotspot.pitch };
 
-        const newHotspot: Hotspot = {
-            type: placementMode,
-            pitch: coords.pitch,
-            yaw: coords.yaw,
-            text: placementMode === 'info' ? 'New Info Point' : 'New Waypoint',
-            ...(placementMode === 'info' ? { description: 'Description here' } : { target: 'scene1' })
+            dragBtn.style.background = '#dc3545'; // Change color while dragging
+            element.style.cursor = 'move';
+
+            // Disable viewer controls to prevent scene movement conflicts
+            if (viewer) {
+                viewer.controls().disable();
+            }
+
+            document.addEventListener('mousemove', handleDragMove);
+            document.addEventListener('mouseup', handleDragEnd);
         };
 
-        // Add to selected scene data
-        if (selectedScene) {
-            const updatedScene = {
-                ...selectedScene,
-                hotspots: [...selectedScene.hotspots, newHotspot]
-            };
-            setSelectedScene(updatedScene);
+        const handleDragMove = (e: MouseEvent) => {
+            if (!isDraggingThis || !startPos || !startHotspotPos || !currentScene) return;
 
-            // Update tour data
-            if (tourData) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const viewerElement = viewer.domElement();
+            const rect = viewerElement.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+            const view = currentScene.view();
+
+            try {
+                const worldCoords = view.screenToCoordinates({ x: mouseX, y: mouseY });
+                if (worldCoords && worldCoords.yaw !== undefined && worldCoords.pitch !== undefined) {
+                    hotspot.yaw = worldCoords.yaw;
+                    hotspot.pitch = worldCoords.pitch;
+                    marzipanoHotspot.setPosition({ yaw: worldCoords.yaw, pitch: worldCoords.pitch });
+
+                    if (selectedScene) {
+                        const updatedHotspots = selectedScene.hotspots.map((h, i) =>
+                            i === index ? { ...h, yaw: worldCoords.yaw, pitch: worldCoords.pitch } : h
+                        );
+                        // This direct mutation is okay within the Marzipano event handler context
+                        selectedScene.hotspots = updatedHotspots;
+                    }
+                }
+            } catch (error) {
+                // This can happen if the cursor is outside the viewer canvas during a rapid drag.
+                // We can ignore it as the next mousemove event will correct it.
+            }
+        };
+
+        const handleDragEnd = () => {
+            isDraggingThis = false;
+            setTimeout(() => setIsDragging(false), 100);
+
+            dragBtn.style.background = '#17a2b8'; // Reset color
+            element.style.cursor = 'pointer';
+            actionPanel.style.display = 'none';
+            icon.style.transform = 'scale(1)';
+
+            // Re-enable viewer controls after hotspot drag
+            if (viewer) {
+                viewer.controls().enable();
+            }
+
+            // Save the final position without scene reload
+            if (startHotspotPos && selectedScene && tourData) {
+                setPreventSceneReload(true); // Ensure scene reload is prevented
+
+                // Create a fresh updated version of the hotspots array
+                const updatedHotspots = selectedScene.hotspots.map((h, i) =>
+                    i === index ? { ...h, yaw: hotspot.yaw, pitch: hotspot.pitch } : h
+                );
+
+                const updatedScene = {
+                    ...selectedScene,
+                    hotspots: updatedHotspots
+                };
+
+                // Update the state correctly via React's setters
+                setSelectedScene(updatedScene);
+
                 const updatedTourData = {
                     ...tourData,
                     scenes: tourData.scenes.map(scene =>
@@ -191,11 +390,244 @@ const Edit360: React.FC = () => {
                 setTourData(updatedTourData);
             }
 
-            // Add hotspot to current scene
-            addHotspotToScene(currentScene, newHotspot, selectedScene.hotspots.length);
-        }
+            document.removeEventListener('mousemove', handleDragMove);
+            document.removeEventListener('mouseup', handleDragEnd);
+        }; dragBtn.addEventListener('mousedown', startDrag);
 
-        setPlacementMode(null);
+        // Hide action panel when clicking elsewhere
+        document.addEventListener('click', (e) => {
+            if (!element.contains(e.target as Node)) {
+                actionPanel.style.display = 'none';
+                icon.style.transform = 'scale(1)';
+                if (selectedHotspotIndex === index) {
+                    setSelectedHotspotIndex(null);
+                }
+            }
+        });
+
+        const position = { yaw: hotspot.yaw, pitch: hotspot.pitch };
+        const marzipanoHotspot = marzipanoScene.hotspotContainer().createHotspot(element, position);
+
+        return marzipanoHotspot;
+    };
+
+    const createHotspot = (type: 'info' | 'waypoint') => {
+        if (!currentScene || !selectedScene || !tourData) return;
+
+        // Prevent scene reload during hotspot creation
+        setPreventSceneReload(true);
+
+        // Get the current view center position
+        const view = currentScene.view();
+        const currentYaw = view.yaw();
+        const currentPitch = view.pitch();
+
+        const newHotspot: Hotspot = {
+            type: type,
+            pitch: currentPitch,
+            yaw: currentYaw,
+            text: type === 'info' ? 'New Info Point' : 'New Waypoint',
+            ...(type === 'info' ? { description: 'Description here' } : { target: tourData.scenes.length > 1 ? tourData.scenes.find(s => s.id !== selectedScene.id)?.id || 'scene1' : 'scene1' })
+        };
+
+        // Add to selected scene data - but don't reload the scene
+        const updatedScene = {
+            ...selectedScene,
+            hotspots: [...selectedScene.hotspots, newHotspot]
+        };
+        setSelectedScene(updatedScene);
+
+        // Update tour data
+        const updatedTourData = {
+            ...tourData,
+            scenes: tourData.scenes.map(scene =>
+                scene.id === selectedScene.id ? updatedScene : scene
+            )
+        };
+        setTourData(updatedTourData);
+
+        // Add hotspot to current scene directly without reloading
+        addHotspotToScene(currentScene, newHotspot, selectedScene.hotspots.length);
+
+        // Re-enable scene reloads after a short delay
+        setTimeout(() => setPreventSceneReload(false), 100);
+    };
+
+    const setDefaultView = async () => {
+        if (!currentScene || !selectedScene || !tourData) return;
+
+        const view = currentScene.view();
+        const defaultView = {
+            yaw: view.yaw(),
+            pitch: view.pitch(),
+            fov: view.fov()
+        };
+
+        const updatedScene = {
+            ...selectedScene,
+            defaultView: defaultView
+        };
+        setSelectedScene(updatedScene);
+
+        const updatedTourData = {
+            ...tourData,
+            scenes: tourData.scenes.map(scene =>
+                scene.id === selectedScene.id ? updatedScene : scene
+            )
+        };
+        setTourData(updatedTourData);
+
+        // Save the tour data immediately
+        try {
+            const response = await fetch('/admin/api/tour', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updatedTourData),
+            });
+
+            if (response.ok) {
+                alert('Default view saved for this scene!');
+            } else {
+                alert('Failed to save default view');
+            }
+        } catch (error) {
+            console.error('Error saving default view:', error);
+            alert('Error saving default view');
+        }
+    };
+
+    const updateHotspot = (updatedHotspot: Hotspot) => {
+        if (!editingHotspot || !selectedScene || !tourData) return;
+
+        const updatedHotspots = selectedScene.hotspots.map((h, i) =>
+            i === editingHotspot.hotspotIndex ? updatedHotspot : h
+        );
+
+        const updatedScene = {
+            ...selectedScene,
+            hotspots: updatedHotspots
+        };
+        setSelectedScene(updatedScene);
+
+        const updatedTourData = {
+            ...tourData,
+            scenes: tourData.scenes.map(scene =>
+                scene.id === selectedScene.id ? updatedScene : scene
+            )
+        };
+        setTourData(updatedTourData);
+
+        // Don't reload scene - just update the data
+        setEditingHotspot(null);
+    }; const updateHotspotPosition = (index: number, newYaw: number, newPitch: number, shouldReload = false) => {
+        if (!selectedScene || !tourData) return;
+
+        // Prevent scene reload during hotspot updates
+        setPreventSceneReload(true);
+
+        const updatedHotspots = selectedScene.hotspots.map((h, i) =>
+            i === index ? { ...h, yaw: newYaw, pitch: newPitch } : h
+        );
+
+        const updatedScene = {
+            ...selectedScene,
+            hotspots: updatedHotspots
+        };
+        setSelectedScene(updatedScene);
+
+        const updatedTourData = {
+            ...tourData,
+            scenes: tourData.scenes.map(scene =>
+                scene.id === selectedScene.id ? updatedScene : scene
+            )
+        };
+        setTourData(updatedTourData);
+
+        // Re-enable scene reloads after a short delay
+        setTimeout(() => setPreventSceneReload(false), 100);
+    };
+
+    const deleteHotspot = (index: number) => {
+        if (!selectedScene || !tourData) return;
+
+        const updatedHotspots = selectedScene.hotspots.filter((_, i) => i !== index);
+        const updatedScene = {
+            ...selectedScene,
+            hotspots: updatedHotspots
+        };
+        setSelectedScene(updatedScene);
+
+        const updatedTourData = {
+            ...tourData,
+            scenes: tourData.scenes.map(scene =>
+                scene.id === selectedScene.id ? updatedScene : scene
+            )
+        };
+        setTourData(updatedTourData);
+
+        // Reload scene to remove the hotspot visually (this is necessary for deletion)
+        loadScene(updatedScene);
+    };
+
+    const setViewDirection = (yaw: number, pitch: number, fov: number) => {
+        if (!currentScene) return;
+
+        const view = currentScene.view();
+        view.setParameters({
+            yaw: yaw * Math.PI / 180,
+            pitch: pitch * Math.PI / 180,
+            fov: fov * Math.PI / 180
+        });
+    };
+
+    const addNewScene = () => {
+        if (!tourData) return;
+
+        const newScene: Scene = {
+            id: `scene${Date.now()}`,
+            name: 'New Scene',
+            imageUrl: 'pano1.jpg', // Default image
+            geometry: { width: 4000 },
+            hotspots: []
+        };
+
+        const updatedTourData = {
+            ...tourData,
+            scenes: [...tourData.scenes, newScene]
+        };
+        setTourData(updatedTourData);
+        setSelectedScene(newScene);
+    };
+
+    const deleteScene = (sceneId: string) => {
+        if (!tourData) return;
+
+        const updatedTourData = {
+            ...tourData,
+            scenes: tourData.scenes.filter(scene => scene.id !== sceneId)
+        };
+        setTourData(updatedTourData);
+
+        // If we deleted the selected scene, select the first one
+        if (selectedScene?.id === sceneId) {
+            setSelectedScene(updatedTourData.scenes.length > 0 ? updatedTourData.scenes[0] : null);
+        }
+    };
+
+    const updateScene = (updatedScene: Scene) => {
+        if (!tourData) return;
+
+        const updatedTourData = {
+            ...tourData,
+            scenes: tourData.scenes.map(scene =>
+                scene.id === updatedScene.id ? updatedScene : scene
+            )
+        };
+        setTourData(updatedTourData);
+        setSelectedScene(updatedScene);
+        loadScene(updatedScene);
     };
 
     const saveTourData = async () => {
@@ -235,85 +667,211 @@ const Edit360: React.FC = () => {
                 borderRight: '1px solid #ddd',
                 overflow: 'auto'
             }}>
-                <h2>Scenes</h2>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+                    <h2>Scenes</h2>
+                    <button
+                        onClick={addNewScene}
+                        style={{
+                            padding: '5px 10px',
+                            backgroundColor: '#28a745',
+                            color: '#fff',
+                            border: 'none',
+                            borderRadius: '4px',
+                            cursor: 'pointer',
+                            fontSize: '12px'
+                        }}
+                    >
+                        + Add Scene
+                    </button>
+                </div>
 
                 {/* Scene List */}
                 <div style={{ marginBottom: '20px' }}>
                     {tourData.scenes.map((scene) => (
-                        <div
-                            key={scene.id}
-                            onClick={() => setSelectedScene(scene)}
-                            style={{
-                                padding: '10px',
-                                margin: '5px 0',
-                                backgroundColor: selectedScene?.id === scene.id ? '#007bff' : '#fff',
-                                color: selectedScene?.id === scene.id ? '#fff' : '#000',
-                                border: '1px solid #ddd',
-                                borderRadius: '4px',
-                                cursor: 'pointer'
-                            }}
-                        >
-                            <strong>{scene.name}</strong>
-                            <div style={{ fontSize: '12px', opacity: 0.8 }}>
-                                {scene.hotspots.length} hotspots
+                        <div key={scene.id} style={{ marginBottom: '10px' }}>
+                            <div
+                                onClick={() => {
+                                    setPreventSceneReload(false); // Allow scene reload for scene switching
+                                    setSelectedScene(scene);
+                                    loadScene(scene);
+                                }}
+                                style={{
+                                    padding: '10px',
+                                    backgroundColor: selectedScene?.id === scene.id ? '#007bff' : '#fff',
+                                    color: selectedScene?.id === scene.id ? '#fff' : '#000',
+                                    border: '1px solid #ddd',
+                                    borderRadius: '4px',
+                                    cursor: 'pointer',
+                                    position: 'relative'
+                                }}
+                            >
+                                <strong>{scene.name}</strong>
+                                <div style={{ fontSize: '12px', opacity: 0.8 }}>
+                                    {scene.hotspots.length} hotspots
+                                </div>
+                                <div style={{ position: 'absolute', top: '5px', right: '5px', display: 'flex', gap: '5px' }}>
+                                    <button
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            setEditingScene(scene);
+                                            setShowSceneEditor(true);
+                                        }}
+                                        style={{
+                                            width: '20px',
+                                            height: '20px',
+                                            backgroundColor: '#ffc107',
+                                            border: 'none',
+                                            borderRadius: '50%',
+                                            cursor: 'pointer',
+                                            fontSize: '10px'
+                                        }}
+                                    >
+                                        ✏️
+                                    </button>
+                                    <button
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            if (confirm(`Delete scene "${scene.name}"?`)) {
+                                                deleteScene(scene.id);
+                                            }
+                                        }}
+                                        style={{
+                                            width: '20px',
+                                            height: '20px',
+                                            backgroundColor: '#dc3545',
+                                            color: '#fff',
+                                            border: 'none',
+                                            borderRadius: '50%',
+                                            cursor: 'pointer',
+                                            fontSize: '10px'
+                                        }}
+                                    >
+                                        ×
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     ))}
                 </div>
 
-                {/* Hotspot Placement Controls */}
+                {/* View Direction Controls */}
+                {selectedScene && currentScene && (
+                    <div style={{ marginBottom: '20px', padding: '15px', backgroundColor: '#fff', borderRadius: '4px' }}>
+                        <h3 style={{ margin: '0 0 10px 0', fontSize: '14px' }}>View Direction</h3>
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', fontSize: '12px' }}>
+                            <div>
+                                <label>Yaw (°):</label>
+                                <input
+                                    type="number"
+                                    min="-180"
+                                    max="180"
+                                    step="5"
+                                    defaultValue={Math.round(currentScene.view().yaw() * 180 / Math.PI)}
+                                    onChange={(e) => {
+                                        const view = currentScene.view();
+                                        setViewDirection(
+                                            parseFloat(e.target.value),
+                                            view.pitch() * 180 / Math.PI,
+                                            view.fov() * 180 / Math.PI
+                                        );
+                                    }}
+                                    style={{ width: '100%', padding: '3px', fontSize: '12px' }}
+                                />
+                            </div>
+                            <div>
+                                <label>Pitch (°):</label>
+                                <input
+                                    type="number"
+                                    min="-90"
+                                    max="90"
+                                    step="5"
+                                    defaultValue={Math.round(currentScene.view().pitch() * 180 / Math.PI)}
+                                    onChange={(e) => {
+                                        const view = currentScene.view();
+                                        setViewDirection(
+                                            view.yaw() * 180 / Math.PI,
+                                            parseFloat(e.target.value),
+                                            view.fov() * 180 / Math.PI
+                                        );
+                                    }}
+                                    style={{ width: '100%', padding: '3px', fontSize: '12px' }}
+                                />
+                            </div>
+                            <div style={{ gridColumn: 'span 2' }}>
+                                <label>FOV (°):</label>
+                                <input
+                                    type="number"
+                                    min="10"
+                                    max="150"
+                                    step="5"
+                                    defaultValue={Math.round(currentScene.view().fov() * 180 / Math.PI)}
+                                    onChange={(e) => {
+                                        const view = currentScene.view();
+                                        setViewDirection(
+                                            view.yaw() * 180 / Math.PI,
+                                            view.pitch() * 180 / Math.PI,
+                                            parseFloat(e.target.value)
+                                        );
+                                    }}
+                                    style={{ width: '100%', padding: '3px', fontSize: '12px' }}
+                                />
+                            </div>
+                        </div>
+                        <button
+                            onClick={setDefaultView}
+                            style={{
+                                width: '100%',
+                                marginTop: '10px',
+                                padding: '8px',
+                                backgroundColor: '#ffc107',
+                                color: '#000',
+                                border: 'none',
+                                borderRadius: '4px',
+                                cursor: 'pointer',
+                                fontSize: '12px',
+                                fontWeight: 'bold'
+                            }}
+                        >
+                            📌 Set as Default View
+                        </button>
+                    </div>
+                )}
+
+                {/* Hotspot Creation Controls */}
                 <div style={{ marginBottom: '20px' }}>
                     <h3>Add Hotspots</h3>
                     <button
-                        onClick={() => setPlacementMode('info')}
+                        onClick={() => createHotspot('info')}
                         style={{
                             display: 'block',
                             width: '100%',
                             margin: '5px 0',
                             padding: '10px',
-                            backgroundColor: placementMode === 'info' ? '#007bff' : '#fff',
-                            color: placementMode === 'info' ? '#fff' : '#000',
-                            border: '1px solid #007bff',
+                            backgroundColor: '#007bff',
+                            color: '#fff',
+                            border: 'none',
                             borderRadius: '4px',
                             cursor: 'pointer'
                         }}
                     >
-                        📍 Place Info Point
+                        📍 Add Info Point
                     </button>
                     <button
-                        onClick={() => setPlacementMode('waypoint')}
+                        onClick={() => createHotspot('waypoint')}
                         style={{
                             display: 'block',
                             width: '100%',
                             margin: '5px 0',
                             padding: '10px',
-                            backgroundColor: placementMode === 'waypoint' ? '#28a745' : '#fff',
-                            color: placementMode === 'waypoint' ? '#fff' : '#000',
-                            border: '1px solid #28a745',
+                            backgroundColor: '#28a745',
+                            color: '#fff',
+                            border: 'none',
                             borderRadius: '4px',
                             cursor: 'pointer'
                         }}
                     >
-                        🚪 Place Waypoint
+                        🚪 Add Waypoint
                     </button>
-                    {placementMode && (
-                        <button
-                            onClick={() => setPlacementMode(null)}
-                            style={{
-                                display: 'block',
-                                width: '100%',
-                                margin: '5px 0',
-                                padding: '5px',
-                                backgroundColor: '#dc3545',
-                                color: '#fff',
-                                border: 'none',
-                                borderRadius: '4px',
-                                cursor: 'pointer'
-                            }}
-                        >
-                            Cancel
-                        </button>
-                    )}
                 </div>
 
                 {/* Selected Scene Hotspots */}
@@ -329,17 +887,39 @@ const Edit360: React.FC = () => {
                                     backgroundColor: '#fff',
                                     border: '1px solid #ddd',
                                     borderRadius: '4px',
-                                    fontSize: '12px'
+                                    fontSize: '12px',
+                                    position: 'relative'
                                 }}
                             >
                                 <div style={{ fontWeight: 'bold' }}>
                                     {hotspot.type === 'info' ? '📍' : '🚪'} {hotspot.type}
                                 </div>
-                                <div>{hotspot.text}</div>
+                                <div style={{ marginRight: '25px' }}>{hotspot.text}</div>
                                 <div style={{ opacity: 0.6 }}>
                                     Yaw: {(hotspot.yaw * 180 / Math.PI).toFixed(1)}°,
                                     Pitch: {(hotspot.pitch * 180 / Math.PI).toFixed(1)}°
                                 </div>
+                                <button
+                                    onClick={() => deleteHotspot(index)}
+                                    style={{
+                                        position: 'absolute',
+                                        top: '4px',
+                                        right: '4px',
+                                        width: '20px',
+                                        height: '20px',
+                                        backgroundColor: '#dc3545',
+                                        color: '#fff',
+                                        border: 'none',
+                                        borderRadius: '50%',
+                                        cursor: 'pointer',
+                                        fontSize: '12px',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center'
+                                    }}
+                                >
+                                    ×
+                                </button>
                             </div>
                         ))}
                     </div>
@@ -349,8 +929,7 @@ const Edit360: React.FC = () => {
                 <button
                     onClick={saveTourData}
                     style={{
-                        position: 'absolute',
-                        bottom: '20px',
+                        position: 'relative',
                         left: '20px',
                         right: '20px',
                         width: 'calc(100% - 40px)',
@@ -369,31 +948,15 @@ const Edit360: React.FC = () => {
             </div>
 
             {/* 360 Viewer */}
-            <div style={{ flex: 1, position: 'relative' }}>
+            <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }}>
                 <div
                     ref={viewerRef}
                     style={{
                         width: '100%',
                         height: '100%',
-                        cursor: placementMode ? 'crosshair' : 'grab'
+                        cursor: 'grab'
                     }}
                 />
-
-                {/* Instructions */}
-                {placementMode && (
-                    <div style={{
-                        position: 'absolute',
-                        top: '20px',
-                        left: '20px',
-                        backgroundColor: 'rgba(0,0,0,0.8)',
-                        color: '#fff',
-                        padding: '10px 15px',
-                        borderRadius: '4px',
-                        fontSize: '14px'
-                    }}>
-                        Click on the panorama to place a {placementMode} hotspot
-                    </div>
-                )}
 
                 {/* Scene Info */}
                 {selectedScene && (
@@ -411,6 +974,209 @@ const Edit360: React.FC = () => {
                     </div>
                 )}
             </div>
+
+            {/* Hotspot Edit Modal */}
+            {editingHotspot && (
+                <div style={{
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    backgroundColor: 'rgba(0,0,0,0.5)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    zIndex: 1000
+                }}>
+                    <div style={{
+                        backgroundColor: '#fff',
+                        padding: '20px',
+                        borderRadius: '8px',
+                        width: '400px',
+                        maxWidth: '90vw'
+                    }}>
+                        <h3>Edit {editingHotspot.hotspot.type} Hotspot</h3>
+                        <div style={{ marginBottom: '15px' }}>
+                            <label style={{ display: 'block', marginBottom: '5px' }}>Text:</label>
+                            <input
+                                type="text"
+                                defaultValue={editingHotspot.hotspot.text}
+                                onChange={(e) => {
+                                    setEditingHotspot({
+                                        ...editingHotspot,
+                                        hotspot: { ...editingHotspot.hotspot, text: e.target.value }
+                                    });
+                                }}
+                                style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ddd' }}
+                            />
+                        </div>
+                        {editingHotspot.hotspot.type === 'info' && (
+                            <div style={{ marginBottom: '15px' }}>
+                                <label style={{ display: 'block', marginBottom: '5px' }}>Description:</label>
+                                <textarea
+                                    defaultValue={editingHotspot.hotspot.description || ''}
+                                    onChange={(e) => {
+                                        setEditingHotspot({
+                                            ...editingHotspot,
+                                            hotspot: { ...editingHotspot.hotspot, description: e.target.value }
+                                        });
+                                    }}
+                                    style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ddd', height: '80px' }}
+                                />
+                            </div>
+                        )}
+                        {editingHotspot.hotspot.type === 'waypoint' && (
+                            <div style={{ marginBottom: '15px' }}>
+                                <label style={{ display: 'block', marginBottom: '5px' }}>Target Scene:</label>
+                                <select
+                                    defaultValue={editingHotspot.hotspot.target || ''}
+                                    onChange={(e) => {
+                                        setEditingHotspot({
+                                            ...editingHotspot,
+                                            hotspot: { ...editingHotspot.hotspot, target: e.target.value }
+                                        });
+                                    }}
+                                    style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ddd' }}
+                                >
+                                    <option value="">Select target scene</option>
+                                    {tourData?.scenes.map(scene => (
+                                        <option key={scene.id} value={scene.id}>{scene.name}</option>
+                                    ))}
+                                </select>
+                            </div>
+                        )}
+                        <div style={{ display: 'flex', gap: '10px', justifyContent: 'flex-end' }}>
+                            <button
+                                onClick={() => setEditingHotspot(null)}
+                                style={{
+                                    padding: '8px 16px',
+                                    backgroundColor: '#6c757d',
+                                    color: '#fff',
+                                    border: 'none',
+                                    borderRadius: '4px',
+                                    cursor: 'pointer'
+                                }}
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                onClick={() => updateHotspot(editingHotspot.hotspot)}
+                                style={{
+                                    padding: '8px 16px',
+                                    backgroundColor: '#007bff',
+                                    color: '#fff',
+                                    border: 'none',
+                                    borderRadius: '4px',
+                                    cursor: 'pointer'
+                                }}
+                            >
+                                Save
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Scene Edit Modal */}
+            {showSceneEditor && editingScene && (
+                <div style={{
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    backgroundColor: 'rgba(0,0,0,0.5)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    zIndex: 1000
+                }}>
+                    <div style={{
+                        backgroundColor: '#fff',
+                        padding: '20px',
+                        borderRadius: '8px',
+                        width: '400px',
+                        maxWidth: '90vw'
+                    }}>
+                        <h3>Edit Scene</h3>
+                        <div style={{ marginBottom: '15px' }}>
+                            <label style={{ display: 'block', marginBottom: '5px' }}>Scene Name:</label>
+                            <input
+                                type="text"
+                                defaultValue={editingScene.name}
+                                onChange={(e) => {
+                                    setEditingScene({ ...editingScene, name: e.target.value });
+                                }}
+                                style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ddd' }}
+                            />
+                        </div>
+                        <div style={{ marginBottom: '15px' }}>
+                            <label style={{ display: 'block', marginBottom: '5px' }}>Image URL:</label>
+                            <input
+                                type="text"
+                                defaultValue={editingScene.imageUrl}
+                                onChange={(e) => {
+                                    setEditingScene({ ...editingScene, imageUrl: e.target.value });
+                                }}
+                                style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ddd' }}
+                                placeholder="e.g., pano1.jpg"
+                            />
+                        </div>
+                        <div style={{ marginBottom: '15px' }}>
+                            <label style={{ display: 'block', marginBottom: '5px' }}>Image Width:</label>
+                            <input
+                                type="number"
+                                defaultValue={editingScene.geometry.width}
+                                onChange={(e) => {
+                                    setEditingScene({
+                                        ...editingScene,
+                                        geometry: { ...editingScene.geometry, width: parseInt(e.target.value) }
+                                    });
+                                }}
+                                style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ddd' }}
+                            />
+                        </div>
+                        <div style={{ display: 'flex', gap: '10px', justifyContent: 'flex-end' }}>
+                            <button
+                                onClick={() => {
+                                    setShowSceneEditor(false);
+                                    setEditingScene(null);
+                                }}
+                                style={{
+                                    padding: '8px 16px',
+                                    backgroundColor: '#6c757d',
+                                    color: '#fff',
+                                    border: 'none',
+                                    borderRadius: '4px',
+                                    cursor: 'pointer'
+                                }}
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                onClick={() => {
+                                    if (editingScene) {
+                                        updateScene(editingScene);
+                                        setShowSceneEditor(false);
+                                        setEditingScene(null);
+                                    }
+                                }}
+                                style={{
+                                    padding: '8px 16px',
+                                    backgroundColor: '#007bff',
+                                    color: '#fff',
+                                    border: 'none',
+                                    borderRadius: '4px',
+                                    cursor: 'pointer'
+                                }}
+                            >
+                                Save
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

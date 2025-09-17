@@ -30,14 +30,13 @@ function App() {
     const panoElement = document.getElementById('pano');
     const viewer = new Marzipano.Viewer(panoElement);
 
-    const minZoomInVFOV = 40;
-    const maxZoomOutVFOV = 120;
+    const minZoomInVFOV = 80;
+    const maxZoomOutVFOV = 100;
     const zoomLimiter = Marzipano.RectilinearView.limit.traditional(
       minZoomInVFOV * Math.PI / 180,
       maxZoomOutVFOV * Math.PI / 180
     );
-
-    fetch('/admin/data/tour.json')
+    fetch('/data/tour.json')
       .then(response => response.json())
       .then((data: TourData) => {
         const scenes: { [key: string]: Marzipano.Scene } = {};
@@ -83,11 +82,6 @@ function App() {
   return (
     <>
       <div id="pano" style={{ width: '100vw', height: '100vh' }}></div>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
     </>
   );
 }

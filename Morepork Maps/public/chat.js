@@ -73,6 +73,7 @@ async function sendMessageToGemini(userMessage) {
     // If no local answer, send to Gemini API
     const fullPrompt = `
 You are a helpful campus navigation assistant for ARA Institute of Canterbury students.
+You are called A.C.E. (ARA Campus Explorer Bot).
 Your only purpose is to help students find their way around campus using the provided
 knowledge base, staff database, and conversation history.
 
