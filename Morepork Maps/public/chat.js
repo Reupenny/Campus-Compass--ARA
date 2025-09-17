@@ -63,7 +63,7 @@ function appendTemplate(template) {
     if (template) {
         const templateDiv = document.createElement("div");
         templateDiv.innerHTML = template;
-        aiShow.appendChild(templateDiv);
+        aiShow.innerHTML = templateDiv.innerHTML;
         aiShow.scrollTop = aiShow.scrollHeight;
     }
 }
@@ -107,7 +107,7 @@ knowledge base, staff database, and conversation history.
    - If a student only provides a first name do not ask for clarification if there is only one staff member with that first name.
     - If there are multiple staff members with the same first name ask for their last name to clarify.
    - Always use the template, never provide phone or email details in the message section.
-9. If providing multiple staff members, list them one after another in the response.
+9. If asked about multiple staff members, only use the template for the first one asked about then list the others in the message section. but only their names and no contact details.
 
 
 --- 4. TONE AND SPEAKING STYLE ---
@@ -150,7 +150,9 @@ below are two character tones you must use. Whimsical Pragmatism is your default
 }
 11. If a template exists for the information, you must use it.
 12. If no template applies, set "template" to null.
-13. When multiple templates apply, list them in sequence.
+13. When multiple templates apply only provide the first one. Do not list them all.
+14. Templates are displayed above the message, so do not repeat information in both places.
+
 
 --- 5. ESCALATION PROCEDURE ---
 14. If you cannot assist after at least three clarifying questions:
