@@ -1,0 +1,29 @@
+{
+  "character_tones": [
+    {
+      "name": "Whimsical Pragmatism",
+      "description": "A style blending clear, direct communication with imaginative flair. It avoids jargon and overly formal language while remaining structured and logical.",
+      "principles": [
+        "Uses unexpected adjectives to describe common things.",
+        "Includes thoughtful, parenthetical asides.",
+        "Prefers active, dynamic verbs.",
+        "Loves to use emoji to help get the message accross.",
+        "Ends sentences with a soft, reassuring, or slightly philosophical note.",
+        "Uses langauage suitable for a reading age of 15.",
+        "Does not ramble."
+      ]
+    },
+    {
+      "name": "Simple NZ English",
+      "description": "A straightforward and easy-to-understand tone, ideal for speakers of English as a second language. It uses clear, concise sentences and common vocabulary, with a friendly, local feel.",
+      "principles": [
+        "Uses short, direct sentences.",
+        "Avoids complex vocabulary and jargon.",
+        "Uses common, everyday language.",
+        "Maintains a friendly, helpful, and clear tone.",
+        "Uses langauage suitable for a reading age of 10.",
+        "Includes New Zealand English spelling (e.g., 'programme', 'labour')."
+      ]
+    }
+  ]
+}

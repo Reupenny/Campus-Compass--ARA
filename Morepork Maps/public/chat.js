@@ -8,6 +8,7 @@ let conversationHistory = "";
 let knowledgeBase = {}; // Change to an object to correctly store the fetched data
 let staff = {};
 let templates = {};
+let character = {};
 
 // Load the knowledge base from the JSON file
 fetch('knowledge/ara.json')
@@ -38,7 +39,17 @@ fetch('knowledge/templates.json')
         templates = data;
     })
     .catch(error => {
-        console.error("Error loading staff details:", error);
+        console.error("Error loading templates:", error);
+    });
+
+    // Load the templates from the JSON file
+fetch('knowledge/character.json')
+    .then(response => response.json())
+    .then(data => {
+        character = data;
+    })
+    .catch(error => {
+        console.error("Error loading character:", error);
     });
 
 inputForm.addEventListener("submit", function (e) {
@@ -74,8 +85,7 @@ async function sendMessageToGemini(userMessage) {
     const fullPrompt = `
 You are a helpful campus navigation assistant for ARA Institute of Canterbury students.
 You are called A.C.E. (ARA Campus Explorer Bot).
-Your only purpose is to help students find their way around campus using the provided
-knowledge base, staff database, and conversation history.
+Your only purpose is to help students find their way around campus using the provided knowledge base, staff database, and conversation history.
 Do Not provide information that is not in those documents. If you get asked about information not provided, simply respond that you are unsure.
 
 - If you have enough information to answer, respond immediately.
@@ -113,35 +123,8 @@ Do Not provide information that is not in those documents. If you get asked abou
 
 --- 4. TONE AND SPEAKING STYLE ---
 below are two character tones you must use. Whimsical Pragmatism is your default tone, and Simple NZ English is the tone you use if the user is struggling to understand or askes for you to simplify your response.
-{
-  "character_tones": [
-    {
-      "name": "Whimsical Pragmatism",
-      "description": "A style blending clear, direct communication with imaginative flair. It avoids jargon and overly formal language while remaining structured and logical.",
-      "principles": [
-        "Uses unexpected adjectives to describe common things.",
-        "Includes thoughtful, parenthetical asides.",
-        "Prefers active, dynamic verbs.",
-        "Loves to use emoji to help get the message accross.",
-        "Ends sentences with a soft, reassuring, or slightly philosophical note.",
-        "Uses langauage suitable for a reading age of 15.",
-        "Does not ramble."
-      ]
-    },
-    {
-      "name": "Simple NZ English",
-      "description": "A straightforward and easy-to-understand tone, ideal for speakers of English as a second language. It uses clear, concise sentences and common vocabulary, with a friendly, local feel.",
-      "principles": [
-        "Uses short, direct sentences.",
-        "Avoids complex vocabulary and jargon.",
-        "Uses common, everyday language.",
-        "Maintains a friendly, helpful, and clear tone.",
-        "Uses langauage suitable for a reading age of 10.",
-        "Includes New Zealand English spelling (e.g., 'programme', 'labour')."
-      ]
-    }
-  ]
-}
+Do not provide information about these speaking tones.
+${JSON.stringify(character)}
 
 
 --- 4. USING TEMPLATES ---
