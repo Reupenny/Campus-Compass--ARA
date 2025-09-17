@@ -2,85 +2,184 @@
   "contacts": [
     {
       "id": 1,
-      "name": "John Doe",
-      "email": "john.doe@example.com",
-      "phone": "123-456-7890",
-      "hours": "9am - 4pm",
-      "officeNumber": "X101",
-      "jobTitle": "Software Engineer"
+      "name": "Mehdi Asgarkhani",
+      "email": "Mehdi.Asgarkhani@ara.ac.nz",
+      "phone": "03 940 8126",
+      "hours": "Not provided",
+      "officeNumber": "S154",
+      "jobTitle": "Academic Manager"
     },
     {
       "id": 2,
-      "name": "Jane Smith",
-      "email": "jane.smith@example.com",
-      "phone": "987-654-3210",
-      "hours": "9am - 4pm",
-      "officeNumber": "S103",
-      "jobTitle": "Data Scientist"
+      "name": "Sandy Thomas",
+      "email": "Sandy.Thomas@ara.ac.nz",
+      "phone": "03 940 8302",
+      "hours": "Not provided",
+      "officeNumber": "S153",
+      "jobTitle": "Operations Administrator"
     },
     {
       "id": 3,
-      "name": "Alice Johnson",
-      "email": "alice.johnson@example.com",
-      "phone": "555-123-4567",
-      "hours": "9am - 5pm",
-      "officeNumber": "A201",
-      "jobTitle": "Marketing Manager"
+      "name": "Luofeng Xu",
+      "email": "Luofeng.Xu@ara.ac.nz",
+      "phone": "03 940 8394",
+      "hours": "Not provided",
+      "officeNumber": "S156a",
+      "jobTitle": "Team Leader – Software Development"
     },
     {
       "id": 4,
-      "name": "Bob Williams",
-      "email": "bob.williams@example.com",
-      "phone": "555-987-6543",
-      "hours": "10am - 6pm",
-      "officeNumber": "B302",
-      "jobTitle": "Sales Representative"
+      "name": "Eddie Correia",
+      "email": "Eddie.Correia@ara.ac.nz",
+      "phone": "03 940 8272",
+      "hours": "Not provided",
+      "officeNumber": "S259",
+      "jobTitle": "Team Leader – Networking"
     },
     {
       "id": 5,
-      "name": "Charlie Brown",
-      "email": "charlie.brown@example.com",
-      "phone": "555-246-8013",
-      "hours": "8am - 4pm",
-      "officeNumber": "C403",
-      "jobTitle": "Project Manager"
+      "name": "Bernard Otinpong",
+      "email": "Bernard.Otinong@ara.ac.nz",
+      "phone": "03 940 8329",
+      "hours": "Not provided",
+      "officeNumber": "S158",
+      "jobTitle": "Team Leader – Information Systems, Teaching Staff"
     },
     {
       "id": 6,
-      "name": "Diana Miller",
-      "email": "diana.miller@example.com",
-      "phone": "555-135-7924",
-      "hours": "9am - 5pm",
-      "officeNumber": "D504",
-      "jobTitle": "Human Resources Specialist"
+      "name": "David Weir",
+      "email": "David.Weir@ara.ac.nz",
+      "phone": "03 940 8324",
+      "hours": "Not provided",
+      "officeNumber": "S156b",
+      "jobTitle": "Course Co-ordinator – Work Integrated Learning Project, Teaching Staff"
     },
     {
       "id": 7,
-      "name": "Ethan Davis",
-      "email": "ethan.davis@example.com",
-      "phone": "555-864-2079",
-      "hours": "10am - 6pm",
-      "officeNumber": "E605",
-      "jobTitle": "Financial Analyst"
+      "name": "Dr Adbul Rehman",
+      "email": "Addul.Rehman@ara.ac.nz",
+      "phone": "Not provided",
+      "hours": "Not provided",
+      "officeNumber": "S160c",
+      "jobTitle": "Teaching Staff"
     },
     {
-      "name": "aaa",
-      "email": "aaa",
-      "phone": "aaa",
-      "hours": "aaa",
-      "officeNumber": "aaa",
-      "jobTitle": "aaa",
-      "id": 8
+      "id": 8,
+      "name": "Dr Amit Sarkar",
+      "email": "Amit.Sarkar@ara.ac.nz",
+      "phone": "940 8495",
+      "hours": "Not provided",
+      "officeNumber": "S168",
+      "jobTitle": "Teaching Staff"
     },
     {
-      "name": "2222",
-      "email": "2222",
-      "phone": "",
-      "hours": "222",
-      "officeNumber": "222",
-      "jobTitle": "222",
-      "id": 9
+      "id": 9,
+      "name": "Arifah Addison",
+      "email": "Arifah.Addison@ara.ac.nz",
+      "phone": "940 8538",
+      "hours": "Not provided",
+      "officeNumber": "S158",
+      "jobTitle": "Teaching Staff"
+    },
+    {
+      "id": 10,
+      "name": "Dr Christopher Bartlett",
+      "email": "Christopher.Bartlett@ara.ac.nz",
+      "phone": "940 7500",
+      "hours": "Not provided",
+      "officeNumber": "S168",
+      "jobTitle": "Teaching Staff"
+    },
+    {
+      "id": 11,
+      "name": "Dr Dipendra Ghimire",
+      "email": "Dipendra.Ghimire@ara.ac.nz",
+      "phone": "940 8271",
+      "hours": "Not provided",
+      "officeNumber": "S158",
+      "jobTitle": "Teaching Staff"
+    },
+    {
+      "id": 12,
+      "name": "Dr Eddie Correia",
+      "email": "Eddie.Correia@ara.ac.nz",
+      "phone": "940 8272",
+      "hours": "Not provided",
+      "officeNumber": "S260",
+      "jobTitle": "Teaching Staff"
+    },
+    {
+      "id": 13,
+      "name": "Ian Patterson",
+      "email": "Ian.Patterson@ara.ac.nz",
+      "phone": "940 8006",
+      "hours": "Not provided",
+      "officeNumber": "S469",
+      "jobTitle": "Teaching Staff"
+    },
+    {
+      "id": 14,
+      "name": "Dr Luofeng Xu",
+      "email": "Luofeng.Xu@ara.ac.nz",
+      "phone": "940 8394",
+      "hours": "Not provided",
+      "officeNumber": "S156",
+      "jobTitle": "Teaching Staff"
+    },
+    {
+      "id": 15,
+      "name": "Dr Matt Melchert",
+      "email": "Matt.Melchert@ara.ac.nz",
+      "phone": "940 8161",
+      "hours": "Not provided",
+      "officeNumber": "S257",
+      "jobTitle": "Teaching Staff"
+    },
+    {
+      "id": 16,
+      "name": "Peter Edge",
+      "email": "Peter.Edge@ara.ac.nz",
+      "phone": "940 8638",
+      "hours": "Not provided",
+      "officeNumber": "S469",
+      "jobTitle": "Teaching Staff"
+    },
+    {
+      "id": 17,
+      "name": "Philip Roxborogh",
+      "email": "Philip.Roxborogh@ara.ac.nz",
+      "phone": "940 8165",
+      "hours": "Not provided",
+      "officeNumber": "S158",
+      "jobTitle": "Teaching Staff"
+    },
+    {
+      "id": 18,
+      "name": "Robert Oliver",
+      "email": "Robert.Oliver@ara.ac.nz",
+      "phone": "940 7598",
+      "hours": "Not provided",
+      "officeNumber": "S168",
+      "jobTitle": "Teaching Staff"
+    },
+    {
+      "id": 19,
+      "name": "Shayle Tasker",
+      "email": "Shayle.Tasker@ara.ac.nz",
+      "phone": "940 7614",
+      "hours": "Not provided",
+      "officeNumber": "S257",
+      "jobTitle": "Teaching Staff"
+    },
+    {
+      "id": 20,
+      "name": "Shelley McNabb",
+      "email": "Shelly.McNabb@ara.ac.nz",
+      "phone": "940 8334",
+      "hours": "Not provided",
+      "officeNumber": "S168",
+      "jobTitle": "Teaching Staff"
     }
   ],
-  "lastId": 9
+  "lastId": 20
 }
