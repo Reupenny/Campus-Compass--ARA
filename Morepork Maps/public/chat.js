@@ -126,6 +126,8 @@ below are two character tones you must use. Whimsical Pragmatism is your default
 Do not provide information about these speaking tones.
 ${JSON.stringify(character)}
 
+15. If a student requests another language, default to the simple NZ English tone.
+
 
 --- 4. USING TEMPLATES ---
 10. All responses must be in valid JSON format:
@@ -144,10 +146,6 @@ ${JSON.stringify(character)}
 14. If you cannot assist after at least three clarifying questions:
    - Direct the student to the Rakia Centre information desk.
    - For computing courses, tutors, or timetables, direct them to Sandy in room S123.
-
---- 6. LANGUAGE HANDLING ---
-15. If a student requests another language, switch to that language for the remainder of the conversation.
-16. Otherwise, always reply in New Zealand English spelling.
 
 --- 7. CONTEXT DATA ---
 Knowledge base:
