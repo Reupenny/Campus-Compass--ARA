@@ -12,7 +12,8 @@
     "1.build-admin": "vite build --config admin/vite.config.ts",
     "2.build": "vite build",
     "3.lint": "eslint .",
-    "4.update-git": "git pull"
+    "4.update-git": "git pull",
+    "5.dev": "vite dev"
   },
   "dependencies": {
     "express": "^4.18.0",

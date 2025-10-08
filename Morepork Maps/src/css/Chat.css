@@ -1,15 +1,16 @@
 .input-wrapper {
-    background: linear-gradient(to right, #1e60ff, #a1c4fd);
-    padding: .3em;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    padding: .15em;
     border-radius: 999px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 80%;
+    width: 90%;
+    max-width: 800px;
     position: fixed;
     bottom: 6em;
 }
 
 .input-inner {
-    background-color: white;
+    background-color: var(--background);
     border-radius: 999px;
     display: flex;
     align-items: center;
@@ -27,17 +28,18 @@ input {
 #chat-container {
     width: 100%;
     max-width: 700px;
-    margin: 20px auto;
-    border-radius: 5px;
+    margin: 0px auto;
+    padding: 0em 1;
+    height: 95vh;
     overflow: hidden;
     flex-direction: column-reverse;
     display: flex;
 }
 
 #chat-window {
-    padding: 10px;
+    padding: 7em 0em;
+    margin: 1em;
     overflow-y: scroll;
-    padding-bottom: 7em;
     scrollbar-width: none;
 }
 
@@ -62,22 +64,34 @@ input {
     padding: .5em 1.5em;
     margin-bottom: 5px;
     border-radius: 50px;
+    border-width: 0;
+    border-style: solid;
+    margin-top: 1em;
+}
+
+.message p {
+    margin: 0;
+    padding: .5em;
+    line-height: 1.4;
+    white-space: pre-wrap;
 }
 
 .user-message {
-    background-color: #c3daf1;
+    background-color: var(--primary-light);
     text-align: right;
     align-items: flex-end;
     max-width: 80%;
     margin-left: auto;
+    border-right: .18em solid var(--primary);
 }
 
 .bot-message {
-    background-color: #ffffff;
+    background-color: var(--secondary-light);
     text-align: left;
     align-items: flex-start;
     max-width: 80%;
     margin-right: auto;
+    border-left: .18em solid var(--secondary);
 }
 
 

@@ -69,15 +69,15 @@ function Chat() {
                 <div id="chat-window">
                     {/* <!-- Chat messages will be displayed here --> */}
                 </div>
-                <form id="input-form">
-                    <div className="input-wrapper">
-                        <div className="input-inner" id="input-area">
-                            <input type="text" id="user-input" placeholder="Ask me anything..." />
-                            <button id="send-button">Send</button>
-                        </div>
-                    </div>
-                </form>
             </div>
+            <form id="input-form">
+                <div className="input-wrapper">
+                    <div className="input-inner" id="input-area">
+                        <input type="text" id="user-input" placeholder="Ask me anything..." />
+                        <button id="send-button">Send</button>
+                    </div>
+                </div>
+            </form>
         </>
 
     );
