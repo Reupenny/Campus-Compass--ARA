@@ -16,7 +16,6 @@ fetch('knowledge/ara.json')
     .then(response => response.json())
     .then(data => {
         knowledgeBase = data;
-        appendMessage("bot", "Kia ora! How can I help you today?");
     })
     .catch(error => {
         console.error("Error loading knowledge base:", error);

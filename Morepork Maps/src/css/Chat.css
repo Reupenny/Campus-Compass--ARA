@@ -114,6 +114,10 @@ input {
     justify-content: center;
 }
 
+#user-input {
+    background: transparent;
+}
+
 /* AI SHOW CSS */
 
 .contactTemplate,

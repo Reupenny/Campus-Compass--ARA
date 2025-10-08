@@ -63,17 +63,24 @@ function Chat() {
         <>
             <div id="ai-show">
                 {/* <!-- Chat elements will be displayed here --> */}
-                <h1>Get Started</h1>
             </div>
             <div id="chat-container">
                 <div id="chat-window">
                     {/* <!-- Chat messages will be displayed here --> */}
+                    <div className="message bot-message">
+                        <p>Welcome to ARA, <br />
+                            My name is A.C.E. and I am here to answer all you questuions. Start chatting with me below of if your up for a challenge I have set up a quest around the Campus help you get familiar.</p>
+                    </div>
+                    <div className="ACE_image">
+                        <img src="path/to/ace_image.png" alt="A.C.E. Image" />
+                    </div>
+
                 </div>
             </div>
             <form id="input-form">
                 <div className="input-wrapper">
                     <div className="input-inner" id="input-area">
-                        <input type="text" id="user-input" placeholder="Ask me anything..." />
+                        <input type="text" id="user-input" placeholder="Ask me a question?..." />
                         <button id="send-button">Send</button>
                     </div>
                 </div>

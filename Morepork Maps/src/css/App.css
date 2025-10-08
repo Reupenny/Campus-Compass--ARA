@@ -6,10 +6,10 @@
     --popover: oklch(1.0000 0 0);
     --popover-foreground: oklch(0.1408 0.0044 285.8229);
     --primary: oklch(0.6083 0.1593 249.6767);
-    --primary-light: oklch(61.053% 0.15832 249.261 / 0.05);
+    --primary-light: oklch(61.053% 0.15832 249.261 / 0.1);
     --primary-foreground: oklch(1.0000 0 0);
     --secondary: oklch(0.6213 0.1826 39.4487);
-    --secondary-light: oklch(62% 0.18344 39.095 / 0.05);
+    --secondary-light: oklch(62% 0.18344 39.095 / 0.1);
     --secondary-foreground: oklch(1.0000 0 0);
     --muted: oklch(0.9683 0.0069 247.8956);
     --muted-foreground: oklch(0.5544 0.0407 257.4166);
