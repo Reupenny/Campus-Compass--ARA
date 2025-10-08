@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import './css/chat.css';
+import './css/Chat.css';
 
 function Chat() {
     const isInitialized = useRef(false);
