@@ -1,0 +1,25 @@
+.hotspot-waypoint {
+    /* Basic styling for visibility */
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translate(-50%, -50%);
+    /* Center the element */
+    transition: all 0.3s ease;
+}
+
+.hotspot-waypoint:hover {
+    background-color: #0056b3;
+}
+
+.hotspot-waypoint h2 {
+    font-size: 14px;
+}

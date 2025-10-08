@@ -5,22 +5,21 @@
   "type": "module",
   "scripts": {
     "1.Install": "npm install",
-    "2.build-admin": "vite build --config admin/vite.config.ts",
     "2.admin": "node admin/server.js",
-    "3.Preview": "vite",
+    "3.Preview": "vite preview",
     "4.deploy-git": "git add . && git commit -m \"update information\" && git push",
     "-------------": "",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview",
-    "update-git": "git pull"
+    "1.build-admin": "vite build --config admin/vite.config.ts",
+    "2.build": "vite build",
+    "3.lint": "eslint .",
+    "4.update-git": "git pull"
   },
   "dependencies": {
+    "express": "^4.18.0",
+    "fs": "^0.0.1-security",
     "marzipano": "^0.10.2",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "express": "^4.18.0",
-    "fs": "^0.0.1-security"
+    "react-dom": "^19.1.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",

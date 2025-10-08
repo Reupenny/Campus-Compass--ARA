@@ -68,7 +68,8 @@
                 "label": "PX",
                 "name": "Hairdressing",
                 "location": "northwest corner on High St and Tuam St",
-                "description": ""
+                "description": "",
+                "number_of_floors": "3"
             },
             {
                 "label": "JZ",
@@ -81,7 +82,8 @@
                 "label": "P",
                 "name": "Plains FM",
                 "location": "northwest of buildings S & N on Madras st, off the corner of St Asaph st",
-                "description": "home of broadcasting school and the plains fm radio station along with the student radio station"
+                "description": "home of broadcasting school and the plains fm radio station along with the student radio station",
+                "number_of_floors": "2"
             },
             {
                 "label": "T",
@@ -93,20 +95,22 @@
                 "label": "OH",
                 "name": null,
                 "location": "north-central over St Asaph st on the corner of Madrass and st Asaph st",
-                "description": "on site accommodation for students"
+                "description": "on site accommodation for students",
+                "number_of_floors": "3"
             },
             {
                 "label": "OEDT",
                 "name": null,
                 "location": "north-central next to OH",
-                "description": "on site accommodation for students"
+                "description": "on site accommodation for students",
+                "number_of_floors": "4"
             },
             {
                 "label": "U",
                 "name": null,
                 "location": "northeast of main courtyard, near Ferry Rd",
                 "description": "contains cafe run by students and staff of rhe cullenery school also located in the same building",
-                "number_of_floors": "1"
+                "number_of_floors": "3"
             },
             {
                 "label": "S",
@@ -147,20 +151,22 @@
                 "label": "A",
                 "name": "Administration",
                 "location": "apart of the Rakia center, below L block above C block, west of CH building",
-                "description": "The main administrative building"
+                "description": "The main administrative building",
+                "number_of_floors": "2"
             },
             {
                 "label": "G",
                 "name": null,
                 "location": "on williams st, below and atached to T building east-central, above TM",
-                "description": "the rest of the administration"
+                "description": "the rest of the administration",
+                "number_of_floors": "2"
             },
             {
                 "label": "TM",
                 "name": "Te Puna Wānaka",
                 "location": "east-central, above CH",
                 "description": "The centre for Māori, Pacific, and indigenous studies.",
-                "number_of_floors": "1"
+                "number_of_floors": "2"
             },
             {
                 "label": "CH",
@@ -181,7 +187,7 @@
                 "name": null,
                 "location": "southeast, large building north of Moorhouse Ave and west of barbadose st, car park below and north east",
                 "description": "contains a gym, a sports court, doctors and some classrooms, is a 2 story building",
-                "number_of_floors": "2"
+                "number_of_floors": "3"
             },
             {
                 "label": "E",

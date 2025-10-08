@@ -1,0 +1,318 @@
+{
+    "courses": [
+        {
+            "programme": "Bachelor of Information and Communication Technologies Level 7",
+            "aim": "The BICT is an applied programme targeted at school leavers, career changers or unqualified IT professionals seeking a qualification in ICT. The programme aims to produce work-ready graduates who meet the needs of the IT industry in New Zealand, as well as globally.",
+            "regulations": "This is a three-year full-time equivalent programme requiring 360 course credits. The maximum time frame to complete the programme is five years. It comprises 225 core course credits, 75 compulsory pathway credits and 60 elective credits, with a minimum of 75 credits at Level 7. A minimum of 450 work-integrated learning hours is required.",
+            "core_courses": [
+                {
+                    "code": "BCIS105",
+                    "title": "IT Practitioner Fundamentals",
+                    "level": 5,
+                    "credits": 15
+                },
+                {
+                    "code": "BCDE101",
+                    "title": "Introduction to Programming",
+                    "level": 5,
+                    "credits": 15
+                },
+                {
+                    "code": "BCCS191",
+                    "title": "Introduction to Networks",
+                    "level": 5,
+                    "credits": 15
+                },
+                {
+                    "code": "BCCS199",
+                    "title": "Operating Systems",
+                    "level": 5,
+                    "credits": 15
+                },
+                {
+                    "code": "BCIS106",
+                    "title": "Computational Methods",
+                    "level": 5,
+                    "credits": 15
+                },
+                {
+                    "code": "BCDE102",
+                    "title": "Introduction to Software Engineering",
+                    "level": 5,
+                    "credits": 15
+                },
+                {
+                    "code": "BCDE103",
+                    "title": "Database Design",
+                    "level": 5,
+                    "credits": 15
+                },
+                {
+                    "code": "BCCS183",
+                    "title": "Cloud Technologies and the IOT",
+                    "level": 5,
+                    "credits": 15
+                },
+                {
+                    "code": "BCIS207",
+                    "title": "Enterprise Solutions Deployment",
+                    "level": 6,
+                    "credits": 15
+                },
+                {
+                    "code": "BCIS208",
+                    "title": "IT Service Management",
+                    "level": 6,
+                    "credits": 15
+                },
+                {
+                    "code": "BCIS302",
+                    "title": "Managing Information and Cybersecurity",
+                    "level": 7,
+                    "credits": 15
+                },
+                {
+                    "code": "BCIS303",
+                    "title": "Information Technology Governance",
+                    "level": 7,
+                    "credits": 15
+                },
+                {
+                    "code": "BCIS309",
+                    "title": "Work Integrated Learning Project",
+                    "level": 7,
+                    "credits": 45
+                }
+            ],
+            "compulsory_courses": [
+                {
+                    "pathway": "Information Systems Pathway",
+                    "code": "BCIS211",
+                    "title": "Research of Information Solutions",
+                    "level": 6,
+                    "credits": 15
+                },
+                {
+                    "pathway": "Information Systems Pathway",
+                    "code": "BCIS212",
+                    "title": "Introduction to Enterprise Solutions Architecture",
+                    "level": 6,
+                    "credits": 15
+                },
+                {
+                    "pathway": "Information Systems Pathway",
+                    "code": "BCIS213",
+                    "title": "Introduction to Enterprise Intelligence and Analytics",
+                    "level": 6,
+                    "credits": 15
+                },
+                {
+                    "pathway": "Information Systems Pathway",
+                    "code": "BCIS312",
+                    "title": "Enterprise Solutions Architecture",
+                    "level": 7,
+                    "credits": 15
+                },
+                {
+                    "pathway": "Information Systems Pathway",
+                    "code": "BCIS313",
+                    "title": "Enterprise Intelligence and Analytics",
+                    "level": 7,
+                    "credits": 15
+                },
+                {
+                    "pathway": "Networking and Infrastructure Pathway",
+                    "code": "BCCS254",
+                    "title": "System Infrastructure",
+                    "level": 6,
+                    "credits": 15
+                },
+                {
+                    "pathway": "Networking and Infrastructure Pathway",
+                    "code": "BCCS283",
+                    "title": "Network Infrastructure",
+                    "level": 6,
+                    "credits": 15
+                },
+                {
+                    "pathway": "Networking and Infrastructure Pathway",
+                    "code": "BCCS292",
+                    "title": "Routing and Switching Essentials",
+                    "level": 6,
+                    "credits": 15
+                },
+                {
+                    "pathway": "Networking and Infrastructure Pathway",
+                    "code": "BCCS295",
+                    "title": "Enterprise Networking, Security & Automation",
+                    "level": 6,
+                    "credits": 15
+                },
+                {
+                    "pathway": "Networking and Infrastructure Pathway",
+                    "code": "BCCS355",
+                    "title": "Cloud Services",
+                    "level": 7,
+                    "credits": 15
+                },
+                {
+                    "pathway": "Software Development Pathway",
+                    "code": "BCDE211",
+                    "title": "Best Programming Practices (Web and Mobile Development)",
+                    "level": 6,
+                    "credits": 15
+                },
+                {
+                    "pathway": "Software Development Pathway",
+                    "code": "BCDE213",
+                    "title": "Interactive Media Development",
+                    "level": 6,
+                    "credits": 15
+                },
+                {
+                    "pathway": "Software Development Pathway",
+                    "code": "BCDE214",
+                    "title": "Database Administration",
+                    "level": 6,
+                    "credits": 15
+                },
+                {
+                    "pathway": "Software Development Pathway",
+                    "code": "BCDE215",
+                    "title": "Web Development",
+                    "level": 6,
+                    "credits": 15
+                },
+                {
+                    "pathway": "Software Development Pathway",
+                    "code": "BCDE311",
+                    "title": "Software Development Project",
+                    "level": 7,
+                    "credits": 15
+                }
+            ],
+            "elective_courses": [
+                {
+                    "code": "BCCS350",
+                    "title": "Advanced Programming",
+                    "level": 7,
+                    "credits": 15
+                },
+                {
+                    "code": "BCCS381",
+                    "title": "Special Topic – Networking Infrastructure",
+                    "level": 7,
+                    "credits": 15
+                },
+                {
+                    "code": "BCDE222",
+                    "title": "Best Programming Practices (C# .NET)",
+                    "level": 6,
+                    "credits": 15
+                },
+                {
+                    "code": "BCDE223",
+                    "title": "Best Programming Practices (Java)",
+                    "level": 6,
+                    "credits": 15
+                },
+                {
+                    "code": "BCDE224",
+                    "title": "Best Programming Practices (Server Side Programming - PHP)",
+                    "level": 6,
+                    "credits": 15
+                },
+                {
+                    "code": "BCDE321",
+                    "title": "Advanced Programming",
+                    "level": 7,
+                    "credits": 15
+                },
+                {
+                    "code": "BCIS206",
+                    "title": "Professional Practice",
+                    "level": 6,
+                    "credits": 15
+                },
+                {
+                    "code": "BCIS321",
+                    "title": "Special Topic in Information Systems",
+                    "level": 7,
+                    "credits": 15
+                },
+                {
+                    "code": "BCIT388",
+                    "title": "Mobile Technology",
+                    "level": 7,
+                    "credits": 15
+                },
+                {
+                    "code": "DNET601",
+                    "title": "Wireless Local Area Networks",
+                    "level": 6,
+                    "credits": 15
+                },
+                {
+                    "code": "DNET602",
+                    "title": "Network Security",
+                    "level": 6,
+                    "credits": 15
+                },
+                {
+                    "code": "DSYS601",
+                    "title": "Systems Deployment",
+                    "level": 6,
+                    "credits": 15
+                },
+                {
+                    "code": "NZDC605",
+                    "title": "Ethical Hacking",
+                    "level": 6,
+                    "credits": 12
+                },
+                {
+                    "code": "NZDC602",
+                    "title": "Cryptography",
+                    "level": 6,
+                    "credits": 12
+                }
+            ]
+        },
+        {
+            "programme": "Graduate Diploma in Information & Communication Technologies Level 7",
+            "aim": "The aim is to develop graduates who are suitably skilled in applying critical thinking to evaluate options in a structured and research-informed manner to contribute to the future developments of information systems development and deployment in organisations.",
+            "regulations": "This is a one-year full-time equivalent programme requiring 120 course credits. The maximum time frame to complete the programme is five years. It comprises 60 to 75 compulsory pathway credits and 45 to 60 elective credits, with a minimum of 75 credits at Level 7. A minimum of 150 work-integrated learning hours is required.",
+            "core_courses": [
+                {
+                    "code": "BCIS105",
+                    "title": "IT Practitioner Fundamentals",
+                    "level": 5,
+                    "credits": 15
+                },
+                {
+                    "code": "BCIS303",
+                    "title": "Management of ICT",
+                    "level": 7,
+                    "credits": 15
+                },
+                {
+                    "code": "BCIS370",
+                    "title": "IT Industry Project",
+                    "level": 7,
+                    "credits": 30
+                }
+            ],
+            "elective_courses": [
+                {
+                    "description": "Choose four courses from the list of BICT courses. At least two courses must be at level 7."
+                }
+            ]
+        },
+        {
+            "programme": "New Zealand Diploma In Cybersecurity Level 6",
+            "aim": "The purpose is to provide Aotearoa New Zealand with people who have attained internationally transferable industry-relevant knowledge and technical skills that will equip them to work in entry-level roles in the specialised field of cybersecurity, or to proceed to further study.",
+            "regulations": "This is a one-year full-time equivalent programme of study requiring the successful completion of 120 compulsory course credits."
+        }
+    ],
+    "course handbook": ""
+}
