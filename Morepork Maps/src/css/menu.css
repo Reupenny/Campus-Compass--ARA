@@ -11,7 +11,7 @@
 }
 
 .menu nav {
-    gap: .5em;
+    gap: .1em;
     display: flex;
     position: relative;
 }
@@ -61,14 +61,14 @@
 
 /* EXPLORE - Second item (active state) - "EXPLORE" = 7 chars */
 .menu nav:has(a:nth-child(2).active):not(:has(a:hover))::before {
-    left: calc(4.5em + 0.7em);
+    left: calc(4.5em + 0.3em);
     width: auto;
     content: 'EXPLORE';
 }
 
 /* QUEST - Third item (active state) - "QUEST" = 5 chars */
 .menu nav:has(a:nth-child(3).active):not(:has(a:hover))::before {
-    left: calc(4.5em + 0.5em + 6.5em + 0.5em);
+    left: calc(4.5em + 0.1em + 6.5em + 0.1em);
     content: 'QUEST';
     width: auto;
 }
@@ -84,7 +84,7 @@
 
 /* EXPLORE - Hover state */
 .menu nav:has(a:nth-child(2):hover)::before {
-    left: calc(4.5em + 0.7em);
+    left: calc(4.5em + 0.3em);
     width: auto;
     content: 'EXPLORE';
     background-color: var(--secondary);
@@ -93,16 +93,41 @@
 
 /* QUEST - Hover state */
 .menu nav:has(a:nth-child(3):hover)::before {
-    left: calc(4.5em + 0.5em + 6.5em + 0.5em);
+    left: calc(4.5em + 0.1em + 6.5em + 0.1em);
     width: auto;
     content: 'QUEST';
     background-color: var(--secondary);
     color: var(--secondary);
 }
 
-/* .menu nav:has(a:nth-child(3):hover)::before {
-    left: calc(66.666% + 0.5em);
-    width: calc(33.333%);
-    background-color: var(--secondary);
-    color: var(--secondary);
-} */
+
+@media (max-width: 600px) {
+    .menu a {
+        padding: 4px 8px;
+    }
+
+    .menu nav::before {
+        padding: 4px 8px;
+    }
+
+    /* EXPLORE - Second item (active state) - "EXPLORE" = 7 chars */
+    .menu nav:has(a:nth-child(2).active):not(:has(a:hover))::before {
+        left: calc(3.5em + 0.3em);
+    }
+
+    /* QUEST - Third item (active state) - "QUEST" = 5 chars */
+    .menu nav:has(a:nth-child(3).active):not(:has(a:hover))::before {
+        left: calc(3.5em + 0.1em + 5.5em + 0.1em);
+    }
+
+
+    /* EXPLORE - Hover state */
+    .menu nav:has(a:nth-child(2):hover)::before {
+        left: calc(3.5em + 0.3em);
+    }
+
+    /* QUEST - Hover state */
+    .menu nav:has(a:nth-child(3):hover)::before {
+        left: calc(3.5em + 0.1em + 5.5em + 0.1em);
+    }
+}
