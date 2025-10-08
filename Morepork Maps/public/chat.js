@@ -9,6 +9,7 @@ let knowledgeBase = {}; // Change to an object to correctly store the fetched da
 let staff = {};
 let templates = {};
 let character = {};
+let computing = {};
 
 // Load the knowledge base from the JSON file
 fetch('knowledge/ara.json')
