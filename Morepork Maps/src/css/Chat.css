@@ -1,5 +1,5 @@
 .input-wrapper {
-    background: linear-gradient(to right, var(--primary), var(--secondary));
+    background: var(--primary);
     padding: .15em;
     border-radius: 999px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
