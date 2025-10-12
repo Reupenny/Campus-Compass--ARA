@@ -2,6 +2,7 @@ import express from 'express';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import multer from 'multer';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -10,6 +11,40 @@ const app = express();
 const PORT = 3000;
 const contactsFile = path.join(__dirname, '../public/knowledge/contacts.json');
 const tourFile = path.join(__dirname, '../public/data/tour.json');
+const tourImagesDir = path.join(__dirname, '../public/tour_images');
+
+// Ensure tour_images directory exists
+if (!fs.existsSync(tourImagesDir)) {
+    fs.mkdirSync(tourImagesDir, { recursive: true });
+}
+
+// Configure multer for image uploads
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, tourImagesDir);
+    },
+    filename: function (req, file, cb) {
+        // Generate unique filename while preserving extension
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+        const ext = path.extname(file.originalname);
+        cb(null, file.fieldname + '-' + uniqueSuffix + ext);
+    }
+});
+
+const upload = multer({ 
+    storage: storage,
+    fileFilter: function (req, file, cb) {
+        // Accept only image files
+        if (file.mimetype.startsWith('image/')) {
+            cb(null, true);
+        } else {
+            cb(new Error('Only image files are allowed!'), false);
+        }
+    },
+    limits: {
+        fileSize: 50 * 1024 * 1024 // 50MB limit
+    }
+});
 
 app.use(express.json());
 
@@ -93,6 +128,40 @@ app.post('/admin/api/tour', (req, res) => {
         if (err) return res.status(500).send('Error saving tour data.');
         res.send({ message: 'Tour data saved successfully' });
     });
+});
+
+// API to get available images
+app.get('/admin/api/images', (req, res) => {
+    try {
+        const files = fs.readdirSync(tourImagesDir);
+        const imageFiles = files.filter(file => {
+            const ext = path.extname(file).toLowerCase();
+            return ['.jpg', '.jpeg', '.png', '.webp', '.gif'].includes(ext);
+        });
+        res.json(imageFiles);
+    } catch (error) {
+        console.error('Error reading tour_images directory:', error);
+        res.status(500).json({ error: 'Failed to read images directory' });
+    }
+});
+
+// API to upload new image
+app.post('/admin/api/upload-image', upload.single('image'), (req, res) => {
+    try {
+        if (!req.file) {
+            return res.status(400).json({ error: 'No file uploaded' });
+        }
+        
+        res.json({ 
+            message: 'Image uploaded successfully',
+            filename: req.file.filename,
+            originalName: req.file.originalname,
+            size: req.file.size
+        });
+    } catch (error) {
+        console.error('Error uploading image:', error);
+        res.status(500).json({ error: 'Failed to upload image' });
+    }
 });
 
 // Handle SPA routing - serve index.html for all non-API routes

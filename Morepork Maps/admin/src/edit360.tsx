@@ -47,10 +47,12 @@ const Edit360: React.FC = () => {
     const [preventSceneReload, setPreventSceneReload] = useState(false);
     const [showSceneEditor, setShowSceneEditor] = useState(false);
     const [editingScene, setEditingScene] = useState<Scene | null>(null);
+    const [availableImages, setAvailableImages] = useState<string[]>([]);
+    const [imageSelectionMode, setImageSelectionMode] = useState<'url' | 'select' | 'upload'>('select');
     const viewerRef = useRef<HTMLDivElement>(null);
     const hotspotRefs = useRef<{ [key: string]: any }>({});
 
-    // Load tour data
+    // Load tour data and available images
     useEffect(() => {
         const loadTourData = async () => {
             try {
@@ -77,7 +79,22 @@ const Edit360: React.FC = () => {
             }
         };
 
+        const loadAvailableImages = async () => {
+            try {
+                const response = await fetch('/admin/api/images');
+                if (response.ok) {
+                    const images = await response.json();
+                    setAvailableImages(images);
+                }
+            } catch (error) {
+                console.error('Error loading available images:', error);
+                // Set some default images if the API fails
+                setAvailableImages(['pano1.jpg', 'pano2.jpg']);
+            }
+        };
+
         loadTourData();
+        loadAvailableImages();
     }, []);
 
     // Initialize Marzipano viewer
@@ -588,7 +605,7 @@ const Edit360: React.FC = () => {
         const newScene: Scene = {
             id: `scene${Date.now()}`,
             name: 'New Scene',
-            imageUrl: 'pano1.jpg', // Default image
+            imageUrl: 'tour_images/pano1.jpg', // Default image
             geometry: { width: 4000 },
             hotspots: []
         };
@@ -599,6 +616,10 @@ const Edit360: React.FC = () => {
         };
         setTourData(updatedTourData);
         setSelectedScene(newScene);
+        
+        // Automatically open the scene editor for the new scene
+        setEditingScene(newScene);
+        setShowSceneEditor(true);
     };
 
     const deleteScene = (sceneId: string) => {
@@ -650,6 +671,37 @@ const Edit360: React.FC = () => {
         } catch (error) {
             console.error('Error saving tour data:', error);
             alert('Error saving tour data');
+        }
+    };
+
+    const handleImageUpload = async (file: File) => {
+        if (!editingScene) return;
+
+        const formData = new FormData();
+        formData.append('image', file);
+
+        try {
+            const response = await fetch('/admin/api/upload-image', {
+                method: 'POST',
+                body: formData,
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                const imagePath = `tour_images/${result.filename}`;
+                setEditingScene({ ...editingScene, imageUrl: imagePath });
+                // Refresh available images list
+                const imagesResponse = await fetch('/admin/api/images');
+                if (imagesResponse.ok) {
+                    const images = await imagesResponse.json();
+                    setAvailableImages(images);
+                }
+            } else {
+                alert('Failed to upload image');
+            }
+        } catch (error) {
+            console.error('Error uploading image:', error);
+            alert('Error uploading image');
         }
     };
 
@@ -1112,16 +1164,108 @@ const Edit360: React.FC = () => {
                             />
                         </div>
                         <div style={{ marginBottom: '15px' }}>
-                            <label style={{ display: 'block', marginBottom: '5px' }}>Image URL:</label>
-                            <input
-                                type="text"
-                                defaultValue={editingScene.imageUrl}
-                                onChange={(e) => {
-                                    setEditingScene({ ...editingScene, imageUrl: e.target.value });
-                                }}
-                                style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ddd' }}
-                                placeholder="e.g., pano1.jpg"
-                            />
+                            <label style={{ display: 'block', marginBottom: '5px' }}>Image Source:</label>
+                            <div style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
+                                <button
+                                    type="button"
+                                    onClick={() => setImageSelectionMode('select')}
+                                    style={{
+                                        padding: '5px 10px',
+                                        backgroundColor: imageSelectionMode === 'select' ? '#007bff' : '#f8f9fa',
+                                        color: imageSelectionMode === 'select' ? '#fff' : '#000',
+                                        border: '1px solid #ddd',
+                                        borderRadius: '4px',
+                                        cursor: 'pointer',
+                                        fontSize: '12px'
+                                    }}
+                                >
+                                    Select Existing
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => setImageSelectionMode('upload')}
+                                    style={{
+                                        padding: '5px 10px',
+                                        backgroundColor: imageSelectionMode === 'upload' ? '#007bff' : '#f8f9fa',
+                                        color: imageSelectionMode === 'upload' ? '#fff' : '#000',
+                                        border: '1px solid #ddd',
+                                        borderRadius: '4px',
+                                        cursor: 'pointer',
+                                        fontSize: '12px'
+                                    }}
+                                >
+                                    Upload New
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => setImageSelectionMode('url')}
+                                    style={{
+                                        padding: '5px 10px',
+                                        backgroundColor: imageSelectionMode === 'url' ? '#007bff' : '#f8f9fa',
+                                        color: imageSelectionMode === 'url' ? '#fff' : '#000',
+                                        border: '1px solid #ddd',
+                                        borderRadius: '4px',
+                                        cursor: 'pointer',
+                                        fontSize: '12px'
+                                    }}
+                                >
+                                    Custom URL
+                                </button>
+                            </div>
+                            
+                            {imageSelectionMode === 'select' && (
+                                <select
+                                    value={editingScene.imageUrl}
+                                    onChange={(e) => {
+                                        setEditingScene({ ...editingScene, imageUrl: e.target.value });
+                                    }}
+                                    style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ddd' }}
+                                >
+                                    <option value="">Select an image...</option>
+                                    {availableImages.map(image => (
+                                        <option key={image} value={`tour_images/${image}`}>
+                                            {image}
+                                        </option>
+                                    ))}
+                                </select>
+                            )}
+                            
+                            {imageSelectionMode === 'upload' && (
+                                <div>
+                                    <input
+                                        type="file"
+                                        accept="image/*"
+                                        onChange={(e) => {
+                                            const file = e.target.files?.[0];
+                                            if (file) {
+                                                handleImageUpload(file);
+                                            }
+                                        }}
+                                        style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ddd' }}
+                                    />
+                                    <div style={{ fontSize: '12px', color: '#666', marginTop: '5px' }}>
+                                        Supported formats: JPG, PNG, WebP. Recommended: 4096x2048 or similar 2:1 ratio.
+                                    </div>
+                                </div>
+                            )}
+                            
+                            {imageSelectionMode === 'url' && (
+                                <input
+                                    type="text"
+                                    value={editingScene.imageUrl}
+                                    onChange={(e) => {
+                                        setEditingScene({ ...editingScene, imageUrl: e.target.value });
+                                    }}
+                                    style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ddd' }}
+                                    placeholder="e.g., tour_images/pano1.jpg"
+                                />
+                            )}
+                            
+                            {editingScene.imageUrl && (
+                                <div style={{ marginTop: '10px', fontSize: '12px', color: '#666' }}>
+                                    Current: {editingScene.imageUrl}
+                                </div>
+                            )}
                         </div>
                         <div style={{ marginBottom: '15px' }}>
                             <label style={{ display: 'block', marginBottom: '5px' }}>Image Width:</label>
