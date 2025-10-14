@@ -73,7 +73,7 @@ function Chat() {
                             Start chatting with me below of if your up for a challenge I have set up a quest around the Campus help you get familiar.</p>
                     </div>
                     <div className="ACE_image">
-                        <img src="path/to/ace_image.png" alt="A.C.E. Image" />
+                        <img width={150} src="img/ace_image.webp" alt="A.C.E. Image" />
                     </div>
 
                 </div>
