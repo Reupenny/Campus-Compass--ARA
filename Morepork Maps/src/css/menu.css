@@ -3,7 +3,7 @@
     left: 50%;
     transform: translateX(-50%);
     bottom: 1em;
-    background-color: white;
+    background-color: var(--background);
     padding: 10px;
     border-radius: 5em;
     z-index: 10000;
@@ -19,7 +19,7 @@
 .menu a {
     text-decoration: none;
     padding: 8px 16px;
-    color: black;
+    color: var(--text);
     border-radius: 5em;
     position: relative;
     z-index: 2;

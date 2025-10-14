@@ -55,15 +55,17 @@ function Explore() {
                     sceneData.hotspots.forEach(hotspotData => {
                         const hotspotElement = document.createElement('div');
                         hotspotElement.className = `hotspot-${hotspotData.type}`;
-                        hotspotElement.innerHTML = hotspotData.text;
 
                         if (hotspotData.type === 'waypoint' && hotspotData.target) {
+                            hotspotElement.innerHTML = '<img class="hotspot-icon" src="/img/link.png" alt="Hotspot Icon" />';
+                            hotspotElement.innerHTML += '<div class="hotspot-data"><h5>' + hotspotData.text + '</h5></div>';
                             hotspotElement.addEventListener('click', () => {
                                 scenes[hotspotData.target!].switchTo();
                             });
                         } else if (hotspotData.type === 'info') {
                             if (hotspotData.description) {
-                                hotspotElement.innerHTML += hotspotData.description;
+                                hotspotElement.innerHTML = '<img class="hotspot-icon" src="/img/info.png" alt="Hotspot Icon" />';
+                                hotspotElement.innerHTML += '<div class="hotspot-data"><h5>' + hotspotData.text + '</h5><p>' + hotspotData.description + '</p></div>';
                             }
                             // No interaction as requested
                         }

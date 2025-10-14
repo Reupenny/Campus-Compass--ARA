@@ -1,6 +1,42 @@
 {
   "scenes": [
     {
+      "id": "scene1760246558542",
+      "name": "Madras st entrance",
+      "imageUrl": "tour_images/image-1760246581680-17062971.JPG",
+      "geometry": {
+        "width": 4000
+      },
+      "hotspots": [
+        {
+          "type": "waypoint",
+          "pitch": -0.018844828248544943,
+          "yaw": -0.3790163274794267,
+          "text": "D block Quad",
+          "target": "scene1760246731339"
+        },
+        {
+          "type": "waypoint",
+          "pitch": -0.045233095491855835,
+          "yaw": -1.1045877939840238,
+          "text": "Student Lounge",
+          "target": "scene1760248018321"
+        },
+        {
+          "type": "waypoint",
+          "pitch": 0.0015602975092345872,
+          "yaw": 2.9198544679326,
+          "text": "Madras st Carpark",
+          "target": "scene1760248309156"
+        }
+      ],
+      "defaultView": {
+        "yaw": -2.372060744229799,
+        "pitch": -0.03386446786091568,
+        "fov": 1.616392766880553
+      }
+    },
+    {
       "id": "scene1",
       "name": "Gym Foyer",
       "imageUrl": "tour_images/pano1.jpg",
@@ -26,7 +62,7 @@
           "type": "waypoint",
           "pitch": 0.017330812541271,
           "yaw": 0.3623009171702929,
-          "text": "Gymnasiem",
+          "text": "Inside gym",
           "target": "scene1760246374487"
         }
       ],
@@ -55,27 +91,27 @@
           "type": "waypoint",
           "pitch": 0.20891320921725054,
           "yaw": -3.0173770417793975,
-          "text": "New Waypoint",
-          "target": "scene1"
+          "text": "Courtyard 3",
+          "target": "scene1760415850783"
         },
         {
           "type": "waypoint",
           "pitch": 0.0472903236360267,
           "yaw": 1.5395792075479662,
-          "text": "Sandys Office",
-          "target": "scene1"
+          "text": "Computing Office",
+          "target": "scene1760416932960"
         },
         {
           "type": "waypoint",
           "pitch": 0.018140028322719104,
           "yaw": -1.4222445220271283,
-          "text": "New Waypoint",
-          "target": "scene1"
+          "text": "Rakaia Hallway",
+          "target": "scene1760417043354"
         }
       ],
       "defaultView": {
-        "yaw": 0.08023492988529313,
-        "pitch": 0.07160565876521474,
+        "yaw": 2.456028439687522,
+        "pitch": 0.26323675219291154,
         "fov": 1.7453292519943295
       }
     },
@@ -86,7 +122,29 @@
       "geometry": {
         "width": 4000
       },
-      "hotspots": [],
+      "hotspots": [
+        {
+          "type": "info",
+          "pitch": 0.04654651075751026,
+          "yaw": -3.101629892969802,
+          "text": "New Info Point",
+          "description": "Description here"
+        },
+        {
+          "type": "waypoint",
+          "pitch": -0.0005503473335206621,
+          "yaw": 1.946593405490459,
+          "text": "Madras st entrance",
+          "target": "scene1760246558542"
+        },
+        {
+          "type": "info",
+          "pitch": 0.016301790436410002,
+          "yaw": -0.6349014688915808,
+          "text": "New Info Point",
+          "description": "Description here"
+        }
+      ],
       "defaultView": {
         "yaw": 1.7458828200494043,
         "pitch": 0.26356911751716616,
@@ -113,42 +171,6 @@
         "yaw": -1.4273768887141074,
         "pitch": 0.14081097411676247,
         "fov": 1.5707963267948966
-      }
-    },
-    {
-      "id": "scene1760246558542",
-      "name": "Madras st entrance",
-      "imageUrl": "tour_images/image-1760246581680-17062971.JPG",
-      "geometry": {
-        "width": 4000
-      },
-      "hotspots": [
-        {
-          "type": "waypoint",
-          "pitch": -0.018844828248544943,
-          "yaw": -0.3790163274794267,
-          "text": "D block Quad",
-          "target": "scene1760246731339"
-        },
-        {
-          "type": "waypoint",
-          "pitch": -0.045233095491855835,
-          "yaw": -1.1045877939840238,
-          "text": "Student Lounge",
-          "target": "scene1760248018321"
-        },
-        {
-          "type": "waypoint",
-          "pitch": 0.0015602975092345872,
-          "yaw": 2.9198544679326,
-          "text": "New Waypoint",
-          "target": "scene1"
-        }
-      ],
-      "defaultView": {
-        "yaw": -2.741701742240167,
-        "pitch": 0.09120645367368496,
-        "fov": 1.616392766880553
       }
     },
     {
@@ -187,7 +209,12 @@
           "text": "New Info Point",
           "description": "Description here"
         }
-      ]
+      ],
+      "defaultView": {
+        "yaw": -2.0523017166119004,
+        "pitch": -0.1227003763008625,
+        "fov": 1.5707963267948966
+      }
     },
     {
       "id": "scene1760246894225",
@@ -246,8 +273,8 @@
           "type": "waypoint",
           "pitch": 0.020096762226927467,
           "yaw": 0.019599765463553354,
-          "text": "New Waypoint",
-          "target": "scene1"
+          "text": "Courtyard",
+          "target": "scene1760248825576"
         },
         {
           "type": "waypoint",
@@ -263,7 +290,12 @@
           "text": "Outside W block",
           "target": "scene1760247287645"
         }
-      ]
+      ],
+      "defaultView": {
+        "yaw": -0.701712917558801,
+        "pitch": 0.04051427519367756,
+        "fov": 1.5707963267948966
+      }
     },
     {
       "id": "scene1760247287645",
@@ -308,7 +340,12 @@
           "text": "Health Center",
           "target": "scene1760247882127"
         }
-      ]
+      ],
+      "defaultView": {
+        "yaw": 0.42640415069622506,
+        "pitch": 0.010417956478383061,
+        "fov": 1.5707963267948966
+      }
     },
     {
       "id": "scene1760247687974",
@@ -332,7 +369,12 @@
           "text": "Madras st Carpark Two",
           "target": "scene1760248588774"
         }
-      ]
+      ],
+      "defaultView": {
+        "yaw": 2.8281718777700604,
+        "pitch": -0.017363260797294444,
+        "fov": 1.5707963267948966
+      }
     },
     {
       "id": "scene1760247736814",
@@ -380,8 +422,8 @@
         }
       ],
       "defaultView": {
-        "yaw": -1.2139692982880383,
-        "pitch": 0.09954936190447228,
+        "yaw": 0.4508608205172777,
+        "pitch": 0.1470089414170701,
         "fov": 1.5707963267948966
       }
     },
@@ -413,8 +455,20 @@
           "yaw": -1.4669283434796654,
           "text": "Center Walkway",
           "target": "scene1760246894225"
+        },
+        {
+          "type": "info",
+          "pitch": -0.003090510762469023,
+          "yaw": 0.8564142433999056,
+          "text": "New Info Point",
+          "description": "Description here"
         }
-      ]
+      ],
+      "defaultView": {
+        "yaw": 1.0697182389205668,
+        "pitch": 0.019678362236932756,
+        "fov": 1.5707963267948966
+      }
     },
     {
       "id": "scene1760248309156",
@@ -428,8 +482,8 @@
           "type": "waypoint",
           "pitch": -0.016451529216745087,
           "yaw": -1.8322990871056355,
-          "text": "New Waypoint",
-          "target": "scene1"
+          "text": "Inside Rakaia 2",
+          "target": "scene1760413622275"
         },
         {
           "type": "waypoint",
@@ -456,10 +510,15 @@
           "type": "waypoint",
           "pitch": 0.00006930755710854442,
           "yaw": -2.9424783090573037,
-          "text": "New Waypoint",
-          "target": "scene1"
+          "text": "Madras st Carpark Two",
+          "target": "scene1760248588774"
         }
-      ]
+      ],
+      "defaultView": {
+        "yaw": -1.9855601973724717,
+        "pitch": 0.008102855038735868,
+        "fov": 1.5707963267948966
+      }
     },
     {
       "id": "scene1760248588774",
@@ -473,8 +532,8 @@
           "type": "waypoint",
           "pitch": 0.01121236906784695,
           "yaw": -1.6034267829147453,
-          "text": "New Waypoint",
-          "target": "scene1"
+          "text": "Rakaia Hallway",
+          "target": "scene1760417043354"
         },
         {
           "type": "waypoint",
@@ -489,8 +548,20 @@
           "yaw": -2.761869616210099,
           "text": "Outsided Bike Storage",
           "target": "scene1760247687974"
+        },
+        {
+          "type": "waypoint",
+          "pitch": 0.009887514023784405,
+          "yaw": 2.7235698363432395,
+          "text": "St Asaph St Corner",
+          "target": "scene1760417698551"
         }
-      ]
+      ],
+      "defaultView": {
+        "yaw": -2.0143011191133304,
+        "pitch": 0.07987099966753775,
+        "fov": 1.5707963267948966
+      }
     },
     {
       "id": "scene1760248825576",
@@ -511,17 +582,378 @@
           "type": "waypoint",
           "pitch": 0.0021510823777184385,
           "yaw": 0.7199523610779561,
-          "text": "New Waypoint",
-          "target": "scene1"
+          "text": "New Scene",
+          "target": "scene1760415255623"
         },
         {
           "type": "waypoint",
-          "pitch": 0.0024420336824988453,
-          "yaw": -0.15527406586586778,
-          "text": "New Waypoint",
-          "target": "scene1"
+          "pitch": -0.016568362231149436,
+          "yaw": -0.21194872265717812,
+          "text": "Rakaia Hallway",
+          "target": "scene1760417043354"
         }
       ]
+    },
+    {
+      "id": "scene1760413520439",
+      "name": "Inside Rakaia",
+      "imageUrl": "tour_images/image-1760413538471-36778191.JPG",
+      "geometry": {
+        "width": 4000
+      },
+      "hotspots": [
+        {
+          "type": "waypoint",
+          "pitch": 0.008360925827307852,
+          "yaw": -2.582301357266317,
+          "text": "Outside Rakaia",
+          "target": "scene1760247134107"
+        },
+        {
+          "type": "waypoint",
+          "pitch": 0.024914490009079415,
+          "yaw": 0.6077852686771443,
+          "text": "Inside Rakaia 2",
+          "target": "scene1760413622275"
+        }
+      ],
+      "defaultView": {
+        "yaw": 0.6803927100239999,
+        "pitch": -0.013890608637833424,
+        "fov": 1.5707963267948966
+      }
+    },
+    {
+      "id": "scene1760413622275",
+      "name": "Inside Rakaia 2",
+      "imageUrl": "tour_images/image-1760413643107-899246053.JPG",
+      "geometry": {
+        "width": 4000
+      },
+      "hotspots": [
+        {
+          "type": "waypoint",
+          "pitch": -0.018670663964375223,
+          "yaw": -0.3971079031785667,
+          "text": "Center Walkway",
+          "target": "scene1760246894225"
+        },
+        {
+          "type": "waypoint",
+          "pitch": 0.0036785188373720246,
+          "yaw": 0.5180463611779409,
+          "text": "Madras st Carpark",
+          "target": "scene1760248309156"
+        },
+        {
+          "type": "waypoint",
+          "pitch": -0.003100175082449752,
+          "yaw": -1.7155500864322182,
+          "text": "Inside Rakaia",
+          "target": "scene1760413520439"
+        },
+        {
+          "type": "info",
+          "pitch": -0.036998814587880346,
+          "yaw": 2.407068321083724,
+          "text": "Cafe",
+          "description": "Description here"
+        },
+        {
+          "type": "waypoint",
+          "pitch": -0.03940838841583982,
+          "yaw": 2.820780942759975,
+          "text": "Rakaia",
+          "target": "scene1760413818435"
+        }
+      ],
+      "defaultView": {
+        "yaw": 3.005222296863497,
+        "pitch": 0.09260405758555201,
+        "fov": 1.5707963267948966
+      }
+    },
+    {
+      "id": "scene1760413818435",
+      "name": "Rakaia",
+      "imageUrl": "tour_images/image-1760417231440-295098902.webp",
+      "geometry": {
+        "width": 4000
+      },
+      "hotspots": [
+        {
+          "type": "waypoint",
+          "pitch": 0.006860196440928945,
+          "yaw": 0.2701032874889364,
+          "text": "Inside Rakaia 2",
+          "target": "scene1760413622275"
+        },
+        {
+          "type": "waypoint",
+          "pitch": 0.003445875471779658,
+          "yaw": -3.074564521586005,
+          "text": "Rakaia Hallway",
+          "target": "scene1760417043354"
+        },
+        {
+          "type": "waypoint",
+          "pitch": 0.02634928140356685,
+          "yaw": -0.9927520787325879,
+          "text": "Library",
+          "target": "scene1760246251028"
+        },
+        {
+          "type": "info",
+          "pitch": -0.008791600778433661,
+          "yaw": 2.8194949578857216,
+          "text": "New Info Point",
+          "description": "Description here"
+        },
+        {
+          "type": "info",
+          "pitch": -0.03445323609832762,
+          "yaw": 1.6390970044526556,
+          "text": "New Info Point",
+          "description": "Description here"
+        }
+      ],
+      "defaultView": {
+        "yaw": -2.816357913677056,
+        "pitch": 0.098341845784228,
+        "fov": 1.5707963267948966
+      }
+    },
+    {
+      "id": "scene1760415255623",
+      "name": "Cortyard 2",
+      "imageUrl": "tour_images/image-1760414983040-313044500.JPG",
+      "geometry": {
+        "width": 4000
+      },
+      "hotspots": [
+        {
+          "type": "waypoint",
+          "pitch": -0.03007111824888753,
+          "yaw": -0.09404745586281216,
+          "text": "Courtyard",
+          "target": "scene1760248825576"
+        },
+        {
+          "type": "waypoint",
+          "pitch": -0.03387158607948315,
+          "yaw": 0.7182937805023428,
+          "text": "Rakaia",
+          "target": "scene1760413818435"
+        },
+        {
+          "type": "waypoint",
+          "pitch": -0.03550097281685183,
+          "yaw": 1.3984320129542116,
+          "text": "S/N Foyer",
+          "target": "scene2"
+        },
+        {
+          "type": "info",
+          "pitch": 0.016143976500966772,
+          "yaw": -1.810268190823919,
+          "text": "New Info Point",
+          "description": "Description here"
+        },
+        {
+          "type": "waypoint",
+          "pitch": -0.019927577697917087,
+          "yaw": 2.1204396366588725,
+          "text": "Madras st entrance",
+          "target": "scene1760246558542"
+        }
+      ],
+      "defaultView": {
+        "yaw": -1.6529882028987348,
+        "pitch": 0.07638998918574558,
+        "fov": 1.5707963267948966
+      }
+    },
+    {
+      "id": "scene1760415850783",
+      "name": "Courtyard 3",
+      "imageUrl": "tour_images/image-1760415866053-142965216.JPG",
+      "geometry": {
+        "width": 4000
+      },
+      "hotspots": [
+        {
+          "type": "waypoint",
+          "pitch": 0.00880808307140235,
+          "yaw": 2.57691679861409,
+          "text": "Hospotality",
+          "target": "scene1760417512210"
+        },
+        {
+          "type": "waypoint",
+          "pitch": 0.03586816052382602,
+          "yaw": -2.513216070664649,
+          "text": "Cortyard 2",
+          "target": "scene1760415255623"
+        },
+        {
+          "type": "waypoint",
+          "pitch": -0.03282645235481496,
+          "yaw": -0.16795562266681863,
+          "text": "Rakaia",
+          "target": "scene1760413818435"
+        },
+        {
+          "type": "waypoint",
+          "pitch": -0.02601554850405563,
+          "yaw": 0.6760854023486402,
+          "text": "S/N Foyer",
+          "target": "scene2"
+        }
+      ],
+      "defaultView": {
+        "yaw": 0.6627803646691568,
+        "pitch": -0.21414688316659358,
+        "fov": 1.5707963267948966
+      }
+    },
+    {
+      "id": "scene1760416932960",
+      "name": "Computing Office",
+      "imageUrl": "tour_images/image-1760416955641-276026468.webp",
+      "geometry": {
+        "width": 4000
+      },
+      "hotspots": [
+        {
+          "type": "waypoint",
+          "pitch": 0.17036508184214938,
+          "yaw": -0.106423102278697,
+          "text": "S/N Foyer",
+          "target": "scene2"
+        },
+        {
+          "type": "info",
+          "pitch": 0.13495006163350887,
+          "yaw": 2.451931238425283,
+          "text": "Sandys Desk",
+          "description": "Description here"
+        }
+      ],
+      "defaultView": {
+        "yaw": 2.9128708167532134,
+        "pitch": 0.22181097305275443,
+        "fov": 1.5707963267948966
+      }
+    },
+    {
+      "id": "scene1760417043354",
+      "name": "Rakaia Hallway",
+      "imageUrl": "tour_images/image-1760417073179-49553803.webp",
+      "geometry": {
+        "width": 4000
+      },
+      "hotspots": [
+        {
+          "type": "waypoint",
+          "pitch": 0.03555917979657863,
+          "yaw": 2.6190105507421073,
+          "text": "S/N Foyer",
+          "target": "scene2"
+        },
+        {
+          "type": "waypoint",
+          "pitch": 0.05767268628105171,
+          "yaw": -0.25656182615033885,
+          "text": "Rakaia",
+          "target": "scene1760413818435"
+        },
+        {
+          "type": "waypoint",
+          "pitch": 0.11345610909506121,
+          "yaw": -3.1146969114719276,
+          "text": "Courtyard",
+          "target": "scene1760248825576"
+        },
+        {
+          "type": "waypoint",
+          "pitch": 0.032207412907816035,
+          "yaw": 1.5483125216376594,
+          "text": "Madras st Carpark Two",
+          "target": "scene1760248588774"
+        }
+      ]
+    },
+    {
+      "id": "scene1760417512210",
+      "name": "Hospotality",
+      "imageUrl": "tour_images/image-1760417526127-745617148.JPG",
+      "geometry": {
+        "width": 4000
+      },
+      "hotspots": [
+        {
+          "type": "waypoint",
+          "pitch": -0.027551420248627778,
+          "yaw": 0.8241940907349168,
+          "text": "St Asaph St Corner",
+          "target": "scene1760417698551"
+        },
+        {
+          "type": "info",
+          "pitch": -0.0613063745738156,
+          "yaw": 1.006365019522276,
+          "text": "New Info Point",
+          "description": "Description here"
+        },
+        {
+          "type": "waypoint",
+          "pitch": -0.01410958952410546,
+          "yaw": -1.687857971134708,
+          "text": "Courtyard 3",
+          "target": "scene1760415850783"
+        }
+      ],
+      "defaultView": {
+        "yaw": 1.37167480092263,
+        "pitch": -0.0901914678275677,
+        "fov": 1.5707963267948966
+      }
+    },
+    {
+      "id": "scene1760417698551",
+      "name": "St Asaph St Corner",
+      "imageUrl": "tour_images/image-1760417709593-266465150.JPG",
+      "geometry": {
+        "width": 4000
+      },
+      "hotspots": [
+        {
+          "type": "info",
+          "pitch": -0.15870786034864004,
+          "yaw": -0.7526960225333639,
+          "text": "New Info Point",
+          "description": "Description here"
+        },
+        {
+          "type": "waypoint",
+          "pitch": -0.021981481555924276,
+          "yaw": 1.759073583062623,
+          "text": "Hospotality",
+          "target": "scene1760417512210"
+        },
+        {
+          "type": "waypoint",
+          "pitch": 0.02898546817964487,
+          "yaw": 3.092868797079962,
+          "text": "Madras st Carpark Two",
+          "target": "scene1760248588774"
+        }
+      ],
+      "defaultView": {
+        "yaw": -1.5730605298511406,
+        "pitch": -0.0324114201549488,
+        "fov": 1.5707963267948966
+      }
     }
   ]
 }

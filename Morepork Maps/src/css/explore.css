@@ -1,25 +1,88 @@
 .hotspot-waypoint {
-    /* Basic styling for visibility */
-    background-color: #007bff;
-    color: #fff;
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
+    width: 60px;
+    height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
     cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transform: translate(-50%, -50%);
-    /* Center the element */
-    transition: all 0.3s ease;
 }
 
-.hotspot-waypoint:hover {
-    background-color: #0056b3;
+
+.hotspot-icon {
+    width: 100%;
+    max-width: 4em;
 }
 
-.hotspot-waypoint h2 {
-    font-size: 14px;
+.hotspot-waypoint .hotspot-data {
+    opacity: 0;
+    height: 0px;
+    width: 0px;
+    transition: var(--transition);
+    padding: 10px;
+    background-color: var(--card);
+    border-radius: 10px;
+    overflow: hidden;
+    position: absolute;
+}
+
+.hotspot-waypoint .hotspot-data h5 {
+    min-width: 150px;
+    text-align: center;
+    padding: 5px;
+}
+
+.hotspot-waypoint:hover .hotspot-data {
+    opacity: 1;
+    width: auto;
+    height: auto;
+}
+
+.hotspot-info {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.hotspot-info .hotspot-data {
+    opacity: 0;
+    height: 0px;
+    width: 0px;
+    transition: var(--transition);
+    padding: 10px;
+    background-color: var(--card);
+    border-radius: 10px;
+    min-width: 100px;
+    overflow: hidden;
+}
+
+.hotspot-info .hotspot-data h5 {
+    font-size: 1.5em;
+    min-width: 200px;
+}
+
+.hotspot-info .hotspot-data p {
+    min-width: 200px;
+}
+
+.hotspot-info .hotspot-icon {
+    background-color: var(--secondary);
+    padding: 10px;
+    border-radius: 100px;
+    transition: var(--transition);
+
+}
+
+.hotspot-info .hotspot-icon:hover {
+    background-color: var(--primary);
+}
+
+.hotspot-info:hover .hotspot-data {
+    opacity: 1;
+    height: 100%;
+    min-height: 200px;
+    width: 400px;
 }

@@ -1,5 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useImperativeHandle } from 'react';
 import './App.css';
+import './edit360.css';
 import Marzipano from 'marzipano';
 
 interface Hotspot {
@@ -36,7 +37,219 @@ interface EditingHotspot {
     hotspot: Hotspot;
 }
 
-const Edit360: React.FC = () => {
+interface SidebarProps {
+    tourData: TourData;
+    selectedScene: Scene | null;
+    currentScene: any;
+    onAddNewScene: () => void;
+    onSelectScene: (scene: Scene) => void;
+    onEditScene: (scene: Scene) => void;
+    onDeleteScene: (sceneId: string) => void;
+    onSetViewDirection: (yaw: number, pitch: number, fov: number) => void;
+    onCreateHotspot: (type: 'info' | 'waypoint') => void;
+    onDeleteHotspot: (index: number) => void;
+    onSetDefaultView: () => void;
+    onSaveTourData: () => void;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({
+    tourData,
+    selectedScene,
+    currentScene,
+    onAddNewScene,
+    onSelectScene,
+    onEditScene,
+    onDeleteScene,
+    onSetViewDirection,
+    onCreateHotspot,
+    onDeleteHotspot,
+    onSetDefaultView,
+    onSaveTourData
+}) => {
+    return (
+        <div className="sidebar">
+            <div className="sidebar-header">
+                <h2>Scenes</h2>
+                <button
+                    onClick={onAddNewScene}
+                    className="add-scene-btn"
+                >
+                    + Add Scene
+                </button>
+            </div>
+
+            {/* Scene List */}
+            <div className="scene-list">
+                {tourData.scenes.map((scene) => (
+                    <div key={scene.id} className="scene-item">
+                        <div
+                            onClick={() => onSelectScene(scene)}
+                            className={`scene-card ${selectedScene?.id === scene.id ? 'selected' : ''}`}
+                        >
+                            <div className="scene-name">{scene.name}</div>
+                            <div>
+                                {scene.hotspots.length} hotspots
+                            </div>
+                            <div className="scene-actions">
+                                <button
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        onEditScene(scene);
+                                    }}
+                                    className="scene-action-btn edit-scene-btn"
+                                >
+                                    ✏️
+                                </button>
+                                <button
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        if (confirm(`Delete scene "${scene.name}"?`)) {
+                                            onDeleteScene(scene.id);
+                                        }
+                                    }}
+                                    className="scene-action-btn delete-scene-btn"
+                                >
+                                    ×
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            {/* View Direction Controls */}
+            {selectedScene && currentScene && (
+                <div className="view-controls">
+                    <h3>View Direction</h3>
+                    <div className="view-controls-grid">
+                        <div>
+                            <label>Yaw (°):</label>
+                            <input
+                                type="number"
+                                min="-180"
+                                max="180"
+                                step="5"
+                                defaultValue={Math.round(currentScene.view().yaw() * 180 / Math.PI)}
+                                onChange={(e) => {
+                                    const view = currentScene.view();
+                                    onSetViewDirection(
+                                        parseFloat(e.target.value),
+                                        view.pitch() * 180 / Math.PI,
+                                        view.fov() * 180 / Math.PI
+                                    );
+                                }}
+                                className="view-controls-input"
+                            />
+                        </div>
+                        <div>
+                            <label>Pitch (°):</label>
+                            <input
+                                type="number"
+                                min="-90"
+                                max="90"
+                                step="5"
+                                defaultValue={Math.round(currentScene.view().pitch() * 180 / Math.PI)}
+                                onChange={(e) => {
+                                    const view = currentScene.view();
+                                    onSetViewDirection(
+                                        view.yaw() * 180 / Math.PI,
+                                        parseFloat(e.target.value),
+                                        view.fov() * 180 / Math.PI
+                                    );
+                                }}
+                                className="view-controls-input"
+                            />
+                        </div>
+                        <div className="fov-control">
+                            <label>FOV (°):</label>
+                            <input
+                                type="number"
+                                min="10"
+                                max="150"
+                                step="5"
+                                defaultValue={Math.round(currentScene.view().fov() * 180 / Math.PI)}
+                                onChange={(e) => {
+                                    const view = currentScene.view();
+                                    onSetViewDirection(
+                                        view.yaw() * 180 / Math.PI,
+                                        view.pitch() * 180 / Math.PI,
+                                        parseFloat(e.target.value)
+                                    );
+                                }}
+                                className="view-controls-input"
+                            />
+                        </div>
+                    </div>
+                    <button
+                        onClick={onSetDefaultView}
+                        className="set-default-view-btn"
+                    >
+                        📌 Set as Default View
+                    </button>
+                </div>
+            )}
+
+            {/* Hotspot Creation Controls */}
+            <div className="hotspot-controls">
+                <h3>Add Hotspots</h3>
+                <button
+                    onClick={() => onCreateHotspot('info')}
+                    className="hotspot-btn add-info-btn"
+                >
+                    📍 Add Info Point
+                </button>
+                <button
+                    onClick={() => onCreateHotspot('waypoint')}
+                    className="hotspot-btn add-waypoint-btn"
+                >
+                    🚪 Add Waypoint
+                </button>
+            </div>
+
+            {/* Selected Scene Hotspots */}
+            {selectedScene && (
+                <div className="hotspots-list">
+                    <h3>Current Hotspots</h3>
+                    {selectedScene.hotspots.map((hotspot, index) => (
+                        <div
+                            key={index}
+                            className="hotspot-item"
+                        >
+                            <div className="hotspot-type">
+                                {hotspot.type === 'info' ? '📍' : '🚪'} {hotspot.type}
+                            </div>
+                            <div className="hotspot-text">{hotspot.text}</div>
+                            <div className="hotspot-coords">
+                                Yaw: {(hotspot.yaw * 180 / Math.PI).toFixed(1)}°,
+                                Pitch: {(hotspot.pitch * 180 / Math.PI).toFixed(1)}°
+                            </div>
+                            <button
+                                onClick={() => onDeleteHotspot(index)}
+                                className="delete-hotspot-btn"
+                            >
+                                ×
+                            </button>
+                        </div>
+                    ))}
+                </div>
+            )}
+
+            {/* Save Button */}
+            <button
+                onClick={onSaveTourData}
+                className="save-tour-btn"
+            >
+                Save Tour Data
+            </button>
+        </div>
+    );
+};
+
+interface Edit360Props {
+    onReady?: () => void;
+}
+
+const Edit360 = React.forwardRef<any, Edit360Props>(({ onReady }, ref) => {
     const [tourData, setTourData] = useState<TourData | null>(null);
     const [selectedScene, setSelectedScene] = useState<Scene | null>(null);
     const [viewer, setViewer] = useState<any>(null);
@@ -69,6 +282,10 @@ const Edit360: React.FC = () => {
                 if (data.scenes.length > 0) {
                     setSelectedScene(data.scenes[0]);
                 }
+                // Notify parent that component is ready
+                if (onReady) {
+                    onReady();
+                }
             } catch (error) {
                 console.error('Error loading tour data:', error);
                 // Set default tour data if loading fails
@@ -76,6 +293,10 @@ const Edit360: React.FC = () => {
                     scenes: []
                 };
                 setTourData(defaultTour);
+                // Notify parent that component is ready even with default data
+                if (onReady) {
+                    onReady();
+                }
             }
         };
 
@@ -103,6 +324,10 @@ const Edit360: React.FC = () => {
             const viewerOpts = {
                 controls: {
                     mouseViewMode: 'drag' as const
+                },
+                stage: {},
+                cursors: {
+                    drag: {}
                 }
             };
             const newViewer = new Marzipano.Viewer(viewerRef.current, viewerOpts);
@@ -123,6 +348,29 @@ const Edit360: React.FC = () => {
             setSelectedScene(tourData.scenes[0]);
         }
     }, [tourData, selectedScene]);
+
+    // Expose methods and state to parent component
+    useImperativeHandle(ref, () => ({
+        tourData,
+        selectedScene,
+        currentScene,
+        addNewScene,
+        deleteScene,
+        setViewDirection,
+        createHotspot,
+        deleteHotspot,
+        setDefaultView,
+        saveTourData,
+        handleSelectScene: (scene: Scene) => {
+            setPreventSceneReload(false);
+            setSelectedScene(scene);
+            loadScene(scene);
+        },
+        handleEditScene: (scene: Scene) => {
+            setEditingScene(scene);
+            setShowSceneEditor(true);
+        }
+    }), [tourData, selectedScene, currentScene]);
 
     const loadScene = (scene: Scene) => {
         if (!viewer) return;
@@ -173,75 +421,27 @@ const Edit360: React.FC = () => {
 
         // Create inner content
         const icon = document.createElement('div');
-        icon.innerHTML = hotspot.type === 'info' ? '📍' : '🚪';
-        icon.style.cssText = `
-            width: 30px;
-            height: 30px;
-            background: ${hotspot.type === 'info' ? '#007bff' : '#28a745'};
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 16px;
-            border: 2px solid #fff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-            transition: all 0.2s;
-            position: relative;
-        `;
+        icon.className = 'hotspot-icon';
+        const iconImg = document.createElement('img');
+        iconImg.src = hotspot.type === 'info' ? '/img/info.png' : '/img/link.png';
+        iconImg.alt = hotspot.type === 'info' ? 'Info' : 'Waypoint';
+        icon.appendChild(iconImg);
 
         // Create action buttons (initially hidden)
         const actionPanel = document.createElement('div');
-        actionPanel.style.cssText = `
-            position: absolute;
-            top: -40px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255,255,255,0.95);
-            padding: 5px;
-            border-radius: 15px;
-            display: none;
-            gap: 5px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            z-index: 10;
-        `;
+        actionPanel.className = 'hotspot-action-panel';
 
         const editBtn = document.createElement('button');
         editBtn.innerHTML = '✏️';
-        editBtn.style.cssText = `
-            width: 25px;
-            height: 25px;
-            border: none;
-            border-radius: 50%;
-            background: #ffc107;
-            cursor: pointer;
-            font-size: 12px;
-        `;
+        editBtn.className = 'action-btn edit-hotspot-btn';
 
         const dragBtn = document.createElement('button');
         dragBtn.innerHTML = '🤏';
-        dragBtn.style.cssText = `
-            width: 25px;
-            height: 25px;
-            border: none;
-            border-radius: 50%;
-            background: #17a2b8;
-            cursor: move;
-            font-size: 12px;
-        `;
+        dragBtn.className = 'action-btn drag-hotspot-btn';
 
         const deleteBtn = document.createElement('button');
         deleteBtn.innerHTML = '🗑️';
-        deleteBtn.style.cssText = `
-            width: 25px;
-            height: 25px;
-            border: none;
-            border-radius: 50%;
-            background: #dc3545;
-            color: #fff;
-            cursor: pointer;
-            font-size: 12px;
-        `;
+        deleteBtn.className = 'action-btn delete-hotspot-action-btn';
 
         actionPanel.appendChild(editBtn);
         actionPanel.appendChild(dragBtn);
@@ -250,10 +450,7 @@ const Edit360: React.FC = () => {
         element.appendChild(icon);
         element.appendChild(actionPanel);
 
-        element.style.cssText = `
-            position: relative;
-            cursor: pointer;
-        `;
+        element.className = 'hotspot';
 
         // Click to show/hide action panel
         let clickTimeout: number | undefined;
@@ -268,20 +465,35 @@ const Edit360: React.FC = () => {
                 document.querySelectorAll('.hotspot').forEach(el => {
                     const panel = el.querySelector('div:last-child') as HTMLElement;
                     if (panel && panel !== actionPanel) {
-                        panel.style.display = 'none';
+                        panel.classList.remove('visible');
                     }
                 });
 
                 // Toggle this action panel
-                if (actionPanel.style.display === 'none' || !actionPanel.style.display) {
-                    actionPanel.style.display = 'flex';
+                if (!actionPanel.classList.contains('visible')) {
+                    actionPanel.classList.add('visible');
                     icon.style.transform = 'scale(1.2)';
                     setSelectedHotspotIndex(index);
                 } else {
-                    actionPanel.style.display = 'none';
+                    actionPanel.classList.remove('visible');
                     icon.style.transform = 'scale(1)';
                     setSelectedHotspotIndex(null);
                 }
+            }
+        });
+
+        // Add hover effects
+        element.addEventListener('mouseenter', () => {
+            if (!isDragging) {
+                icon.style.transform = 'scale(1.1)';
+                icon.style.background = hotspot.type === 'info' ? 'var(--primary-light)' : 'var(--secondary-light)';
+            }
+        });
+
+        element.addEventListener('mouseleave', () => {
+            if (!isDragging && !actionPanel.classList.contains('visible')) {
+                icon.style.transform = 'scale(1)';
+                icon.style.background = hotspot.type === 'info' ? 'var(--primary)' : 'var(--secondary)';
             }
         });
 
@@ -302,7 +514,7 @@ const Edit360: React.FC = () => {
                     hotspotIndex: index,
                     hotspot: hotspot
                 });
-                actionPanel.style.display = 'none';
+                actionPanel.classList.remove('visible');
                 icon.style.transform = 'scale(1)';
             }
         });
@@ -322,8 +534,7 @@ const Edit360: React.FC = () => {
             startPos = { x: e.clientX, y: e.clientY };
             startHotspotPos = { yaw: hotspot.yaw, pitch: hotspot.pitch };
 
-            dragBtn.style.background = '#dc3545'; // Change color while dragging
-            element.style.cursor = 'move';
+            dragBtn.classList.add('dragging');
 
             // Disable viewer controls to prevent scene movement conflicts
             if (viewer) {
@@ -371,9 +582,8 @@ const Edit360: React.FC = () => {
             isDraggingThis = false;
             setTimeout(() => setIsDragging(false), 100);
 
-            dragBtn.style.background = '#17a2b8'; // Reset color
-            element.style.cursor = 'pointer';
-            actionPanel.style.display = 'none';
+            dragBtn.classList.remove('dragging');
+            actionPanel.classList.remove('visible');
             icon.style.transform = 'scale(1)';
 
             // Re-enable viewer controls after hotspot drag
@@ -414,7 +624,7 @@ const Edit360: React.FC = () => {
         // Hide action panel when clicking elsewhere
         document.addEventListener('click', (e) => {
             if (!element.contains(e.target as Node)) {
-                actionPanel.style.display = 'none';
+                actionPanel.classList.remove('visible');
                 icon.style.transform = 'scale(1)';
                 if (selectedHotspotIndex === index) {
                     setSelectedHotspotIndex(null);
@@ -439,12 +649,20 @@ const Edit360: React.FC = () => {
         const currentYaw = view.yaw();
         const currentPitch = view.pitch();
 
+        // For waypoints, find the target scene and use its name
+        const targetScene = type === 'waypoint'
+            ? tourData.scenes.find(s => s.id !== selectedScene.id) || tourData.scenes[0]
+            : null;
+
+        const targetSceneId = targetScene?.id || 'scene1';
+        const waypointText = targetScene?.name || 'New Waypoint';
+
         const newHotspot: Hotspot = {
             type: type,
             pitch: currentPitch,
             yaw: currentYaw,
-            text: type === 'info' ? 'New Info Point' : 'New Waypoint',
-            ...(type === 'info' ? { description: 'Description here' } : { target: tourData.scenes.length > 1 ? tourData.scenes.find(s => s.id !== selectedScene.id)?.id || 'scene1' : 'scene1' })
+            text: type === 'info' ? 'New Info Point' : waypointText,
+            ...(type === 'info' ? { description: 'Description here' } : { target: targetSceneId })
         };
 
         // Add to selected scene data - but don't reload the scene
@@ -518,8 +736,20 @@ const Edit360: React.FC = () => {
     const updateHotspot = (updatedHotspot: Hotspot) => {
         if (!editingHotspot || !selectedScene || !tourData) return;
 
+        // For waypoints, automatically sync the text with the target scene name
+        let finalHotspot = updatedHotspot;
+        if (updatedHotspot.type === 'waypoint' && updatedHotspot.target) {
+            const targetScene = tourData.scenes.find(scene => scene.id === updatedHotspot.target);
+            if (targetScene) {
+                finalHotspot = {
+                    ...updatedHotspot,
+                    text: targetScene.name
+                };
+            }
+        }
+
         const updatedHotspots = selectedScene.hotspots.map((h, i) =>
-            i === editingHotspot.hotspotIndex ? updatedHotspot : h
+            i === editingHotspot.hotspotIndex ? finalHotspot : h
         );
 
         const updatedScene = {
@@ -616,7 +846,7 @@ const Edit360: React.FC = () => {
         };
         setTourData(updatedTourData);
         setSelectedScene(newScene);
-        
+
         // Automatically open the scene editor for the new scene
         setEditingScene(newScene);
         setShowSceneEditor(true);
@@ -709,318 +939,45 @@ const Edit360: React.FC = () => {
         return <div>Loading tour data...</div>;
     }
 
+    // Handler functions for sidebar
+    const handleSelectScene = (scene: Scene) => {
+        setPreventSceneReload(false); // Allow scene reload for scene switching
+        setSelectedScene(scene);
+        loadScene(scene);
+    };
+
+    const handleEditScene = (scene: Scene) => {
+        setEditingScene(scene);
+        setShowSceneEditor(true);
+    };
+
     return (
-        <div style={{ display: 'flex', height: '100vh' }}>
-            {/* Scene List Sidebar */}
-            <div style={{
-                width: '300px',
-                backgroundColor: '#f5f5f5',
-                padding: '20px',
-                borderRight: '1px solid #ddd',
-                overflow: 'auto'
-            }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-                    <h2>Scenes</h2>
-                    <button
-                        onClick={addNewScene}
-                        style={{
-                            padding: '5px 10px',
-                            backgroundColor: '#28a745',
-                            color: '#fff',
-                            border: 'none',
-                            borderRadius: '4px',
-                            cursor: 'pointer',
-                            fontSize: '12px'
-                        }}
-                    >
-                        + Add Scene
-                    </button>
-                </div>
-
-                {/* Scene List */}
-                <div style={{ marginBottom: '20px' }}>
-                    {tourData.scenes.map((scene) => (
-                        <div key={scene.id} style={{ marginBottom: '10px' }}>
-                            <div
-                                onClick={() => {
-                                    setPreventSceneReload(false); // Allow scene reload for scene switching
-                                    setSelectedScene(scene);
-                                    loadScene(scene);
-                                }}
-                                style={{
-                                    padding: '10px',
-                                    backgroundColor: selectedScene?.id === scene.id ? '#007bff' : '#fff',
-                                    color: selectedScene?.id === scene.id ? '#fff' : '#000',
-                                    border: '1px solid #ddd',
-                                    borderRadius: '4px',
-                                    cursor: 'pointer',
-                                    position: 'relative'
-                                }}
-                            >
-                                <strong>{scene.name}</strong>
-                                <div style={{ fontSize: '12px', opacity: 0.8 }}>
-                                    {scene.hotspots.length} hotspots
-                                </div>
-                                <div style={{ position: 'absolute', top: '5px', right: '5px', display: 'flex', gap: '5px' }}>
-                                    <button
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            setEditingScene(scene);
-                                            setShowSceneEditor(true);
-                                        }}
-                                        style={{
-                                            width: '20px',
-                                            height: '20px',
-                                            backgroundColor: '#ffc107',
-                                            border: 'none',
-                                            borderRadius: '50%',
-                                            cursor: 'pointer',
-                                            fontSize: '10px'
-                                        }}
-                                    >
-                                        ✏️
-                                    </button>
-                                    <button
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            if (confirm(`Delete scene "${scene.name}"?`)) {
-                                                deleteScene(scene.id);
-                                            }
-                                        }}
-                                        style={{
-                                            width: '20px',
-                                            height: '20px',
-                                            backgroundColor: '#dc3545',
-                                            color: '#fff',
-                                            border: 'none',
-                                            borderRadius: '50%',
-                                            cursor: 'pointer',
-                                            fontSize: '10px'
-                                        }}
-                                    >
-                                        ×
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-
-                {/* View Direction Controls */}
-                {selectedScene && currentScene && (
-                    <div style={{ marginBottom: '20px', padding: '15px', backgroundColor: '#fff', borderRadius: '4px' }}>
-                        <h3 style={{ margin: '0 0 10px 0', fontSize: '14px' }}>View Direction</h3>
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', fontSize: '12px' }}>
-                            <div>
-                                <label>Yaw (°):</label>
-                                <input
-                                    type="number"
-                                    min="-180"
-                                    max="180"
-                                    step="5"
-                                    defaultValue={Math.round(currentScene.view().yaw() * 180 / Math.PI)}
-                                    onChange={(e) => {
-                                        const view = currentScene.view();
-                                        setViewDirection(
-                                            parseFloat(e.target.value),
-                                            view.pitch() * 180 / Math.PI,
-                                            view.fov() * 180 / Math.PI
-                                        );
-                                    }}
-                                    style={{ width: '100%', padding: '3px', fontSize: '12px' }}
-                                />
-                            </div>
-                            <div>
-                                <label>Pitch (°):</label>
-                                <input
-                                    type="number"
-                                    min="-90"
-                                    max="90"
-                                    step="5"
-                                    defaultValue={Math.round(currentScene.view().pitch() * 180 / Math.PI)}
-                                    onChange={(e) => {
-                                        const view = currentScene.view();
-                                        setViewDirection(
-                                            view.yaw() * 180 / Math.PI,
-                                            parseFloat(e.target.value),
-                                            view.fov() * 180 / Math.PI
-                                        );
-                                    }}
-                                    style={{ width: '100%', padding: '3px', fontSize: '12px' }}
-                                />
-                            </div>
-                            <div style={{ gridColumn: 'span 2' }}>
-                                <label>FOV (°):</label>
-                                <input
-                                    type="number"
-                                    min="10"
-                                    max="150"
-                                    step="5"
-                                    defaultValue={Math.round(currentScene.view().fov() * 180 / Math.PI)}
-                                    onChange={(e) => {
-                                        const view = currentScene.view();
-                                        setViewDirection(
-                                            view.yaw() * 180 / Math.PI,
-                                            view.pitch() * 180 / Math.PI,
-                                            parseFloat(e.target.value)
-                                        );
-                                    }}
-                                    style={{ width: '100%', padding: '3px', fontSize: '12px' }}
-                                />
-                            </div>
-                        </div>
-                        <button
-                            onClick={setDefaultView}
-                            style={{
-                                width: '100%',
-                                marginTop: '10px',
-                                padding: '8px',
-                                backgroundColor: '#ffc107',
-                                color: '#000',
-                                border: 'none',
-                                borderRadius: '4px',
-                                cursor: 'pointer',
-                                fontSize: '12px',
-                                fontWeight: 'bold'
-                            }}
-                        >
-                            📌 Set as Default View
-                        </button>
-                    </div>
-                )}
-
-                {/* Hotspot Creation Controls */}
-                <div style={{ marginBottom: '20px' }}>
-                    <h3>Add Hotspots</h3>
-                    <button
-                        onClick={() => createHotspot('info')}
-                        style={{
-                            display: 'block',
-                            width: '100%',
-                            margin: '5px 0',
-                            padding: '10px',
-                            backgroundColor: '#007bff',
-                            color: '#fff',
-                            border: 'none',
-                            borderRadius: '4px',
-                            cursor: 'pointer'
-                        }}
-                    >
-                        📍 Add Info Point
-                    </button>
-                    <button
-                        onClick={() => createHotspot('waypoint')}
-                        style={{
-                            display: 'block',
-                            width: '100%',
-                            margin: '5px 0',
-                            padding: '10px',
-                            backgroundColor: '#28a745',
-                            color: '#fff',
-                            border: 'none',
-                            borderRadius: '4px',
-                            cursor: 'pointer'
-                        }}
-                    >
-                        🚪 Add Waypoint
-                    </button>
-                </div>
-
-                {/* Selected Scene Hotspots */}
-                {selectedScene && (
-                    <div>
-                        <h3>Current Hotspots</h3>
-                        {selectedScene.hotspots.map((hotspot, index) => (
-                            <div
-                                key={index}
-                                style={{
-                                    padding: '8px',
-                                    margin: '3px 0',
-                                    backgroundColor: '#fff',
-                                    border: '1px solid #ddd',
-                                    borderRadius: '4px',
-                                    fontSize: '12px',
-                                    position: 'relative'
-                                }}
-                            >
-                                <div style={{ fontWeight: 'bold' }}>
-                                    {hotspot.type === 'info' ? '📍' : '🚪'} {hotspot.type}
-                                </div>
-                                <div style={{ marginRight: '25px' }}>{hotspot.text}</div>
-                                <div style={{ opacity: 0.6 }}>
-                                    Yaw: {(hotspot.yaw * 180 / Math.PI).toFixed(1)}°,
-                                    Pitch: {(hotspot.pitch * 180 / Math.PI).toFixed(1)}°
-                                </div>
-                                <button
-                                    onClick={() => deleteHotspot(index)}
-                                    style={{
-                                        position: 'absolute',
-                                        top: '4px',
-                                        right: '4px',
-                                        width: '20px',
-                                        height: '20px',
-                                        backgroundColor: '#dc3545',
-                                        color: '#fff',
-                                        border: 'none',
-                                        borderRadius: '50%',
-                                        cursor: 'pointer',
-                                        fontSize: '12px',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center'
-                                    }}
-                                >
-                                    ×
-                                </button>
-                            </div>
-                        ))}
-                    </div>
-                )}
-
-                {/* Save Button */}
-                <button
-                    onClick={saveTourData}
-                    style={{
-                        position: 'relative',
-                        left: '20px',
-                        right: '20px',
-                        width: 'calc(100% - 40px)',
-                        padding: '15px',
-                        backgroundColor: '#007bff',
-                        color: '#fff',
-                        border: 'none',
-                        borderRadius: '4px',
-                        cursor: 'pointer',
-                        fontSize: '16px',
-                        fontWeight: 'bold'
-                    }}
-                >
-                    Save Tour Data
-                </button>
-            </div>
+        <div className="edit360-container">
+            {/* <Sidebar
+                tourData={tourData}
+                selectedScene={selectedScene}
+                currentScene={currentScene}
+                onAddNewScene={addNewScene}
+                onSelectScene={handleSelectScene}
+                onEditScene={handleEditScene}
+                onDeleteScene={deleteScene}
+                onSetViewDirection={setViewDirection}
+                onCreateHotspot={createHotspot}
+                onDeleteHotspot={deleteHotspot}
+                onSetDefaultView={setDefaultView}
+                onSaveTourData={saveTourData}
+            /> */}
 
             {/* 360 Viewer */}
-            <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }}>
+            <div className="viewer-container">
                 <div
                     ref={viewerRef}
-                    style={{
-                        width: '100%',
-                        height: '100%',
-                        cursor: 'grab'
-                    }}
+                    className="viewer-canvas"
                 />
 
                 {/* Scene Info */}
                 {selectedScene && (
-                    <div style={{
-                        position: 'absolute',
-                        top: '20px',
-                        right: '20px',
-                        backgroundColor: 'rgba(255,255,255,0.9)',
-                        padding: '10px 15px',
-                        borderRadius: '4px',
-                        fontSize: '14px'
-                    }}>
+                    <div className="scene-info">
                         <strong>{selectedScene.name}</strong>
                         <div>{selectedScene.hotspots.length} hotspots</div>
                     </div>
@@ -1029,43 +986,28 @@ const Edit360: React.FC = () => {
 
             {/* Hotspot Edit Modal */}
             {editingHotspot && (
-                <div style={{
-                    position: 'fixed',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    backgroundColor: 'rgba(0,0,0,0.5)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    zIndex: 1000
-                }}>
-                    <div style={{
-                        backgroundColor: '#fff',
-                        padding: '20px',
-                        borderRadius: '8px',
-                        width: '400px',
-                        maxWidth: '90vw'
-                    }}>
+                <div className="modal-overlay">
+                    <div className="modal-content">
                         <h3>Edit {editingHotspot.hotspot.type} Hotspot</h3>
-                        <div style={{ marginBottom: '15px' }}>
-                            <label style={{ display: 'block', marginBottom: '5px' }}>Text:</label>
-                            <input
-                                type="text"
-                                defaultValue={editingHotspot.hotspot.text}
-                                onChange={(e) => {
-                                    setEditingHotspot({
-                                        ...editingHotspot,
-                                        hotspot: { ...editingHotspot.hotspot, text: e.target.value }
-                                    });
-                                }}
-                                style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ddd' }}
-                            />
-                        </div>
                         {editingHotspot.hotspot.type === 'info' && (
-                            <div style={{ marginBottom: '15px' }}>
-                                <label style={{ display: 'block', marginBottom: '5px' }}>Description:</label>
+                            <div className="form-group">
+                                <label className="form-label">Text:</label>
+                                <input
+                                    type="text"
+                                    defaultValue={editingHotspot.hotspot.text}
+                                    onChange={(e) => {
+                                        setEditingHotspot({
+                                            ...editingHotspot,
+                                            hotspot: { ...editingHotspot.hotspot, text: e.target.value }
+                                        });
+                                    }}
+                                    className="form-input"
+                                />
+                            </div>
+                        )}
+                        {editingHotspot.hotspot.type === 'info' && (
+                            <div className="form-group">
+                                <label className="form-label">Description:</label>
                                 <textarea
                                     defaultValue={editingHotspot.hotspot.description || ''}
                                     onChange={(e) => {
@@ -1074,13 +1016,13 @@ const Edit360: React.FC = () => {
                                             hotspot: { ...editingHotspot.hotspot, description: e.target.value }
                                         });
                                     }}
-                                    style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ddd', height: '80px' }}
+                                    className="form-textarea"
                                 />
                             </div>
                         )}
                         {editingHotspot.hotspot.type === 'waypoint' && (
-                            <div style={{ marginBottom: '15px' }}>
-                                <label style={{ display: 'block', marginBottom: '5px' }}>Target Scene:</label>
+                            <div className="form-group">
+                                <label className="form-label">Target Scene:</label>
                                 <select
                                     defaultValue={editingHotspot.hotspot.target || ''}
                                     onChange={(e) => {
@@ -1089,7 +1031,7 @@ const Edit360: React.FC = () => {
                                             hotspot: { ...editingHotspot.hotspot, target: e.target.value }
                                         });
                                     }}
-                                    style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ddd' }}
+                                    className="form-select"
                                 >
                                     <option value="">Select target scene</option>
                                     {tourData?.scenes.map(scene => (
@@ -1098,30 +1040,16 @@ const Edit360: React.FC = () => {
                                 </select>
                             </div>
                         )}
-                        <div style={{ display: 'flex', gap: '10px', justifyContent: 'flex-end' }}>
+                        <div className="modal-actions">
                             <button
                                 onClick={() => setEditingHotspot(null)}
-                                style={{
-                                    padding: '8px 16px',
-                                    backgroundColor: '#6c757d',
-                                    color: '#fff',
-                                    border: 'none',
-                                    borderRadius: '4px',
-                                    cursor: 'pointer'
-                                }}
+                                className="modal-btn modal-btn-cancel"
                             >
                                 Cancel
                             </button>
                             <button
                                 onClick={() => updateHotspot(editingHotspot.hotspot)}
-                                style={{
-                                    padding: '8px 16px',
-                                    backgroundColor: '#007bff',
-                                    color: '#fff',
-                                    border: 'none',
-                                    borderRadius: '4px',
-                                    cursor: 'pointer'
-                                }}
+                                className="modal-btn modal-btn-save"
                             >
                                 Save
                             </button>
@@ -1132,94 +1060,53 @@ const Edit360: React.FC = () => {
 
             {/* Scene Edit Modal */}
             {showSceneEditor && editingScene && (
-                <div style={{
-                    position: 'fixed',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    backgroundColor: 'rgba(0,0,0,0.5)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    zIndex: 1000
-                }}>
-                    <div style={{
-                        backgroundColor: '#fff',
-                        padding: '20px',
-                        borderRadius: '8px',
-                        width: '400px',
-                        maxWidth: '90vw'
-                    }}>
+                <div className="modal-overlay">
+                    <div className="modal-content">
                         <h3>Edit Scene</h3>
-                        <div style={{ marginBottom: '15px' }}>
-                            <label style={{ display: 'block', marginBottom: '5px' }}>Scene Name:</label>
+                        <div className="form-group">
+                            <label className="form-label">Scene Name:</label>
                             <input
                                 type="text"
                                 defaultValue={editingScene.name}
                                 onChange={(e) => {
                                     setEditingScene({ ...editingScene, name: e.target.value });
                                 }}
-                                style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ddd' }}
+                                className="form-input"
                             />
                         </div>
-                        <div style={{ marginBottom: '15px' }}>
-                            <label style={{ display: 'block', marginBottom: '5px' }}>Image Source:</label>
-                            <div style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
+                        <div className="form-group">
+                            <label className="form-label">Image Source:</label>
+                            <div className="image-mode-buttons">
                                 <button
                                     type="button"
                                     onClick={() => setImageSelectionMode('select')}
-                                    style={{
-                                        padding: '5px 10px',
-                                        backgroundColor: imageSelectionMode === 'select' ? '#007bff' : '#f8f9fa',
-                                        color: imageSelectionMode === 'select' ? '#fff' : '#000',
-                                        border: '1px solid #ddd',
-                                        borderRadius: '4px',
-                                        cursor: 'pointer',
-                                        fontSize: '12px'
-                                    }}
+                                    className={`image-mode-btn ${imageSelectionMode === 'select' ? 'active' : ''}`}
                                 >
                                     Select Existing
                                 </button>
                                 <button
                                     type="button"
                                     onClick={() => setImageSelectionMode('upload')}
-                                    style={{
-                                        padding: '5px 10px',
-                                        backgroundColor: imageSelectionMode === 'upload' ? '#007bff' : '#f8f9fa',
-                                        color: imageSelectionMode === 'upload' ? '#fff' : '#000',
-                                        border: '1px solid #ddd',
-                                        borderRadius: '4px',
-                                        cursor: 'pointer',
-                                        fontSize: '12px'
-                                    }}
+                                    className={`image-mode-btn ${imageSelectionMode === 'upload' ? 'active' : ''}`}
                                 >
                                     Upload New
                                 </button>
                                 <button
                                     type="button"
                                     onClick={() => setImageSelectionMode('url')}
-                                    style={{
-                                        padding: '5px 10px',
-                                        backgroundColor: imageSelectionMode === 'url' ? '#007bff' : '#f8f9fa',
-                                        color: imageSelectionMode === 'url' ? '#fff' : '#000',
-                                        border: '1px solid #ddd',
-                                        borderRadius: '4px',
-                                        cursor: 'pointer',
-                                        fontSize: '12px'
-                                    }}
+                                    className={`image-mode-btn ${imageSelectionMode === 'url' ? 'active' : ''}`}
                                 >
                                     Custom URL
                                 </button>
                             </div>
-                            
+
                             {imageSelectionMode === 'select' && (
                                 <select
                                     value={editingScene.imageUrl}
                                     onChange={(e) => {
                                         setEditingScene({ ...editingScene, imageUrl: e.target.value });
                                     }}
-                                    style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ddd' }}
+                                    className="form-select"
                                 >
                                     <option value="">Select an image...</option>
                                     {availableImages.map(image => (
@@ -1229,7 +1116,7 @@ const Edit360: React.FC = () => {
                                     ))}
                                 </select>
                             )}
-                            
+
                             {imageSelectionMode === 'upload' && (
                                 <div>
                                     <input
@@ -1241,14 +1128,14 @@ const Edit360: React.FC = () => {
                                                 handleImageUpload(file);
                                             }
                                         }}
-                                        style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ddd' }}
+                                        className="form-input"
                                     />
-                                    <div style={{ fontSize: '12px', color: '#666', marginTop: '5px' }}>
+                                    <div className="upload-info">
                                         Supported formats: JPG, PNG, WebP. Recommended: 4096x2048 or similar 2:1 ratio.
                                     </div>
                                 </div>
                             )}
-                            
+
                             {imageSelectionMode === 'url' && (
                                 <input
                                     type="text"
@@ -1256,19 +1143,19 @@ const Edit360: React.FC = () => {
                                     onChange={(e) => {
                                         setEditingScene({ ...editingScene, imageUrl: e.target.value });
                                     }}
-                                    style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ddd' }}
+                                    className="form-input"
                                     placeholder="e.g., tour_images/pano1.jpg"
                                 />
                             )}
-                            
+
                             {editingScene.imageUrl && (
-                                <div style={{ marginTop: '10px', fontSize: '12px', color: '#666' }}>
+                                <div className="current-image">
                                     Current: {editingScene.imageUrl}
                                 </div>
                             )}
                         </div>
-                        <div style={{ marginBottom: '15px' }}>
-                            <label style={{ display: 'block', marginBottom: '5px' }}>Image Width:</label>
+                        <div className="form-group">
+                            <label className="form-label">Image Width:</label>
                             <input
                                 type="number"
                                 defaultValue={editingScene.geometry.width}
@@ -1278,23 +1165,16 @@ const Edit360: React.FC = () => {
                                         geometry: { ...editingScene.geometry, width: parseInt(e.target.value) }
                                     });
                                 }}
-                                style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ddd' }}
+                                className="form-input"
                             />
                         </div>
-                        <div style={{ display: 'flex', gap: '10px', justifyContent: 'flex-end' }}>
+                        <div className="modal-actions">
                             <button
                                 onClick={() => {
                                     setShowSceneEditor(false);
                                     setEditingScene(null);
                                 }}
-                                style={{
-                                    padding: '8px 16px',
-                                    backgroundColor: '#6c757d',
-                                    color: '#fff',
-                                    border: 'none',
-                                    borderRadius: '4px',
-                                    cursor: 'pointer'
-                                }}
+                                className="modal-btn modal-btn-cancel"
                             >
                                 Cancel
                             </button>
@@ -1306,14 +1186,7 @@ const Edit360: React.FC = () => {
                                         setEditingScene(null);
                                     }
                                 }}
-                                style={{
-                                    padding: '8px 16px',
-                                    backgroundColor: '#007bff',
-                                    color: '#fff',
-                                    border: 'none',
-                                    borderRadius: '4px',
-                                    cursor: 'pointer'
-                                }}
+                                className="modal-btn modal-btn-save"
                             >
                                 Save
                             </button>
@@ -1323,6 +1196,9 @@ const Edit360: React.FC = () => {
             )}
         </div>
     );
-};
+});
+
+Edit360.displayName = 'Edit360';
 
 export default Edit360;
+export { Sidebar };

@@ -31,7 +31,7 @@ const storage = multer.diskStorage({
     }
 });
 
-const upload = multer({ 
+const upload = multer({
     storage: storage,
     fileFilter: function (req, file, cb) {
         // Accept only image files
@@ -151,8 +151,8 @@ app.post('/admin/api/upload-image', upload.single('image'), (req, res) => {
         if (!req.file) {
             return res.status(400).json({ error: 'No file uploaded' });
         }
-        
-        res.json({ 
+
+        res.json({
             message: 'Image uploaded successfully',
             filename: req.file.filename,
             originalName: req.file.originalname,

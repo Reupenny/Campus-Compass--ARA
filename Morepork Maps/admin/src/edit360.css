@@ -1,0 +1,449 @@
+/* Edit360 Component Styles */
+
+/* Main container */
+.edit360-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Scene List Sidebar */
+.sidebar {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+    overflow: auto;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.add-scene-btn {
+    padding: 5px 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+/* Scene list */
+.scene-list {
+    margin-bottom: 20px;
+}
+
+.scene-item {
+    margin-bottom: 10px;
+}
+
+.scene-card {
+    padding: 10px;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+}
+
+.scene-card.selected {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.scene-card .scene-name {
+    font-weight: bold;
+}
+
+.scene-card .scene-info {
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+.scene-actions {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: flex;
+    gap: 5px;
+}
+
+.scene-action-btn {
+    width: 20px;
+    height: 20px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 10px;
+}
+
+.edit-scene-btn {
+    background-color: #ffc107;
+}
+
+.delete-scene-btn {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+/* View Direction Controls */
+.view-controls {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 4px;
+}
+
+.view-controls h3 {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+}
+
+.view-controls-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    font-size: 12px;
+}
+
+.view-controls-input {
+    width: 100%;
+    padding: 3px;
+    font-size: 12px;
+}
+
+.fov-control {
+    grid-column: span 2;
+}
+
+.set-default-view-btn {
+    width: 100%;
+    margin-top: 10px;
+    padding: 8px;
+    background-color: #ffc107;
+    color: #000;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Hotspot Creation Controls */
+.hotspot-controls h3 {
+    margin-bottom: 10px;
+}
+
+.hotspot-btn {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+    padding: 10px;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.add-info-btn {
+    background-color: #007bff;
+}
+
+.add-waypoint-btn {
+    background-color: #28a745;
+}
+
+/* Current Hotspots List */
+.hotspots-list h3 {
+    margin-bottom: 10px;
+}
+
+.hotspot-item {
+    padding: 8px;
+    margin: 3px 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 12px;
+    position: relative;
+}
+
+.hotspot-item .hotspot-type {
+    font-weight: bold;
+}
+
+.hotspot-item .hotspot-text {
+    margin-right: 25px;
+}
+
+.hotspot-item .hotspot-coords {
+    opacity: 0.6;
+}
+
+.delete-hotspot-btn {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 20px;
+    height: 20px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Save Button */
+.save-tour-btn {
+    position: relative;
+    left: 20px;
+    right: 20px;
+    width: calc(100% - 40px);
+    padding: 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* 360 Viewer */
+.viewer-container {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.viewer-canvas {
+    width: 100%;
+    height: 100%;
+    cursor: grab;
+}
+
+/* Scene Info Overlay */
+.scene-info {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Hotspot Styles */
+.hotspot {
+    position: relative;
+    cursor: pointer;
+}
+
+.hotspot-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--primary, #007bff);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 2px solid var(--primary-foreground, #fff);
+    box-shadow: var(--shadow-md, 0 2px 4px rgba(0, 0, 0, 0.3));
+    transition: all 0.2s;
+    position: relative;
+}
+
+.hotspot-info .hotspot-icon {
+    background: var(--primary, #007bff);
+}
+
+.hotspot-waypoint .hotspot-icon {
+    background: var(--secondary, #28a745);
+}
+
+.hotspot-icon img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+/* Hotspot Action Panel */
+.hotspot-action-panel {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 5px;
+    border-radius: 15px;
+    display: none;
+    gap: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.hotspot-action-panel.visible {
+    display: flex;
+}
+
+.action-btn {
+    width: 1.5em;
+    height: 1.5em;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.4em;
+}
+
+.edit-hotspot-btn {
+    background: #ffc107;
+}
+
+.drag-hotspot-btn {
+    background: #17a2b8;
+    cursor: move;
+}
+
+.drag-hotspot-btn.dragging {
+    background: #dc3545;
+}
+
+.delete-hotspot-action-btn {
+    background: #dc3545;
+    color: #fff;
+    font-size: 1.4em;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 90vw;
+}
+
+.modal-content h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.form-textarea {
+    height: 80px;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.modal-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.modal-btn-cancel {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.modal-btn-save {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Image Selection Controls */
+.image-mode-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.image-mode-btn {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.image-mode-btn.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.image-mode-btn:not(.active) {
+    background-color: #f8f9fa;
+    color: #000;
+}
+
+.upload-info {
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+}
+
+.current-image {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #666;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .edit360-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        max-height: 40vh;
+    }
+
+    .viewer-container {
+        height: 60vh;
+    }
+}
