@@ -46,14 +46,14 @@ function Explore() {
                 data.scenes.forEach(sceneData => {
                     // Start with low-res version if available, otherwise use main image
                     const initialImageUrl = sceneData.lowResUrl || sceneData.imageUrl;
-                    
+
                     const scene = viewer.createScene({
                         source: Marzipano.ImageUrlSource.fromString(initialImageUrl),
                         geometry: new Marzipano.EquirectGeometry([{ width: sceneData.geometry.width }]),
                         view: new Marzipano.RectilinearView(null, zoomLimiter)
                     });
                     scenes[sceneData.id] = scene;
-                    
+
                     // If we have a low-res version, preload the high-res version
                     if (sceneData.lowResUrl && sceneData.imageUrl !== initialImageUrl) {
                         setTimeout(() => {

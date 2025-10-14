@@ -88,32 +88,32 @@ async function processImage(inputPath, filename) {
     const nameWithoutExt = path.parse(filename).name;
     const webpPath = path.join(tourImagesDir, `${nameWithoutExt}.webp`);
     const lowResPath = path.join(tourImagesDir, `${nameWithoutExt}_lowres.webp`);
-    
+
     try {
         // Get original image metadata
         const metadata = await sharp(inputPath).metadata();
         console.log(`Processing image: ${metadata.width}x${metadata.height}`);
-        
+
         // Convert to WebP (high quality for main image)
         await sharp(inputPath)
             .webp({ quality: 85, effort: 4 })
             .toFile(webpPath);
-        
+
         // Create low-res version (max 1024px wide, lower quality for fast loading)
         const lowResWidth = Math.min(1024, metadata.width);
         await sharp(inputPath)
-            .resize(lowResWidth, null, { 
+            .resize(lowResWidth, null, {
                 withoutEnlargement: true,
                 fit: 'inside'
             })
             .webp({ quality: 60, effort: 4 })
             .toFile(lowResPath);
-        
+
         console.log(`Created WebP versions: ${nameWithoutExt}.webp and ${nameWithoutExt}_lowres.webp`);
-        
+
         // Delete original file to save space
         fs.unlinkSync(inputPath);
-        
+
         return {
             webpFilename: `${nameWithoutExt}.webp`,
             lowResFilename: `${nameWithoutExt}_lowres.webp`,
@@ -197,10 +197,10 @@ app.post('/admin/api/upload-image', upload.single('image'), async (req, res) => 
         }
 
         console.log(`Processing uploaded image: ${req.file.originalname}`);
-        
+
         // Process the image (convert to WebP and create low-res version)
         const processed = await processImage(req.file.path, req.file.filename);
-        
+
         res.json({
             message: 'Image uploaded and processed successfully',
             filename: processed.webpFilename,
