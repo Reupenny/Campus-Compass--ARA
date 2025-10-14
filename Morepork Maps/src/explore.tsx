@@ -42,7 +42,7 @@ function Explore() {
             .then((data: TourData) => {
                 const scenes: { [key: string]: Marzipano.Scene } = {};
                 const highResLoaded: { [key: string]: boolean } = {};
-                
+
                 // Helper function to get low-res URL
                 const getLowResUrl = (imageUrl: string) => {
                     const pathParts = imageUrl.split('/');
@@ -85,35 +85,35 @@ function Explore() {
                 const loadHighResWithDelay = (sceneId: string, delay: number = 2000) => {
                     setTimeout(() => {
                         if (highResLoaded[sceneId]) return; // Already loaded
-                        
+
                         const sceneData = data.scenes.find(s => s.id === sceneId);
                         if (!sceneData) return;
-                        
+
                         try {
                             console.log(`Loading high-res for scene ${sceneId}`);
-                            
+
                             // Check if this scene is currently active before we start
                             const currentScene = viewer.scene();
                             const isCurrentlyActive = currentScene === scenes[sceneId];
-                            
+
                             // Pre-load the high-res image to ensure it's ready
                             const highResImg = new Image();
                             highResImg.onload = () => {
                                 console.log(`High-res image loaded for scene ${sceneId}, creating scene`);
-                                
+
                                 const highResScene = viewer.createScene({
                                     source: Marzipano.ImageUrlSource.fromString(sceneData.imageUrl),
                                     geometry: new Marzipano.EquirectGeometry([{ width: sceneData.geometry.width }]),
                                     view: new Marzipano.RectilinearView(undefined, zoomLimiter)
                                 });
-                                
+
                                 // Replace the scene reference
                                 scenes[sceneId] = highResScene;
                                 highResLoaded[sceneId] = true;
-                                
+
                                 // Add hotspots to high-res scene
                                 addHotspotsToScene(highResScene, sceneData);
-                                
+
                                 // If this scene was active when we started loading, switch to high-res after ensuring it's fully rendered
                                 if (isCurrentlyActive) {
                                     // Use requestAnimationFrame to ensure scene is fully rendered before switching
@@ -132,19 +132,19 @@ function Explore() {
                                             requestAnimationFrame(waitForSceneReady);
                                         }
                                     };
-                                    
+
                                     // Start checking for readiness
                                     requestAnimationFrame(waitForSceneReady);
                                 }
                             };
-                            
+
                             highResImg.onerror = () => {
                                 console.warn(`Failed to load high-res image for scene ${sceneId}`);
                             };
-                            
+
                             // Start loading the high-res image
                             highResImg.src = sceneData.imageUrl;
-                            
+
                         } catch (error) {
                             console.warn(`Failed to load high-res for scene ${sceneId}:`, error);
                         }
@@ -154,16 +154,16 @@ function Explore() {
                 // Create all scenes with low-res images first
                 data.scenes.forEach(sceneData => {
                     const lowResUrl = getLowResUrl(sceneData.imageUrl);
-                    
+
                     const scene = viewer.createScene({
                         source: Marzipano.ImageUrlSource.fromString(lowResUrl),
                         geometry: new Marzipano.EquirectGeometry([{ width: sceneData.geometry.width }]),
                         view: new Marzipano.RectilinearView(undefined, zoomLimiter)
                     });
-                    
+
                     scenes[sceneData.id] = scene;
                     highResLoaded[sceneData.id] = false;
-                    
+
                     // Add hotspots to low-res scene
                     addHotspotsToScene(scene, sceneData);
                 });
