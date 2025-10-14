@@ -3,7 +3,7 @@
     {
       "id": "scene1760246558542",
       "name": "Madras st entrance",
-      "imageUrl": "tour_images/image-1760246581680-17062971.JPG",
+      "imageUrl": "tour_images/image-1760430786152-623133469.webp",
       "geometry": {
         "width": 4000
       },
@@ -41,12 +41,17 @@
         "yaw": -2.945272860353512,
         "pitch": -0.0199642506712987,
         "fov": 2.1483672359245327
+      },
+      "lowResUrl": "tour_images/image-1760430786152-623133469_lowres.webp",
+      "dimensions": {
+        "width": 5888,
+        "height": 2944
       }
     },
     {
       "id": "scene1",
       "name": "Gym Foyer",
-      "imageUrl": "tour_images/pano1.jpg",
+      "imageUrl": "tour_images/image-1760430813806-548291137.webp",
       "geometry": {
         "width": 4000
       },
@@ -77,12 +82,17 @@
         "yaw": 0.28202958741759865,
         "pitch": 0.04737048176561842,
         "fov": 1.5707963267948966
+      },
+      "lowResUrl": "tour_images/image-1760430813806-548291137_lowres.webp",
+      "dimensions": {
+        "width": 5888,
+        "height": 2944
       }
     },
     {
       "id": "scene2",
       "name": "S/N Foyer",
-      "imageUrl": "tour_images/pano2.jpg",
+      "imageUrl": "tour_images/image-1760430831991-398921306.webp",
       "geometry": {
         "width": 4000
       },
@@ -120,12 +130,17 @@
         "yaw": 2.456028439687522,
         "pitch": 0.26323675219291154,
         "fov": 1.7453292519943295
+      },
+      "lowResUrl": "tour_images/image-1760430831991-398921306_lowres.webp",
+      "dimensions": {
+        "width": 5888,
+        "height": 2944
       }
     },
     {
       "id": "scene1760246251028",
       "name": "Library",
-      "imageUrl": "tour_images/image-1760246264278-915723279.JPG",
+      "imageUrl": "tour_images/image-1760430854933-981521734.webp",
       "geometry": {
         "width": 4000
       },
@@ -156,12 +171,17 @@
         "yaw": 1.7458828200494043,
         "pitch": 0.26356911751716616,
         "fov": 1.5707963267948966
+      },
+      "lowResUrl": "tour_images/image-1760430854933-981521734_lowres.webp",
+      "dimensions": {
+        "width": 5888,
+        "height": 2944
       }
     },
     {
       "id": "scene1760246374487",
       "name": "Inside gym",
-      "imageUrl": "tour_images/image-1760246383530-477444667.JPG",
+      "imageUrl": "tour_images/image-1760430871425-852880273.webp",
       "geometry": {
         "width": 4000
       },
@@ -178,12 +198,17 @@
         "yaw": -1.4273768887141074,
         "pitch": 0.14081097411676247,
         "fov": 1.5707963267948966
+      },
+      "lowResUrl": "tour_images/image-1760430871425-852880273_lowres.webp",
+      "dimensions": {
+        "width": 5888,
+        "height": 2944
       }
     },
     {
       "id": "scene1760246731339",
       "name": "D block Quad",
-      "imageUrl": "tour_images/image-1760246747472-125880643.JPG",
+      "imageUrl": "tour_images/image-1760430902567-484545274.webp",
       "geometry": {
         "width": 4000
       },
@@ -221,12 +246,17 @@
         "yaw": -2.0523017166119004,
         "pitch": -0.1227003763008625,
         "fov": 1.5707963267948966
+      },
+      "lowResUrl": "tour_images/image-1760430902567-484545274_lowres.webp",
+      "dimensions": {
+        "width": 5888,
+        "height": 2944
       }
     },
     {
       "id": "scene1760246894225",
       "name": "Center Walkway",
-      "imageUrl": "tour_images/image-1760246912117-32994410.JPG",
+      "imageUrl": "tour_images/image-1760430920588-151039184.webp",
       "geometry": {
         "width": 4000
       },
@@ -259,12 +289,17 @@
           "text": "Outside Rakia",
           "target": "scene1760247134107"
         }
-      ]
+      ],
+      "lowResUrl": "tour_images/image-1760430920588-151039184_lowres.webp",
+      "dimensions": {
+        "width": 5888,
+        "height": 2944
+      }
     },
     {
       "id": "scene1760247134107",
       "name": "Outside Rakaia",
-      "imageUrl": "tour_images/image-1760247149375-552431422.JPG",
+      "imageUrl": "tour_images/image-1760430972722-233134076.webp",
       "geometry": {
         "width": 4000
       },
@@ -302,12 +337,17 @@
         "yaw": -0.701712917558801,
         "pitch": 0.04051427519367756,
         "fov": 1.5707963267948966
+      },
+      "lowResUrl": "tour_images/image-1760430972722-233134076_lowres.webp",
+      "dimensions": {
+        "width": 5888,
+        "height": 2944
       }
     },
     {
       "id": "scene1760247287645",
       "name": "Outside W Block",
-      "imageUrl": "tour_images/image-1760247312015-957683615.JPG",
+      "imageUrl": "tour_images/image-1760430992871-522417736.webp",
       "geometry": {
         "width": 4000
       },
@@ -352,12 +392,17 @@
         "yaw": 0.42640415069622506,
         "pitch": 0.010417956478383061,
         "fov": 1.5707963267948966
+      },
+      "lowResUrl": "tour_images/image-1760430992871-522417736_lowres.webp",
+      "dimensions": {
+        "width": 5888,
+        "height": 2944
       }
     },
     {
       "id": "scene1760247687974",
       "name": "Outside Bike Storage",
-      "imageUrl": "tour_images/image-1760247706861-281204969.JPG",
+      "imageUrl": "tour_images/image-1760431015707-197138494.webp",
       "geometry": {
         "width": 4000
       },
@@ -381,12 +426,17 @@
         "yaw": 2.8281718777700604,
         "pitch": -0.017363260797294444,
         "fov": 1.5707963267948966
+      },
+      "lowResUrl": "tour_images/image-1760431015707-197138494_lowres.webp",
+      "dimensions": {
+        "width": 5888,
+        "height": 2944
       }
     },
     {
       "id": "scene1760247736814",
       "name": "Top N/S Block",
-      "imageUrl": "tour_images/image-1760247771900-407576424.JPG",
+      "imageUrl": "tour_images/image-1760431031096-193662944.webp",
       "geometry": {
         "width": 4000
       },
@@ -403,12 +453,17 @@
         "yaw": -3.0395898663549197,
         "pitch": -0.04185569467241024,
         "fov": 1.8793491312409771
+      },
+      "lowResUrl": "tour_images/image-1760431031096-193662944_lowres.webp",
+      "dimensions": {
+        "width": 5888,
+        "height": 2944
       }
     },
     {
       "id": "scene1760247882127",
       "name": "Health Center",
-      "imageUrl": "tour_images/image-1760247930491-534744698.JPG",
+      "imageUrl": "tour_images/image-1760431049585-402080821.webp",
       "geometry": {
         "width": 4000
       },
@@ -432,12 +487,17 @@
         "yaw": 0.4508608205172777,
         "pitch": 0.1470089414170701,
         "fov": 1.5707963267948966
+      },
+      "lowResUrl": "tour_images/image-1760431049585-402080821_lowres.webp",
+      "dimensions": {
+        "width": 5888,
+        "height": 2944
       }
     },
     {
       "id": "scene1760248018321",
       "name": "Student Lounge",
-      "imageUrl": "tour_images/image-1760248031820-330476010.JPG",
+      "imageUrl": "tour_images/image-1760431066034-930786100.webp",
       "geometry": {
         "width": 4000
       },
@@ -475,12 +535,17 @@
         "yaw": 1.0697182389205668,
         "pitch": 0.019678362236932756,
         "fov": 1.5707963267948966
+      },
+      "lowResUrl": "tour_images/image-1760431066034-930786100_lowres.webp",
+      "dimensions": {
+        "width": 5888,
+        "height": 2944
       }
     },
     {
       "id": "scene1760248309156",
       "name": "Madras st Carpark",
-      "imageUrl": "tour_images/image-1760248330026-218284836.JPG",
+      "imageUrl": "tour_images/image-1760431091717-390930882.webp",
       "geometry": {
         "width": 4000
       },
@@ -525,12 +590,17 @@
         "yaw": -1.9855601973724717,
         "pitch": 0.008102855038735868,
         "fov": 1.5707963267948966
+      },
+      "lowResUrl": "tour_images/image-1760431091717-390930882_lowres.webp",
+      "dimensions": {
+        "width": 5888,
+        "height": 2944
       }
     },
     {
       "id": "scene1760248588774",
       "name": "Madras st Carpark Two",
-      "imageUrl": "tour_images/image-1760248595834-159238970.JPG",
+      "imageUrl": "tour_images/image-1760431107563-57019653.webp",
       "geometry": {
         "width": 4000
       },
@@ -568,12 +638,17 @@
         "yaw": -2.0143011191133304,
         "pitch": 0.07987099966753775,
         "fov": 1.5707963267948966
+      },
+      "lowResUrl": "tour_images/image-1760431107563-57019653_lowres.webp",
+      "dimensions": {
+        "width": 5888,
+        "height": 2944
       }
     },
     {
       "id": "scene1760248825576",
       "name": "Courtyard",
-      "imageUrl": "tour_images/image-1760248866630-74266320.JPG",
+      "imageUrl": "tour_images/image-1760431128961-224266330.webp",
       "geometry": {
         "width": 4000
       },
@@ -599,12 +674,17 @@
           "text": "Rakaia Hallway",
           "target": "scene1760417043354"
         }
-      ]
+      ],
+      "lowResUrl": "tour_images/image-1760431128961-224266330_lowres.webp",
+      "dimensions": {
+        "width": 5888,
+        "height": 2944
+      }
     },
     {
       "id": "scene1760413520439",
       "name": "Inside Rakaia",
-      "imageUrl": "tour_images/image-1760413538471-36778191.JPG",
+      "imageUrl": "tour_images/image-1760431162171-585199670.webp",
       "geometry": {
         "width": 4000
       },
@@ -628,12 +708,17 @@
         "yaw": 0.6803927100239999,
         "pitch": -0.013890608637833424,
         "fov": 1.5707963267948966
+      },
+      "lowResUrl": "tour_images/image-1760431162171-585199670_lowres.webp",
+      "dimensions": {
+        "width": 5888,
+        "height": 2944
       }
     },
     {
       "id": "scene1760413622275",
       "name": "Inside Rakaia 2",
-      "imageUrl": "tour_images/image-1760413643107-899246053.JPG",
+      "imageUrl": "tour_images/image-1760431208007-605219270.webp",
       "geometry": {
         "width": 4000
       },
@@ -678,12 +763,17 @@
         "yaw": 3.005222296863497,
         "pitch": 0.09260405758555201,
         "fov": 1.5707963267948966
+      },
+      "lowResUrl": "tour_images/image-1760431208007-605219270_lowres.webp",
+      "dimensions": {
+        "width": 5888,
+        "height": 2944
       }
     },
     {
       "id": "scene1760413818435",
       "name": "Rakaia",
-      "imageUrl": "tour_images/image-1760417231440-295098902.webp",
+      "imageUrl": "tour_images/image-1760431375990-727726208.webp",
       "geometry": {
         "width": 4000
       },
@@ -728,12 +818,17 @@
         "yaw": -2.816357913677056,
         "pitch": 0.098341845784228,
         "fov": 1.5707963267948966
+      },
+      "lowResUrl": "tour_images/image-1760431375990-727726208_lowres.webp",
+      "dimensions": {
+        "width": 5760,
+        "height": 2880
       }
     },
     {
       "id": "scene1760415255623",
       "name": "Cortyard 2",
-      "imageUrl": "tour_images/image-1760414983040-313044500.JPG",
+      "imageUrl": "tour_images/image-1760431534662-22454282.webp",
       "geometry": {
         "width": 4000
       },
@@ -749,15 +844,8 @@
           "type": "waypoint",
           "pitch": -0.03387158607948315,
           "yaw": 0.7182937805023428,
-          "text": "Rakaia",
-          "target": "scene1760413818435"
-        },
-        {
-          "type": "waypoint",
-          "pitch": -0.03550097281685183,
-          "yaw": 1.3984320129542116,
-          "text": "S/N Foyer",
-          "target": "scene2"
+          "text": "Rakaia Hallway",
+          "target": "scene1760417043354"
         },
         {
           "type": "info",
@@ -770,20 +858,25 @@
           "type": "waypoint",
           "pitch": -0.019927577697917087,
           "yaw": 2.1204396366588725,
-          "text": "Madras st entrance",
-          "target": "scene1760246558542"
+          "text": "Courtyard 3",
+          "target": "scene1760415850783"
         }
       ],
       "defaultView": {
         "yaw": -1.6529882028987348,
         "pitch": 0.07638998918574558,
         "fov": 1.5707963267948966
+      },
+      "lowResUrl": "tour_images/image-1760431534662-22454282_lowres.webp",
+      "dimensions": {
+        "width": 5888,
+        "height": 2944
       }
     },
     {
       "id": "scene1760415850783",
       "name": "Courtyard 3",
-      "imageUrl": "tour_images/image-1760415866053-142965216.JPG",
+      "imageUrl": "tour_images/image-1760434318835-984006663.webp",
       "geometry": {
         "width": 4000
       },
@@ -806,8 +899,8 @@
           "type": "waypoint",
           "pitch": -0.03282645235481496,
           "yaw": -0.16795562266681863,
-          "text": "Rakaia",
-          "target": "scene1760413818435"
+          "text": "Rakaia Hallway",
+          "target": "scene1760417043354"
         },
         {
           "type": "waypoint",
@@ -821,12 +914,17 @@
         "yaw": 0.6627803646691568,
         "pitch": -0.21414688316659358,
         "fov": 1.5707963267948966
+      },
+      "lowResUrl": "tour_images/image-1760434318835-984006663_lowres.webp",
+      "dimensions": {
+        "width": 5888,
+        "height": 2944
       }
     },
     {
       "id": "scene1760416932960",
       "name": "Computing Office",
-      "imageUrl": "tour_images/image-1760416955641-276026468.webp",
+      "imageUrl": "tour_images/image-1760431477763-711930846.webp",
       "geometry": {
         "width": 4000
       },
@@ -850,12 +948,17 @@
         "yaw": 2.9128708167532134,
         "pitch": 0.22181097305275443,
         "fov": 1.5707963267948966
+      },
+      "lowResUrl": "tour_images/image-1760431477763-711930846_lowres.webp",
+      "dimensions": {
+        "width": 5760,
+        "height": 2880
       }
     },
     {
       "id": "scene1760417043354",
       "name": "Rakaia Hallway",
-      "imageUrl": "tour_images/image-1760417073179-49553803.webp",
+      "imageUrl": "tour_images/image-1760431496179-597644875.webp",
       "geometry": {
         "width": 4000
       },
@@ -888,12 +991,17 @@
           "text": "Madras st Carpark Two",
           "target": "scene1760248588774"
         }
-      ]
+      ],
+      "lowResUrl": "tour_images/image-1760431496179-597644875_lowres.webp",
+      "dimensions": {
+        "width": 5760,
+        "height": 2880
+      }
     },
     {
       "id": "scene1760417512210",
       "name": "Hospotality",
-      "imageUrl": "tour_images/image-1760417526127-745617148.JPG",
+      "imageUrl": "tour_images/image-1760431594044-935994762.webp",
       "geometry": {
         "width": 4000
       },
@@ -924,12 +1032,17 @@
         "yaw": 1.37167480092263,
         "pitch": -0.0901914678275677,
         "fov": 1.5707963267948966
+      },
+      "lowResUrl": "tour_images/image-1760431594044-935994762_lowres.webp",
+      "dimensions": {
+        "width": 5888,
+        "height": 2944
       }
     },
     {
       "id": "scene1760417698551",
       "name": "St Asaph St Corner",
-      "imageUrl": "tour_images/image-1760417709593-266465150.JPG",
+      "imageUrl": "tour_images/image-1760431615477-187170274.webp",
       "geometry": {
         "width": 4000
       },
@@ -967,17 +1080,8 @@
         "yaw": -1.5730605298511406,
         "pitch": -0.0324114201549488,
         "fov": 1.5707963267948966
-      }
-    },
-    {
-      "id": "scene1760427627329",
-      "name": "test scene",
-      "imageUrl": "tour_images/image-1760427979401-505389336.webp",
-      "geometry": {
-        "width": 4000
       },
-      "hotspots": [],
-      "lowResUrl": "tour_images/image-1760427979401-505389336_lowres.webp",
+      "lowResUrl": "tour_images/image-1760431615477-187170274_lowres.webp",
       "dimensions": {
         "width": 5888,
         "height": 2944
