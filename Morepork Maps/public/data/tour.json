@@ -10,30 +10,37 @@
       "hotspots": [
         {
           "type": "waypoint",
-          "pitch": -0.018844828248544943,
-          "yaw": -0.3790163274794267,
+          "pitch": -0.07731591476121125,
+          "yaw": -0.3090200211798013,
           "text": "D block Quad",
           "target": "scene1760246731339"
         },
         {
           "type": "waypoint",
-          "pitch": -0.045233095491855835,
-          "yaw": -1.1045877939840238,
+          "pitch": -0.02188043875561263,
+          "yaw": -1.5366182985111703,
           "text": "Student Lounge",
           "target": "scene1760248018321"
         },
         {
           "type": "waypoint",
-          "pitch": 0.0015602975092345872,
-          "yaw": 2.9198544679326,
+          "pitch": -0.08964926541753826,
+          "yaw": 2.8259489427056756,
           "text": "Madras st Carpark",
           "target": "scene1760248309156"
+        },
+        {
+          "type": "waypoint",
+          "pitch": -0.011851404729444681,
+          "yaw": -1.8313630877929779,
+          "text": "Center Walkway",
+          "target": "scene1760246894225"
         }
       ],
       "defaultView": {
-        "yaw": -2.372060744229799,
-        "pitch": -0.03386446786091568,
-        "fov": 1.616392766880553
+        "yaw": -2.945272860353512,
+        "pitch": -0.0199642506712987,
+        "fov": 2.1483672359245327
       }
     },
     {
@@ -947,12 +954,33 @@
           "yaw": 3.092868797079962,
           "text": "Madras st Carpark Two",
           "target": "scene1760248588774"
+        },
+        {
+          "type": "waypoint",
+          "pitch": 0.12438569519958165,
+          "yaw": -0.6247293379397831,
+          "text": "test scene",
+          "target": "scene1760427627329"
         }
       ],
       "defaultView": {
         "yaw": -1.5730605298511406,
         "pitch": -0.0324114201549488,
         "fov": 1.5707963267948966
+      }
+    },
+    {
+      "id": "scene1760427627329",
+      "name": "test scene",
+      "imageUrl": "tour_images/image-1760427979401-505389336.webp",
+      "geometry": {
+        "width": 4000
+      },
+      "hotspots": [],
+      "lowResUrl": "tour_images/image-1760427979401-505389336_lowres.webp",
+      "dimensions": {
+        "width": 5888,
+        "height": 2944
       }
     }
   ]

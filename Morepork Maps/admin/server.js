@@ -3,6 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import multer from 'multer';
+import sharp from 'sharp';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -82,6 +83,49 @@ function ensureTourFile() {
     }
 }
 
+// Helper: process uploaded image - convert to WebP and create low-res version
+async function processImage(inputPath, filename) {
+    const nameWithoutExt = path.parse(filename).name;
+    const webpPath = path.join(tourImagesDir, `${nameWithoutExt}.webp`);
+    const lowResPath = path.join(tourImagesDir, `${nameWithoutExt}_lowres.webp`);
+    
+    try {
+        // Get original image metadata
+        const metadata = await sharp(inputPath).metadata();
+        console.log(`Processing image: ${metadata.width}x${metadata.height}`);
+        
+        // Convert to WebP (high quality for main image)
+        await sharp(inputPath)
+            .webp({ quality: 85, effort: 4 })
+            .toFile(webpPath);
+        
+        // Create low-res version (max 1024px wide, lower quality for fast loading)
+        const lowResWidth = Math.min(1024, metadata.width);
+        await sharp(inputPath)
+            .resize(lowResWidth, null, { 
+                withoutEnlargement: true,
+                fit: 'inside'
+            })
+            .webp({ quality: 60, effort: 4 })
+            .toFile(lowResPath);
+        
+        console.log(`Created WebP versions: ${nameWithoutExt}.webp and ${nameWithoutExt}_lowres.webp`);
+        
+        // Delete original file to save space
+        fs.unlinkSync(inputPath);
+        
+        return {
+            webpFilename: `${nameWithoutExt}.webp`,
+            lowResFilename: `${nameWithoutExt}_lowres.webp`,
+            originalWidth: metadata.width,
+            originalHeight: metadata.height
+        };
+    } catch (error) {
+        console.error('Error processing image:', error);
+        throw error;
+    }
+}
+
 // API to get contacts
 app.get('/knowledge/contacts.json', (req, res) => {
     ensureContactsFile();
@@ -146,21 +190,31 @@ app.get('/admin/api/images', (req, res) => {
 });
 
 // API to upload new image
-app.post('/admin/api/upload-image', upload.single('image'), (req, res) => {
+app.post('/admin/api/upload-image', upload.single('image'), async (req, res) => {
     try {
         if (!req.file) {
             return res.status(400).json({ error: 'No file uploaded' });
         }
 
+        console.log(`Processing uploaded image: ${req.file.originalname}`);
+        
+        // Process the image (convert to WebP and create low-res version)
+        const processed = await processImage(req.file.path, req.file.filename);
+        
         res.json({
-            message: 'Image uploaded successfully',
-            filename: req.file.filename,
+            message: 'Image uploaded and processed successfully',
+            filename: processed.webpFilename,
+            lowResFilename: processed.lowResFilename,
             originalName: req.file.originalname,
-            size: req.file.size
+            dimensions: {
+                width: processed.originalWidth,
+                height: processed.originalHeight
+            },
+            note: 'Original file converted to WebP format with low-res preview'
         });
     } catch (error) {
-        console.error('Error uploading image:', error);
-        res.status(500).json({ error: 'Failed to upload image' });
+        console.error('Error uploading/processing image:', error);
+        res.status(500).json({ error: 'Failed to upload and process image' });
     }
 });
 

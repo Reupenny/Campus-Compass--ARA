@@ -15,6 +15,7 @@ interface SceneData {
     id: string;
     name: string;
     imageUrl: string;
+    lowResUrl?: string; // Low-res version for fast loading
     geometry: { width: number };
     hotspots: HotspotData[];
 }
@@ -41,13 +42,31 @@ function Explore() {
             .then((data: TourData) => {
                 const scenes: { [key: string]: Marzipano.Scene } = {};
 
+                // Create scenes with progressive loading support
                 data.scenes.forEach(sceneData => {
+                    // Start with low-res version if available, otherwise use main image
+                    const initialImageUrl = sceneData.lowResUrl || sceneData.imageUrl;
+                    
                     const scene = viewer.createScene({
-                        source: Marzipano.ImageUrlSource.fromString(sceneData.imageUrl),
+                        source: Marzipano.ImageUrlSource.fromString(initialImageUrl),
                         geometry: new Marzipano.EquirectGeometry([{ width: sceneData.geometry.width }]),
                         view: new Marzipano.RectilinearView(null, zoomLimiter)
                     });
                     scenes[sceneData.id] = scene;
+                    
+                    // If we have a low-res version, preload the high-res version
+                    if (sceneData.lowResUrl && sceneData.imageUrl !== initialImageUrl) {
+                        setTimeout(() => {
+                            console.log(`Preloading high-res version for scene ${sceneData.id}`);
+                            const highResScene = viewer.createScene({
+                                source: Marzipano.ImageUrlSource.fromString(sceneData.imageUrl),
+                                geometry: new Marzipano.EquirectGeometry([{ width: sceneData.geometry.width }]),
+                                view: new Marzipano.RectilinearView(null, zoomLimiter)
+                            });
+                            // Replace the scene with high-res version
+                            scenes[sceneData.id] = highResScene;
+                        }, 1000); // Load high-res after 1 second
+                    }
                 });
 
                 data.scenes.forEach(sceneData => {

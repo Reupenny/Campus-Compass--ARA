@@ -16,6 +16,11 @@ interface Scene {
     id: string;
     name: string;
     imageUrl: string;
+    lowResUrl?: string; // Low-res version for fast loading
+    dimensions?: {
+        width: number;
+        height: number;
+    };
     geometry: {
         width: number;
     };
@@ -184,7 +189,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                         onClick={onSetDefaultView}
                         className="set-default-view-btn"
                     >
-                        📌 Set as Default View
+                        Set as Default View
                     </button>
                 </div>
             )}
@@ -196,13 +201,13 @@ const Sidebar: React.FC<SidebarProps> = ({
                     onClick={() => onCreateHotspot('info')}
                     className="hotspot-btn add-info-btn"
                 >
-                    📍 Add Info Point
+                    Add Info Point
                 </button>
                 <button
                     onClick={() => onCreateHotspot('waypoint')}
                     className="hotspot-btn add-waypoint-btn"
                 >
-                    🚪 Add Waypoint
+                    Add Waypoint
                 </button>
             </div>
 
@@ -383,36 +388,112 @@ const Edit360 = React.forwardRef<any, Edit360Props>(({ onReady }, ref) => {
             { width: scene.geometry.width }
         ]);
 
-        // Create image source
-        const source = Marzipano.ImageUrlSource.fromString(`/${scene.imageUrl}`);
+        // Progressive loading: start with low-res if available, then load high-res
+        const loadProgressively = async () => {
+            try {
+                let currentSource;
+                
+                // If we have a low-res version, load it first
+                if (scene.lowResUrl) {
+                    console.log('Loading low-res preview first...');
+                    const lowResSource = Marzipano.ImageUrlSource.fromString(scene.lowResUrl, { cubeMapPreviewUrl: scene.lowResUrl });
+                    
+                    // Create view with default view settings if available
+                    const initialView = scene.defaultView ? {
+                        yaw: scene.defaultView.yaw,
+                        pitch: scene.defaultView.pitch,
+                        fov: scene.defaultView.fov
+                    } : {
+                        yaw: 0,
+                        pitch: 0,
+                        fov: 90 * Math.PI / 180
+                    };
+                    const view = new Marzipano.RectilinearView(initialView);
 
-        // Create view with default view settings if available
-        const initialView = scene.defaultView ? {
-            yaw: scene.defaultView.yaw,
-            pitch: scene.defaultView.pitch,
-            fov: scene.defaultView.fov
-        } : {
-            yaw: 0,
-            pitch: 0,
-            fov: 90 * Math.PI / 180
+                    // Create scene with low-res image first
+                    const lowResScene = viewer.createScene({
+                        source: lowResSource,
+                        geometry: geometry,
+                        view: view
+                    });
+                    
+                    // Switch to low-res scene immediately
+                    lowResScene.switchTo();
+                    setCurrentScene(lowResScene);
+                    
+                    // Add hotspots to low-res scene
+                    scene.hotspots.forEach((hotspot, index) => {
+                        addHotspotToScene(lowResScene, hotspot, index);
+                    });
+                    
+                    // Small delay before loading high-res
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                }
+                
+                // Now load the high-res version
+                console.log('Loading high-res image...');
+                const highResSource = Marzipano.ImageUrlSource.fromString(scene.imageUrl, { cubeMapPreviewUrl: scene.imageUrl });
+                
+                const initialView = scene.defaultView ? {
+                    yaw: scene.defaultView.yaw,
+                    pitch: scene.defaultView.pitch,
+                    fov: scene.defaultView.fov
+                } : {
+                    yaw: 0,
+                    pitch: 0,
+                    fov: 90 * Math.PI / 180
+                };
+                const view = new Marzipano.RectilinearView(initialView);
+
+                // Create final high-res scene
+                const highResScene = viewer.createScene({
+                    source: highResSource,
+                    geometry: geometry,
+                    view: view
+                });
+
+                // Switch to high-res scene
+                highResScene.switchTo();
+                setCurrentScene(highResScene);
+
+                // Add hotspots to high-res scene
+                scene.hotspots.forEach((hotspot, index) => {
+                    addHotspotToScene(highResScene, hotspot, index);
+                });
+                
+                console.log('High-res image loaded successfully');
+                
+            } catch (error) {
+                console.error('Error in progressive loading:', error);
+                // Fallback to direct loading
+                const source = Marzipano.ImageUrlSource.fromString(scene.imageUrl, { cubeMapPreviewUrl: scene.imageUrl });
+                const initialView = scene.defaultView ? {
+                    yaw: scene.defaultView.yaw,
+                    pitch: scene.defaultView.pitch,
+                    fov: scene.defaultView.fov
+                } : {
+                    yaw: 0,
+                    pitch: 0,
+                    fov: 90 * Math.PI / 180
+                };
+                const view = new Marzipano.RectilinearView(initialView);
+                
+                const fallbackScene = viewer.createScene({
+                    source: source,
+                    geometry: geometry,
+                    view: view
+                });
+                
+                fallbackScene.switchTo();
+                setCurrentScene(fallbackScene);
+                
+                scene.hotspots.forEach((hotspot, index) => {
+                    addHotspotToScene(fallbackScene, hotspot, index);
+                });
+            }
         };
-        const view = new Marzipano.RectilinearView(initialView);
 
-        // Create scene
-        const marzipanoScene = viewer.createScene({
-            source: source,
-            geometry: geometry,
-            view: view
-        });
-
-        // Add existing hotspots
-        scene.hotspots.forEach((hotspot, index) => {
-            addHotspotToScene(marzipanoScene, hotspot, index);
-        });
-
-        // Switch to scene
-        marzipanoScene.switchTo();
-        setCurrentScene(marzipanoScene);
+        loadProgressively();
     };
 
     const addHotspotToScene = (marzipanoScene: any, hotspot: Hotspot, index: number) => {
@@ -911,6 +992,9 @@ const Edit360 = React.forwardRef<any, Edit360Props>(({ onReady }, ref) => {
         formData.append('image', file);
 
         try {
+            // Show upload progress
+            alert('Uploading and processing image... This may take a moment.');
+            
             const response = await fetch('/admin/api/upload-image', {
                 method: 'POST',
                 body: formData,
@@ -918,20 +1002,34 @@ const Edit360 = React.forwardRef<any, Edit360Props>(({ onReady }, ref) => {
 
             if (response.ok) {
                 const result = await response.json();
+                console.log('Image processed:', result);
+                
+                // Use the WebP version as the main image
                 const imagePath = `tour_images/${result.filename}`;
-                setEditingScene({ ...editingScene, imageUrl: imagePath });
+                const updatedScene = { 
+                    ...editingScene, 
+                    imageUrl: imagePath,
+                    // Store additional metadata
+                    lowResUrl: `tour_images/${result.lowResFilename}`,
+                    dimensions: result.dimensions
+                };
+                setEditingScene(updatedScene);
+                
                 // Refresh available images list
                 const imagesResponse = await fetch('/admin/api/images');
                 if (imagesResponse.ok) {
                     const images = await imagesResponse.json();
                     setAvailableImages(images);
                 }
+                
+                alert(`Image processed successfully! Converted to WebP format (${result.dimensions.width}x${result.dimensions.height})`);
             } else {
-                alert('Failed to upload image');
+                const errorData = await response.json();
+                alert(`Failed to upload image: ${errorData.error || 'Unknown error'}`);
             }
         } catch (error) {
             console.error('Error uploading image:', error);
-            alert('Error uploading image');
+            alert('Error uploading image. Please try again.');
         }
     };
 

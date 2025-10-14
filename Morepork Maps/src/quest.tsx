@@ -16,6 +16,7 @@ interface SceneData {
     id: string;
     name: string;
     imageUrl: string;
+    lowResUrl?: string; // Low-res version for fast loading
     geometry: { width: number };
     hotspots: HotspotData[];
 }
