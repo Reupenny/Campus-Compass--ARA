@@ -136,21 +136,21 @@
             {
                 "label": "L",
                 "name": "Library",
-                "location": "apart of the Rakia center, below the main courtyard east of X building",
+                "location": "apart of the Rakaia center, below the main courtyard east of X building",
                 "description": "The main campus library, offering a variety of resources, study spaces, and support services for students. contains disability services, 2 story building",
                 "number_of_floors": "2"
             },
             {
                 "label": "X",
                 "name": "Student Support",
-                "location": "apart of the Rakia center, east of madras st main carpark, below N building",
-                "description": "dedicated computer labs and has student services on the ground floor. It also houses classrooms for the Adult English program. 3 stroy building which also contains the elivators for the RAkia center",
+                "location": "apart of the Rakaia center, east of madras st main carpark, below N building",
+                "description": "dedicated computer labs and has student services on the ground floor. It also houses classrooms for the Adult English program. 3 stroy building which also contains the elivators for the Rakaia center",
                 "number_of_floors": "3"
             },
             {
                 "label": "A",
                 "name": "Administration",
-                "location": "apart of the Rakia center, below L block above C block, west of CH building",
+                "location": "apart of the Rakaia center, below L block above C block, west of CH building",
                 "description": "The main administrative building",
                 "number_of_floors": "2"
             },
@@ -211,7 +211,7 @@
                 "number_of_floors": "1"
             },
             {
-                "name": "Rakia center",
+                "name": "Rakaia center",
                 "location": "",
                 "description": "An interconnected atrium that combines L, A and X buildings into one space, it is a central hub for student services, including enrollment services, finance, academic support, an information desk, counseling and a cafe"
             },
