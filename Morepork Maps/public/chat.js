@@ -65,7 +65,7 @@ fetch('knowledge/templates.json')
     });
 
 // Load the tour information from the JSON file (chat-specific version)
-fetch('data/tour-chat.json')
+fetch('data/tour.json')
     .then(response => response.json())
     .then(data => {
         tourdata = data;
