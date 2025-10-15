@@ -21,6 +21,13 @@ function Explore() {
             return;
         }
 
+        // Safari height fix - set explicit dimensions
+        const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+        if (isSafari) {
+            panoElement.style.width = `${window.innerWidth}px`;
+            panoElement.style.height = `${window.innerHeight}px`;
+        }
+
         // Check if element is actually visible and has dimensions
         const rect = panoElement.getBoundingClientRect();
         if (rect.width === 0 || rect.height === 0) {
@@ -31,9 +38,6 @@ function Explore() {
         // Clear existing viewer completely and protect against external interference
         if (viewerRef.current) {
             try {
-                // Create a copy of tourData to prevent external modifications
-                const tourDataCopy = JSON.parse(JSON.stringify(tourData));
-
                 // Clear viewer safely
                 panoElement.innerHTML = '';
                 viewerRef.current = null;
@@ -211,8 +215,27 @@ function Explore() {
     useEffect(() => {
         initializeViewer();
 
+        // Safari resize handler
+        const handleResize = () => {
+            const panoElement = document.getElementById('pano');
+            if (panoElement) {
+                const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+                if (isSafari) {
+                    panoElement.style.width = `${window.innerWidth}px`;
+                    panoElement.style.height = `${window.innerHeight}px`;
+                }
+            }
+        };
+
+        // Add resize listener for Safari
+        window.addEventListener('resize', handleResize);
+        window.addEventListener('orientationchange', handleResize);
+
         // Cleanup function
         return () => {
+            window.removeEventListener('resize', handleResize);
+            window.removeEventListener('orientationchange', handleResize);
+            
             if (viewerRef.current) {
                 try {
                     const panoElement = document.getElementById('pano');
@@ -235,7 +258,7 @@ function Explore() {
 
     return (
         <>
-            <div id="pano" style={{ width: '100vw', height: '100vh' }}></div>
+            <div id="pano" className="pano-container"></div>
         </>
     );
 }

@@ -1,3 +1,25 @@
+/* Pano container styles - Safari compatible */
+.pano-container {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh; /* Dynamic viewport height for modern browsers */
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+/* Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+    .pano-container {
+        /* Use fixed positioning and window.innerHeight for Safari */
+        height: 100vh;
+        min-height: 100vh;
+        /* Fallback for older Safari versions */
+        min-height: -webkit-fill-available;
+    }
+}
+
 .hotspot-waypoint {
     width: 60px;
     height: 60px;
