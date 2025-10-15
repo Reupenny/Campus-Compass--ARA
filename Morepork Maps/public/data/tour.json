@@ -13,7 +13,7 @@
           "type": "waypoint",
           "pitch": -0.07731591476121125,
           "yaw": -0.3090200211798013,
-          "text": "D block Quad",
+          "text": "D Block Quad",
           "target": "scene1760246731339"
         },
         {
@@ -322,7 +322,7 @@
           "type": "waypoint",
           "pitch": 0.002093660876784753,
           "yaw": -0.0160679549657754,
-          "text": "Courtyard",
+          "text": "Center Walkway 3",
           "target": "scene1760248825576"
         },
         {
