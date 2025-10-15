@@ -164,6 +164,7 @@ respond using the directions through the explore tab.
 For example: "Head to the explore tab, you should start at 'Madras St Entrance' Then follow > Center Walkway > Outside W Block > W Block Foyer. Here you will find the Gym."
 but replace the locations with the correct ones based on the tour waypoints available to get to the requested location.
 Another example: "Where is the Library?" "Head to the explore tab, you should start at 'Madras St Entrance' Then follow > Madras St Car Park Entrance > Rakaia Cafe Entrance > Rakaia Center. Here you will find the Library."
+Make sure to use the exact names of the waypoints as they appear in the tour data and make sure to include all the waypoints in the directions, do not skip any waypoints!
 ---
 
 ### 5. STAFF HANDLING
