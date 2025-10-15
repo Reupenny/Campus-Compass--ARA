@@ -33,11 +33,11 @@ function Explore() {
             try {
                 // Create a copy of tourData to prevent external modifications
                 const tourDataCopy = JSON.parse(JSON.stringify(tourData));
-                
+
                 // Clear viewer safely
                 panoElement.innerHTML = '';
                 viewerRef.current = null;
-                
+
                 // Small delay to ensure cleanup is complete
                 await new Promise(resolve => setTimeout(resolve, 50));
             } catch (error) {
@@ -51,10 +51,10 @@ function Explore() {
 
             // Protect against external modifications during initialization
             setIsViewerProtected(true);
-            
+
             const newViewer = new Marzipano.Viewer(panoElement);
             viewerRef.current = newViewer;
-            
+
             // Set up viewer protection timeout
             if (protectionTimeoutRef.current) {
                 clearTimeout(protectionTimeoutRef.current);
@@ -245,11 +245,11 @@ function Explore() {
                 }
                 viewerRef.current = null;
             }
-            
+
             if (protectionTimeoutRef.current) {
                 clearTimeout(protectionTimeoutRef.current);
             }
-            
+
             initializationRef.current = false;
         };
     }, [tourData, loading, error]);

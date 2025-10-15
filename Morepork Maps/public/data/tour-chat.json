@@ -1,54 +1,54 @@
 {
-  "scenes": [
-    {
-      "id": "madras-entrance",
-      "name": "Madras Street Entrance",
-      "inView": "Main entrance to ARA Institute of Canterbury. The entrance features modern glass doors with the ARA logo prominently displayed. This is where most students enter the campus from Madras Street. Reception and information desk are located immediately inside."
-    },
-    {
-      "id": "reception-area",
-      "name": "Reception Area", 
-      "inView": "The reception area with information desk where students can get help with enrollment, course information, and general inquiries. Staff are available during business hours to assist with various administrative needs."
-    },
-    {
-      "id": "atrium",
-      "name": "Central Atrium",
-      "inView": "Large open atrium space that serves as the main hub of the campus. Features comfortable seating areas where students can study, socialize, or wait between classes. Natural lighting from skylights above creates a welcoming atmosphere."
-    },
-    {
-      "id": "library-entrance",
-      "name": "Library Entrance",
-      "inView": "Entrance to the campus library. The library provides quiet study spaces, computer access, research resources, and printing facilities. Students need their student ID to access library services."
-    },
-    {
-      "id": "library-interior",
-      "name": "Library Interior",
-      "inView": "Inside the library with study desks, computer stations, and book shelves. Quiet study environment with both individual and group study areas available. Printing and scanning services are available."
-    },
-    {
-      "id": "corridor-s-block",
-      "name": "S Block Corridor",
-      "inView": "Main corridor in S Block where computing and IT courses are taught. This corridor provides access to computer labs, classrooms, and staff offices including room S123 where Sandy, the computing coordinator, can be found."
-    },
-    {
-      "id": "computer-lab",
-      "name": "Computer Lab",
-      "inView": "One of the computing labs equipped with modern computers and software for IT and computing courses. Students use these labs for practical programming assignments, software development, and digital projects."
-    },
-    {
-      "id": "rakaia-centre",
-      "name": "Rakaia Centre",
-      "inView": "The Rakaia Centre serves as the main student services hub. Here you can find the information desk, student support services, counseling services, and assistance with academic and personal matters. This is the main help center for students."
-    },
-    {
-      "id": "cafeteria",
-      "name": "Cafeteria",
-      "inView": "Student cafeteria and food court area where students can purchase meals, snacks, and beverages. Features both hot and cold food options with seating areas for dining and socializing."
-    },
-    {
-      "id": "courtyard",
-      "name": "Outdoor Courtyard",
-      "inView": "Outdoor courtyard area providing a pleasant space for students to relax, eat lunch, or study outdoors. Features seating areas and landscaped gardens creating a peaceful environment away from classrooms."
-    }
-  ]
+    "scenes": [
+        {
+            "id": "madras-entrance",
+            "name": "Madras Street Entrance",
+            "inView": "Main entrance to ARA Institute of Canterbury. The entrance features modern glass doors with the ARA logo prominently displayed. This is where most students enter the campus from Madras Street. Reception and information desk are located immediately inside."
+        },
+        {
+            "id": "reception-area",
+            "name": "Reception Area",
+            "inView": "The reception area with information desk where students can get help with enrollment, course information, and general inquiries. Staff are available during business hours to assist with various administrative needs."
+        },
+        {
+            "id": "atrium",
+            "name": "Central Atrium",
+            "inView": "Large open atrium space that serves as the main hub of the campus. Features comfortable seating areas where students can study, socialize, or wait between classes. Natural lighting from skylights above creates a welcoming atmosphere."
+        },
+        {
+            "id": "library-entrance",
+            "name": "Library Entrance",
+            "inView": "Entrance to the campus library. The library provides quiet study spaces, computer access, research resources, and printing facilities. Students need their student ID to access library services."
+        },
+        {
+            "id": "library-interior",
+            "name": "Library Interior",
+            "inView": "Inside the library with study desks, computer stations, and book shelves. Quiet study environment with both individual and group study areas available. Printing and scanning services are available."
+        },
+        {
+            "id": "corridor-s-block",
+            "name": "S Block Corridor",
+            "inView": "Main corridor in S Block where computing and IT courses are taught. This corridor provides access to computer labs, classrooms, and staff offices including room S123 where Sandy, the computing coordinator, can be found."
+        },
+        {
+            "id": "computer-lab",
+            "name": "Computer Lab",
+            "inView": "One of the computing labs equipped with modern computers and software for IT and computing courses. Students use these labs for practical programming assignments, software development, and digital projects."
+        },
+        {
+            "id": "rakaia-centre",
+            "name": "Rakaia Centre",
+            "inView": "The Rakaia Centre serves as the main student services hub. Here you can find the information desk, student support services, counseling services, and assistance with academic and personal matters. This is the main help center for students."
+        },
+        {
+            "id": "cafeteria",
+            "name": "Cafeteria",
+            "inView": "Student cafeteria and food court area where students can purchase meals, snacks, and beverages. Features both hot and cold food options with seating areas for dining and socializing."
+        },
+        {
+            "id": "courtyard",
+            "name": "Outdoor Courtyard",
+            "inView": "Outdoor courtyard area providing a pleasant space for students to relax, eat lunch, or study outdoors. Features seating areas and landscaped gardens creating a peaceful environment away from classrooms."
+        }
+    ]
 }
