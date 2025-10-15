@@ -1,318 +1,258 @@
-{
-    "courses": [
-        {
-            "programme": "Bachelor of Information and Communication Technologies Level 7",
-            "aim": "The BICT is an applied programme targeted at school leavers, career changers or unqualified IT professionals seeking a qualification in ICT. The programme aims to produce work-ready graduates who meet the needs of the IT industry in New Zealand, as well as globally.",
-            "regulations": "This is a three-year full-time equivalent programme requiring 360 course credits. The maximum time frame to complete the programme is five years. It comprises 225 core course credits, 75 compulsory pathway credits and 60 elective credits, with a minimum of 75 credits at Level 7. A minimum of 450 work-integrated learning hours is required.",
-            "core_courses": [
-                {
-                    "code": "BCIS105",
-                    "title": "IT Practitioner Fundamentals",
-                    "level": 5,
-                    "credits": 15
-                },
-                {
-                    "code": "BCDE101",
-                    "title": "Introduction to Programming",
-                    "level": 5,
-                    "credits": 15
-                },
-                {
-                    "code": "BCCS191",
-                    "title": "Introduction to Networks",
-                    "level": 5,
-                    "credits": 15
-                },
-                {
-                    "code": "BCCS199",
-                    "title": "Operating Systems",
-                    "level": 5,
-                    "credits": 15
-                },
-                {
-                    "code": "BCIS106",
-                    "title": "Computational Methods",
-                    "level": 5,
-                    "credits": 15
-                },
-                {
-                    "code": "BCDE102",
-                    "title": "Introduction to Software Engineering",
-                    "level": 5,
-                    "credits": 15
-                },
-                {
-                    "code": "BCDE103",
-                    "title": "Database Design",
-                    "level": 5,
-                    "credits": 15
-                },
-                {
-                    "code": "BCCS183",
-                    "title": "Cloud Technologies and the IOT",
-                    "level": 5,
-                    "credits": 15
-                },
-                {
-                    "code": "BCIS207",
-                    "title": "Enterprise Solutions Deployment",
-                    "level": 6,
-                    "credits": 15
-                },
-                {
-                    "code": "BCIS208",
-                    "title": "IT Service Management",
-                    "level": 6,
-                    "credits": 15
-                },
-                {
-                    "code": "BCIS302",
-                    "title": "Managing Information and Cybersecurity",
-                    "level": 7,
-                    "credits": 15
-                },
-                {
-                    "code": "BCIS303",
-                    "title": "Information Technology Governance",
-                    "level": 7,
-                    "credits": 15
-                },
-                {
-                    "code": "BCIS309",
-                    "title": "Work Integrated Learning Project",
-                    "level": 7,
-                    "credits": 45
-                }
-            ],
-            "compulsory_courses": [
-                {
-                    "pathway": "Information Systems Pathway",
-                    "code": "BCIS211",
-                    "title": "Research of Information Solutions",
-                    "level": 6,
-                    "credits": 15
-                },
-                {
-                    "pathway": "Information Systems Pathway",
-                    "code": "BCIS212",
-                    "title": "Introduction to Enterprise Solutions Architecture",
-                    "level": 6,
-                    "credits": 15
-                },
-                {
-                    "pathway": "Information Systems Pathway",
-                    "code": "BCIS213",
-                    "title": "Introduction to Enterprise Intelligence and Analytics",
-                    "level": 6,
-                    "credits": 15
-                },
-                {
-                    "pathway": "Information Systems Pathway",
-                    "code": "BCIS312",
-                    "title": "Enterprise Solutions Architecture",
-                    "level": 7,
-                    "credits": 15
-                },
-                {
-                    "pathway": "Information Systems Pathway",
-                    "code": "BCIS313",
-                    "title": "Enterprise Intelligence and Analytics",
-                    "level": 7,
-                    "credits": 15
-                },
-                {
-                    "pathway": "Networking and Infrastructure Pathway",
-                    "code": "BCCS254",
-                    "title": "System Infrastructure",
-                    "level": 6,
-                    "credits": 15
-                },
-                {
-                    "pathway": "Networking and Infrastructure Pathway",
-                    "code": "BCCS283",
-                    "title": "Network Infrastructure",
-                    "level": 6,
-                    "credits": 15
-                },
-                {
-                    "pathway": "Networking and Infrastructure Pathway",
-                    "code": "BCCS292",
-                    "title": "Routing and Switching Essentials",
-                    "level": 6,
-                    "credits": 15
-                },
-                {
-                    "pathway": "Networking and Infrastructure Pathway",
-                    "code": "BCCS295",
-                    "title": "Enterprise Networking, Security & Automation",
-                    "level": 6,
-                    "credits": 15
-                },
-                {
-                    "pathway": "Networking and Infrastructure Pathway",
-                    "code": "BCCS355",
-                    "title": "Cloud Services",
-                    "level": 7,
-                    "credits": 15
-                },
-                {
-                    "pathway": "Software Development Pathway",
-                    "code": "BCDE211",
-                    "title": "Best Programming Practices (Web and Mobile Development)",
-                    "level": 6,
-                    "credits": 15
-                },
-                {
-                    "pathway": "Software Development Pathway",
-                    "code": "BCDE213",
-                    "title": "Interactive Media Development",
-                    "level": 6,
-                    "credits": 15
-                },
-                {
-                    "pathway": "Software Development Pathway",
-                    "code": "BCDE214",
-                    "title": "Database Administration",
-                    "level": 6,
-                    "credits": 15
-                },
-                {
-                    "pathway": "Software Development Pathway",
-                    "code": "BCDE215",
-                    "title": "Web Development",
-                    "level": 6,
-                    "credits": 15
-                },
-                {
-                    "pathway": "Software Development Pathway",
-                    "code": "BCDE311",
-                    "title": "Software Development Project",
-                    "level": 7,
-                    "credits": 15
-                }
-            ],
-            "elective_courses": [
-                {
-                    "code": "BCCS350",
-                    "title": "Advanced Programming",
-                    "level": 7,
-                    "credits": 15
-                },
-                {
-                    "code": "BCCS381",
-                    "title": "Special Topic – Networking Infrastructure",
-                    "level": 7,
-                    "credits": 15
-                },
-                {
-                    "code": "BCDE222",
-                    "title": "Best Programming Practices (C# .NET)",
-                    "level": 6,
-                    "credits": 15
-                },
-                {
-                    "code": "BCDE223",
-                    "title": "Best Programming Practices (Java)",
-                    "level": 6,
-                    "credits": 15
-                },
-                {
-                    "code": "BCDE224",
-                    "title": "Best Programming Practices (Server Side Programming - PHP)",
-                    "level": 6,
-                    "credits": 15
-                },
-                {
-                    "code": "BCDE321",
-                    "title": "Advanced Programming",
-                    "level": 7,
-                    "credits": 15
-                },
-                {
-                    "code": "BCIS206",
-                    "title": "Professional Practice",
-                    "level": 6,
-                    "credits": 15
-                },
-                {
-                    "code": "BCIS321",
-                    "title": "Special Topic in Information Systems",
-                    "level": 7,
-                    "credits": 15
-                },
-                {
-                    "code": "BCIT388",
-                    "title": "Mobile Technology",
-                    "level": 7,
-                    "credits": 15
-                },
-                {
-                    "code": "DNET601",
-                    "title": "Wireless Local Area Networks",
-                    "level": 6,
-                    "credits": 15
-                },
-                {
-                    "code": "DNET602",
-                    "title": "Network Security",
-                    "level": 6,
-                    "credits": 15
-                },
-                {
-                    "code": "DSYS601",
-                    "title": "Systems Deployment",
-                    "level": 6,
-                    "credits": 15
-                },
-                {
-                    "code": "NZDC605",
-                    "title": "Ethical Hacking",
-                    "level": 6,
-                    "credits": 12
-                },
-                {
-                    "code": "NZDC602",
-                    "title": "Cryptography",
-                    "level": 6,
-                    "credits": 12
-                }
-            ]
-        },
-        {
-            "programme": "Graduate Diploma in Information & Communication Technologies Level 7",
-            "aim": "The aim is to develop graduates who are suitably skilled in applying critical thinking to evaluate options in a structured and research-informed manner to contribute to the future developments of information systems development and deployment in organisations.",
-            "regulations": "This is a one-year full-time equivalent programme requiring 120 course credits. The maximum time frame to complete the programme is five years. It comprises 60 to 75 compulsory pathway credits and 45 to 60 elective credits, with a minimum of 75 credits at Level 7. A minimum of 150 work-integrated learning hours is required.",
-            "core_courses": [
-                {
-                    "code": "BCIS105",
-                    "title": "IT Practitioner Fundamentals",
-                    "level": 5,
-                    "credits": 15
-                },
-                {
-                    "code": "BCIS303",
-                    "title": "Management of ICT",
-                    "level": 7,
-                    "credits": 15
-                },
-                {
-                    "code": "BCIS370",
-                    "title": "IT Industry Project",
-                    "level": 7,
-                    "credits": 30
-                }
-            ],
-            "elective_courses": [
-                {
-                    "description": "Choose four courses from the list of BICT courses. At least two courses must be at level 7."
-                }
-            ]
-        },
-        {
-            "programme": "New Zealand Diploma In Cybersecurity Level 6",
-            "aim": "The purpose is to provide Aotearoa New Zealand with people who have attained internationally transferable industry-relevant knowledge and technical skills that will equip them to work in entry-level roles in the specialised field of cybersecurity, or to proceed to further study.",
-            "regulations": "This is a one-year full-time equivalent programme of study requiring the successful completion of 120 compulsory course credits."
-        }
-    ],
-    "course handbook": ""
-}
+[
+    {
+        "page": 1,
+        "content": "Digital Information Certificate, Diploma, Degree and Graduate  Diploma Programmes (Level 4 - Level 7)  Te Hoe Whakairi Kōrero Department of Creative Arts and Digital Information Programme Handbook 2025"
+    },
+    {
+        "page": 2,
+        "content": "Rāraki Upoko  –   Contents    Korero Nui  -   Important Information   ................................ ................................ ..........   1    Learner Information Handbook   ................................ ................................ ........................   1    Health and Safety   ................................ ................................ ................................ ................   1    Attendance   ................................ ................................ ................................ ...........................   1    Non - Engagement   ................................ ................................ ................................ ................   1    Drugs and Alcohol   ................................ ................................ ................................ ...............   2    Artificial Intelligence (AI) Tools   ................................ ................................ ...........................   3    Nau mai ki Ara  -   Welcome to Ara   ................................ ................................ ................   5    Kā Raki whakahirahira   -   Important Dates   ................................ ................................ .   6    Kā whakapātaka   -   Contact Details   ................................ ................................ .............   8    Taipitopito akoraka  -   Programme Details   ................................ ...............................   12    Bachelor of Information and Communication Technologies Level 7   ...........................   12    Graduate Diploma in Information & Communication Technologies Level 7   ..............   19    New Zealand Diploma In Cybersecurity Level 6   ................................ .............................   23    NZ Diploma in Information Technology Technical Support Level 5   .............................   26    NZ Diploma in Web Development and Design Level 5   ................................ ..................   29    NZ Certificate in Information Technology Essentials     Level 4   ................................ ....   32    Kā tika me  kā   kaweka o te tauira   -   Learner Responsibilities and Rights   .............   34    Unacceptable Behaviour for Learners, or Visitors at Ara   ................................ ..............   36    Learner Behaviour in class / classroom maintenance   ................................ ..................   36    Kā Taunakitaka Mōu  –   Support for You   ................................ ................................ ...   38    Quick reference  –   Where to find help if you have feedback or want to raise an issue    ................................ ................................ ................................ ................................ ............   38    Kā Aromatawai  -   Assessments   ................................ ................................ ..................   40    Academic Integrity   ................................ ................................ ................................ ............   40    Submitting Your Work   ................................ ................................ ................................ ......   42    The Grade Scale   ................................ ................................ ................................ .................   43    Kā tikaka aromatawai   -   Assessment Regulations   ................................ ...................   45    Regulations Flowchart   ................................ ................................ ................................ ......   45    Which form do I use?   ................................ ................................ ................................ ........   45    Extensions   ................................ ................................ ................................ ..........................   47    Late submission   ................................ ................................ ................................ ................   47    Resits or resubmission of assessment tasks   ................................ ................................ ..   47"
+    },
+    {
+        "page": 3,
+        "content": "Second Results (course level)   ................................ ................................ ...........................   47    Assessment in Te Reo Māori ................................ ................................ ......................   47    Marks Carried Forward   ................................ ................................ ................................ .....   48    Supported Assessment     ................................ ................................ ................................   48    Recognising Prior Knowledge and Skills   ................................ ................................ .........   48    Alternative  Arrangements   ................................ ................................ ................................   48    Aegrotat ................................ ................................ ................................ ..............................   49    Reconsideration of Assessment Decisions   ................................ ................................ .....   49    Reconsideration of a Course Final Grade   ................................ ................................ .......   49    Appeal of Reconsideration Decision   ................................ ................................ ...............   49    Conceded Pass   ................................ ................................ ................................ ..................   50    Kā putaka me te Whakapōtaetaka  -   Results & Graduation   ................................ ...   51    Accessing Your Results   ................................ ................................ ................................ .....   51    Academic Transcripts   ................................ ................................ ................................ ........   51    Access to marked assessments   ................................ ................................ .......................   51    Receiving Your Qualification   ................................ ................................ ............................   52    Graduation   ................................ ................................ ................................ .........................   52    Kā ture me kā tikaka  -   Policies & Procedures   ................................ ..........................   53    Academic Policies   ................................ ................................ ................................ ..............   53    Academic Support and Progression   ................................ ................................ ................   53    Formal Academic Contract   ................................ ................................ ...............................   53    Academic Misconduct   ................................ ................................ ................................ .......   54    Plagiarism   ................................ ................................ ................................ ..........................   54    Use of Artificial Intelligence (AI) Tools   ................................ ................................ .............   54    Cheating   ................................ ................................ ................................ .............................   54    Dishonest Academic Practice   ................................ ................................ ...........................   55    Educative Processes   ................................ ................................ ................................ ..........   55    Penalties   ................................ ................................ ................................ .............................   55    Probation   ................................ ................................ ................................ ...........................   55    Exclusion   ................................ ................................ ................................ ............................   56    Suspension   ................................ ................................ ................................ ........................   56    Cancellation of Enrolment   ................................ ................................ ................................   56    Refusal of Future Enrolment   ................................ ................................ ............................   57    Copyright and Ara Learners   ................................ ................................ .............................   57    Kā tū whare  -   Facilities   ................................ ................................ ..............................   60"
+    },
+    {
+        "page": 4,
+        "content": "P a g e     |  1       Korero Nui  -   Important  Information    Ara is a Business Division of Te Pūkenga  -   New Zealand Institute of Skills and   Technology.    Learner Information Handbook    We recommend that you read your Programme handbook in conjunction with   the  Learner Information Handbook   on MyAra .    Health and Safety      Please refer to the  Learner Information Handbook   for general Health and Safety   information and evacuation details. In an emergency advise a staff member, and   if no one is available phone 111.    Attendance     Experience has shown that  if you   attend regularly and participate in the class   activities and assessments  you  are more likely to succeed.   F ull attendance and   commitment  are   encoura ged.  You are expected to be punctual and must comply   with the various behaviour and safety requirements of classrooms, workshops   and labs.    For   an  international   learner   satisfactory progress is defined as 100% attendance   and successful completion of 75% or more of your courses.          Non - Engagement      Ara has processes to deal with  learner s who formally enrol here but do not   “engage” with their studies.  That is, if you do not attend and/or participate   and/or submit assignments and/or sit assessments or only attend briefly or   spasmodically and/or do not engage significantly.       Let Ara know when you are absent from classes or if you are sick.    Contact your tutor or advise the Department by emailing  @ara.ac.nz"
+    },
+    {
+        "page": 5,
+        "content": "P a g e     |  2       Our  department   process if you are a no - show  in   the  first two weeks of    teaching   is as follows:    1   We will attempt to contact you 3 times and if we are not  successful,   we   will withdraw you (1) within 3 days if there is a waitlist of other learners   who want to enrol, or (2) within 10% of the length of your enrolment   (often 1  –   2 weeks)    2   You will receive an email, text or phone call asking why you have not   been attending    3   There will be no academic or financial penalty  incurred  by   you for   withdrawals in this period ,   but you could be overpaid by Studylink .       D uring the semester  we  will  follow these steps for disengaged learners:    1   The registers are checked and if  your engagement and attendance is a   concern, we will talk with you    2   You will receive an email or phone call asking why you have not been   attending. You may receive a non - engagement letter     3   We will attempt to contact you 3 times    4   You may be placed on a n academic contract   or withdrawn    5   You will receive a WD grade (after 10% of the duration of the course) or   a DNC grade (after 80% of the duration of the course)          Drugs and Alcohol      I n line with the expectations of many  workplaces ,  Ara   has procedure s   to ensure   the health and safety of all  learners,  staff and visitors, while  undertaking   Ara    activities.    Ara has  zero tolerance   for  the misuse or abuse of alcohol and/or   illegal/controlled drugs, possession and/or use of illegal/controlled   drugs/substances, or intoxication on all campuses/learning sites.    If you are struggling with attendance, we fully encourage you to talk   this over as  soon as possible with your tutor."
+    },
+    {
+        "page": 6,
+        "content": "P a g e     |  3       Many  learning   activities involve high - risk situations where clear thinking,   decision - making, and machinery operation need to be conducted safely. These   activities cannot be compromised.       You can download the policy from  CPP506 Drugs & Alcohol Policy    Artificial Intelligence (AI) Tools     When submitting work for assessment, you must adhere to Ara’s Assessment   and Academic Misconduct policies and not present AI such as ChatGPT as your   own work. Learning Services have resources to help you learn to paraphrase or   reference another person’s wo rk to avoid academic misconduct.    For more  details,   please read the  Kā ture me kā tikaka  -   Policies & Procedures    section of this handbook  Policies ."
+    },
+    {
+        "page": 7,
+        "content": "P a g e     |  4"
+    },
+    {
+        "page": 8,
+        "content": "P a g e     |  5       Nau mai ki Ara  -   Welcome to Ara    A warm welcome to the Department  Creative Arts and Digital Information  and   your challenge as a  learner   studying for a qualification. We look forward to   working with you over the next few semesters to help you reach your goals and   assist your gaining of higher qualifications. This student programme  information   document   is your essential ‘operations manual’ for this semester’s study, so   please read it carefully and keep it handy for future reference.        As you start each new subject, the lecturer will give you a course outline. This   details the day - to - day subject content, delivery and assessment for that course.   It is your responsibility to ensure that you have these outlines for each course   and that you  read them thoroughly. Any questions regarding these outlines   should be directed to the lecturer. Understanding the expectations and   assessments for each course will be vital to your success.        Your lecturers and support staff are approachable, friendly and committed to   creating a positive, enthusiastic and interesting learning environment. Please do   not hesitate to ask questions or request help  –   that is why we are here.        Make the most of your time at Ara so that you achieve the best possible   outcomes. We, as staff, will do all that we can to help you be successful, but it is   only you who can do the learning.       Ngā mihi       202 5"
+    },
+    {
+        "page": 9,
+        "content": "P a g e     |  6       Kā Raki  whakahirahira   -   Important Dates    SEMESTER ONE   DATES    TERM 1   17  February  –   11  April      Waitangi Day   Thursday 6 February    Whakatau   Wed nesday   26 Feb ruary   -   Whareora,   1 1:00 am    Good Friday   Friday  18 April    Easter Monday   Monday 21   April    Easter Tuesday   Tuesday 22   April    Anzac Day   Friday   2 5   April    TERM 2     28 April   –   06 June    King’s   Birthday   Monday  2   June    Matariki   Friday 20 June    MID YEAR BREAK       30 June  –   18   July    SEMESTER TWO   DATES    TERM 3     21  July  –   19  September         TERM 4     06  October  –   28  November    South Canterbury Anniversary   Monday 22 September    Labour Day   Monday 27 October    Canterbury Anniversary   Friday 14 November"
+    },
+    {
+        "page": 10,
+        "content": "P a g e     |  7"
+    },
+    {
+        "page": 11,
+        "content": "P a g e     |  8       Kā whakapātaka   -   Contact Details    Key Staff    Mehdi Asgarkhani    Academic Manager    03 940 8126    Room:  S154    Mehdi Asgarkhani@ara.ac.nz      Sandy Thomas    Operations   Administrator    03 940 8302    Room:   S153    Sandy.Thomas@ara.ac.nz              Luofeng Xu    Team Leader  –   Software Development    03 940  8394    Room:   S156a    Luofeng.Xu@ara.ac.nz              Eddie Correia    Team Leader  –   Networking     03 940  8272    Room:   S259    Eddie.Correia@ara.ac.nz"
+    },
+    {
+        "page": 12,
+        "content": "P a g e     |  9       Bernard Otinpong    Team Leader  –   Information Systems    03 940  8329    Room:   S158    Bernard.Otinong@ara.ac.nz              David Weir    Course Co - ordinator  –   Work Integrated Learning Project    03 940  83 24    Room:   S156b    David.Weir@ara.ac.nz                    Department Links          https://www.facebook.com/  groups/473315692736262    Computing Students"
+    },
+    {
+        "page": 13,
+        "content": "P a g e     |  10       Teaching Staff    Name/teaching area   Room   Phone   Email    Dr Adbul Rehman   S160 c     Addul.Rehman@ara.ac.nz    Dr  Amit Sarkar   S1 68   940 8495   Amit.Sarkar@ara.ac.nz    Arifah Addison   S15 8   940 8538   Arifah.Addison@ara.ac.nz    Dr  Bernard Otinpong   S15 8   940 8329   Bernard. Otinpong@ara.ac.nz    Dr  Christopher Bartlett   S1 68   940 7500   Christopher.Bartlett@ara.ac.nz    Dr  David Weir   S15 6   940 8324   David.Weir@ara.ac.nz    Dr  Dipendra Ghimire   S15 8   940 8271   Dipendra.Ghimire@ara.ac.nz    Dr  Eddie Correia   S260   940 8272   Eddie.Correia@ara.ac.nz    Ian Patterson   S469   940 8006   Ian.Patterson@ara.ac.nz    Dr  Luofeng Xu   S15 6   940 8394   Luofeng.Xu@ara.ac.nz    Dr  Matt Melchert   S257   940 8161   Matt.Melchert@ara.ac.nz    Peter Edge   S469   940 8638   Peter.Edge@ara.ac.nz    Philip Roxborogh   S15 8   940 8165   Philip.Roxborogh@ara.ac.nz    Robert Oliver   S1 68   940 7598   Robert.Oliver@ara.ac.nz    Shayle Tasker   S 257   940 7614   Shayle.Tasker@ara.ac.nz    Shelley McNabb   S168   940 8334   Shelly.McNabb@ara.ac.nz"
+    },
+    {
+        "page": 14,
+        "content": "P a g e     |  11"
+    },
+    {
+        "page": 15,
+        "content": "P a g e     |  12      Taipitopito akoraka  -   Programme Details    Bachelor of Information and Communication Technologies   L evel  7    This programme is only offered in Christchurch .    Programme Aim    The BICT is an applied programme targeted at school leavers, career changers or   unqualified IT professionals seeking a qualification in ICT. The programme aims to   produce work - ready graduates who meet the needs of the IT industry in New   Zealand, as well as   globally.     The programme enables  learner s to:  apply knowledge, skills and capabilities to   analyse, design, develop, implement and maintain information systems across a   variety of industries, business environments, and community organisations; and   interact with clients, formulate technology proj ects, manage projects, and   communicate developments effectively throughout the design and development of   solutions.     Graduate Profile    Graduates of this programme will be able to:     •   Apply specialist technical Information Communication Technology (ICT)   knowledge and skills to provide business solutions.    •   Employ critical, systematic and strategic thinking and analytical skills to   evaluate and solve complex business problems in a changing global   environment.    •   Apply ethical dimensions for decision making to uphold social responsibility   and sustainable practice.    •   Advise on technology deployment decision making in a range of   organisational, professional, social, and multi - cultural contexts.    •   Apply self - directed learning and research to maintain currency and lead   future development.    •   Communicate effectively in a professional manner with stakeholders,   colleagues, and clients.    •   Work effectively, both independently and across teams, in diverse cultural"
+    },
+    {
+        "page": 16,
+        "content": "P a g e     |  13      contexts.    •   Demonstrate knowledge of the Treaty of Waitangi/Te Tiriti o Waitangi and its   relevance throughout the deployment and application of technology solutions   in realising New Zealand/Aotearoa cultural aspirations.    Programme Regulations    The Bachelor of Information and Communication Technologies is a  three year full -  time  equivalent programme of study requiring the  successful completion of 360   course credits.    Applications for entry to the programme are evaluated against the stated entry,   published annually on the Ara website and in programme brochures.    The maximum  time  f rame  to complete the programme is five years . Any   extension to this period would require a written application from the Head of   Department or delegate to the Department Programme Group for consideration.    The programme comprises 225 core course credits, 75 compulsory pathway credits   and 60 elective credits, with a minimum of 75 credits at Level 7.    A minimum of 450 work integrated learning hours is required.    All relevant credits from other approved programmes will be considered for credit   recognition (cross credits, credit transfers and recognition of prior learning)   according to Ara standard policy and procedure.     A  learner   showing insufficient academic progress will be advised in writing of the   student support services available, and their academic performance (including   class attendance) will be monitored by the Programme Leader. Should   performance not improve, the Program me Leader will discuss with the Head of   Department the benefit of placing the  learner   on a Formal Academic Contract   according to Ara standard policy and procedures.    The Bachelor of Information and Communication Technologies will be awarded to   all  learner s who successfully complete all the requirements laid down by the   Department of  Creative Arts and Digital Information   and approved by the   Academic Board.    A maximum of 30 credits can be selected as unspecified credits completed as part   of other Ara qualifications or qualifications at other institutions, subject to approval   by the Academic Manager to ensure alignment of the graduate profile outcomes   and that  content is not replicated in courses.    Learner s will be eligible to  graduate with “Distinction”   if they have attained a"
+    },
+    {
+        "page": 17,
+        "content": "P a g e     |  14      weighted grade average of A -   (A minus) with no grades less than B+ (B plus) across   a minimum of 90 credits at level 7.  The 90 credits must include the following:    BCIS309 (45 credits), BCIS302 (15 credits), BCIS303 (15 credits) and the 15 credit   Level 7 course required in the  learner ’s pathway.    Learner s must have also completed the requirements for Distinction within two   years.    Programme Matrix    Code   Course Title   Level   Credits    Work    Integrated   Learning    Course   Factor    Core Courses    BCIS105   IT Practitioner Fundamentals   5   15   0   0.1250    BCDE101   Introduction to Programming   5   15   0   0.1250    BCCS191   Introduction to Networks   5   15   0   0.1250    BCCS199   Operating Systems   5   15   0   0.1250    BCIS106   Computational Methods   5   15   0   0.1250    BCDE102   Introduction to Software   Engineering   5   15   0   0.1250    BCDE103   Database Design   5   15   0   0.1250    BCCS183   Cloud Technologies and the IOT   5   15   0   0.1250    BCIS207   Enterprise Solutions Deployment   6   15   20   0.1250    BCIS208   IT Service Management   6   15   20   0.1250    BCIS302   Managing Information and   Cybersecurity   7   15   20   0.1250    BCIS303   Information Technology   Governance   7   15   20   0.1250    BCIS309   Work Integrated  Learning Project   7   45   450   0.3750    Compulsory Courses    The  following courses   are delivered as compulsory courses in pathways and are also   available as electives in other pathways."
+    },
+    {
+        "page": 18,
+        "content": "P a g e     |  15      Information Systems Pathway    BCIS211   Research of Information Solutions   6   15   0   0.1250    BCIS212   Introduction to Enterprise Solutions   Architecture   6   15   30   0.1250    BCIS213   Introduction to Enterprise Intelligence   and Analytics   6   15   20   0.1250    BCIS312   Enterprise Solutions Architecture   7   15   20   0.1250    BCIS313   Enterprise Intelligence and Analytics   7   15   30   0.1250    Networking and  Infrastructure Pathway    BCCS254   System Infrastructure   6   15   30   0.1250    BCCS283   Network Infrastructure   6   15   20   0.1250    BCCS292   Routing and Switching Essentials   6   15   20   0.1250    BCCS295   Enterprise Networking, Security &   Automation   6   15   20   0.1250    BCCS355   Cloud Services   7   15   30   0.1250    Software Development Pathway    BCDE211   Best Programming Practices (Web and   Mobile Development)   6   15   30   0.1250    BCDE213   Interactive Media Development   6   15   10   0.1250    BCDE214   Database Administration   6   15   30   0.1250    BCDE215   Web Development   6   15   30   0.1250    BCDE311   Software Development Project   7   15   50   0.1250    Elective Courses    Electives can be selected from the courses above that are not completed as   compulsories in a pathway or selected from the courses below.    BCCS350   Advanced Programming   7   15   50   0.1250    BCCS381   Special Topic  –   Networking Infrastructure   7   15   50   0.1250    BCDE222   Best Programming Practices (C# .NET)   6   15   0   0.1250    BCDE223   Best Programming Practices (Java)   6   15   0   0.1250"
+    },
+    {
+        "page": 19,
+        "content": "P a g e     |  16      BCDE224   Best  Programming Practices (Server -  Side Programming  -   PHP)   6   15   0   0.1250    BCDE321   Advanced Programming   7   15   0   0.1250    BCIS206   Professional Practice   6   15   0   0.1250    BCIS321   Special Topic in Information Systems   7   15   50   0.1250    BCIT388   Mobile Technology   7   15   0   0.1250    DNET601   Wireless Local Area Networks   6   15   0   0.1250    DNET602   Network Security   6   15   0   0.1250    DSYS601   Systems Deployment   6   15   0   0.1250    NZDC605   Ethical Hacking   6   12   0   0.1250    NZDC602   Cryptography   6   12   0   0.1250    A maximum of 30 credits can be  selected as unspecified credits completed as part of other Ara   qualifications or qualifications at other institutions, subject to approval by the Academic Manager   to ensure alignment of the graduate profile outcomes and that content is not replicated in   co urses."
+    },
+    {
+        "page": 20,
+        "content": "P a g e     |  17"
+    },
+    {
+        "page": 21,
+        "content": "P a g e     |  18"
+    },
+    {
+        "page": 22,
+        "content": "P a g e     |  19      Graduate Diploma in Information & Communication   Technologies L evel  7    This programme is only offered in Christchurch.    Programme Aim    The aim of the  Grad Dip ICT is to develop graduates who are suitably skilled in   applying critical thinking skills required to evaluate options in a structured and   research informed manner to contribute to the future developments of   information systems development and dep loyment in organisations.    Graduate Profile    Graduates of this programme will be able to:     •   Extend technical, applied and interpersonal skills, to perform within ICT specific   industry contexts.    •   Use communication and negotiation skills in a range of organisational,   professional, social, and multi - cultural contexts.    •   Plan and manage information technology deployment projects in a   professional manner.    •   Work ethically and productively as individuals, and collaboratively as effective   members of ICT project teams.    •   Critically review practices and provide advice on IT deployment approaches   within organisations.    Programme Regulations    The Graduate Diploma in Information and Communication Technologies is a one   year full - time equivalent programme of study requiring the successful completion   of 120 course credits.    Applications for entry to the programme are evaluated against the stated entry,   published annually on the Ara website and in programme brochures.    The maximum   time   frame   to complete the programme is five years.   Any   extension to this period would require a written application from the Head of   Department or delegate to the Department Group Meeting for consideration."
+    },
+    {
+        "page": 23,
+        "content": "P a g e     |  20      The programme comprises 60 to 75 compulsory pathway credits and 45 to 60   elective credits, with a minimum of 75 credits at Level 7.    A minimum of 150 work - integrated learning hours is required.    All relevant credits from other approved programmes will be considered for credit   recognition (cross credits, credit transfers and recognition of prior learning)   according to Ara standard policy and procedure. Refer Section 7.3 below for a   summary.    A  learner   showing insufficient academic progress will be advised in writing of the   student support services available, and their academic performance (including   class attendance) will be monitored by the Programme Leader. Should   performance not improve, the Program me Leader will discuss with the Head of   Department the benefit of placing the  learner   on a Formal Academic Contract   according to Ara standard policy and procedures.    The Graduate Diploma in Information and Communication Technologies will be   awarded to all  learner s who successfully complete all the requirements laid down   by the Department of  Creative Arts and Digital Information  and approved by the   Academic Board."
+    },
+    {
+        "page": 24,
+        "content": "P a g e     |  21      Programme Matrix    Use the following table as a guide to the courses in your programme.  You can find   out how many credits each course is worth, and how many credits and courses you   need to do to complete your study.      Code   Course Title   Level   Credits   Course Factor    Core Courses    BCIS105   IT Practitioner Fundamentals   5   15   0.1250    BCIS303   Management of ICT   7   15   0.1250    BCIS370   IT Industry Project   7   30   0.2500    Elective Courses    Choose four courses from the list of  BICT courses (refer to the BICT documentation   on pages 12 and 13 of this document) At least two courses must be at level 7.    Elective         5/6   15   0.1250    Elective         5/6   15   0.1250    Elective         7   15   0.1250    Elective         7   15   0.1250"
+    },
+    {
+        "page": 25,
+        "content": "P a g e     |  22"
+    },
+    {
+        "page": 26,
+        "content": "P a g e     |  23      New Zealand Diploma In  Cybersecurity L evel  6    Programme Aim    The purpose of this qualification is to provide Aotearoa New Zealand with   people who have attained internationally  transferable industry - relevant   knowledge and technical skills that will equip them to work in entry - level roles in   the specialised field of cybersecurity, or to proceed to further study.    Graduate Profile    Technical knowledge and skills:    •   Analyse  organisational contexts from a security perspective using   information management principles and terminology, data inputs,   organisational strategy and processes, outputs, systems, and stakeholders’   roles and responsibilities.    •   Analyse an IT environment’s technology stack from a security perspective   and identify issues that could impact organisational performance and   business risks.    •   Apply knowledge of risk management frameworks to perform cybersecurity   risk assessments and communicate the results to support the organisational   risk management process.    •   Assess, select, plan, implement and validate cybersecurity approaches and   controls to support organisational objectives and operations.    •   Analyse cybersecurity events, perform security incident classification, and   apply relevant security incident handling techniques, whilst participating in   an incident handling process    •   Analyse the legal, privacy and ethical impacts of the regulatory environment,   and organisational decisions to advise decision makers on cybersecurity   implications and organisational obligations applicable to a particular   situation."
+    },
+    {
+        "page": 27,
+        "content": "P a g e     |  24      Programme Regulations    The New Zealand Diploma in Cybersecurity (Level 6) is a  one - year full time   equivalent programme   of study requiring the successful completion of  120   compulsory course credits.    The maximum  time frame   to complete the programme is 4 years.   Any   extension to this period would require a written application from the Head of   Department or delegate to the Enterprise and Digital Innovation Department   Programme Group.     All relevant credits from other approved programmes will be considered for   credit recognition (cross credits, credit transfers and recognition of prior   learning) according to Ara standard policy and procedure.       A learner showing  insufficient academic progress will be advised in writing of the   student support services available, and their academic performance (including   class attendance) will be monitored by the Programme Leader. Should   performance not improve, the Programme Leader   will discuss with the Head of   Department the benefit of placing the learner on a Formal Academic Contract.       The New Zealand Diploma in Information Technology Technical Support (Level 5)   will be awarded to all learners who successfully complete all the requirements   laid down by the Department of  Creative Arts and Digital Information   and   approved by the Academic Board.    The formal document certifying the award of this qualification will display the   NZQF logo and the Ara logo."
+    },
+    {
+        "page": 28,
+        "content": "P a g e     |  25      Programme Matrix    Upon  successful completion of the eight compulsory courses listed below, you   will be eligible to be awarded the   NZ Diploma in Cybersecurity.    Code   Course Title   Level   Credits   Course Factor    NZDC601   Information Systems Security   6   15   0.125    NZDC602   Cryptography   6   15   0.125    NZDC603   Network Security   6   15   0.125    NZDC604   Cybersecurity Management   6   15   0.125    NZDC605   Ethical Hacking and Testing   6   15   0.125    NZDC606   Cybersecurity Data Analysis   6   15   0.125    NZDC607   Cybersecurity Project   6   30   0.250    Total       120   1.000"
+    },
+    {
+        "page": 29,
+        "content": "P a g e     |  26      N Z Diploma in Information Technology Technical Support   Level 5    This programme is offered in Christchurch .    Programme Aim    To provide  learner s with the broad understanding of the core concepts and   practical skills in IT required to provide  technical support.    Graduate Profile    Graduates who successfully complete this programme will be able to:    •   Select, install and configure IT hardware and systems software to meet   organisational  requirements.    •   Apply a broad operational knowledge of networking, and associated services   and technologies to meet typical organisational requirements.    •   Configure and administer systems and applications to meet typical   organisational IT support requirements.    •   Apply a broad operational knowledge of database administration to meet   typical organisational data storage and retrieval requirements.    •   Troubleshoot and resolve a range of common system problems using   appropriate tools and procedures.    •   Identify common issues related to IT security and apply a range of solutions.    •   Demonstrate an operational knowledge and understanding of IT service   management to meet typical organisational customer service requirements.    •   Apply the fundamentals of information systems concepts and practice to   support and enhance organisational processes and systems.    •   Apply the fundamentals of interaction design concepts and practice to   enhance interface design.    •   Apply the principles of software development to create simple working   applications.    •   Apply professional, legal, and ethical principles and practices in a socially   responsible manner as an emerging IT professional.    •   Apply communication, personal and interpersonal skills to enhance   effectiveness in an IT role.    •   Use problem - solving and decision - making techniques to provide innovative   and timely Information Technology outcomes."
+    },
+    {
+        "page": 30,
+        "content": "P a g e     |  27      Programme Regulations    The New Zealand Diploma in Information Technology Technical Support (Level 5)   is a  one - year full time   equivalent programme of study requiring the successful   completion of  120 compulsory course credits .   Applications for entry to the   programme are evaluated against the stated entry and selection criteria,   published annually on the Ara website and in programme brochures.    The maximum  time frame   to complete the programme is three years.   Any   extension to this period would require a written application from the Head of   Department or delegate to the Department  Group Meeting .    All relevant credits from other approved programmes will be considered for   credit recognition (cross credits, credit transfers and recognition of prior   learning) according to Ara standard policy and procedure.    A  learner   showing insufficient academic progress will be advised in writing of the   student support services available, and their academic performance (including   class attendance) will be monitored by the Programme Leader. Should   performance not improve, the Program me Leader will discuss with the Head of   Department the benefit of placing the  learner   on a Formal Academic Contract.    The New Zealand Diploma in Information Technology Technical Support (Level 5)   will be awarded to all  learner s who successfully complete all the requirements   laid down by the Department of  Creative Arts and Digital Information   and   approved by the Academic Board.    The formal document certifying the award of this  qualification will display the   NZQF logo and the Ara logo."
+    },
+    {
+        "page": 31,
+        "content": "P a g e     |  28      Programme Matrix    Upon successful completion of the eight compulsory courses listed below, you   will be eligible to be awarded the NZ Diploma in IT Technical Support.         Code   Course Title   Level   Credits   Course Factor    Compulsory Courses    BCDE101   Programming Fundamentals   5   15   0.1250    BCCS153   Computer Systems Architecture   5   15   0.1250    BCDE151   User Experience   5   15   0.1250    BCIT105   IT Practitioner Fundamentals   5   15   0.1250    BCDE103   Introduction to  Databases   5   15   0.1250    BCCS163   Technical Support   5   15   0.1250    BCCS191   Introduction to Networks   5   15   0.1250    BCCS199   Operating Systems   5   15   0.1250    Total   120   1.0000"
+    },
+    {
+        "page": 32,
+        "content": "P a g e     |  29      NZ Diploma in Web Development and Design Level  5    This programme is only offered in Christchurch.      Programme Aim    To provide  learner s with the ability to customise packaged web solutions, or   proceed to further study in IT.    Graduate Profile    Graduates who  successfully complete this programme will be able to:    •   Determine client requirements, prepare and present solution(s) which meet   client requirements. Write scripts appropriate to implement and customise a   solution package using frameworks and libraries.    •   Design and implement interfaces to enhance user experience and   functionality.    •   Select, install and configure appropriate plug - in modules to supplement   functionality to meet organisational requirements.    •   Test functionality and usability to meet client requirements.    •   Implement, configure, and publish tested web solution to meet client   requirements.    •   Apply communication, personal and interpersonal skills to enhance   effectiveness in an IT role.    •   Apply professional, legal, and ethical principles and practices in a socially   responsible manner as an emerging IT professional.    •   Apply the fundamentals of information systems concepts and practice to   support and enhance organisational processes and systems.    •   Apply the fundamentals of IT technical support concepts and practice to   manage hardware and software resources to meet organisational    requirements."
+    },
+    {
+        "page": 33,
+        "content": "P a g e     |  30      Programme Regulations    The Programme Regulations for New Zealand Diploma in Web Development and   Design (Level 5) is a  one - year   full  time   equivalent programme of study   requiring the successful completion of  120 compulsory course credits .    Applications for entry to the programme are evaluated against the stated entry   and selection criteria, published annually on the Ara website and in programme   brochures.    The maximum time   frame   to complete the programme is three years.   Any   extension to this period would require a written application from the Head of   Department or delegate to the Department  Group Meeting .    All relevant credits from other approved programmes will be considered for   credit recognition (cross credits, credit transfers and recognition of prior   learning) according to Ara’s standard policy and procedure.    A  learner   showing insufficient academic progress will be advised in writing of the   student support services available, and their academic performance (including   class attendance) will be monitored by the Programme Leader. Should   performance not improve, the Program me Leader will discuss with the Head of   Department the benefit of placing the  learner   on a Formal Academic Contract.    The New Zealand Diploma in Web Development and Design (Level 5) will be   awarded to all  learner s who successfully complete all the requirements laid   down by the Department of  Creative Arts and Digital Information   and approved   by the Academic Board.    The formal document certifying the award of this qualification will display the   NZQF logo and the Ara logo."
+    },
+    {
+        "page": 34,
+        "content": "P a g e     |  31      Programme Matrix    Upon successful completion of the eight compulsory courses listed below, you   will be eligible to be awarded the NZ Diploma in Web Development and Design.    Code   Course Title   Level     Credits   Course Factor    Compulsory Courses    DWEB511   Client - Side Web Development   5   15   0.1250    DWEB512   Website Specifications & Design   5   15   0.1250    DWEB513   Website Project   5   15   0.1250    DWEB514   Website Testing & Documentation   5   15   0.1250    BCDE101   Programming Fundamentals   5   15   0.1250    BCCS153   Computer Systems Architecture   5   15   0.1250    BCDE151   User Experience   5   15   0.1250    BCIS105   IT Practitioner Fundamentals   5   15   0.1250    Total   120   1.0000"
+    },
+    {
+        "page": 35,
+        "content": "P a g e     |  32      NZ Certificate in Information Technology Essentials        L evel  4    Programme Aim    To provide learners with the knowledge and skills for further study to equip   them to work in the field of Information Technology (IT) as a profession.    Graduate Profile    Graduates who successfully complete this Programme will be able to:    •   Apply essential knowledge and concepts of computer hardware, operating   systems, applications, and networks to provide support for hardware and   software resources and a  foundation for the IT Profession.    •   Apply essential knowledge and concepts of business analysis, database, and   user experience to provide a foundation for supporting organisational   information systems requirements.    •   Contribute to user interface design using essential knowledge and concepts   of web design.    •   Apply essential knowledge and concepts of software development to provide   a foundation for developing applications.    •   Apply project management and planning tools to meet the requirements of   specified briefs and provide a foundation for the IT Profession.    •   Apply appropriate professional, ethical and legal principles, and practices to   comply with legal and organisational requirements and provide a foundation   for the IT Profession.    •   Communicate clearly and professionally to maintain relationships and   achieve objectives in a range of contexts within the IT industry.    Programme Regulations    The New Zealand Certificate in Information Technology Essentials (Level 4) is a   19 - week full time equivalent programme   of study requiring the successful   completion of  60 compulsory course credits.    Applications for entry to the programme are evaluated against the stated entry   and selection criteria, published annually on the Ara website and in programme   brochures."
+    },
+    {
+        "page": 36,
+        "content": "P a g e     |  33      The maximum time   frame   to complete the programme is two years.   Any   extension to this period would require a written application from the Head of   Department or delegate to the Department Group Meeting.    All relevant credits from other approved programmes will be considered for   credit recognition (cross credits, credit transfers and recognition of prior   learning) according to Ara standard policy and procedure.    A learner showing insufficient academic progress will be advised in writing of the   student support services available, and their academic performance (including   class attendance) will be monitored by the Programme Leader. Should   performance not improve, th e Programme Leader will discuss with the Head of   Department the benefit of placing the learner on a Formal Academic Contract.    The New Zealand Certificate in Information Technology Essentials (Level 4) will   be awarded to all learners who successfully complete all the requirements laid   down by the Department of Business and Digital Technologies and approved by   the Academic Board.    The formal document certifying the award of this qualification will display the   NZQF logo and the Ara logo.    Programme Matrix    Upon successful completion of the four compulsory courses listed below, you   will be awarded the NZ Certificate in IT Essentials.    Code   Course Title   Level   Credits     Course Factor    Compulsory Courses    CITE401   Technical IT Skills   4   15   0.1250    CITE402   Media Design and Development   4   15   0.1250    CITE403   Information Management   4   15   0.1250    CITE404   Software Design and Development   4   15   0.1250    Total   60   0.5000"
+    },
+    {
+        "page": 37,
+        "content": "P a g e     |  34      Kā tika me  kā   kaweka o te tauira   -   Learner   Responsibilities and Rights      Learner Responsibilities and Rights      The Ara community consists of a diverse range of people and cultures, and we   respect all members of our community. Our aim is to have a community where   learners respect themselves and others, a community where healthy social   interactions and academic pursu its are expected. To create and maintain the   best possible teaching and learning environment, you are protected by basic   rights and are expected to respect the rights and responsibilities of others.     Useful Contacts:    Independent Student Advocate: Duncan Dunbar.     Email: duncan.dunbar@ara.ac.nz | Mobile: 027 273 6246    Student Life Team Leader: Meg Nelis    Email:  studentvoice@ara.ac.nz    Your Responsibilities as a Learner    As a learner here, Ara expects you to:    Behave safely    •   Take care when using equipment and facilities.    •   Wear suitable clothing.    •   Follow health and safety guidelines and instructions.    •   Not endanger yourself or others.    •   Follow relevant professional guidelines.    •   Ensure you are  not intoxicated or under the influence of drugs on Ara   premises or when involved in Ara related activities both formal and informal,   with your programme, field trips, internships etc.    Respect others    •   Be sensitive to personal, social, and cultural differences.    •   Respect the needs, rights, and freedoms of others.    •   Help to uphold the integrity of Ara qualifications by discouraging/reporting   dishonest practices.     Observe Ara rules    •   Behave appropriately for a tertiary education environment."
+    },
+    {
+        "page": 38,
+        "content": "P a g e     |  35      •   Genuinely attempt to meet all course requirements including financial   obligations.    •   Comply with visa requirements.     •   Be honest when completing assignments/other assessments.    •   Comply with requirements of programme handbooks.    •   Follow Ara policies and regulations (refer: https://www.ara.ac.nz/about -  us/policies).    Your Rights as a Learner     Ara will protect your right to fairness. You have a right to:    Fairness    •   Open and accurate information.    •   Fair evaluation and assessment.    •   Have any problems handled as quickly as is practical and consistent with   ‘natural justice’.    •   Personal privacy.    •   Support, representation, and advocacy.    Ara Respects your right to:    •   Academic freedom, defined as ‘freedom, within the law, to question and test   received wisdom, to put forward new ideas and to state  controversial or   unpopular opinions.’ (Education and Training Act 2020)    •   Freedom from any form of harassment, bullying, or unjust discrimination.    •   Respect for personal, social, and cultural differences.    •   Representation in the development, implementation, and review of policies.    Ara will protect your right to Standards:    •   Study programmes that meet internal and external standards for approval   and registration.    •   To have competent and effective teachers.    •   Appropriate support services delivered in a professional manner.    •   Facilities and resources that meet or exceed Health & Safety legislation.    Concerns / Complaints:    Your rights will be upheld by Ara management. If you think they have been   infringed, in the first instance please contact your course tutor. If it is not   appropriate to contact your tutor regarding your complaint, or the matter has   not been resolved, pleas e contact your Head of Department/Programme   Manager or Student Advocate and/or the Student Life Team"
+    },
+    {
+        "page": 39,
+        "content": "P a g e     |  36      Unacceptable Behaviour for Learners, or Visitors at Ara    The following are examples of behaviour which are not acceptable for anyone   (learners, or visitors), at Ara or involved in Ara related activities:    •   Breaking any NZ law   (e.g., assault, theft).    •   Any form of  cheating   (including plagiarism and other dishonest practices).    •   Misuse of technology , software, hardware, or communication systems   provided by Ara (refer Ara Code of Conduct for ICT Users in particular).    •   Any form of  harassment, bullying, or unjust discrimination   including   social media.    •   Unacceptable sexual behaviour   (e.g., sexual harassment, accessing   pornography/other restricted material).    •   Misuse of alcohol , drugs or other substances affecting behaviour, health, or   safety.    •   Smoking (including vaping) on Ara campuses.   (Ara is a smoke free   campus).    •   Violence   or threats of violence.    •   Vandalism   or other abuse of facilities and buildings.    •   Disruptive behaviour in class   (e.g., arriving late, use of any electronic   device, interfering with the learning of other individuals).     •   Inductions (informal) are not permitted at Ōtautahi House or on other Ara   premises and are strongly and expressly discouraged by Ara.    The above is not an exhaustive list of unacceptable behaviours. Where   appropriate, Ara reserves the right to contact or report to external authorities.    Ara takes this code of conduct seriously. Your marks, reports, and references   may include an assessment of your behaviour, as well as your educational   achievement. Serious infringement may lead to probation, suspension, or   cancellation of a current enrolme nt and/or refusal of a future enrolment (see   relevant policies). This may be referred to an appropriate external authority e.g.,   NZ Police    Learner Behaviour in class / classroom maintenance    Be respectful of other learners and the classroom  environment ,   following   classroom specific rules and requirements. To avoid any distractions, you must   ensure  any   electronic device you have on you/with you is diverted, not set   to ring, or switched off.   Both staff and students have a responsibility to ensure   this happens ."
+    },
+    {
+        "page": 40,
+        "content": "P a g e     |  37      Academic staff have the responsibility to maintain a safe and effective   learning environment.   They may ask you to leave the class if your behaviour   indicates limited ability to be safe, disturbance to others learning, or puts others   at risk.    Dress  C ode    There is no written dress code, but you are expected to attend classes dressed in   a way which is generally acceptable. However, you're expected to be \"dressed   for the occasion\" when going on a site visit or undertaking a  Cooperative   Education Project. You may be prevented from going on site visits if the staff   member is of the opinion that you're not dressed for the occasion. In specific   courses, a \"dress code\" and standard is required. These will be detailed in the   Progra mme Handbook and Course Outline.    Our Access to Your Work    We may contact you to discuss the right to copy, reproduce, and use your   learner   work for promotional and education purposes for Ara."
+    },
+    {
+        "page": 41,
+        "content": "P a g e     |  38      Kā Taunakitaka Mōu  –   Support for You    Quick reference  –   Where to find help if you have feedback   or want to raise an issue    The Education (Pastoral Care of Tertiary and International Learners) Code of   Practice sets out the expectations that tertiary education organisations need to   consider how their overall systems and resources support learners’ wellbeing   and safety.    For more detailed information on the code, and support areas listed below,   please refer to the  Learner   Information Handbook   on MyAra    Support Area   Details   People   Links    Department   Staff    This team are your   first port of call for   issues impacting   your ability to   study    Tutor    Programme Leader    Programme Manager    Head of  Department       Student Reps   Student reps are   invited to attend   student rep   meetings within   your department   where they can   raise issues on   your behalf    Student Voice    Posters of your   student reps are   displayed in your   department    Student Voice    Student   Services    Ara offers a wide   range of student   services    Student Advisors    Health Centre    Student Voice    Student Support    Te Pae Ora   A wellbeing hub for   ākonga      Te Pae Ora | Te   Pūkenga     Independent   Student   Advocate    Student Advocacy   is available to   assist you if you   are facing   difficulties within   or beyond Ara that   could  affect your   study    Duncan Dunbar     027 273 6246   D uncan.Dunbar@ara.  ac.nz    X106 (Rakaia Centre)    Student   Advocacy"
+    },
+    {
+        "page": 42,
+        "content": "P a g e     |  39      Support Area   Details   People   Links    Complaints   Process    Ara has a process   to support you and   respond if you   have a concern or   complaint about a   course, tutor, or   another aspect of   your programme    Complaints Co -  ordinator    CPP117 - Raising -  problems - or -  complaints    CPP117a -  Raising -  problems - or -  complaints - form    Safeplace   Safeplace is the   tool we use to   report  risks,   accidents and   other incidents    Safety & Wellbeing     Co - ordinator    Safety & Wellbeing   Business Partner    SafePlace FAQ   for Learners    Important   Policies       All Ara Corporate   and Academic   Policies can be   found at    Ara Policy Library        Student Rights   and   Responsibilities    Addressing   Bullying,   Harassment and   Discrimination"
+    },
+    {
+        "page": 43,
+        "content": "P a g e     |  40      K ā   Aromatawai  -   Assessments     Assessment Information    At the start of each course,  you will be given a   Course Outline.    Before each   assessment you  will be given an assessment brief.    They will show:     The number, type, and due d ates for all  assessments, including   tests and   assignments , will give you details on:    •   The weighting of each assessment in your course that contributes to your   final grade, if applicable.    •   The assessment policy for resits, second results and alternative assessments,   if they are different from the policies in this  document .    •   The time frame for getting your marked assessments back from tutors, if   they are different from those stated in this  document .    •   The penalties for handing assessments in late, if they are different from   those stated in this  document .  These may be different for each course.    If you do not receive this information, talk to the course tutor or   Manager/Programme Leader.    Assessment Types    Formative assessment    Verbal and written feedback that takes place   throughout classes and the programme.    Summative assessment    Assessments throughout the year that are based on   learning outcomes for the course   and determine   how well you have achieved each outcome.  You are   given grades and  verbal or written  feedback.  These   assessments may include practical tests and   projects.    The contents of the course work will be explained by the tutor for each course.   If   at any point your tutor or Programme Leader is concerned about your progress,   they will let you know.    Academic Integrity     Ara   requires learners to be honest and act with integrity in their learning and   assessments."
+    },
+    {
+        "page": 44,
+        "content": "P a g e     |  41      You are required to:     •   present your own original work for assessment     •   acknowledge contributions from other sources by using the referencing   format required for the programme (failure to do this correctly may be   regarded as plagiarism); this includes direct copying, paraphrasing,   summarising, and the rearranging of, another p erson’s words or idea/s     •   not cheat in tests or examinations     •   ensure you follow all instructions and the correct procedures (e.g., no use of   mobile phones or personal electronic devices)    •   not enter into any agreements with other learners to collude on assignments    •   collaborate only as permitted     •   not over -   or misrepresent the individual contributions of members of any   group assignment     •   not knowingly help others to cheat     •   not present another person’s assessment as your own (this includes   purchased assessments) j    •   not act or behave in a way that prevents others from completing their   assessments     •   keep written and electronic work secure to prevent others from accessing   and copying work. (2)     Any exceptions to the above are clearly stated in the information and   requirements for the course.     By enrolling at  Ara you   agree to your work being reviewed by various means to   confirm an assessment is your own work. This includes the use of similarity   detection software.     Any breaches of academic integrity follow the process set out in the academic   integrity procedures.   For more detailed information, please refer to the   Academic Integrity Policy"
+    },
+    {
+        "page": 45,
+        "content": "P a g e     |  42      Submitting Your Work     Your tutors will let you know if they have guidelines for  presenting your   assessments and how to submit your work. Use a computer to create your   assessments.       You may be required to submit your work manually or electronically.  If you   submit your work electronically, keep a copy until your official results are   published at the end of the semester.  If you have any questions, contact your   tutor .       Quality  Assurance    Your assessments and exam scripts may be used for internal and external   moderation, monitoring, programme reviews, aegrotats, and the resolution of   academic appeals and complaints.  This helps Ara meet internal and external   academic quality assurance requi rements.  If your assessments are used this   way, before they are used, any information that could reasonably be expected to   identify you will be removed.         Note : Ara uses as part of its assessment processes electronic plagiarism   detection.  You will, from time to time, be required to submit assessments   for scanning.  Electronic copies of assessments must be retained by you   until the official results are published   after the end of semester or year."
+    },
+    {
+        "page": 46,
+        "content": "P a g e     |  43      The Grade Scale     The various assessments within a course will be combined according to the   weightings shown in the course descriptor, and a grade for the course as a   whole will be assigned from the table  shown below.  A \"C - \" grade and above   represents a pass for the course.    The following grade scale (G29aa)   will be used for all courses on the   programmes unless advised otherwise in the course descriptor:       Marked Grades     Grade    Mark range    Pass or fail     A+   90 - 100   Pass    A   85 - 89   Pass    A -   80 - 84   Pass    B+   75 - 79   Pass    B   70 - 74   Pass    B -   65 - 69   Pass    C+   60 - 64   Pass    C   55 - 59   Pass     C -   50 - 54   Pass     D   40 - 49   Fail     E   0 - 39   Fail     Graduate with Distinction   from the Bachelor of ICT    Students will be eligible to graduate with “Distinction” if they have attained a   weighted grade average of A -   (A minus) with no grades less than B+ (B plus)   across a minimum of 90 credits at level 7. The 90 credits  come from the   compulsory level 7 courses in your final year.     Students with exception al   distinction may be eligible for ‘Summa Cum Laude.’   See staff for more details."
+    },
+    {
+        "page": 47,
+        "content": "P a g e     |  44      Other Grades    Other grades that may be awarded for particular circumstances in  achievement -  based   courses  include :    Course result   Grade   Description    Pass    Pass    Awarded pass and no appropriate grade   can be awarded     CC    Pass    Course credit awarded by Cross Credit     CT    Pass    Course credit awarded by Credit   Transfer     P    Pass    Course credit awarded by Recognition of   Prior Learning     ADV    Pass    Course credit awarded by Advanced   Standing     CON    Pass    Conceded Pass     RP    Pass    Restricted Pass  -   Conceded Pass Non -  Advancing     CP    Pass    Conditional Pass  -   Pass on Second   Result     AEG    Pass    Aegrotat Pass     FF    Fail    Forced Fail due to not attaining mandatory   minimums     Fail    Fail    Not passed and no appropriate grade can   be awarded"
+    },
+    {
+        "page": 48,
+        "content": "P a g e     |  45      Kā tikaka aromatawai   -   Assessment Regulations    Regulations Flowchart"
+    },
+    {
+        "page": 49,
+        "content": "P a g e     |  46      Which form do I use?"
+    },
+    {
+        "page": 50,
+        "content": "P a g e     |  47      Extensions     If you anticipate difficulty in submitting assessments by the due time and date   you may be able to request an extension.     For information about how to apply for an extension of time, see  Assessment   Policy   -   scroll down and find   3.14 Extensions . You can download the form from   Application for Extension of Time     Late submission    In  these   programmes, other than approved extensions, late submissions will   have 10% of the mark deducted per day per assessment, up to a maximum of   50%. If an assessment is more than five days after the due date, it will not be   marked unless special circumstances  are approved by HOD or delegate.     Resits or resubmission of assessment tasks     If you have submitted and failed an assessment task you may be able to apply   for a resubmission resit .    For information about how to apply for a resit or resubmission, see  Assessment   Policy    -   scroll down and find   3.15 Resits and Resubmissions.  You can   download the form from  Application for Resit or Resubmission    Second Results (course level)    If you receive a fail grade  between   40  -   49%   in a course you may be offered the   opportunity for a reassessment of the course.    For information about how to apply for a second result, see  Assessment Policy   -    scroll down and find   3.16 Second Results . You can download the form from    Application for Second Result    Assessment in Te Reo Māori    You can request to have your assessments conducted in Te Reo Māori, except   where the task requires English language or other language capability. Other   exceptions may apply.    For information about how to apply for assessment in  Māori   see  Assessment   Policy   -   scroll down and find   3.4 Assessment in Te Reo Māori."
+    },
+    {
+        "page": 51,
+        "content": "P a g e     |  48      Marks Carried Forward     You may be able to apply to carry marks forward for completed assessments to   the next available occurrence of the course and not redo those assessments.    For information about how to apply for marks carried forward, see  Assessment   Policy   -   scroll down and find   3.18  Marks Carried Forward .    You can download   the form from  Marks Carried Forward Application form    Supported   A ssessment     You may be able to apply for  special assistance in order to undertake an   assessment.       For more information about how to apply for additional assessment   arrangements for disabled  learner s, see  Assessment Policy   -   scroll down and   find   3.19  Procedures for additional assessment arrangements for disabled   learners .    Recognising Prior Knowledge and Skills    If you believe that a qualification, course or unit standard you have previously   completed a recognised educational institution, or work/life experience, may be   relevant to the qualification you are studying, you could apply for recognition of   your prior k nowledge and skills.     The previous grade is carried forward for any Cross Credit or Credit Transfer,   and the Pass (P) grade given where a standard grade cannot be stated.    For information about how to apply for credit recognition, see  Credit Recognition    You can download the form from  Credit Recognition Application    Alternative A rrangements    If you are unable to sit a test or exam on the scheduled date, or complete an   assessment on the due date, you may be able to apply for an alternative   assessment .    For information about how to apply for an alternative assessment see   Assessment Policy   -   scroll down and find   3.13 Alternative Assessment     Arrangements .   You can download the form from  Application for Alternative   Time for Test / Exam"
+    },
+    {
+        "page": 52,
+        "content": "P a g e     |  49      Aegrotat    You may be able to apply for an aegrotat when illness, injury, bereavement,   childbirth, or other unforeseen critical circumstances occur on or immediately   prior to the day of  assessment   and prevent you from attending the assessment   or seriously impair your performance during the assessment itself.     For information about these regulations, see  Aegrotat Pass Regulations   You can   download the form from   Aegrotat Application   and the Practitioner Statement   form from  Aegrotat Practitioner Statement      Reconsideration of Assessment Decisions    If you have reason to believe that the mark for a particular assessment is   incorrect you may be able to apply for a reconsideration.    For information about challenging academic decisions (reconsideration), see   Challenging Academic Decisions ( Reconsideration )  Assessment Policy   -   scroll   down and find   3.20  Reconsiderations and Appeals .   You can also refer to   Reconsiderations and Appeals    Reconsideration of a Course Final Grade     If you have reason to believe that the grade for a particular assessment is   incorrect you may be able to apply for a reconsideration.    For information about challenging academic decisions (reconsideration), see   Challenging Academic Decisions ( Reconsideration )  Assessment Policy   -   scroll   down and find   3.20  Reconsiderations and Appeals .   You can also refer to   Reconsiderations and Appeals    Appeal of Reconsideration Decision    If you consider that the outcome of the reconsideration process is incorrect or   unfair, or a reconsideration is not available, you may appeal against the final   grade awarded.     For information about challenging academic decisions (reconsideration), see   Assessment Policy   -   scroll down and find   3.20 Reconsiderations and Appeals.   You   can also refer to  Reconsiderations and Appeals"
+    },
+    {
+        "page": 53,
+        "content": "P a g e     |  50      Conceded Pass    You may qualify for a conceded pass if you marginally fail a course.    For information about conceded passes, see  Assessment Policy   -   scroll down and   find   3.17 Conceded Pass."
+    },
+    {
+        "page": 54,
+        "content": "P a g e     |  51      Kā  putaka   me te Whakapōtaetaka  -   Results &    Graduation    Accessing Your Results    Results of individual assessments  will be made available to you  within  ten   ( 1 0 )   working days of your  assessment due date .     These results may be returned to you in class or online.  Final grades  for each   course will be  available online  within  fifteen   (1 5 ) working days of the end date of   the course  the  Student Portal   at accessible through  MyAra   or through the My   Ara app.    Any results displayed publicly will use unique identifiers such as  student ID   numbers, not student names.       Acad e mic Transcripts    If you require your results to be printed, visit Central Academic Records (CAR) in   A121   or email  academic.records@ara.ac.nz   to request a transcript.    Access to marked assessments    You are entitled to access your written work submitted for assessment.     Where assessed work is to be returned, time limits for collection will be advised   by the department.     You may view copies of your examinations ,  but these are retained by Ara. Any   time or access limitations will be advised by the department.       Note :      S taff  members  are  under  no  obligation  to    advise  you  of  your  final   grade for a course.  After you have completed all the assessments in a course,   we ask that you allow the staff time to complete the marking. At the end of   semester  staff  members  are  under   pressure  to  submit  final  results  to   Academic Records so that they can be processed and then made available to   all learners as soon as possible."
+    },
+    {
+        "page": 55,
+        "content": "P a g e     |  52      Please note that  to   meet internal and external academic quality assurance   requirements,  learner   assessments and examination scripts may be used for the   purposes of:     •   i nternal and  external moderation    •   p rogramme review    •   a egrotats (if available)    •   r esolution of academic appeals and complaints    Assessments used for these purposes will have  information, which   could   reasonably be expected to identify the individual removed before they are   copied and used.    Receiving Your Qualification    Once you have successfully completed your approved programme of study you   will receive a notification advising you that your certificate is ready and will be   posted to you.       Graduation    We hold several graduation ceremonies.    If you're eligible to graduate, you'll receive a communication from Ara advising   you of this. You'll need to complete the online graduation form, by the date   indicated, to register for your ceremony.          For all information on graduation, including dates, please see  Graduation         Note :  Please make sure your address details are up to date when you finish   studying. Advise Academic Records if you are updating your address details   after you receive the notification, so the correct address is used.    Note :  If you believe you are entitled to graduate and do not hear from  Ara,    please contact the Department Administrator or Academic Records."
+    },
+    {
+        "page": 56,
+        "content": "P a g e     |  53      Kā ture me kā tikaka  -   Policies & Procedures     Academic Policies    All policies are accessible on the Ara website  Ara Policy Library .   Ara provides a   student advocacy service.    It is well known that people learn better when they work together, and this is   encouraged, but when it comes to assessment, collaboration (working together)   is not permitted unless it is a formal part of the assignment set by the tutor(s).    Each  learner   is also responsible for making sure his/her work is not able to be   copied by others.  Sharing or comparing tests, exams and assessments is   prohibited and, if detected, will be treated as “academic misconduct”.    Academic Support and Progression     Support  is   available  if you , as a  learner ,   are   having difficulty meeting academic   standards or  you seek   guidance,  assistance,   or support with study related   matters.    If you are not   achieving  satisfactorily,   you  will receive specifically targeted advice   and assistance at an early stage.    Academic staff members will work with  you if you are   not meeting academic   standards to document and implement a plan.  This will include identifying and   monitoring goals, expected academic progress, timelines and support.    If satisfactory progress is not made then  you   will be invited to meet with the   Head of Department or his/her delegate, who will explain the circumstances,   discuss the consequences, and give  you   the opportunity to present  your   view of   events leading up to the meeting.  Depending on the outcome of the  meeting,   a   Formal Academic Contract may be entered into.    Formal Academic Contract    If your   progress   as a  learner   in a current course is still considered by tutors to   not be satisfactory  you  will be invited to a meeting and advised in writing by the   Head of  Department or delegate.    The Formal Academic Contract will record the deficiencies or concerns, the   progress which must be met, any assistance available, the time within which"
+    },
+    {
+        "page": 57,
+        "content": "P a g e     |  54      progress or change must be demonstrated, and the method and criteria by   which such progress or change will be measured.    For more information about Academic Support and Progression, see  Academic   Support and Progression    -   scroll down and find  3.3 Formal Academic Contract    Academic Misconduct    Cheating, plagiarism and other dishonest academic practices have serious   consequences in this programme and  if you  fail to meet academic standards   you ,   as a  learner ,  may be subject to educative processes or penalties.    Plagiarism    Copying,  taking,   or using someone else’s work or ideas and presenting them as if   they were  your   own original work or thought, without clear acknowledgement of   the actual source.    Use of Artificial Intelligence (AI) Tools    Generative Artificial Intelligence (AI) services such as ChatGPT can be used for   learning. When submitting work for assessment, you must adhere to Ara’s   Assessment and Academic Misconduct policies. In relation to AI, this  means...    •   you must not present any output from any AI services as your own work in   your assessment.    •   you must use your own words.    •   if you paraphrase or quote from a source such as a textbook, website and AI   service, you must reference correctly.    If you submit an assessment using content copied directly from an AI service   without acknowledgement, it is a form of academic misconduct.    Cheating    Acting deceitfully or  dishonestly to gain academic recognition or an academic   result.  Examples include copying answers from another person’s work, taking   useful information secretly into a test or exam, improperly accessing   information about questions and/or answers, arranging   for someone else to   produce an assignment or to sit a test or exam."
+    },
+    {
+        "page": 58,
+        "content": "P a g e     |  55      Dishonest Academic Practice     Any other act or omission that contravenes Ara academic requirements of a   programme or course.    Educative Processes    These are actions designed to assist  you ,  as a  learner ,   in understanding the   expected standards and skills needed to succeed and may include :    •   a f acilitated discussion with an appr opriate staff member    •   a formal contract with Learning Services or other appropriate staff member   for skills development including specific le arning outcomes and timeframes    •   a dditional work may be required    •   a formal written warning may be given or marks deducted.    Penalties    These are actions designed to deter misconduct and/or deal with the   consequences of it in a fair and appropriate way and may include:    •   a   decision not to mark or assess the work or record a mark/grade    •   f ormally recorded fail / zero for the work concerned which remains on your   academic record    •   c ancellation of credit already awarded if the academic  misconduct is   admitted/ established after assessments have been completed and recorded    •   f ormal notice indicating ‘Intentional Plagiarism’ (or other misconduct) placed   on academic record for a specified period of time    •   f ormal written warning    •   p robation or suspension from the programme or other penalty.    Learner Behaviour Management    If you are identified as a learner who displays unacceptable behaviour the   department will monitor your progress and provide support at the earliest   stage. This may include referral to Student Support Services to ensure additional   support is provided to yo u.     If you do not respond you may be placed on a behaviour improvement plan This   will include identifying, documenting, implementing, and monitoring goals,   expected behavioural progress, timelines, and support. If you do not meet the   outcomes outlined in the b ehaviour management plan, you may be moved to   probation."
+    },
+    {
+        "page": 59,
+        "content": "P a g e     |  56      Probation    If your   behaviour ,   as a  learner ,  is   unacceptable and of concern to staff or other   learner s,  you  will be advised of this in writing by the Head of Department.  This   written warning is known as probation.    The written advice must briefly record the deficiencies or concerns, the progress   or standards of behaviour which must be met, any assistance available, the time   within which progress or change must be demonstrated, and the method and   criteria by which suc h progress or change will be measured.    The progress or change required should be reasonable and the criteria for   assessing whether the progress or change has been achieved should be easily   understood and capable of being clearly demonstrated.    The written advice must include the warning that failure to make progress or   achieve change may lead to suspension and/or cancellation of current   enrolment(s) and/or refusal of future enrolment(s).    These requirements are known as the “terms and conditions of probation”.    For more i nformation about probation, see  Probation   -   scroll down and find  3.4   Probation    Exclusion    An exclusion may apply to one or more specified courses, a whole programme,   or all enrolment at Ara.  An exclusion may also apply to one or more specified   services or facilities.    Suspension    Suspension is a short - term exclusion and is the formal process by which  you ,   as   a  learner ,  are  temporarily prohibited from attending classes in one or more   courses and/or is refused access to one or more services/facilities provided by   Ara.  In serious circumstances a Trespass Notice may also be issued.    Cancellation of Enrolment    Ara may cancel  your   enrolment   as a  learner   on any of the Education Act (1989)   grounds:    •   The person is not of good character.    •   The person has been guilty of  misconduct or a breach of discipline."
+    },
+    {
+        "page": 60,
+        "content": "P a g e     |  57      •   The person is enrolled for full - time instruction in another institution or in a   school.    •   The person has made insufficient progress in the person’s study or training   after a reasonable trial at the institution or at another institution.    The decision to cancel or refuse an enrolment may be made only by the   Operations Lead   or nominee.    Failure to meet the terms and conditions of Academic Contract and/or probation   may lead to exclusion.    When a cancellation is being considered, the Head of Department must invite   you  to an interview.    Refusal of Future Enrolment     Any person may, for good reason and on good evidence, be refused enrolment   at Ara generally or in a particular programme or course only by the  Operations   Lead   or by his or her nominee under specific delegation.    Enrolment may be refused on any of the Education Act (1989) grounds.    Failure to meet the terms and conditions of probation may lead to exclusion.    The Head of Department must forward a recommendation to the  Operations   Lead   that the person’s application(s) to enrol be refused.  The recommendation    must state which of the Education Act (1989) grounds is the basis of the   recommendation and must include the supporting evidence.    For more information about Exclusion, including Appeal Rights and Other Rights,   see  Exclusion   -   scroll down and find  3.4 Refusal of Enrolment    Copyright and Ara  Learner s    Copyright legislation exists to protect copyright owners from unauthorised   copying of their work  (literary, dramatic, musical and artistic), and provides them   with exclusive rights to how their work is used.    During your study with us we will endeavour to educate you on copyright use,   including referencing, approved copying, and proper use of electronic material   and downloadable music.    Infringement of copyright regulations may result in civil or criminal prosecution   against you, as the  learner , and/or Ara. Infringement by you, as a  learner , may   also be considered academic misconduct and result in penalties."
+    },
+    {
+        "page": 61,
+        "content": "P a g e     |  58      For more information about Copyright, see  Copyright ."
+    },
+    {
+        "page": 62,
+        "content": "P a g e     |  59"
+    },
+    {
+        "page": 63,
+        "content": "P a g e     |  60      Kā tū whare  -   Facilities     Health   and Safety    Ara Institute of Canterbury is committed to providing a healthy and safe work   environment at all of its physical locations and during any Ara activities.    Please refer to the  Learner Information Handbook   for general Health and Safety   information.  In an emergency advise a staff member.  If no one is available   phone 111.       Disclaimer :    All care and attention has been given to ensure the information in this document is accurate at the time  of   publishing . Ara does   not take responsibility for any loss or harm incurred as a result of reliance upon any   information which is incorrect or out of date. This document was last updated on  14 February 2025 ."
+    },
+    {
+        "page": 64,
+        "content": "For details and information about making the most of your study at Ara,  visit  www.myara.ac.nz  or get the  downloadable app.  Get in touch of you have any questions:  0800 24 24 76 | info@ara.ac.nz"
+    }
+]

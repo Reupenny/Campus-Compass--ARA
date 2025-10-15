@@ -10,6 +10,8 @@ let staff = {};
 let templates = {};
 let character = {};
 let computing = {};
+let studentHandbook = {};
+let tourdata = {};
 
 // Load the knowledge base from the JSON file
 fetch('knowledge/ara.json')
@@ -42,6 +44,16 @@ fetch('knowledge/computing.json')
         console.error("Error loading computing course information:", error);
     });
 
+// Load the student handbook information from the JSON file
+fetch('knowledge/student-handbook.json')
+    .then(response => response.json())
+    .then(data => {
+        studentHandbook = data;
+    })
+    .catch(error => {
+        console.error("Error loading student handbook information:", error);
+    });
+
 // Load the templates from the JSON file
 fetch('knowledge/templates.json')
     .then(response => response.json())
@@ -52,7 +64,17 @@ fetch('knowledge/templates.json')
         console.error("Error loading templates:", error);
     });
 
-// Load the templates from the JSON file
+// Load the tour information from the JSON file
+fetch('data/tour.json')
+    .then(response => response.json())
+    .then(data => {
+        tourdata = data;
+    })
+    .catch(error => {
+        console.error("Error loading tour information:", error);
+    });
+
+// Load the character from the JSON file
 fetch('knowledge/character.json')
     .then(response => response.json())
     .then(data => {
@@ -127,6 +149,9 @@ Never invent or guess information.
   - The block has the specified floor (assume max 3 floors if not specified).  
   - If the room is a staff office, also provide the staff details using the staff template.  
 - Always use the provided templates to show rooms and buildings.
+- When providing directions, do not use north south east or west. Use landmarks and simple directions only, you can also use the **Tour information** to assits and also imform the user of where to navigate to see the location.
+- If the room or block does not exist, respond with:  
+  > "I'm sorry, I couldn't find that location. Could you please check the room or block name and try again?"
 
 ---
 
@@ -134,7 +159,7 @@ Never invent or guess information.
 - When asked about a staff member:  
   - Provide their information using the **contactTemplate** in the template field.  
   - Anytime you mention a staff member (even for clarification), use the template.  
-  - If only a first name is given and there is a single match, show that staff member.  
+  - If only a first name is given and there is a single match, use the template to show that staff member, do not get clarification
   - If multiple matches exist, ask for their last name.  
   - Never include phone or email in the **message** field (only in the template).  
 - If asked about multiple staff members:  
@@ -177,14 +202,23 @@ json
 ---
 
 ### 8. CONTEXT DATA
-Knowledge base:  
+Campus locations:  
 ${JSON.stringify(knowledgeBase)}
 
 Staff database:  
 ${JSON.stringify(staff)}
 
-Computing course information:
+Computing student Handbook & course information:
 ${JSON.stringify(computing)}
+
+Student handbook information:
+${JSON.stringify(studentHandbook)}
+
+Student handbook information:
+${JSON.stringify(studentHandbook)}
+
+Tour information:
+${JSON.stringify(tourdata)}
 
 Templates:  
 ${JSON.stringify(templates)}
