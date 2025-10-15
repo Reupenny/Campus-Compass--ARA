@@ -71,6 +71,7 @@ function Explore() {
             );
 
             const scenes: { [key: string]: any } = {};
+            const highResLayers: { [key: string]: any } = {};
             const highResLoaded: { [key: string]: boolean } = {};
 
             // Helper function to get low-res URL
@@ -95,7 +96,7 @@ function Explore() {
                         hotspotElement.addEventListener('click', () => {
                             if (scenes[hotspotData.target!]) {
                                 scenes[hotspotData.target!].switchTo();
-                                // Load high-res for the new scene after a short delay
+                                // Load high-res layer for the new scene after a short delay
                                 loadHighResWithDelay(hotspotData.target!, 1000);
                             }
                         });
@@ -125,7 +126,7 @@ function Explore() {
                 }
             };
 
-            // Function to load high-res version of a scene with delay
+            // Function to load high-res layer for a scene with delay
             const loadHighResWithDelay = (sceneId: string, delay: number = 2000) => {
                 setTimeout(() => {
                     if (highResLoaded[sceneId] || !viewerRef.current || !isViewerHealthy()) return; // Already loaded or viewer destroyed/corrupted
@@ -134,55 +135,33 @@ function Explore() {
                     if (!sceneData) return;
 
                     try {
-                        console.log(`Loading high-res for scene ${sceneId}`);
-
-                        // Check if this scene is currently active before we start
-                        const currentScene = viewerRef.current.scene();
-                        const isCurrentlyActive = currentScene === scenes[sceneId];
+                        console.log(`Loading high-res layer for scene ${sceneId}`);
+                        const scene = scenes[sceneId];
+                        if (!scene) return;
 
                         // Pre-load the high-res image to ensure it's ready
                         const highResImg = new Image();
                         highResImg.onload = () => {
-                            if (!viewerRef.current) return; // Viewer was destroyed
+                            if (!viewerRef.current || !scene) return; // Viewer was destroyed
 
-                            console.log(`High-res image loaded for scene ${sceneId}, creating scene`);
+                            console.log(`High-res image loaded for scene ${sceneId}, creating layer`);
 
-                            const highResScene = viewerRef.current.createScene({
-                                source: Marzipano.ImageUrlSource.fromString(sceneData.imageUrl),
-                                geometry: new Marzipano.EquirectGeometry([{ width: sceneData.geometry.width }]),
-                                view: new Marzipano.RectilinearView(undefined, zoomLimiter)
-                            });
+                            try {
+                                // Create a high-res layer and add it to the existing scene
+                                const highResLayer = scene.createLayer({
+                                    source: Marzipano.ImageUrlSource.fromString(sceneData.imageUrl),
+                                    geometry: new Marzipano.EquirectGeometry([{ width: sceneData.geometry.width }])
+                                });
 
-                            // Replace the scene reference
-                            scenes[sceneId] = highResScene;
-                            highResLoaded[sceneId] = true;
+                                // Store the high-res layer reference
+                                highResLayers[sceneId] = highResLayer;
+                                highResLoaded[sceneId] = true;
 
-                            // Add hotspots to high-res scene
-                            addHotspotsToScene(highResScene, sceneData);
+                                // If this scene is currently active, the high-res layer will automatically show
+                                console.log(`High-res layer created for scene ${sceneId}`);
 
-                            // If this scene was active when we started loading, switch to high-res after ensuring it's fully rendered
-                            if (isCurrentlyActive && viewerRef.current) {
-                                // Use requestAnimationFrame to ensure scene is fully rendered before switching
-                                const waitForSceneReady = () => {
-                                    if (!viewerRef.current) return; // Viewer was destroyed
-
-                                    // Check if scene is ready by testing if we can get its view
-                                    try {
-                                        highResScene.view();
-                                        // Scene is ready, now check if still active and switch
-                                        const stillActive = viewerRef.current.scene() === scenes[sceneId] || viewerRef.current.scene() === currentScene;
-                                        if (stillActive) {
-                                            console.log(`Switching to high-res for active scene ${sceneId}`);
-                                            highResScene.switchTo();
-                                        }
-                                    } catch (error) {
-                                        // Scene not ready yet, wait another frame
-                                        requestAnimationFrame(waitForSceneReady);
-                                    }
-                                };
-
-                                // Start checking for readiness
-                                requestAnimationFrame(waitForSceneReady);
+                            } catch (error) {
+                                console.warn(`Failed to create high-res layer for scene ${sceneId}:`, error);
                             }
                         };
 
@@ -212,14 +191,14 @@ function Explore() {
                 scenes[sceneData.id] = scene;
                 highResLoaded[sceneData.id] = false;
 
-                // Add hotspots to low-res scene
+                // Add hotspots to the scene (only once)
                 addHotspotsToScene(scene, sceneData);
             });
 
-            // Start with first scene (low-res) and upgrade to high-res after delay
+            // Start with first scene and load high-res layer after delay
             const firstSceneId = tourData.scenes[0].id;
             scenes[firstSceneId].switchTo();
-            loadHighResWithDelay(firstSceneId, 1500); // Upgrade to high-res after 1.5 seconds
+            loadHighResWithDelay(firstSceneId, 1500); // Add high-res layer after 1.5 seconds
 
         } catch (error) {
             console.error('Error initializing viewer:', error);
