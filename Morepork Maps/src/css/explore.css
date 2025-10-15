@@ -86,3 +86,18 @@
     min-height: 200px;
     width: 400px;
 }
+
+@media (max-width: 600px) {
+    .hotspot-waypoint .hotspot-data {
+        opacity: 1;
+        width: 165px;
+        height: auto;
+        background-color: oklch(from var(--card) l c h / 0.8);
+        bottom: 60px;
+        position: absolute;
+    }
+
+    .hotspot-waypoint:hover .hotspot-data {
+        background-color: var(--card);
+    }
+}
