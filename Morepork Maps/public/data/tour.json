@@ -51,7 +51,7 @@
     },
     {
       "id": "scene1",
-      "name": "Gym Foyer",
+      "name": "W Block Foyer",
       "imageUrl": "tour_images/image-1760430813806-548291137.webp",
       "geometry": {
         "width": 4000
@@ -194,7 +194,7 @@
           "type": "waypoint",
           "pitch": -0.007798128958846462,
           "yaw": -1.1868454661175303,
-          "text": "Gym Foyer",
+          "text": "W Block Foyer",
           "target": "scene1"
         }
       ],
@@ -378,7 +378,7 @@
           "type": "waypoint",
           "pitch": 0.0331825967667676,
           "yaw": 1.066657230688243,
-          "text": "Gym Foyer",
+          "text": "W Block Foyer",
           "target": "scene1"
         },
         {

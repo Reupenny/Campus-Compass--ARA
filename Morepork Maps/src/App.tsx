@@ -10,15 +10,39 @@ function App() {
 
   return (
     <>
-      <div style={{ display: currentPage === 'chat' ? 'block' : 'none' }}>
-        <Chat />
-      </div>
-      <div style={{ display: currentPage === 'explore' ? 'block' : 'none' }}>
-        <Explore />
-      </div>
-      <div style={{ display: currentPage === 'quest' ? 'block' : 'none' }}>
-        <Quest />
-      </div>
+      {/* Chat and Explore are always loaded together to preserve state */}
+      {(currentPage === 'chat' || currentPage === 'explore') && (
+        <>
+          {/* Chat preserves state when hidden */}
+          <div style={{ 
+            display: currentPage === 'chat' ? 'block' : 'none',
+            width: '100vw',
+            height: '100vh'
+          }}>
+            <Chat />
+          </div>
+          
+          {/* Explore preserves state when hidden */}
+          <div style={{ 
+            display: currentPage === 'explore' ? 'block' : 'none',
+            width: '100vw',
+            height: '100vh'
+          }}>
+            <Explore />
+          </div>
+        </>
+      )}
+      
+      {/* Quest reloads on each visit to prevent cheating */}
+      {currentPage === 'quest' && (
+        <div style={{ 
+          width: '100vw',
+          height: '100vh'
+        }}>
+          <Quest />
+        </div>
+      )}
+      
       <Menu currentPage={currentPage} setCurrentPage={setCurrentPage} />
     </>
   );
