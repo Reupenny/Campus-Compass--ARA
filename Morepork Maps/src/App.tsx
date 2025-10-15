@@ -10,9 +10,15 @@ function App() {
 
   return (
     <>
-      {currentPage === 'chat' && <Chat />}
-      {currentPage === 'explore' && <Explore />}
-      {currentPage === 'quest' && <Quest />}
+      <div style={{ display: currentPage === 'chat' ? 'block' : 'none' }}>
+        <Chat />
+      </div>
+      <div style={{ display: currentPage === 'explore' ? 'block' : 'none' }}>
+        <Explore />
+      </div>
+      <div style={{ display: currentPage === 'quest' ? 'block' : 'none' }}>
+        <Quest />
+      </div>
       <Menu currentPage={currentPage} setCurrentPage={setCurrentPage} />
     </>
   );
