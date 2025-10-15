@@ -10,8 +10,8 @@ function App() {
 
   return (
     <>
-      {/* Chat and Explore are always loaded together to preserve state */}
-      {(currentPage === 'chat' || currentPage === 'explore') && (
+      {/* Chat and Explore are always loaded (except when on Quest) to preserve state */}
+      {currentPage !== 'quest' && (
         <>
           {/* Chat preserves state when hidden */}
           <div style={{

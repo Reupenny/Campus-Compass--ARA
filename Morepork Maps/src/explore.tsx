@@ -28,8 +28,24 @@ function Explore() {
     const [count, setCount] = useState(0);
 
     useEffect(() => {
-        const panoElement = document.getElementById('pano');
-        const viewer = new Marzipano.Viewer(panoElement);
+        // Add a small delay to ensure the container is properly visible
+        const initializeViewer = () => {
+            const panoElement = document.getElementById('pano');
+            if (!panoElement) {
+                // Retry if element not found
+                setTimeout(initializeViewer, 100);
+                return;
+            }
+            
+            // Check if element is actually visible before initializing
+            const rect = panoElement.getBoundingClientRect();
+            if (rect.width === 0 || rect.height === 0) {
+                // Element is hidden, retry
+                setTimeout(initializeViewer, 100);
+                return;
+            }
+            
+            const viewer = new Marzipano.Viewer(panoElement);
 
         const minZoomInVFOV = 80;
         const maxZoomOutVFOV = 100;
@@ -173,6 +189,10 @@ function Explore() {
                 scenes[firstSceneId].switchTo();
                 loadHighResWithDelay(firstSceneId, 1500); // Upgrade to high-res after 1.5 seconds
             });
+        };
+        
+        // Start the initialization process
+        initializeViewer();
     }, []);
 
     return (
