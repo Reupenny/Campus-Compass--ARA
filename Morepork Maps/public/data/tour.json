@@ -89,7 +89,7 @@
         "width": 5888,
         "height": 2944
       },
-      "inView": "Gym, changing rooms/ toilets, courts."
+      "inView": "Gym, changing rooms/ toilets, courts, stairs."
     },
     {
       "id": "scene2",
@@ -138,7 +138,7 @@
         "width": 5888,
         "height": 2944
       },
-      "inView": "3x elevators, "
+      "inView": "3x elevators, doors outside to courtyard.\nThis is the main entrance to S and N blocks."
     },
     {
       "id": "scene1760246251028",
@@ -152,21 +152,21 @@
           "type": "info",
           "pitch": 0.04654651075751026,
           "yaw": -3.101629892969802,
-          "text": "New Info Point",
+          "text": "Disability Services",
           "description": "Description here"
         },
         {
           "type": "waypoint",
           "pitch": -0.0005503473335206621,
           "yaw": 1.946593405490459,
-          "text": "Madras st entrance",
-          "target": "scene1760246558542"
+          "text": "Rakaia",
+          "target": "scene1760413818435"
         },
         {
           "type": "info",
           "pitch": 0.016301790436410002,
           "yaw": -0.6349014688915808,
-          "text": "New Info Point",
+          "text": "Learning Services",
           "description": "Description here"
         }
       ],
@@ -180,11 +180,11 @@
         "width": 5888,
         "height": 2944
       },
-      "inView": "Disability services"
+      "inView": "Disability services, Learning services, library desk, printers and computers. Study space upstairs."
     },
     {
       "id": "scene1760246374487",
-      "name": "Inside gym",
+      "name": "Sports Courts",
       "imageUrl": "tour_images/image-1760430871425-852880273.webp",
       "geometry": {
         "width": 4000
@@ -207,11 +207,12 @@
       "dimensions": {
         "width": 5888,
         "height": 2944
-      }
+      },
+      "inView": "single multipurpose court, mini internal grand stand that connects the first and second floors."
     },
     {
       "id": "scene1760246731339",
-      "name": "D block Quad",
+      "name": "D Block Quad",
       "imageUrl": "tour_images/image-1760430902567-484545274.webp",
       "geometry": {
         "width": 4000
@@ -255,7 +256,8 @@
       "dimensions": {
         "width": 5888,
         "height": 2944
-      }
+      },
+      "inView": "D,K,C,DL buildings. green space nice for lunch."
     },
     {
       "id": "scene1760246894225",
@@ -298,11 +300,12 @@
       "dimensions": {
         "width": 5888,
         "height": 2944
-      }
+      },
+      "inView": "C,N,A,K,CH,E,W.\nmain junction point."
     },
     {
       "id": "scene1760247134107",
-      "name": "Outside Rakaia",
+      "name": "Center Walkway 2",
       "imageUrl": "tour_images/image-1760430972722-233134076.webp",
       "geometry": {
         "width": 4000
@@ -312,8 +315,8 @@
           "type": "waypoint",
           "pitch": 0.040939443275677334,
           "yaw": -1.1676589606411873,
-          "text": "New Waypoint",
-          "target": "scene1"
+          "text": "Inside Rakaia",
+          "target": "scene1760413520439"
         },
         {
           "type": "waypoint",
@@ -346,7 +349,8 @@
       "dimensions": {
         "width": 5888,
         "height": 2944
-      }
+      },
+      "inView": "A,L,TM,E,CH.\nRakaia back entrance."
     },
     {
       "id": "scene1760247287645",
@@ -401,7 +405,8 @@
       "dimensions": {
         "width": 5888,
         "height": 2944
-      }
+      },
+      "inView": "W,E,CH.\nMain entrance to the gym."
     },
     {
       "id": "scene1760247687974",
@@ -435,11 +440,12 @@
       "dimensions": {
         "width": 5888,
         "height": 2944
-      }
+      },
+      "inView": "S,N,O. Secure bike storage under S block, ID card access only."
     },
     {
       "id": "scene1760247736814",
-      "name": "Top N/S Block",
+      "name": "Top S/N Block",
       "imageUrl": "tour_images/image-1760431031096-193662944.webp",
       "geometry": {
         "width": 4000
@@ -462,7 +468,8 @@
       "dimensions": {
         "width": 5888,
         "height": 2944
-      }
+      },
+      "inView": "View out of the top of the building. See the hills."
     },
     {
       "id": "scene1760247882127",
@@ -476,7 +483,7 @@
           "type": "info",
           "pitch": 0.0664834581198459,
           "yaw": 0.37094971452935965,
-          "text": "New Info Point",
+          "text": "Health Center",
           "description": "Description here"
         },
         {
@@ -496,7 +503,8 @@
       "dimensions": {
         "width": 5888,
         "height": 2944
-      }
+      },
+      "inView": "W,CH.\nhealth center/ Doctors.\nMain student car park."
     },
     {
       "id": "scene1760248018321",
@@ -531,7 +539,7 @@
           "type": "info",
           "pitch": -0.003090510762469023,
           "yaw": 0.8564142433999056,
-          "text": "New Info Point",
+          "text": "Microwaves",
           "description": "Description here"
         }
       ],
@@ -544,11 +552,12 @@
       "dimensions": {
         "width": 5888,
         "height": 2944
-      }
+      },
+      "inView": "Plenty of seating, 3x microwaves for heating up lunch."
     },
     {
       "id": "scene1760248309156",
-      "name": "Madras st Carpark",
+      "name": "Madras st Carpark Entrancde",
       "imageUrl": "tour_images/image-1760431091717-390930882.webp",
       "geometry": {
         "width": 4000
@@ -599,11 +608,12 @@
       "dimensions": {
         "width": 5888,
         "height": 2944
-      }
+      },
+      "inView": "C,X,N.\nmain car park entrance, access to Rakaia Center. drop off zone."
     },
     {
       "id": "scene1760248588774",
-      "name": "Madras st Carpark Two",
+      "name": "Madras st Carpark Exit",
       "imageUrl": "tour_images/image-1760431107563-57019653.webp",
       "geometry": {
         "width": 4000
@@ -647,11 +657,12 @@
       "dimensions": {
         "width": 5888,
         "height": 2944
-      }
+      },
+      "inView": "S,N,X,O.\nMain Car park exit."
     },
     {
       "id": "scene1760248825576",
-      "name": "Courtyard",
+      "name": "Center Walkway 3",
       "imageUrl": "tour_images/image-1760431128961-224266330.webp",
       "geometry": {
         "width": 4000
@@ -683,11 +694,12 @@
       "dimensions": {
         "width": 5888,
         "height": 2944
-      }
+      },
+      "inView": "L,Rakaia atrium, S,N,G,TM.\nCourtyard "
     },
     {
       "id": "scene1760413520439",
-      "name": "Inside Rakaia",
+      "name": "Rakaia, A block",
       "imageUrl": "tour_images/image-1760431162171-585199670.webp",
       "geometry": {
         "width": 4000
@@ -717,11 +729,12 @@
       "dimensions": {
         "width": 5888,
         "height": 2944
-      }
+      },
+      "inView": "A block and windowed wall of Library classrooms. Stairwell and level 2 walkway."
     },
     {
       "id": "scene1760413622275",
-      "name": "Inside Rakaia 2",
+      "name": "Rakaia Cafe Entrance",
       "imageUrl": "tour_images/image-1760431208007-605219270.webp",
       "geometry": {
         "width": 4000
@@ -772,11 +785,12 @@
       "dimensions": {
         "width": 5888,
         "height": 2944
-      }
+      },
+      "inView": "L,A.\ninside the Rakaia atrium access to cafe, library, limited seating."
     },
     {
       "id": "scene1760413818435",
-      "name": "Rakaia",
+      "name": "Rakaia Centre",
       "imageUrl": "tour_images/image-1760431375990-727726208.webp",
       "geometry": {
         "width": 4000
@@ -827,11 +841,12 @@
       "dimensions": {
         "width": 5760,
         "height": 2880
-      }
+      },
+      "inView": "X,L.\nin the center of Rakaia atrium access to finances, help desk, Security office."
     },
     {
       "id": "scene1760415255623",
-      "name": "Cortyard 2",
+      "name": "Cortyard T Block",
       "imageUrl": "tour_images/image-1760431534662-22454282.webp",
       "geometry": {
         "width": 4000
@@ -875,11 +890,12 @@
       "dimensions": {
         "width": 5888,
         "height": 2944
-      }
+      },
+      "inView": "T,G,Q,U,S,N.\nin the courtyard, grassy, some seating."
     },
     {
       "id": "scene1760415850783",
-      "name": "Courtyard 3",
+      "name": "Courtyard S/N",
       "imageUrl": "tour_images/image-1760434318835-984006663.webp",
       "geometry": {
         "width": 4000
@@ -923,7 +939,8 @@
       "dimensions": {
         "width": 5888,
         "height": 2944
-      }
+      },
+      "inView": "S,N,T,U,G.\nin front of S/N building."
     },
     {
       "id": "scene1760416932960",
@@ -957,7 +974,8 @@
       "dimensions": {
         "width": 5760,
         "height": 2880
-      }
+      },
+      "inView": "Sandys office and other computing staff offices/ desks."
     },
     {
       "id": "scene1760417043354",
@@ -1000,7 +1018,8 @@
       "dimensions": {
         "width": 5760,
         "height": 2880
-      }
+      },
+      "inView": "connects X/ Rakaia to N block.\nhas stairs to upper floors of X."
     },
     {
       "id": "scene1760417512210",
@@ -1041,7 +1060,8 @@
       "dimensions": {
         "width": 5888,
         "height": 2944
-      }
+      },
+      "inView": "U,S,P.\nAccess to \"The pantry\" and \"visions\".\n"
     },
     {
       "id": "scene1760417698551",
@@ -1089,7 +1109,8 @@
       "dimensions": {
         "width": 5888,
         "height": 2944
-      }
+      },
+      "inView": "OH,OEDT,P,U."
     }
   ]
 }
