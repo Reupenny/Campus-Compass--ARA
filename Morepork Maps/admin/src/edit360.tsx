@@ -16,6 +16,7 @@ interface Scene {
     id: string;
     name: string;
     imageUrl: string;
+    inView?: string; // Description of what's in the scene for chatbot context
     lowResUrl?: string; // Low-res version for fast loading
     dimensions?: {
         width: number;
@@ -1094,6 +1095,18 @@ const Edit360 = React.forwardRef<any, Edit360Props>(({ onReady }, ref) => {
                                     setEditingScene({ ...editingScene, name: e.target.value });
                                 }}
                                 className="form-input"
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label className="form-label">Scene Description (for chatbot):</label>
+                            <textarea
+                                value={editingScene.inView || ''}
+                                onChange={(e) => {
+                                    setEditingScene({ ...editingScene, inView: e.target.value });
+                                }}
+                                className="form-textarea"
+                                placeholder="Describe what's visible in this scene for the chatbot context..."
+                                rows={3}
                             />
                         </div>
                         <div className="form-group">

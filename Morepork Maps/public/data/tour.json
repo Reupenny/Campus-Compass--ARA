@@ -4,6 +4,7 @@
       "id": "scene1760246558542",
       "name": "Madras st entrance",
       "imageUrl": "tour_images/image-1760430786152-623133469.webp",
+      "inView": "C, X, N A buildings. taken out front on C block at the main entrance.",
       "geometry": {
         "width": 4000
       },
@@ -38,9 +39,9 @@
         }
       ],
       "defaultView": {
-        "yaw": -2.945272860353512,
-        "pitch": -0.0199642506712987,
-        "fov": 2.1483672359245327
+        "yaw": -2.614893903095613,
+        "pitch": 0.11937066655286266,
+        "fov": 1.6529256029253694
       },
       "lowResUrl": "tour_images/image-1760430786152-623133469_lowres.webp",
       "dimensions": {
@@ -87,7 +88,8 @@
       "dimensions": {
         "width": 5888,
         "height": 2944
-      }
+      },
+      "inView": "Gym, changing rooms/ toilets, courts."
     },
     {
       "id": "scene2",
@@ -135,7 +137,8 @@
       "dimensions": {
         "width": 5888,
         "height": 2944
-      }
+      },
+      "inView": "3x elevators, "
     },
     {
       "id": "scene1760246251028",
@@ -176,7 +179,8 @@
       "dimensions": {
         "width": 5888,
         "height": 2944
-      }
+      },
+      "inView": "Disability services"
     },
     {
       "id": "scene1760246374487",
