@@ -18,22 +18,22 @@
         },
         {
           "type": "waypoint",
-          "pitch": -0.02188043875561263,
-          "yaw": -1.5366182985111703,
+          "pitch": -0.025462784791706383,
+          "yaw": -1.653341263073747,
           "text": "Student Lounge",
           "target": "scene1760248018321"
         },
         {
           "type": "waypoint",
-          "pitch": -0.08964926541753826,
-          "yaw": 2.8259489427056756,
+          "pitch": 0.01063220749354521,
+          "yaw": 2.8537415992759083,
           "text": "Madras st Carpark",
           "target": "scene1760248309156"
         },
         {
           "type": "waypoint",
-          "pitch": -0.011851404729444681,
-          "yaw": -1.8313630877929779,
+          "pitch": -0.02541763469130487,
+          "yaw": -1.9556497422494719,
           "text": "Center Walkway",
           "target": "scene1760246894225"
         }
@@ -75,7 +75,7 @@
           "type": "waypoint",
           "pitch": 0.017330812541271,
           "yaw": 0.3623009171702929,
-          "text": "Inside gym",
+          "text": "Sports Courts",
           "target": "scene1760246374487"
         }
       ],
@@ -103,14 +103,14 @@
           "type": "waypoint",
           "pitch": -0.042072538612565324,
           "yaw": 0.06049787555756758,
-          "text": "Top Floor",
+          "text": "Top S/N Block",
           "target": "scene1760247736814"
         },
         {
           "type": "waypoint",
           "pitch": 0.20891320921725054,
           "yaw": -3.0173770417793975,
-          "text": "Courtyard 3",
+          "text": "Courtyard S/N",
           "target": "scene1760415850783"
         },
         {
@@ -159,7 +159,7 @@
           "type": "waypoint",
           "pitch": -0.0005503473335206621,
           "yaw": 1.946593405490459,
-          "text": "Rakaia",
+          "text": "Rakaia Centre",
           "target": "scene1760413818435"
         },
         {
@@ -194,7 +194,7 @@
           "type": "waypoint",
           "pitch": -0.007798128958846462,
           "yaw": -1.1868454661175303,
-          "text": "Exit Gym",
+          "text": "Gym Foyer",
           "target": "scene1"
         }
       ],
@@ -222,14 +222,14 @@
           "type": "waypoint",
           "pitch": -0.024529331084851336,
           "yaw": -0.25981652069626016,
-          "text": "Madrass st",
+          "text": "Madras st entrance",
           "target": "scene1760246558542"
         },
         {
           "type": "waypoint",
           "pitch": -0.013474616431548014,
           "yaw": 1.8942549165966058,
-          "text": "Center walkway",
+          "text": "Center Walkway",
           "target": "scene1760246894225"
         },
         {
@@ -271,28 +271,28 @@
           "type": "waypoint",
           "pitch": -0.012757898945389812,
           "yaw": 2.201470340269272,
-          "text": "D block",
+          "text": "D Block Quad",
           "target": "scene1760246731339"
         },
         {
           "type": "waypoint",
           "pitch": 0.017109200339387343,
           "yaw": -2.2867638979716016,
-          "text": "Madras st Carpark",
+          "text": "Madras st Car Park Entrance",
           "target": "scene1760248309156"
         },
         {
           "type": "waypoint",
-          "pitch": 0.08021335245550887,
-          "yaw": 0.15908668905397505,
+          "pitch": -0.006751105236430632,
+          "yaw": 0.10629044277692756,
           "text": "Outside W Block",
           "target": "scene1760247287645"
         },
         {
           "type": "waypoint",
-          "pitch": 0.018340325764217624,
-          "yaw": -0.3812746994847398,
-          "text": "Outside Rakaia",
+          "pitch": -0.020849063056800787,
+          "yaw": -0.3633334784344555,
+          "text": "Center Walkway 2",
           "target": "scene1760247134107"
         }
       ],
@@ -313,15 +313,15 @@
       "hotspots": [
         {
           "type": "waypoint",
-          "pitch": 0.040939443275677334,
-          "yaw": -1.1676589606411873,
+          "pitch": 0.019074577314171393,
+          "yaw": -1.2302416696457765,
           "text": "Inside Rakaia",
           "target": "scene1760413520439"
         },
         {
           "type": "waypoint",
-          "pitch": 0.020096762226927467,
-          "yaw": 0.019599765463553354,
+          "pitch": 0.002093660876784753,
+          "yaw": -0.0160679549657754,
           "text": "Courtyard",
           "target": "scene1760248825576"
         },
@@ -334,9 +334,9 @@
         },
         {
           "type": "waypoint",
-          "pitch": 0.0013671857849679725,
-          "yaw": -3.1072167230620273,
-          "text": "Outside W block",
+          "pitch": 0.0023869329843648757,
+          "yaw": -3.087712451096138,
+          "text": "Outside W Block",
           "target": "scene1760247287645"
         }
       ],
@@ -385,7 +385,7 @@
           "type": "waypoint",
           "pitch": -0.030676501161936542,
           "yaw": 2.9151221312137947,
-          "text": "Outside Rakaia",
+          "text": "Center Walkway 2",
           "target": "scene1760247134107"
         },
         {
@@ -427,7 +427,7 @@
           "type": "waypoint",
           "pitch": -0.04796500984766361,
           "yaw": 0.4345125007932893,
-          "text": "Madras st Carpark Two",
+          "text": "Madras st Car Park Exit",
           "target": "scene1760248588774"
         }
       ],
@@ -455,7 +455,7 @@
           "type": "waypoint",
           "pitch": -0.010260394103156045,
           "yaw": 0.12162500602209825,
-          "text": "Ground Floor",
+          "text": "S/N Foyer",
           "target": "scene2"
         }
       ],
@@ -490,8 +490,15 @@
           "type": "waypoint",
           "pitch": -0.027224677204797487,
           "yaw": 2.6614472141560093,
-          "text": "Outside W block",
+          "text": "Outside W Block",
           "target": "scene1760247287645"
+        },
+        {
+          "type": "info",
+          "pitch": 0.13958650595254518,
+          "yaw": -1.2942698967927537,
+          "text": "Student Parking",
+          "description": "Description here"
         }
       ],
       "defaultView": {
@@ -518,14 +525,14 @@
           "type": "waypoint",
           "pitch": 0.023073531248929413,
           "yaw": -3.1403186258249836,
-          "text": "Madras st Carpark",
+          "text": "Madras st Car Park Entrance",
           "target": "scene1760248309156"
         },
         {
           "type": "waypoint",
           "pitch": 0.02505454574434296,
           "yaw": 1.4123043644474471,
-          "text": "Madras st Entrance",
+          "text": "Madras st entrance",
           "target": "scene1760246558542"
         },
         {
@@ -557,7 +564,7 @@
     },
     {
       "id": "scene1760248309156",
-      "name": "Madras st Carpark Entrancde",
+      "name": "Madras st Car Park Entrance",
       "imageUrl": "tour_images/image-1760431091717-390930882.webp",
       "geometry": {
         "width": 4000
@@ -567,14 +574,14 @@
           "type": "waypoint",
           "pitch": -0.016451529216745087,
           "yaw": -1.8322990871056355,
-          "text": "Inside Rakaia 2",
+          "text": "Rakaia Cafe Entrance",
           "target": "scene1760413622275"
         },
         {
           "type": "waypoint",
           "pitch": -0.01395158041978739,
           "yaw": 0.5934194225044127,
-          "text": "New Waypoint",
+          "text": "Madras st entrance",
           "target": "scene1760246558542"
         },
         {
@@ -595,7 +602,7 @@
           "type": "waypoint",
           "pitch": 0.00006930755710854442,
           "yaw": -2.9424783090573037,
-          "text": "Madras st Carpark Two",
+          "text": "Madras st Car Park Exit",
           "target": "scene1760248588774"
         }
       ],
@@ -613,7 +620,7 @@
     },
     {
       "id": "scene1760248588774",
-      "name": "Madras st Carpark Exit",
+      "name": "Madras st Car Park Exit",
       "imageUrl": "tour_images/image-1760431107563-57019653.webp",
       "geometry": {
         "width": 4000
@@ -630,14 +637,14 @@
           "type": "waypoint",
           "pitch": 0,
           "yaw": 0,
-          "text": "Madras st Carpark",
+          "text": "Madras st Car Park Entrance",
           "target": "scene1760248309156"
         },
         {
           "type": "waypoint",
           "pitch": -0.014293990387459488,
           "yaw": -2.761869616210099,
-          "text": "Outsided Bike Storage",
+          "text": "Outside Bike Storage",
           "target": "scene1760247687974"
         },
         {
@@ -672,14 +679,14 @@
           "type": "waypoint",
           "pitch": -0.01830648857721684,
           "yaw": -2.0701652022255477,
-          "text": "Outside Rakaia",
+          "text": "Center Walkway 2",
           "target": "scene1760247134107"
         },
         {
           "type": "waypoint",
           "pitch": 0.0021510823777184385,
           "yaw": 0.7199523610779561,
-          "text": "New Scene",
+          "text": "Cortyard T Block",
           "target": "scene1760415255623"
         },
         {
@@ -709,15 +716,22 @@
           "type": "waypoint",
           "pitch": 0.008360925827307852,
           "yaw": -2.582301357266317,
-          "text": "Outside Rakaia",
+          "text": "Center Walkway 2",
           "target": "scene1760247134107"
         },
         {
           "type": "waypoint",
           "pitch": 0.024914490009079415,
           "yaw": 0.6077852686771443,
-          "text": "Inside Rakaia 2",
+          "text": "Rakaia Cafe Entrance",
           "target": "scene1760413622275"
+        },
+        {
+          "type": "info",
+          "pitch": 0.0005628622084259405,
+          "yaw": 0.012377042946610572,
+          "text": "New Info Point",
+          "description": "Description here"
         }
       ],
       "defaultView": {
@@ -751,14 +765,14 @@
           "type": "waypoint",
           "pitch": 0.0036785188373720246,
           "yaw": 0.5180463611779409,
-          "text": "Madras st Carpark",
+          "text": "Madras st Car Park Entrance",
           "target": "scene1760248309156"
         },
         {
           "type": "waypoint",
           "pitch": -0.003100175082449752,
           "yaw": -1.7155500864322182,
-          "text": "Inside Rakaia",
+          "text": "Rakaia, A block",
           "target": "scene1760413520439"
         },
         {
@@ -772,7 +786,7 @@
           "type": "waypoint",
           "pitch": -0.03940838841583982,
           "yaw": 2.820780942759975,
-          "text": "Rakaia",
+          "text": "Rakaia Centre",
           "target": "scene1760413818435"
         }
       ],
@@ -800,7 +814,7 @@
           "type": "waypoint",
           "pitch": 0.006860196440928945,
           "yaw": 0.2701032874889364,
-          "text": "Inside Rakaia 2",
+          "text": "Rakaia Cafe Entrance",
           "target": "scene1760413622275"
         },
         {
@@ -856,7 +870,7 @@
           "type": "waypoint",
           "pitch": -0.03007111824888753,
           "yaw": -0.09404745586281216,
-          "text": "Courtyard",
+          "text": "Center Walkway 3",
           "target": "scene1760248825576"
         },
         {
@@ -870,14 +884,14 @@
           "type": "info",
           "pitch": 0.016143976500966772,
           "yaw": -1.810268190823919,
-          "text": "New Info Point",
+          "text": "IT Help and Printery",
           "description": "Description here"
         },
         {
           "type": "waypoint",
           "pitch": -0.019927577697917087,
           "yaw": 2.1204396366588725,
-          "text": "Courtyard 3",
+          "text": "Courtyard S/N",
           "target": "scene1760415850783"
         }
       ],
@@ -996,14 +1010,14 @@
           "type": "waypoint",
           "pitch": 0.05767268628105171,
           "yaw": -0.25656182615033885,
-          "text": "Rakaia",
+          "text": "Rakaia Centre",
           "target": "scene1760413818435"
         },
         {
           "type": "waypoint",
           "pitch": 0.11345610909506121,
           "yaw": -3.1146969114719276,
-          "text": "Courtyard",
+          "text": "Center Walkway 3",
           "target": "scene1760248825576"
         },
         {
@@ -1040,14 +1054,14 @@
           "type": "info",
           "pitch": -0.0613063745738156,
           "yaw": 1.006365019522276,
-          "text": "New Info Point",
-          "description": "Description here"
+          "text": "The Pantry & Visions",
+          "description": "Student run cafe.\nHours:"
         },
         {
           "type": "waypoint",
           "pitch": -0.01410958952410546,
           "yaw": -1.687857971134708,
-          "text": "Courtyard 3",
+          "text": "Courtyard S/N",
           "target": "scene1760415850783"
         }
       ],
@@ -1089,15 +1103,15 @@
           "type": "waypoint",
           "pitch": 0.02898546817964487,
           "yaw": 3.092868797079962,
-          "text": "Madras st Carpark Two",
+          "text": "Madras st Car Park Exit",
           "target": "scene1760248588774"
         },
         {
-          "type": "waypoint",
-          "pitch": 0.12438569519958165,
-          "yaw": -0.6247293379397831,
-          "text": "test scene",
-          "target": "scene1760427627329"
+          "type": "info",
+          "pitch": -0.10274644125120602,
+          "yaw": -2.3018385689842162,
+          "text": "The Box Quad",
+          "description": "Description here"
         }
       ],
       "defaultView": {
