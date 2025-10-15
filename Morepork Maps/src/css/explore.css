@@ -2,7 +2,8 @@
 .pano-container {
     width: 100vw;
     height: 100vh;
-    height: 100dvh; /* Dynamic viewport height for modern browsers */
+    height: 100dvh;
+    /* Dynamic viewport height for modern browsers */
     position: fixed;
     top: 0;
     left: 0;

@@ -235,7 +235,7 @@ function Explore() {
         return () => {
             window.removeEventListener('resize', handleResize);
             window.removeEventListener('orientationchange', handleResize);
-            
+
             if (viewerRef.current) {
                 try {
                     const panoElement = document.getElementById('pano');
