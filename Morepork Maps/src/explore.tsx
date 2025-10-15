@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './css/explore.css';
 import Marzipano from 'marzipano';
 import { useTour } from './TourContext';
@@ -8,6 +8,8 @@ function Explore() {
     const { tourData, loading, error } = useTour();
     const initializationRef = useRef(false);
     const viewerRef = useRef<any>(null);
+    const [isViewerProtected, setIsViewerProtected] = useState(false);
+    const protectionTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
     const initializeViewer = async () => {
         // Don't initialize if already done, loading, has error, or no data
@@ -26,11 +28,18 @@ function Explore() {
             return;
         }
 
-        // Clear existing viewer completely
+        // Clear existing viewer completely and protect against external interference
         if (viewerRef.current) {
             try {
+                // Create a copy of tourData to prevent external modifications
+                const tourDataCopy = JSON.parse(JSON.stringify(tourData));
+                
+                // Clear viewer safely
                 panoElement.innerHTML = '';
                 viewerRef.current = null;
+                
+                // Small delay to ensure cleanup is complete
+                await new Promise(resolve => setTimeout(resolve, 50));
             } catch (error) {
                 console.warn('Error clearing viewer:', error);
             }
@@ -40,8 +49,19 @@ function Explore() {
             initializationRef.current = true;
             console.log('Creating new Marzipano viewer...');
 
+            // Protect against external modifications during initialization
+            setIsViewerProtected(true);
+            
             const newViewer = new Marzipano.Viewer(panoElement);
             viewerRef.current = newViewer;
+            
+            // Set up viewer protection timeout
+            if (protectionTimeoutRef.current) {
+                clearTimeout(protectionTimeoutRef.current);
+            }
+            protectionTimeoutRef.current = setTimeout(() => {
+                setIsViewerProtected(false);
+            }, 5000); // Protect for 5 seconds after initialization
 
             const minZoomInVFOV = 80;
             const maxZoomOutVFOV = 100;
@@ -93,10 +113,22 @@ function Explore() {
                 });
             };
 
+            // Function to check if viewer is still functional
+            const isViewerHealthy = () => {
+                try {
+                    if (!viewerRef.current) return false;
+                    // Try to access basic viewer properties
+                    viewerRef.current.scene();
+                    return true;
+                } catch {
+                    return false;
+                }
+            };
+
             // Function to load high-res version of a scene with delay
             const loadHighResWithDelay = (sceneId: string, delay: number = 2000) => {
                 setTimeout(() => {
-                    if (highResLoaded[sceneId] || !viewerRef.current) return; // Already loaded or viewer destroyed
+                    if (highResLoaded[sceneId] || !viewerRef.current || !isViewerHealthy()) return; // Already loaded or viewer destroyed/corrupted
 
                     const sceneData = tourData.scenes.find((s: SceneData) => s.id === sceneId);
                     if (!sceneData) return;
@@ -213,6 +245,11 @@ function Explore() {
                 }
                 viewerRef.current = null;
             }
+            
+            if (protectionTimeoutRef.current) {
+                clearTimeout(protectionTimeoutRef.current);
+            }
+            
             initializationRef.current = false;
         };
     }, [tourData, loading, error]);

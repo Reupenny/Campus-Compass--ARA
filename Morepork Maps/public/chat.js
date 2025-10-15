@@ -64,8 +64,8 @@ fetch('knowledge/templates.json')
         console.error("Error loading templates:", error);
     });
 
-// Load the tour information from the JSON file
-fetch('data/tour.json')
+// Load the tour information from the JSON file (chat-specific version)
+fetch('data/tour-chat.json')
     .then(response => response.json())
     .then(data => {
         tourdata = data;
