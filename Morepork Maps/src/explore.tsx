@@ -35,7 +35,7 @@ function Explore() {
         if (tourDataRef.current) {
             return tourDataRef.current;
         }
-        
+
         try {
             // Use a unique cache buster to avoid conflicts with chat.js
             const response = await fetch('/data/tour.json?explore=' + Date.now());
@@ -50,7 +50,7 @@ function Explore() {
 
     const initializeViewer = async () => {
         if (initializationRef.current) return;
-        
+
         const panoElement = document.getElementById('pano');
         if (!panoElement) {
             setTimeout(initializeViewer, 100);
@@ -78,7 +78,7 @@ function Explore() {
         try {
             initializationRef.current = true;
             console.log('Creating new Marzipano viewer...');
-            
+
             const newViewer = new Marzipano.Viewer(panoElement);
             viewerRef.current = newViewer;
             setViewer(newViewer);
@@ -89,9 +89,9 @@ function Explore() {
                 minZoomInVFOV * Math.PI / 180,
                 maxZoomOutVFOV * Math.PI / 180
             );
-            
+
             const data = await loadTourData();
-            
+
             const scenes: { [key: string]: any } = {};
             const highResLoaded: { [key: string]: boolean } = {};
 
@@ -154,7 +154,7 @@ function Explore() {
                         const highResImg = new Image();
                         highResImg.onload = () => {
                             if (!viewerRef.current) return; // Viewer was destroyed
-                            
+
                             console.log(`High-res image loaded for scene ${sceneId}, creating scene`);
 
                             const highResScene = viewerRef.current.createScene({
@@ -175,7 +175,7 @@ function Explore() {
                                 // Use requestAnimationFrame to ensure scene is fully rendered before switching
                                 const waitForSceneReady = () => {
                                     if (!viewerRef.current) return; // Viewer was destroyed
-                                    
+
                                     // Check if scene is ready by testing if we can get its view
                                     try {
                                         highResScene.view();
