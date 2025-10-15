@@ -46,14 +46,14 @@ export function TourProvider({ children }: TourProviderProps) {
         try {
             setLoading(true);
             setError(null);
-            
+
             // Add timestamp to prevent caching issues
             const response = await fetch(`/data/tour.json?t=${Date.now()}`);
-            
+
             if (!response.ok) {
                 throw new Error(`Failed to load tour data: ${response.status}`);
             }
-            
+
             const data = await response.json();
             setTourData(data);
         } catch (err) {
