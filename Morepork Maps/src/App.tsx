@@ -4,12 +4,13 @@ import Menu from './menu.tsx';
 import Chat from './chat';
 import Explore from './explore';
 import Quest from './quest';
+import { TourProvider } from './TourContext';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<'chat' | 'explore' | 'quest'>('chat');
 
   return (
-    <>
+    <TourProvider>
       {/* Chat and Explore are always loaded (except when on Quest) to preserve state */}
       {currentPage !== 'quest' && (
         <>
@@ -44,7 +45,7 @@ function App() {
       )}
 
       <Menu currentPage={currentPage} setCurrentPage={setCurrentPage} />
-    </>
+    </TourProvider>
   );
 }
 

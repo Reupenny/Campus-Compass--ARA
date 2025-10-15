@@ -1,55 +1,17 @@
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import './css/explore.css';
 import Marzipano from 'marzipano';
-
-interface HotspotData {
-    type: string;
-    pitch: number;
-    yaw: number;
-    text: string;
-    target?: string;
-    description?: string;
-}
-
-interface SceneData {
-    id: string;
-    name: string;
-    imageUrl: string;
-    lowResUrl?: string; // Low-res version for fast loading
-    geometry: { width: number };
-    hotspots: HotspotData[];
-}
-
-interface TourData {
-    scenes: SceneData[];
-}
+import { useTour } from './TourContext';
+import type { SceneData } from './TourContext';
 
 function Explore() {
-    const [viewer, setViewer] = useState<any>(null);
-    const tourDataRef = useRef<TourData | null>(null);
+    const { tourData, loading, error } = useTour();
     const initializationRef = useRef(false);
     const viewerRef = useRef<any>(null);
 
-    // Function to load tour data with caching and isolation from chat.js
-    const loadTourData = async (): Promise<TourData> => {
-        if (tourDataRef.current) {
-            return tourDataRef.current;
-        }
-
-        try {
-            // Use a unique cache buster to avoid conflicts with chat.js
-            const response = await fetch('/data/tour.json?explore=' + Date.now());
-            const data = await response.json();
-            tourDataRef.current = data;
-            return data;
-        } catch (error) {
-            console.error('Error loading tour data:', error);
-            throw error;
-        }
-    };
-
     const initializeViewer = async () => {
-        if (initializationRef.current) return;
+        // Don't initialize if already done, loading, has error, or no data
+        if (initializationRef.current || loading || error || !tourData) return;
 
         const panoElement = document.getElementById('pano');
         if (!panoElement) {
@@ -69,7 +31,6 @@ function Explore() {
             try {
                 panoElement.innerHTML = '';
                 viewerRef.current = null;
-                setViewer(null);
             } catch (error) {
                 console.warn('Error clearing viewer:', error);
             }
@@ -81,7 +42,6 @@ function Explore() {
 
             const newViewer = new Marzipano.Viewer(panoElement);
             viewerRef.current = newViewer;
-            setViewer(newViewer);
 
             const minZoomInVFOV = 80;
             const maxZoomOutVFOV = 100;
@@ -89,8 +49,6 @@ function Explore() {
                 minZoomInVFOV * Math.PI / 180,
                 maxZoomOutVFOV * Math.PI / 180
             );
-
-            const data = await loadTourData();
 
             const scenes: { [key: string]: any } = {};
             const highResLoaded: { [key: string]: boolean } = {};
@@ -140,7 +98,7 @@ function Explore() {
                 setTimeout(() => {
                     if (highResLoaded[sceneId] || !viewerRef.current) return; // Already loaded or viewer destroyed
 
-                    const sceneData = data.scenes.find(s => s.id === sceneId);
+                    const sceneData = tourData.scenes.find((s: SceneData) => s.id === sceneId);
                     if (!sceneData) return;
 
                     try {
@@ -210,7 +168,7 @@ function Explore() {
             };
 
             // Create all scenes with low-res images first
-            data.scenes.forEach(sceneData => {
+            tourData.scenes.forEach((sceneData: SceneData) => {
                 const lowResUrl = getLowResUrl(sceneData.imageUrl);
 
                 const scene = newViewer.createScene({
@@ -227,7 +185,7 @@ function Explore() {
             });
 
             // Start with first scene (low-res) and upgrade to high-res after delay
-            const firstSceneId = data.scenes[0].id;
+            const firstSceneId = tourData.scenes[0].id;
             scenes[firstSceneId].switchTo();
             loadHighResWithDelay(firstSceneId, 1500); // Upgrade to high-res after 1.5 seconds
 
@@ -254,12 +212,10 @@ function Explore() {
                     console.warn('Error during cleanup:', error);
                 }
                 viewerRef.current = null;
-                setViewer(null);
             }
             initializationRef.current = false;
-            tourDataRef.current = null; // Clear cached data
         };
-    }, []);
+    }, [tourData, loading, error]);
 
     return (
         <>
