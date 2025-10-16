@@ -284,6 +284,7 @@
 
     .scenes-menu-button {
         left: 1em;
+        padding: 6px;
         transform: translateX(0);
     }
 
