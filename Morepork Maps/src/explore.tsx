@@ -304,7 +304,7 @@ function Explore({ onMenuStateChange }: { onMenuStateChange?: (isOpen: boolean) 
                     <div className="scenes-menu-overlay" onClick={() => setIsMenuOpen(false)}>
                         <div className="scenes-menu" onClick={(e) => e.stopPropagation()}>
                             <button
-                                className="scenes-menu-button"
+                                className="scenes-menu-button close-button"
                                 onClick={() => setIsMenuOpen(false)}
                                 aria-label="Close menu"
                             >

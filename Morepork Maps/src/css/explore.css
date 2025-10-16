@@ -10,17 +10,6 @@
     overflow: hidden;
 }
 
-/* Safari specific fixes */
-@supports (-webkit-touch-callout: none) {
-    .pano-container {
-        /* Use fixed positioning and window.innerHeight for Safari */
-        height: 100vh;
-        min-height: 100vh;
-        /* Fallback for older Safari versions */
-        min-height: -webkit-fill-available;
-    }
-}
-
 .hotspot-waypoint {
     width: 60px;
     height: 60px;
@@ -183,7 +172,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(rgba(0, 0, 0, 0), rgb(255, 255, 255));
+    background: linear-gradient(rgba(0, 0, 0, 0), var(--background));
     z-index: 1;
 }
 
@@ -284,7 +273,7 @@
 
     .scenes-menu-button {
         left: 1em;
-        padding: 6px;
+        padding: 3px 6px;
         transform: translateX(0);
     }
 
@@ -299,5 +288,20 @@
 
     .scene-item {
         padding: 12px;
+    }
+}
+
+/* iOS Safari specific close button positioning */
+@supports (-webkit-touch-callout: none) {
+    .pano-container {
+        height: 100vh;
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
+    }
+
+    @media screen and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+        .close-button {
+            bottom: 4em !important;
+        }
     }
 }
