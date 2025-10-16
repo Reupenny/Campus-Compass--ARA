@@ -10,6 +10,8 @@ function Explore() {
     const viewerRef = useRef<any>(null);
     const [isViewerProtected, setIsViewerProtected] = useState(false);
     const protectionTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [currentScene, setCurrentScene] = useState<string>('');
 
     const initializeViewer = async () => {
         // Don't initialize if already done, loading, has error, or no data
@@ -88,6 +90,15 @@ function Explore() {
                 return pathParts.join('/');
             };
 
+            // Function to switch to a scene
+            const switchToScene = (sceneId: string) => {
+                if (scenes[sceneId]) {
+                    scenes[sceneId].switchTo();
+                    setCurrentScene(sceneId);
+                    loadHighResWithDelay(sceneId, 1000);
+                }
+            };
+
             // Helper function to create hotspots for a scene
             const addHotspotsToScene = (scene: any, sceneData: any) => {
                 sceneData.hotspots.forEach((hotspotData: any) => {
@@ -98,11 +109,7 @@ function Explore() {
                         hotspotElement.innerHTML = '<img class="hotspot-icon" src="/img/link.png" alt="Hotspot Icon" />';
                         hotspotElement.innerHTML += '<div class="hotspot-data"><h5>' + hotspotData.text + '</h5></div>';
                         hotspotElement.addEventListener('click', () => {
-                            if (scenes[hotspotData.target!]) {
-                                scenes[hotspotData.target!].switchTo();
-                                // Load high-res layer for the new scene after a short delay
-                                loadHighResWithDelay(hotspotData.target!, 1000);
-                            }
+                            switchToScene(hotspotData.target!);
                         });
                     } else if (hotspotData.type === 'info') {
                         if (hotspotData.description) {
@@ -199,9 +206,14 @@ function Explore() {
                 addHotspotsToScene(scene, sceneData);
             });
 
+            // Expose scenes globally for menu access
+            (window as any).tourScenes = scenes;
+            (window as any).switchToScene = switchToScene;
+
             // Start with first scene and load high-res layer after delay
             const firstSceneId = tourData.scenes[0].id;
             scenes[firstSceneId].switchTo();
+            setCurrentScene(firstSceneId);
             loadHighResWithDelay(firstSceneId, 1500); // Add high-res layer after 1.5 seconds
 
         } catch (error) {
@@ -256,9 +268,62 @@ function Explore() {
         };
     }, [tourData, loading, error]);
 
+    // Handle loading states
+    if (loading) return <div className="loading-container">Loading tour...</div>;
+    if (error) return <div className="error-container">Error: {error}</div>;
+    if (!tourData) return <div className="error-container">No tour data available</div>;
+
     return (
         <>
-            <div id="pano" className="pano-container"></div>
+            <div id="pano" className="pano-container">
+                {/* Tour Title */}
+                <div className="tour-header">
+                    <p className="tour-title">
+                        {currentScene ?
+                            tourData.scenes.find(scene => scene.id === currentScene)?.name || 'Unknown Scene'
+                            : 'Loading...'}
+                    </p>
+                </div>
+                <button
+                    className="scenes-menu-button"
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                >
+                    Locations
+                </button>
+
+                {/* Scenes Menu Popup */}
+                {isMenuOpen && (
+                    <div className="scenes-menu-overlay" onClick={() => setIsMenuOpen(false)}>
+                        <div className="scenes-menu" onClick={(e) => e.stopPropagation()}>
+                            <button
+                                className="scenes-menu-button"
+                                onClick={() => setIsMenuOpen(false)}
+                            ><p>&nbsp;&nbsp;&nbsp;&nbsp;Close&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                            </button>
+                            <div className="scenes-list">
+                                {tourData.scenes.map((scene: SceneData) => (
+                                    <button
+                                        key={scene.id}
+                                        className={`scene-item ${currentScene === scene.id ? 'active' : ''}`}
+                                        onClick={() => {
+                                            const switchToSceneGlobal = (window as any).switchToScene;
+                                            if (switchToSceneGlobal) {
+                                                switchToSceneGlobal(scene.id);
+                                            }
+                                            setIsMenuOpen(false);
+                                        }}
+                                    >
+                                        <div className="scene-name">{scene.name}</div>
+                                        {currentScene === scene.id && (
+                                            <div className="current-indicator">Current</div>
+                                        )}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                )}
+            </div>
         </>
     );
 }

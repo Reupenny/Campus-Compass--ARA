@@ -110,6 +110,139 @@
     width: 400px;
 }
 
+
+/* Tour Header Styles */
+.tour-header {
+    pointer-events: none;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 5.5em;
+    background-color: var(--background);
+    padding: 10px 20px;
+    border-radius: 5em;
+    z-index: 10000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.tour-title {
+    color: var(--text);
+    font-size: .8rem;
+    font-weight: bold;
+    margin: 0;
+    pointer-events: auto;
+}
+
+.scenes-menu-button {
+    position: fixed;
+    left: 10%;
+    bottom: 1em;
+    background-color: var(--background);
+    padding: 10px;
+    border-radius: 5em;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    color: var(--text);
+    border: .5em solid var(--background);
+    z-index: 1;
+
+}
+
+.scenes-menu-button:hover {
+    background: var(--primary);
+    border: .5em solid var(--background);
+    color: white;
+}
+
+/* Scenes Menu Popup */
+.scenes-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20000;
+    backdrop-filter: blur(5px);
+}
+
+.scenes-menu {
+    max-width: 500px;
+    width: 90vw;
+    max-height: 90vh;
+    top: 0px;
+    position: absolute;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.scenes-list {
+    overflow-y: auto;
+    padding: 10px;
+    scrollbar-width: none;
+}
+
+.scene-item {
+    width: 100%;
+    background: none;
+    background-color: var(--card);
+    color: var(--text);
+    border-radius: 50px;
+    border: none;
+    margin-bottom: 8px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.scene-item:hover {
+    background: var(--secondary);
+    color: white;
+}
+
+.scene-item.active {
+    background: var(--primary);
+    color: var(--primary-foreground);
+}
+
+.scene-name {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.current-indicator {
+    font-size: 0.9rem;
+    color: var(--primary-foreground);
+    font-weight: bold;
+}
+
+.scene-item:not(.active) .current-indicator {
+    display: none;
+}
+
+/* Loading and Error States */
+.loading-container,
+.error-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 1.2rem;
+    color: var(--card-foreground);
+    background: var(--background);
+}
+
+.error-container {
+    color: var(--destructive);
+}
+
 @media (max-width: 600px) {
     .hotspot-waypoint .hotspot-data {
         opacity: 1;
@@ -122,5 +255,23 @@
 
     .hotspot-waypoint:hover .hotspot-data {
         background-color: var(--card);
+    }
+
+    .tour-header {
+        bottom: 4.7em;
+    }
+
+    .scenes-menu-button {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+
+    .scenes-menu {
+        width: 95vw;
+        margin: 10px;
+    }
+
+    .scene-item {
+        padding: 12px;
     }
 }

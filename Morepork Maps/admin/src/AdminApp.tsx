@@ -4,8 +4,52 @@ import '../../src/css/App.css';
 import Edit360, { Sidebar } from './edit360';
 import Chat from './Chat';
 
+// Chat sidebar component
+function ChatSidebar({ currentTab, setCurrentTab }: {
+    currentTab: 'contacts' | 'character' | 'templates' | 'ara' | 'computing' | 'student-handbook';
+    setCurrentTab: (tab: 'contacts' | 'character' | 'templates' | 'ara' | 'computing' | 'student-handbook') => void;
+}) {
+    const tabs = [
+        { key: 'contacts', label: 'Staff Contacts', description: 'Manage contact details for ARA staff members. This data is used by the chatbot to provide staff information and contact details.' },
+        { key: 'character', label: 'Character Settings', description: 'Configure the chatbot\'s personality, tone, and behavior guidelines. Define how A.C.E. responds to users.' },
+        { key: 'templates', label: 'HTML Templates', description: 'Edit the HTML templates used for formatting chatbot responses including buttons, room displays, and contact cards.' },
+        { key: 'ara', label: 'ARA Campus Info', description: 'Comprehensive campus information including buildings, streets, parking, and facilities data.' },
+        { key: 'computing', label: 'Computing Handbook', description: 'Course handbook data extracted from PDF files. Contains program details, assessments, and policies.' },
+        { key: 'student-handbook', label: 'Student Handbook', description: 'General student information extracted from PDF files. Contains support services, facilities, and procedures.' }
+    ];
+
+    return (
+        <div className="chat-sidebar">
+            <h2>Chat Knowledge Base</h2>
+
+            {/* Tab Navigation */}
+            <div className="sidebar-nav-section">
+                <h3>Sections:</h3>
+                {tabs.map(tab => (
+                    <button
+                        key={tab.key}
+                        onClick={() => setCurrentTab(tab.key as any)}
+                        className={`sidebar-nav-button ${currentTab === tab.key ? 'active' : ''}`}
+                    >
+                        {tab.label}
+                    </button>
+                ))}
+            </div>
+
+            {/* Current Section Info */}
+            <div className="sidebar-info-panel">
+                <h4>Current Section:</h4>
+                <p>
+                    <strong>{tabs.find(tab => tab.key === currentTab)?.label}:</strong> {tabs.find(tab => tab.key === currentTab)?.description}
+                </p>
+            </div>
+        </div>
+    );
+}
+
 function App() {
     const [currentView, setCurrentView] = useState<'chat' | '360-editor'>('chat');
+    const [currentChatTab, setCurrentChatTab] = useState<'contacts' | 'character' | 'templates' | 'ara' | 'computing' | 'student-handbook'>('contacts');
     const [edit360Ready, setEdit360Ready] = useState(false);
     const [sidebarData, setSidebarData] = useState<any>({
         tourData: { scenes: [] },
@@ -150,7 +194,7 @@ function App() {
                         Quest Editor
                     </button></div>
                 {currentView === 'chat' ? (
-                    <> <p>chat</p> </>
+                    <ChatSidebar currentTab={currentChatTab} setCurrentTab={setCurrentChatTab} />
                 ) : (
                     edit360Ready && edit360Ref.current ? (
                         <Sidebar
@@ -177,7 +221,7 @@ function App() {
             {/* Main Content */}
             <main style={{ flex: 1 }}>
                 {currentView === 'chat' ? (
-                    <Chat />
+                    <Chat currentTab={currentChatTab} />
                 ) : (
                     <Edit360 ref={edit360Ref} onReady={handleEdit360Ready} />
                 )}

@@ -136,6 +136,51 @@ app.get('/knowledge/contacts.json', (req, res) => {
     });
 });
 
+// API to get character data
+app.get('/knowledge/character.json', (req, res) => {
+    const characterFile = path.join(__dirname, '../public/knowledge/character.json');
+    fs.readFile(characterFile, 'utf8', (err, data) => {
+        if (err) return res.status(500).send('Error reading character data.');
+        res.send(JSON.parse(data));
+    });
+});
+
+// API to get template data
+app.get('/knowledge/templates.json', (req, res) => {
+    const templateFile = path.join(__dirname, '../public/knowledge/templates.json');
+    fs.readFile(templateFile, 'utf8', (err, data) => {
+        if (err) return res.status(500).send('Error reading template data.');
+        res.send(JSON.parse(data));
+    });
+});
+
+// API to get ARA data
+app.get('/knowledge/ara.json', (req, res) => {
+    const araFile = path.join(__dirname, '../public/knowledge/ara.json');
+    fs.readFile(araFile, 'utf8', (err, data) => {
+        if (err) return res.status(500).send('Error reading ARA data.');
+        res.send(JSON.parse(data));
+    });
+});
+
+// API to get computing data
+app.get('/knowledge/computing.json', (req, res) => {
+    const computingFile = path.join(__dirname, '../public/knowledge/computing.json');
+    fs.readFile(computingFile, 'utf8', (err, data) => {
+        if (err) return res.status(500).send('Error reading computing data.');
+        res.send(JSON.parse(data));
+    });
+});
+
+// API to get student handbook data
+app.get('/knowledge/student-handbook.json', (req, res) => {
+    const studentHandbookFile = path.join(__dirname, '../public/knowledge/student-handbook.json');
+    fs.readFile(studentHandbookFile, 'utf8', (err, data) => {
+        if (err) return res.status(500).send('Error reading student handbook data.');
+        res.send(JSON.parse(data));
+    });
+});
+
 // API to save contacts
 app.post('/save-contacts', (req, res) => {
     ensureContactsFile();
@@ -143,6 +188,56 @@ app.post('/save-contacts', (req, res) => {
     fs.writeFile(contactsFile, JSON.stringify(data, null, 2), err => {
         if (err) return res.status(500).send('Error saving contacts.');
         res.send({ message: 'Contacts saved successfully' });
+    });
+});
+
+// API to save character data
+app.post('/save-character', (req, res) => {
+    const characterFile = path.join(__dirname, '../public/knowledge/character.json');
+    const data = req.body;
+    fs.writeFile(characterFile, JSON.stringify(data, null, 2), err => {
+        if (err) return res.status(500).send('Error saving character data.');
+        res.send({ message: 'Character data saved successfully' });
+    });
+});
+
+// API to save template data
+app.post('/save-templates', (req, res) => {
+    const templateFile = path.join(__dirname, '../public/knowledge/templates.json');
+    const data = req.body;
+    fs.writeFile(templateFile, JSON.stringify(data, null, 2), err => {
+        if (err) return res.status(500).send('Error saving template data.');
+        res.send({ message: 'Template data saved successfully' });
+    });
+});
+
+// API to save ARA data
+app.post('/save-ara', (req, res) => {
+    const araFile = path.join(__dirname, '../public/knowledge/ara.json');
+    const data = req.body;
+    fs.writeFile(araFile, JSON.stringify(data, null, 2), err => {
+        if (err) return res.status(500).send('Error saving ARA data.');
+        res.send({ message: 'ARA data saved successfully' });
+    });
+});
+
+// API to save computing data
+app.post('/save-computing', (req, res) => {
+    const computingFile = path.join(__dirname, '../public/knowledge/computing.json');
+    const data = req.body;
+    fs.writeFile(computingFile, JSON.stringify(data, null, 2), err => {
+        if (err) return res.status(500).send('Error saving computing data.');
+        res.send({ message: 'Computing data saved successfully' });
+    });
+});
+
+// API to save student handbook data
+app.post('/save-student-handbook', (req, res) => {
+    const studentHandbookFile = path.join(__dirname, '../public/knowledge/student-handbook.json');
+    const data = req.body;
+    fs.writeFile(studentHandbookFile, JSON.stringify(data, null, 2), err => {
+        if (err) return res.status(500).send('Error saving student handbook data.');
+        res.send({ message: 'Student handbook data saved successfully' });
     });
 });
 
