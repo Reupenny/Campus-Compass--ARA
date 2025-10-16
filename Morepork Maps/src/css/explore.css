@@ -135,7 +135,8 @@
 
 .scenes-menu-button {
     position: fixed;
-    left: 10%;
+    left: 50%;
+    transform: translateX(-400%);
     bottom: 1em;
     background-color: var(--primary);
     padding: 10px;
@@ -282,8 +283,12 @@
     }
 
     .scenes-menu-button {
-        font-size: 0.9rem;
-        padding: 8px 16px;
+        left: 1em;
+        transform: translateX(0);
+    }
+
+    .scenes-menu-button img {
+        max-width: 15px;
     }
 
     .scenes-menu {
