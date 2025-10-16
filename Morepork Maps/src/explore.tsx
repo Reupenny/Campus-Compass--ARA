@@ -4,7 +4,7 @@ import Marzipano from 'marzipano';
 import { useTour } from './TourContext';
 import type { SceneData } from './TourContext';
 
-function Explore() {
+function Explore({ onMenuStateChange }: { onMenuStateChange?: (isOpen: boolean) => void }) {
     const { tourData, loading, error } = useTour();
     const initializationRef = useRef(false);
     const viewerRef = useRef<any>(null);
@@ -224,6 +224,13 @@ function Explore() {
         }
     };
 
+    // Notify parent component when menu state changes
+    useEffect(() => {
+        if (onMenuStateChange) {
+            onMenuStateChange(isMenuOpen);
+        }
+    }, [isMenuOpen, onMenuStateChange]);
+
     useEffect(() => {
         initializeViewer();
 
@@ -285,10 +292,11 @@ function Explore() {
                     </p>
                 </div>
                 <button
-                    className="scenes-menu-button"
+                    className={`scenes-menu-button ${isMenuOpen ? 'hidden' : ''}`}
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    aria-label="Open locations menu"
                 >
-                    Locations
+                    <img src="/img/plus.png" alt="Menu" className="menu-icon" />
                 </button>
 
                 {/* Scenes Menu Popup */}
@@ -298,7 +306,9 @@ function Explore() {
                             <button
                                 className="scenes-menu-button"
                                 onClick={() => setIsMenuOpen(false)}
-                            ><p>&nbsp;&nbsp;&nbsp;&nbsp;Close&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                                aria-label="Close menu"
+                            >
+                                <img src="/img/close.png" alt="Close" className="menu-icon" />
                             </button>
                             <div className="scenes-list">
                                 {tourData.scenes.map((scene: SceneData) => (

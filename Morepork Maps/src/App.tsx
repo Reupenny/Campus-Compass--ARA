@@ -8,6 +8,7 @@ import { TourProvider } from './TourContext';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<'chat' | 'explore' | 'quest'>('chat');
+  const [isExploreMenuOpen, setIsExploreMenuOpen] = useState(false);
 
   return (
     <TourProvider>
@@ -29,7 +30,7 @@ function App() {
             width: '100vw',
             height: '100vh'
           }}>
-            <Explore />
+            <Explore onMenuStateChange={setIsExploreMenuOpen} />
           </div>
         </>
       )}
@@ -44,7 +45,9 @@ function App() {
         </div>
       )}
 
-      <Menu currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      <div style={{ display: isExploreMenuOpen ? 'none' : 'block' }}>
+        <Menu currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      </div>
     </TourProvider>
   );
 }
