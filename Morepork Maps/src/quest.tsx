@@ -4,14 +4,13 @@ import './css/quest.css';
 import Marzipano from 'marzipano';
 import { useTour } from './TourContext';
 import type { SceneData } from './TourContext';
+import QuestComponent from './QuestComponent';
 
 function Quest() {
     const { tourData, loading, error } = useTour();
     const initializationRef = useRef(false);
     const viewerRef = useRef<any>(null);
-    const [isViewerProtected, setIsViewerProtected] = useState(false);
     const protectionTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [currentScene, setCurrentScene] = useState<string>('');
 
     const initializeViewer = async () => {
@@ -56,9 +55,6 @@ function Quest() {
             initializationRef.current = true;
             console.log('Creating new Marzipano viewer...');
 
-            // Protect against external modifications during initialization
-            setIsViewerProtected(true);
-
             const newViewer = new Marzipano.Viewer(panoElement);
             viewerRef.current = newViewer;
 
@@ -67,7 +63,6 @@ function Quest() {
                 clearTimeout(protectionTimeoutRef.current);
             }
             protectionTimeoutRef.current = setTimeout(() => {
-                setIsViewerProtected(false);
             }, 5000); // Protect for 5 seconds after initialization
 
             const minZoomInVFOV = 80;
@@ -91,6 +86,15 @@ function Quest() {
                 return pathParts.join('/');
             };
 
+            // Function to switch to a scene
+            const switchToScene = (sceneId: string) => {
+                if (scenes[sceneId]) {
+                    scenes[sceneId].switchTo();
+                    setCurrentScene(sceneId);
+                    loadHighResWithDelay(sceneId, 1000);
+                }
+            };
+
             // Helper function to create hotspots for a scene
             const addHotspotsToScene = (scene: any, sceneData: any) => {
                 sceneData.hotspots.forEach((hotspotData: any) => {
@@ -101,16 +105,12 @@ function Quest() {
                         hotspotElement.innerHTML = '<img class="hotspot-icon" src="/img/link.png" alt="Hotspot Icon" />';
                         hotspotElement.innerHTML += '<div class="hotspot-data"><h5>' + hotspotData.text + '</h5></div>';
                         hotspotElement.addEventListener('click', () => {
-                            if (scenes[hotspotData.target!]) {
-                                scenes[hotspotData.target!].switchTo();
-                                // Load high-res layer for the new scene after a short delay
-                                loadHighResWithDelay(hotspotData.target!, 1000);
-                            }
+                            switchToScene(hotspotData.target!);
                         });
                     } else if (hotspotData.type === 'info') {
                         if (hotspotData.description) {
                             hotspotElement.innerHTML = '<img class="hotspot-icon" src="/img/info.png" alt="Hotspot Icon" />';
-                            hotspotElement.innerHTML += '<div class="hotspot-data"><h5>' + hotspotData.text + '</h5><p>' + hotspotData.description + '</p></div>';
+                            hotspotElement.innerHTML += '<div class="hotspot-data"><h5>' + hotspotData.text + '</h5><p>' + hotspotData.description + '</p><a class="hotspot-link" href="' + hotspotData.url + '" target="_blank">More info</a></div>';
                         }
                     }
 
@@ -202,9 +202,14 @@ function Quest() {
                 addHotspotsToScene(scene, sceneData);
             });
 
+            // Expose scenes globally for menu access
+            (window as any).tourScenes = scenes;
+            (window as any).switchToScene = switchToScene;
+
             // Start with first scene and load high-res layer after delay
             const firstSceneId = tourData.scenes[0].id;
             scenes[firstSceneId].switchTo();
+            setCurrentScene(firstSceneId);
             loadHighResWithDelay(firstSceneId, 1500); // Add high-res layer after 1.5 seconds
 
         } catch (error) {
@@ -259,9 +264,23 @@ function Quest() {
         };
     }, [tourData, loading, error]);
 
+    // Handle loading states
+    if (loading) return <div className="loading-container">Loading tour...</div>;
+    if (error) return <div className="error-container">Error: {error}</div>;
+    if (!tourData) return <div className="error-container">No tour data available</div>;
+
     return (
         <>
-            <div id="pano" className="pano-container"></div>
+            <QuestComponent />
+            <div className="tour-header">
+                <p className="tour-title">
+                    {currentScene ?
+                        tourData.scenes.find(scene => scene.id === currentScene)?.name || 'Unknown Scene'
+                        : 'Loading...'}
+                </p>
+            </div>
+            <div id="pano" className="pano-container">
+            </div>
         </>
     );
 }

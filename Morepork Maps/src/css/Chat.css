@@ -94,6 +94,26 @@ input {
     border-left: .18em solid var(--secondary);
 }
 
+.start-chat {
+    max-width: 100%;
+}
+
+.chat-button {
+    position: relative;
+    left: 60%;
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 1em;
+    position: relative;
+    top: 0px;
+    margin-bottom: 100px;
+}
+
+.logo-container img {
+    max-width: 70%;
+}
 
 #input-area {
     padding: 10px;
@@ -205,5 +225,12 @@ input {
 @media (max-width: 600px) {
     .input-wrapper {
         bottom: 4.8em;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .logo-container {
+        margin-bottom: 50px;
     }
 }

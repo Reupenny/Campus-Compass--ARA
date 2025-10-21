@@ -6,8 +6,8 @@ import Chat from './Chat';
 
 // Chat sidebar component
 function ChatSidebar({ currentTab, setCurrentTab }: {
-    currentTab: 'contacts' | 'character' | 'templates' | 'ara' | 'computing' | 'student-handbook';
-    setCurrentTab: (tab: 'contacts' | 'character' | 'templates' | 'ara' | 'computing' | 'student-handbook') => void;
+    currentTab: 'contacts' | 'character' | 'templates' | 'ara' | 'computing' | 'student-handbook' | 'quests';
+    setCurrentTab: (tab: 'contacts' | 'character' | 'templates' | 'ara' | 'computing' | 'student-handbook' | 'quests') => void;
 }) {
     const tabs = [
         { key: 'contacts', label: 'Staff Contacts', description: 'Manage contact details for ARA staff members. This data is used by the chatbot to provide staff information and contact details.' },
@@ -15,7 +15,8 @@ function ChatSidebar({ currentTab, setCurrentTab }: {
         { key: 'templates', label: 'HTML Templates', description: 'Edit the HTML templates used for formatting chatbot responses including buttons, room displays, and contact cards.' },
         { key: 'ara', label: 'ARA Campus Info', description: 'Comprehensive campus information including buildings, streets, parking, and facilities data.' },
         { key: 'computing', label: 'Computing Handbook', description: 'Course handbook data extracted from PDF files. Contains program details, assessments, and policies.' },
-        { key: 'student-handbook', label: 'Student Handbook', description: 'General student information extracted from PDF files. Contains support services, facilities, and procedures.' }
+        { key: 'student-handbook', label: 'Student Handbook', description: 'General student information extracted from PDF files. Contains support services, facilities, and procedures.' },
+        { key: 'quests', label: 'Campus Quests', description: 'Manage interactive campus quest questions and answers for the virtual tour experience.' }
     ];
 
     return (
@@ -49,7 +50,7 @@ function ChatSidebar({ currentTab, setCurrentTab }: {
 
 function App() {
     const [currentView, setCurrentView] = useState<'chat' | '360-editor'>('chat');
-    const [currentChatTab, setCurrentChatTab] = useState<'contacts' | 'character' | 'templates' | 'ara' | 'computing' | 'student-handbook'>('contacts');
+    const [currentChatTab, setCurrentChatTab] = useState<'contacts' | 'character' | 'templates' | 'ara' | 'computing' | 'student-handbook' | 'quests'>('contacts');
     const [edit360Ready, setEdit360Ready] = useState(false);
     const [sidebarData, setSidebarData] = useState<any>({
         tourData: { scenes: [] },

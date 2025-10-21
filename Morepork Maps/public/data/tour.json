@@ -62,7 +62,8 @@
           "pitch": 0.02353512028973448,
           "yaw": 2.1375617172987464,
           "text": "Gym",
-          "description": "<p>This is the first panorama</p>"
+          "description": "<p>The City campus gym/weights room can be accessed by purchasing a gym membership. This gives you full access to a fully equipped gym including a wide variety of weights machines, free weights and cardio equipment such as treadmills, cross-trainers, rowing machines and spin bikes.\n</br>\nThe gym/weights room is available:</br>\n\n    Monday - Sunday: 6am to 10pm (Final entry at 9:30pm)</br>\n\nAra City Campus gym will be closed from 19 December 3pm.</br>\nFees start from $40 a month for students.</p>",
+          "url": "https://www.ara.ac.nz/student-services/recreation-and-sport/city-campus-sport-and-recreation-centre/"
         },
         {
           "type": "waypoint",
@@ -153,7 +154,8 @@
           "pitch": 0.04654651075751026,
           "yaw": -3.101629892969802,
           "text": "Disability Services",
-          "description": "Description here"
+          "description": "<p>Disability Services provide information, services and equipment to help you make the most of study.</p>\n<h5>You may be eligible for services such as:</h5><ul>\n<li>Note-taking support in class</li>\n<li>Alternative exam arrangements</li>\n<li>Exam reader/ writer</li>\n<li>NZ Sign language interpreter</li>\n<li>Course materials in alternative formats such as enlarged text</li>\n<li>Specialised equipment and furniture</li>\n<li>Software</li>\n</ul><p>To register with Disability Services you need a report from an appropriate professional. The report should give relevant information about your disability or health condition and describe how this may impact on your study. Please contact Disability Services for further clarification on documentation requirements.</p>",
+          "url": "https://www.ara.ac.nz/student-services/supporting-your-study/disability-services/"
         },
         {
           "type": "waypoint",
@@ -167,7 +169,24 @@
           "pitch": 0.016301790436410002,
           "yaw": -0.6349014688915808,
           "text": "Learning Services",
-          "description": "Description here"
+          "description": "We focus on supporting you to manage your own study, and to develop the academic and maths skills required to complete your coursework successfully.</br>Learning Services offers a range of services, resources and information for Māori and Pacific students. Learning and study advice is available from Māori and Pacific Learning advisors. We also offer Māori and Pacific group study spaces, supported by the advisors. These spaces are open seven days a week from 7am until midnight.",
+          "url": "https://www.ara.ac.nz/student-services/supporting-your-study/learning-services/"
+        },
+        {
+          "type": "info",
+          "pitch": 0.004429264758893936,
+          "yaw": 1.4184146723331228,
+          "text": "Library",
+          "description": "The Library offers an extensive range of services and resources to support teaching, learning, and research at Ara.",
+          "url": "https://www.ara.ac.nz/student-services/library/"
+        },
+        {
+          "type": "info",
+          "pitch": 0.1556277502052943,
+          "yaw": -0.24507969425700438,
+          "text": "Printing",
+          "description": "printing starts from $0.05 for A4 black and white and $0.15 for A4 Colour.</br>\nThe library also offers spiral binding and laminating services.",
+          "url": "https://myara.ara.ac.nz/pages/explore/student-admin/it/printing"
         }
       ],
       "defaultView": {
@@ -231,20 +250,6 @@
           "yaw": 1.8942549165966058,
           "text": "Center Walkway",
           "target": "scene1760246894225"
-        },
-        {
-          "type": "info",
-          "pitch": -0.22909623955819924,
-          "yaw": -1.7410919031680656,
-          "text": "New Info Point",
-          "description": "Description here"
-        },
-        {
-          "type": "info",
-          "pitch": -0.1018291270062015,
-          "yaw": 3.127750603382893,
-          "text": "New Info Point",
-          "description": "Description here"
         }
       ],
       "defaultView": {
@@ -371,8 +376,9 @@
           "type": "info",
           "pitch": 0.012499189883401485,
           "yaw": -1.4891759777824767,
-          "text": "New Info Point",
-          "description": "Description here"
+          "text": "Early Learning Centres",
+          "description": "At our City campus in Christchurch we have two early learning centres offering quality care and education to children up to the age of five. Both centres are open to children of students, staff and the wider community. ",
+          "url": "https://www.ara.ac.nz/student-services/childcare/"
         },
         {
           "type": "waypoint",
@@ -420,8 +426,9 @@
           "type": "info",
           "pitch": 0.0732857000274656,
           "yaw": 2.674878354077757,
-          "text": "New Info Point",
-          "description": "Description here"
+          "text": "Covered Bike storage",
+          "description": "This is S/N block underground bike storage, access is restricted via your student ID card. </br>Cycling is a convenient, low-cost and environmentally-friendly means of transport which is easy (thanks to the flat terrain) and good for your health too.",
+          "url": "https://www.ara.ac.nz/student-services/transport/by-bike/"
         },
         {
           "type": "waypoint",
@@ -484,7 +491,8 @@
           "pitch": 0.0664834581198459,
           "yaw": 0.37094971452935965,
           "text": "Health Center",
-          "description": "Description here"
+          "description": "Ara’s Health Centre offers a range of discounted health services for students*. These include consultations with nurses, a doctor, a social worker and counsellors. Students can access free counselling sessions. We take Community Service cards** and offer ACC appointments.",
+          "url": "https://www.ara.ac.nz/student-services/health-and-wellbeing/"
         },
         {
           "type": "waypoint",
@@ -498,7 +506,8 @@
           "pitch": 0.13958650595254518,
           "yaw": -1.2942698967927537,
           "text": "Student Parking",
-          "description": "Description here"
+          "description": "Paid parking at City campus, Christchurch. Paid car parking hours are Monday-Friday 7am to 5pm.</br>\nTo be able to use these parks you need to have the correct student parking authority sticker displayed on your windscreen. You can get your student parking authority at Security in the Rakaia Centre.\n<h6>Rates</h6>\nDaily: $6</br>\nHourly: $3",
+          "url": "https://www.ara.ac.nz/student-services/transport/by-car/"
         }
       ],
       "defaultView": {
@@ -546,8 +555,9 @@
           "type": "info",
           "pitch": -0.003090510762469023,
           "yaw": 0.8564142433999056,
-          "text": "Microwaves",
-          "description": "Description here"
+          "text": "Microwaves & C Block",
+          "description": "There are three microwaves here for you to use. along with others through out the campus.\nThere are lots of events that happen in this space.",
+          "url": "https://myara.ara.ac.nz/app/ara.events/events"
         }
       ],
       "defaultView": {
@@ -730,8 +740,9 @@
           "type": "info",
           "pitch": 0.0005628622084259405,
           "yaw": 0.012377042946610572,
-          "text": "New Info Point",
-          "description": "Description here"
+          "text": "Curriculum and Academic Records",
+          "description": "We may be able to answer queries you have regarding your published academic results. We are also the liaison between Ara and the NZQA. If you have queries regarding unit standard results or NZ Diploma in Business results we may be able to assist you.\n\n<h6>Hours</h6>\nMonday to Friday: 8am to 4:30pm",
+          "url": "https://www.ara.ac.nz/student-services/curriculum-and-academic-records/"
         }
       ],
       "defaultView": {
@@ -779,8 +790,9 @@
           "type": "info",
           "pitch": -0.036998814587880346,
           "yaw": 2.407068321083724,
-          "text": "Cafe",
-          "description": "Description here"
+          "text": "Cater Plus",
+          "description": "<p>Cater Plus brews Gravity and Espresso Love coffee and serves flavoursome, freshly prepared hot and cold savoury items, salads and sweet treats plus a selection of cold drinks. There’s plenty of seating available for informal meetings or study groups, or you can grab a bite and a coffee to go.</p>\n\n<h6>Hours</h6>\n<p>\nMonday to Friday, 7.30am - 2.30pm</p>",
+          "url": "https://www.ara.ac.nz/student-services/cafes-restaurants-on-campus/cater-plus/"
         },
         {
           "type": "waypoint",
@@ -835,15 +847,17 @@
           "type": "info",
           "pitch": -0.008791600778433661,
           "yaw": 2.8194949578857216,
-          "text": "New Info Point",
-          "description": "Description here"
+          "text": "Student Services",
+          "description": "Our comprehensive student services are designed to enhance your study success and support your wellbeing. In addition to the services listed below, you can talk to your tutor or any member of the Student Support team if you ever need advice or guidance. If they can’t directly help, they’ll connect you to someone who can.",
+          "url": "https://www.ara.ac.nz/student-services/"
         },
         {
           "type": "info",
           "pitch": -0.03445323609832762,
           "yaw": 1.6390970044526556,
-          "text": "New Info Point",
-          "description": "Description here"
+          "text": "Security Office",
+          "description": "This is where you can get your student ID card. </br>\n<h6>Hours</h6>\n8.00am - 4.30pm Monday to Friday\n<h6>Phone</h6>\n940 8076",
+          "url": "https://www.ara.ac.nz/student-services/student-id-card/"
         }
       ],
       "defaultView": {
@@ -885,7 +899,8 @@
           "pitch": 0.016143976500966772,
           "yaw": -1.810268190823919,
           "text": "IT Help and Printery",
-          "description": "Description here"
+          "description": "T block is home of IT support and large format printing services.</br>\nFor more information please visit T block.\n",
+          "url": "https://myara.ara.ac.nz/pages/explore/student-admin/it"
         },
         {
           "type": "waypoint",
@@ -1055,7 +1070,8 @@
           "pitch": -0.0613063745738156,
           "yaw": 1.006365019522276,
           "text": "The Pantry & Visions",
-          "description": "Student run cafe.\nHours:"
+          "description": "<h5>The Pantry</h5>\n<p>As the Pantry is used as part of our teaching, you will find different choices each day. Come in and see what we have to offer.</p>\n<h6>Hours</h6>\n<p>During term time we are usually open Monday to Friday from 8am to 4pm.</p>\n<h5>Visions</h5>\nAt Visions, students studying our cookery, hospitality and hospitality management programmes are involved in all aspects of your dining experience, from preparing and serving your meal to managing the running of the restaurant and operating the bar with its substantial wine and beverage list.",
+          "url": "https://myara.ara.ac.nz/app/ara.events/events"
         },
         {
           "type": "waypoint",

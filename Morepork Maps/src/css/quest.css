@@ -1,0 +1,166 @@
+/* Quest Styles */
+.quest-container {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background-color: var(--background);
+    color: var(--text);
+    padding: 20px;
+    padding-top: 50px;
+    border-radius: 22px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.387);
+    z-index: 1000;
+    width: 100%;
+    max-width: 400px;
+    max-height: 80vh;
+    min-height: 250px;
+    overflow-y: hidden;
+}
+
+.quest-timer {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    position: fixed;
+    top: 10px;
+    left: 50px;
+    padding: 10px 15px;
+}
+
+.start-button,
+.option-button,
+.next-button,
+.reset-button {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.start-button:hover,
+.option-button:hover,
+.next-button:hover,
+.reset-button:hover {
+    background-color: var(--secondary);
+}
+
+.reset-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.quest-options {
+    display: flex;
+    flex-direction: column;
+}
+
+.quest-history {
+    margin-bottom: 20px;
+}
+
+.quest-history ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.quest-history li {
+    background-color: var(--background);
+    color: var(--text);
+    padding: 5px;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+
+.minimize-button {
+    position: absolute;
+    border: none;
+    top: 15px;
+    left: 15px;
+    width: 35px;
+    height: 35px;
+    background-color: var(--primary);
+    border-radius: 50px;
+    z-index: 1001;
+    padding: 4px 10px;
+    font-size: 1.5em;
+    line-height: 0;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: white;
+}
+
+.minimize-button:hover {
+    background-color: var(--secondary);
+}
+
+.quest-timer-minimised {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background-color: var(--background);
+    color: var(--text);
+    padding: 10px 15px;
+    padding-left: 55px;
+    border-radius: 22px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.ace-looking-container {
+    height: 100px;
+}
+
+.ace-looking {
+    position: absolute;
+    bottom: -10px;
+    right: 10px;
+}
+
+.completion-message {
+    margin-top: 20px;
+    display: flex;
+}
+
+.completion-message div:nth-last-child(2) {
+    display: flex;
+    flex-direction: column-reverse;
+    /* padding-bottom: 40px; */
+    padding-right: 20px;
+}
+
+.completion-message div:nth-last-child(2) img {
+    max-width: 100px;
+}
+
+.completion-message div:nth-last-child(1) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+@media (max-width: 768px) {
+    .quest-container {
+        max-width: calc(100vw - 20px);
+        margin: 0px auto;
+    }
+
+    .ace-looking-container {
+        height: 0px;
+    }
+
+    .quest-options {
+        max-width: 65%;
+    }
+
+    .completion-message div:nth-last-child(2) img {
+        max-width: 100px;
+    }
+}

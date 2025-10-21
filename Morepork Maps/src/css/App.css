@@ -69,3 +69,8 @@ a {
 body {
     letter-spacing: var(--tracking-normal);
 }
+
+img {
+    max-width: 100%;
+    height: auto;
+}

@@ -10,6 +10,7 @@ interface Hotspot {
     text: string;
     description?: string;
     target?: string;
+    url?: string;
 }
 
 interface Scene {
@@ -1040,6 +1041,23 @@ const Edit360 = React.forwardRef<any, Edit360Props>(({ onReady }, ref) => {
                                         });
                                     }}
                                     className="form-textarea"
+                                />
+                            </div>
+                        )}
+                        {editingHotspot.hotspot.type === 'info' && (
+                            <div className="form-group">
+                                <label className="form-label">More information link:</label>
+                                <input
+                                    type="url"
+                                    defaultValue={editingHotspot.hotspot.url || ''}
+                                    onChange={(e) => {
+                                        setEditingHotspot({
+                                            ...editingHotspot,
+                                            hotspot: { ...editingHotspot.hotspot, url: e.target.value }
+                                        });
+                                    }}
+                                    className="form-input"
+                                    placeholder="https://example.com"
                                 />
                             </div>
                         )}

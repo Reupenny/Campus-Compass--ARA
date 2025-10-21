@@ -67,14 +67,19 @@ function Chat() {
             <div id="chat-container">
                 <div id="chat-window">
                     {/* <!-- Chat messages will be displayed here --> */}
-                    <div className="message bot-message">
+                    <div className="logo-container">
+                        <img src="img/Logo.webp" alt="Campus Compass Logo" />
+                    </div>
+                    <div className="message bot-message start-chat">
                         <p>Welcome to ARA, <br />
                             My name is A.C.E. and I am here to answer all you questuions.<br />
                             Start chatting with me below of if your up for a challenge I have set up a quest around the Campus help you get familiar.</p>
                     </div>
+                    <button onClick='' className="start-button chat-button">START QUEST</button>
                     <div className="ACE_image">
                         <img width={150} src="img/ace_image.webp" alt="A.C.E. Image" />
                     </div>
+
 
                 </div>
             </div>

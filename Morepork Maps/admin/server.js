@@ -241,6 +241,16 @@ app.post('/save-student-handbook', (req, res) => {
     });
 });
 
+// API to save quest data
+app.post('/save-quests', (req, res) => {
+    const questFile = path.join(__dirname, '../public/data/quest.json');
+    const data = req.body;
+    fs.writeFile(questFile, JSON.stringify(data, null, 2), err => {
+        if (err) return res.status(500).send('Error saving quest data.');
+        res.send({ message: 'Quest data saved successfully' });
+    });
+});
+
 // API to get tour data
 app.get('/data/tour.json', (req, res) => {
     ensureTourFile();

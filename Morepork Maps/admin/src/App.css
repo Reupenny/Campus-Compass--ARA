@@ -249,12 +249,12 @@ main {
     opacity: 0.9;
 }
 
-.btn-success {
+.btn-new {
     background-color: var(--secondary);
     color: var(--secondary-foreground);
 }
 
-.btn-success:hover {
+.btn-new:hover {
     opacity: 0.9;
 }
 

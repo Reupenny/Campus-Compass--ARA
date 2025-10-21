@@ -25,6 +25,14 @@ interface TemplateData {
     [key: string]: string;
 }
 
+interface QuestData {
+    [key: string]: {
+        question: string;
+        options: string[];
+        answer: string;
+    };
+}
+
 function Contact({ contact, saveContact, deleteContact }: { contact: ContactType, saveContact: (id: number, updatedContact: ContactType) => void, deleteContact: (id: number) => void }) {
     return (
         <div style={{ border: '1px solid #ddd', padding: '10px', margin: '10px', borderRadius: '5px' }}>
@@ -94,7 +102,7 @@ function AddContactForm({ addContact }: { addContact: (newContact: Omit<ContactT
 }
 
 function Chat({ currentTab }: {
-    currentTab: 'contacts' | 'character' | 'templates' | 'ara' | 'computing' | 'student-handbook'
+    currentTab: 'contacts' | 'character' | 'templates' | 'ara' | 'computing' | 'student-handbook' | 'quests'
 }) {
     const [contacts, setContacts] = useState<ContactType[]>([]);
     const [lastId, setLastId] = useState<number>(0);
@@ -106,6 +114,8 @@ function Chat({ currentTab }: {
     const [araData, setAraData] = useState<string>('');
     const [computingData, setComputingData] = useState<string>('');
     const [studentHandbookData, setStudentHandbookData] = useState<string>('');
+    const [questData, setQuestData] = useState<QuestData>({});
+    const [selectedQuest, setSelectedQuest] = useState<string>('');
 
     useEffect(() => {
         fetchContacts();
@@ -114,6 +124,7 @@ function Chat({ currentTab }: {
         fetchAraData();
         fetchComputingData();
         fetchStudentHandbookData();
+        fetchQuestData();
     }, []);
 
     async function fetchContacts() {
@@ -198,6 +209,23 @@ function Chat({ currentTab }: {
         } catch (error) {
             console.error('Error fetching student handbook data:', error);
             setStudentHandbookData('');
+        }
+    }
+
+    async function fetchQuestData() {
+        try {
+            const response = await fetch('/data/quest.json');
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            const data = await response.json();
+            setQuestData(data);
+            // Set the first quest as selected by default
+            const questKeys = Object.keys(data);
+            if (questKeys.length > 0 && !selectedQuest) {
+                setSelectedQuest(questKeys[0]);
+            }
+        } catch (error) {
+            console.error('Error fetching quest data:', error);
+            setQuestData({});
         }
     }
 
@@ -393,6 +421,63 @@ function Chat({ currentTab }: {
         }
     }
 
+    async function saveQuestData() {
+        try {
+            const response = await fetch('/save-quests', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(questData)
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to save quest data.');
+            }
+
+            alert('Quest data saved successfully!');
+        } catch (error) {
+            const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+            alert('Error saving quest data: ' + errorMessage);
+        }
+    }
+
+    const addNewQuest = () => {
+        const questNumbers = Object.keys(questData).map(key => parseInt(key.replace('Quest ', ''))).sort((a, b) => b - a);
+        const nextNumber = questNumbers.length > 0 ? questNumbers[0] + 1 : 1;
+        const newQuestKey = `Quest ${nextNumber}`;
+
+        const newQuest = {
+            question: 'New quest question',
+            options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'],
+            answer: 'Option 1'
+        };
+
+        const updatedQuests = { ...questData, [newQuestKey]: newQuest };
+        setQuestData(updatedQuests);
+        setSelectedQuest(newQuestKey);
+    };
+
+    const deleteQuest = (questKey: string) => {
+        if (confirm(`Are you sure you want to delete "${questKey}"?`)) {
+            const updatedQuests = { ...questData };
+            delete updatedQuests[questKey];
+            setQuestData(updatedQuests);
+
+            // Select another quest if the deleted one was selected
+            if (selectedQuest === questKey) {
+                const remainingKeys = Object.keys(updatedQuests);
+                setSelectedQuest(remainingKeys.length > 0 ? remainingKeys[0] : '');
+            }
+        }
+    };
+
+    const updateQuest = (questKey: string, field: 'question' | 'options' | 'answer', value: string | string[]) => {
+        const updatedQuests = { ...questData };
+        if (updatedQuests[questKey]) {
+            (updatedQuests[questKey] as any)[field] = value;
+            setQuestData(updatedQuests);
+        }
+    };
+
     return (
         <div className="chat-content">
             {/* Tab Content */}
@@ -406,9 +491,16 @@ function Chat({ currentTab }: {
                             <div className="form-group">
                                 <button
                                     onClick={createNewContact}
-                                    className="btn btn-success btn-full"
+                                    className="btn btn-new btn-full"
                                 >
                                     + Add New Contact
+                                </button>
+                                <button
+                                    onClick={() => saveContacts(contacts, lastId)}
+                                    className="btn btn-primary btn-full"
+                                    style={{ marginTop: '10px' }}
+                                >
+                                    Save Contacts
                                 </button>
                             </div>
                             <div className="contact-list">
@@ -421,6 +513,21 @@ function Chat({ currentTab }: {
                                         <div className="contact-name">{contact.name || 'Unnamed Contact'}</div>
                                         <div className="contact-details">{contact.jobTitle}</div>
                                         <div className="contact-details">{contact.officeNumber}</div>
+                                        <button
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                if (confirm('Are you sure you want to delete this contact?')) {
+                                                    deleteContact(contact.id);
+                                                    if (selectedContact?.id === contact.id) {
+                                                        setSelectedContact(null);
+                                                    }
+                                                }
+                                            }}
+                                            className="btn btn-danger btn-small"
+                                            style={{ marginLeft: 'auto', marginTop: '5px' }}
+                                        >
+                                            Delete
+                                        </button>
                                     </div>
                                 ))}
                             </div>
@@ -483,7 +590,7 @@ function Chat({ currentTab }: {
                                         <div className="button-group">
                                             <button
                                                 onClick={saveSelectedContact}
-                                                className="btn btn-success"
+                                                className="btn btn-primary"
                                             >
                                                 Save Changes
                                             </button>
@@ -515,6 +622,14 @@ function Chat({ currentTab }: {
             {currentTab === 'character' && (
                 <div>
                     <h2>Character Settings</h2>
+                    <div className="form-group" style={{ marginBottom: '20px' }}>
+                        <button
+                            onClick={saveCharacterData}
+                            className="btn btn-primary"
+                        >
+                            Save Character Settings
+                        </button>
+                    </div>
                     <div className="section-content">
                         <h3>Character Tones</h3>
                         {characterData.character_tones.map((tone, index) => (
@@ -558,12 +673,6 @@ function Chat({ currentTab }: {
                                 </div>
                             </div>
                         ))}
-                        <button
-                            onClick={saveCharacterData}
-                            className="btn btn-success"
-                        >
-                            Save Character Settings
-                        </button>
                     </div>
                 </div>
             )}
@@ -584,9 +693,16 @@ function Chat({ currentTab }: {
                                 />
                                 <button
                                     onClick={addNewTemplate}
-                                    className="btn btn-success btn-full btn-small"
+                                    className="btn btn-new btn-full"
                                 >
                                     + Add Template
+                                </button>
+                                <button
+                                    onClick={saveTemplateData}
+                                    className="btn btn-primary btn-full"
+                                    style={{ marginTop: '10px' }}
+                                >
+                                    Save Templates
                                 </button>
                             </div>
 
@@ -607,9 +723,10 @@ function Chat({ currentTab }: {
                                                 e.stopPropagation();
                                                 deleteTemplate(templateName);
                                             }}
-                                            className="btn-small btn-danger"
+                                            className="btn btn-danger btn-small"
+                                            style={{ marginLeft: 'auto', marginTop: '5px' }}
                                         >
-                                            ×
+                                            Delete
                                         </button>
                                     </div>
                                 ))}
@@ -629,12 +746,6 @@ function Chat({ currentTab }: {
                                         rows={20}
                                     />
                                     <div className="template-actions">
-                                        <button
-                                            onClick={saveTemplateData}
-                                            className="btn btn-success"
-                                        >
-                                            Save All Templates
-                                        </button>
                                         <small className="help-text">
                                             Use placeholders like {'{name}'}, {'{email}'}, {'{roomNumber}'} in your templates
                                         </small>
@@ -654,6 +765,21 @@ function Chat({ currentTab }: {
             {currentTab === 'ara' && (
                 <div>
                     <h2>ARA Campus Information</h2>
+                    <div className="form-group" style={{ marginBottom: '20px' }}>
+                        <button
+                            onClick={saveAraData}
+                            className="btn btn-primary"
+                        >
+                            Save ARA Data
+                        </button>
+                        <button
+                            onClick={() => setAraData(JSON.stringify(JSON.parse(araData), null, 2))}
+                            className="btn btn-secondary"
+                            style={{ marginLeft: '10px' }}
+                        >
+                            Format JSON
+                        </button>
+                    </div>
                     <p>Edit the ARA campus information JSON data:</p>
                     <textarea
                         value={araData}
@@ -661,26 +787,27 @@ function Chat({ currentTab }: {
                         className="json-editor"
                         rows={20}
                     />
-                    <div className="button-group">
-                        <button
-                            onClick={saveAraData}
-                            className="btn btn-success"
-                        >
-                            Save ARA Data
-                        </button>
-                        <button
-                            onClick={() => setAraData(JSON.stringify(JSON.parse(araData), null, 2))}
-                            className="btn btn-secondary"
-                        >
-                            Format JSON
-                        </button>
-                    </div>
                 </div>
             )}
 
             {currentTab === 'computing' && (
                 <div>
                     <h2>Computing Course Handbook</h2>
+                    <div className="form-group" style={{ marginBottom: '20px' }}>
+                        <button
+                            onClick={saveComputingData}
+                            className="btn btn-primary"
+                        >
+                            Save Computing Data
+                        </button>
+                        <button
+                            onClick={() => setComputingData(JSON.stringify(JSON.parse(computingData), null, 2))}
+                            className="btn btn-secondary"
+                            style={{ marginLeft: '10px' }}
+                        >
+                            Format JSON
+                        </button>
+                    </div>
                     <p>This data is scraped from PDF files. Edit the raw JSON data:</p>
                     <textarea
                         value={computingData}
@@ -688,26 +815,27 @@ function Chat({ currentTab }: {
                         className="json-editor"
                         rows={20}
                     />
-                    <div className="button-group">
-                        <button
-                            onClick={saveComputingData}
-                            className="btn btn-success"
-                        >
-                            Save Computing Data
-                        </button>
-                        <button
-                            onClick={() => setComputingData(JSON.stringify(JSON.parse(computingData), null, 2))}
-                            className="btn btn-secondary"
-                        >
-                            Format JSON
-                        </button>
-                    </div>
                 </div>
             )}
 
             {currentTab === 'student-handbook' && (
                 <div>
                     <h2>Student Handbook</h2>
+                    <div className="form-group" style={{ marginBottom: '20px' }}>
+                        <button
+                            onClick={saveStudentHandbookData}
+                            className="btn btn-primary"
+                        >
+                            Save Student Handbook
+                        </button>
+                        <button
+                            onClick={() => setStudentHandbookData(JSON.stringify(JSON.parse(studentHandbookData), null, 2))}
+                            className="btn btn-secondary"
+                            style={{ marginLeft: '10px' }}
+                        >
+                            Format JSON
+                        </button>
+                    </div>
                     <p>This data is scraped from PDF files. Edit the raw JSON data:</p>
                     <textarea
                         value={studentHandbookData}
@@ -715,19 +843,103 @@ function Chat({ currentTab }: {
                         className="json-editor"
                         rows={20}
                     />
-                    <div className="button-group">
-                        <button
-                            onClick={saveStudentHandbookData}
-                            className="btn btn-success"
-                        >
-                            Save Student Handbook
-                        </button>
-                        <button
-                            onClick={() => setStudentHandbookData(JSON.stringify(JSON.parse(studentHandbookData), null, 2))}
-                            className="btn btn-secondary"
-                        >
-                            Format JSON
-                        </button>
+                </div>
+            )}
+
+            {currentTab === 'quests' && (
+                <div>
+                    <h2>Campus Quest Management</h2>
+
+                    <div className="split-panel">
+                        {/* Quest List */}
+                        <div className="panel-left-narrow">
+                            <div className="form-group">
+                                <button
+                                    onClick={addNewQuest}
+                                    className="btn btn-new btn-full"
+                                >
+                                    + Add New Quest
+                                </button>
+                                <button
+                                    onClick={saveQuestData}
+                                    className="btn btn-primary btn-full"
+                                    style={{ marginTop: '10px' }}
+                                >
+                                    Save Quest Data
+                                </button>
+                            </div>
+
+                            <div className="template-list">
+                                {Object.keys(questData).map(questKey => (
+                                    <div
+                                        key={questKey}
+                                        className={`template-item ${selectedQuest === questKey ? 'template-selected' : ''}`}
+                                    >
+                                        <div
+                                            onClick={() => setSelectedQuest(questKey)}
+                                            style={{ cursor: 'pointer', flex: 1 }}
+                                        >
+                                            <div className="template-name">{questKey}</div>
+                                            <div className="template-preview">{questData[questKey].question.substring(0, 50)}...</div>
+                                        </div>
+                                        <button
+                                            onClick={() => deleteQuest(questKey)}
+                                            className="btn btn-danger btn-small"
+                                            style={{ marginLeft: '10px' }}
+                                        >
+                                            Delete
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Quest Editor */}
+                        <div className="panel-right">
+                            {selectedQuest && questData[selectedQuest] ? (
+                                <div>
+                                    <h3>Edit Quest: {selectedQuest}</h3>
+                                    <div className="form-container">
+                                        <div className="form-group">
+                                            <label>Question:</label>
+                                            <textarea
+                                                value={questData[selectedQuest].question}
+                                                onChange={(e) => updateQuest(selectedQuest, 'question', e.target.value)}
+                                                rows={3}
+                                                placeholder="Enter the quest question"
+                                            />
+                                        </div>
+
+                                        <div className="form-group">
+                                            <label>Options (one per line):</label>
+                                            <textarea
+                                                value={questData[selectedQuest].options.join('\n')}
+                                                onChange={(e) => updateQuest(selectedQuest, 'options', e.target.value.split('\n'))}
+                                                rows={6}
+                                                placeholder="Enter each option on a new line"
+                                            />
+                                        </div>
+
+                                        <div className="form-group">
+                                            <label>Correct Answer:</label>
+                                            <select
+                                                value={questData[selectedQuest].answer}
+                                                onChange={(e) => updateQuest(selectedQuest, 'answer', e.target.value)}
+                                            >
+                                                {questData[selectedQuest].options.map((option, index) => (
+                                                    <option key={index} value={option}>{option}</option>
+                                                ))}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            ) : (
+                                <div className="empty-state">
+                                    <h3>Select a quest to edit</h3>
+                                    <p>Choose a quest from the list on the left, or create a new one.</p>
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
             )}
