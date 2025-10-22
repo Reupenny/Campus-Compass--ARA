@@ -87,11 +87,9 @@ function Chat({ setCurrentPage }: { setCurrentPage: (page: 'chat' | 'explore' | 
         <>{hasContent && (<button className='minimize-button show' onClick={() => setIsShow(!isShow)}
             aria-label='Open locations menu'>{isShow ? '-' : '+'}</button>
         )}
-            {isShow && (
-                <div id="ai-show">
-                    {/* <!-- Chat elements will be displayed here --> */}
-                </div >
-            )}
+            <div id="ai-show" className={`${isShow ? '' : 'hidden'}`}>
+                {/* <!-- Chat elements will be displayed here --> */}
+            </div >
             <div id="chat-container">
                 <div id="chat-window">
                     {/* <!-- Chat messages will be displayed here --> */}

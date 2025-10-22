@@ -51,7 +51,7 @@ input {
     z-index: 2;
     overflow: scroll;
     scrollbar-width: none;
-    height: 100vh;
+    height: auto;
     padding-bottom: 10em;
 }
 
@@ -77,6 +77,10 @@ input {
     top: 25px;
     position: absolute;
     left: calc(50% - 240px);
+}
+
+.hidden {
+    display: none !important;
 }
 
 .message {
