@@ -14,21 +14,21 @@ function Menu({ currentPage, setCurrentPage }: MenuProps) {
     return (
         <div className="menu">
             <nav>
-                <a
+                <a data-umami-event="Chat Menu Click"
                     href="#Chat"
                     className={currentPage === 'chat' ? 'active' : ''}
                     onClick={(e) => handleClick('chat', e)}
                 >
                     CHAT
                 </a>
-                <a
+                <a data-umami-event="Explore Menu Click"
                     href="#Explore"
                     className={currentPage === 'explore' ? 'active' : ''}
                     onClick={(e) => handleClick('explore', e)}
                 >
                     EXPLORE
                 </a>
-                <a
+                <a data-umami-event="Quest Menu Click"
                     href="#Quest"
                     className={currentPage === 'quest' ? 'active' : ''}
                     onClick={(e) => handleClick('quest', e)}

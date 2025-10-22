@@ -136,7 +136,7 @@ function QuestComponent() {
                                 </ul>
                             </div>
                         )}
-                        <button onClick={handleStart} className="start-button">START QUEST</button>
+                        <button onClick={handleStart} data-umami-event="Start Quest" className="start-button">START QUEST</button>
                     </div>
                 )}
                 {isMinimized && (
