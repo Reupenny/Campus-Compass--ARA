@@ -117,7 +117,7 @@ function QuestComponent() {
     if (!started) {
         return (
             <>
-                <button onClick={toggleMinimize} className="minimize-button">
+                <button onClick={toggleMinimize} className="minimize-button minimize-quest">
                     {isMinimized ? '+' : '-'}
                 </button>
                 {!isMinimized && (
@@ -136,7 +136,7 @@ function QuestComponent() {
                                 </ul>
                             </div>
                         )}
-                        {!history.length > 0 && (
+                        {!history.length && (
                             <div className="quest-history">
                                 <br />
                                 <p>To hide the quest while you hunt for the answer, press the minimize button in the top left corner.</p>
@@ -181,7 +181,7 @@ function QuestComponent() {
     return (
         <>
 
-            <button onClick={toggleMinimize} className="minimize-button">
+            <button onClick={toggleMinimize} className="minimize-button minimize-quest">
                 {isMinimized ? '+' : '-'}
             </button>
             {!isMinimized && (

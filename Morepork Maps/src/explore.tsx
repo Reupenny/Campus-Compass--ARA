@@ -294,46 +294,41 @@ function Explore({ onMenuStateChange }: { onMenuStateChange?: (isOpen: boolean) 
                 </p>
             </div>
             <button
-                className={`scenes-menu-button ${isMenuOpen ? 'hidden' : ''}`}
+                className={`minimize-button open-button ${isMenuOpen ? 'hidden' : ''}`}
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 aria-label="Open locations menu"
-            >
-                <img src="/img/plus.png" alt="Menu" className="menu-icon" />
+            >{isMenuOpen ? '-' : '+'}
             </button>
 
             {/* Scenes Menu Popup */}
             {isMenuOpen && (
-                <div className="scenes-menu-overlay" onClick={() => setIsMenuOpen(false)}>
-                    <div className="scenes-menu" onClick={(e) => e.stopPropagation()}>
-                        <button
-                            className="scenes-menu-button close-button"
-                            onClick={() => setIsMenuOpen(false)}
-                            aria-label="Close menu"
-                        >
-                            <img src="/img/close.png" alt="Close" className="menu-icon" />
-                        </button>
-                        <div className="scenes-list">
-                            {tourData.scenes.map((scene: SceneData) => (
-                                <button
-                                    key={scene.id}
-                                    className={`scene-item ${currentScene === scene.id ? 'active' : ''}`}
-                                    onClick={() => {
-                                        const switchToSceneGlobal = (window as any).switchToScene;
-                                        if (switchToSceneGlobal) {
-                                            switchToSceneGlobal(scene.id);
-                                        }
-                                        setIsMenuOpen(false);
-                                    }}
-                                >
-                                    <div className="scene-name">{scene.name}</div>
-                                    {currentScene === scene.id && (
-                                        <div className="current-indicator">Current</div>
-                                    )}
-                                </button>
-                            ))}
+                <>
+                    <div className="scenes-menu-overlay" onClick={() => setIsMenuOpen(false)}>
+
+                        <div className="scenes-menu" onClick={(e) => e.stopPropagation()}>
+                            <div className="scenes-list">
+                                {tourData.scenes.map((scene: SceneData) => (
+                                    <button
+                                        key={scene.id}
+                                        className={`scene-item ${currentScene === scene.id ? 'active' : ''}`}
+                                        onClick={() => {
+                                            const switchToSceneGlobal = (window as any).switchToScene;
+                                            if (switchToSceneGlobal) {
+                                                switchToSceneGlobal(scene.id);
+                                            }
+                                            setIsMenuOpen(false);
+                                        }}
+                                    >
+                                        <div className="scene-name">{scene.name}</div>
+                                        {currentScene === scene.id && (
+                                            <div className="current-indicator">Current</div>
+                                        )}
+                                    </button>
+                                ))}
+                            </div>
                         </div>
                     </div>
-                </div>
+                </>
             )}
         </>
     );
