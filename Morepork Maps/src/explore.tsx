@@ -294,7 +294,7 @@ function Explore({ onMenuStateChange }: { onMenuStateChange?: (isOpen: boolean) 
                 </p>
             </div>
             <button
-                className={`minimize-button open-button ${isMenuOpen ? 'hidden' : ''}`}
+                className={`minimize-button open-button`}
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 aria-label="Open locations menu"
             >{isMenuOpen ? '-' : '+'}

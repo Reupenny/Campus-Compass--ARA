@@ -19,7 +19,8 @@ function App() {
           <div style={{
             display: currentPage === 'chat' ? 'block' : 'none',
             width: '100vw',
-            height: '100vh'
+            height: '100vh',
+            overflow: 'hidden'
           }}>
             <Chat setCurrentPage={setCurrentPage} />
           </div>
@@ -28,7 +29,8 @@ function App() {
           <div style={{
             display: currentPage === 'explore' ? 'block' : 'none',
             width: '100vw',
-            height: '100vh'
+            height: '100vh',
+            overflow: 'hidden'
           }}>
             <Explore onMenuStateChange={setIsExploreMenuOpen} />
           </div>
@@ -39,7 +41,8 @@ function App() {
       {currentPage === 'quest' && (
         <div style={{
           width: '100vw',
-          height: '100vh'
+          height: '100vh',
+          overflow: 'hidden'
         }}>
           <Quest />
         </div>
