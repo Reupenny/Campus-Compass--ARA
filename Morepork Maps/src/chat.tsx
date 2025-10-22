@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import './css/Chat.css';
 
-function Chat() {
+function Chat({ setCurrentPage }: { setCurrentPage: (page: 'chat' | 'explore' | 'quest') => void }) {
     const isInitialized = useRef(false);
 
     useEffect(() => {
@@ -75,7 +75,7 @@ function Chat() {
                             My name is A.C.E. and I am here to answer all you questuions.<br />
                             Start chatting with me below of if your up for a challenge I have set up a quest around the Campus help you get familiar.</p>
                     </div>
-                    <button onClick='' className="start-button chat-button">START QUEST</button>
+                    <button onClick={() => setCurrentPage('quest')} className="start-button chat-button" data-umami-event="In chat Quest button">START QUEST</button>
                     <div className="ACE_image">
                         <img width={150} src="img/ace_image.webp" alt="A.C.E. Image" />
                     </div>

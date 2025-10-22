@@ -136,6 +136,12 @@ function QuestComponent() {
                                 </ul>
                             </div>
                         )}
+                        {!history.length > 0 && (
+                            <div className="quest-history">
+                                <br />
+                                <p>To hide the quest while you hunt for the answer, press the minimize button in the top left corner.</p>
+                            </div>
+                        )}
                         <button onClick={handleStart} data-umami-event="Start Quest" className="start-button">START QUEST</button>
                     </div>
                 )}

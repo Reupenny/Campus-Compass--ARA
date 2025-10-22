@@ -21,7 +21,7 @@ function App() {
             width: '100vw',
             height: '100vh'
           }}>
-            <Chat />
+            <Chat setCurrentPage={setCurrentPage} />
           </div>
 
           {/* Explore preserves state when hidden */}
