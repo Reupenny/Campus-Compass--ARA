@@ -51,8 +51,8 @@ input {
     z-index: 2;
     overflow: scroll;
     scrollbar-width: none;
-    height: auto;
-    padding-bottom: 10em;
+    height: 50vh;
+    padding-bottom: 1em;
 }
 
 #ai-show div {
