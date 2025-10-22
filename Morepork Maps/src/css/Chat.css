@@ -50,6 +50,7 @@ input {
     top: 10px;
     width: 100%;
     align-items: center;
+    z-index: 2;
 }
 
 #ai-show div {
@@ -64,9 +65,15 @@ input {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-#ai-show {
+#ai-show h2 {
     text-align: right;
     color: var(--secondary);
+}
+
+.show {
+    top: 25px;
+    position: absolute;
+    left: calc(50% - 240px);
 }
 
 .message {

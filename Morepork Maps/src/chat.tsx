@@ -1,8 +1,10 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './css/Chat.css';
 
 function Chat({ setCurrentPage }: { setCurrentPage: (page: 'chat' | 'explore' | 'quest') => void }) {
     const isInitialized = useRef(false);
+    const [isShow, setIsShow] = useState(true);
+    const [hasContent, setHasContent] = useState(false);
 
     useEffect(() => {
         // Clear the initialized flag when component mounts
@@ -59,11 +61,37 @@ function Chat({ setCurrentPage }: { setCurrentPage: (page: 'chat' | 'explore' | 
         };
     }, []);
 
+    // Check if #ai-show has content
+    useEffect(() => {
+        const checkContent = () => {
+            const aiShow = document.getElementById('ai-show');
+            if (aiShow) {
+                // Check if there's any content
+                const hasDynamicContent = aiShow.innerHTML.trim().length > 0;
+                setHasContent(hasDynamicContent);
+            }
+        };
+
+        // Check immediately and set up observer
+        checkContent();
+        const observer = new MutationObserver(checkContent);
+        const aiShow = document.getElementById('ai-show');
+        if (aiShow) {
+            observer.observe(aiShow, { childList: true, subtree: true, characterData: true });
+        }
+
+        return () => observer.disconnect();
+    }, []);
+
     return (
-        <>
-            <div id="ai-show">
-                {/* <!-- Chat elements will be displayed here --> */}
-            </div>
+        <>{hasContent && (<button className='minimize-button show' onClick={() => setIsShow(!isShow)}
+            aria-label='Open locations menu'>{isShow ? '-' : '+'}</button>
+        )}
+            {isShow && (
+                <div id="ai-show">
+                    {/* <!-- Chat elements will be displayed here --> */}
+                </div >
+            )}
             <div id="chat-container">
                 <div id="chat-window">
                     {/* <!-- Chat messages will be displayed here --> */}
