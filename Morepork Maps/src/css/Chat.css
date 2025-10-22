@@ -29,16 +29,15 @@ input {
     width: 100%;
     max-width: 700px;
     margin: 0px auto;
-    padding: 0em 1;
-    height: 95vh;
+    height: 100vh;
     overflow: hidden;
     flex-direction: column-reverse;
     display: flex;
 }
 
 #chat-window {
-    padding: 7em 0em;
-    margin: 1em;
+    padding: 10em 0em;
+    margin: 0 1em;
     overflow-y: scroll;
     scrollbar-width: none;
 }
@@ -117,7 +116,6 @@ input {
 .chat-button {
     position: relative;
     left: 60%;
-    z-index: -1;
 }
 
 .logo-container {
