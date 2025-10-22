@@ -256,4 +256,10 @@ input {
     .logo-container {
         margin-bottom: 50px;
     }
+
+    .show {
+        top: 25px;
+        position: absolute;
+        left: 30px;
+    }
 }
