@@ -10,20 +10,20 @@
     "answer": "3"
   },
   "Quest 2": {
-    "question": "Locate the gym inside the Whareora and find out how much it is per week?",
+    "question": "Locate the gym inside the Whareora and find out how much it is per month?",
     "options": [
-      "$2.55",
-      "$7.40",
-      "$5.50",
-      "$8.80"
+      "$10",
+      "$20",
+      "$40",
+      "$50"
     ],
-    "answer": "$5.50"
+    "answer": "$40"
   },
   "Quest 3": {
     "question": "Head inside the Rakaia Centre and locate Academic Records. What documents can you get from there?",
     "options": [
-      "Accademic transcripts",
       "Enrolment forms",
+      "Accademic transcripts",
       "Course outlines",
       "ID cards"
     ],
@@ -52,19 +52,19 @@
   "Quest 6": {
     "question": "Lets head outside and find the ICT helpdesk. What do they help with?",
     "options": [
-      "Computer issues",
       "Course advice",
       "Lost and found",
-      "Library books"
+      "Library books",
+      "Computer issues"
     ],
     "answer": "Computer issues"
   },
   "Quest 7": {
     "question": "Have a look round and find the tallest building on campus. lets ride the lift to the top floor. How many floors does it have?",
     "options": [
-      "7",
       "5",
-      "9",
+      "6",
+      "7",
       "8"
     ],
     "answer": "7"
@@ -72,8 +72,8 @@
   "Quest 8": {
     "question": "There are two cafes on campus. Find the one that is run by staff and students. What is it called?",
     "options": [
-      "The pantry",
       "one seven cafe",
+      "The pantry",
       "Black Betties cafe",
       "C4 cafe"
     ],
@@ -90,9 +90,14 @@
     "answer": "using your student ID"
   },
   "Quest 10": {
-    "question": "Sandy is the computing course coordinator, go and find her office.",
-    "options": [],
-    "answer": ""
+    "question": "Sandy is the computing course coordinator, go and find her office.\nWhat time dose she finish on Friday?",
+    "options": [
+      "2pm",
+      "3pm",
+      "4pm",
+      "5pm"
+    ],
+    "answer": "3pm"
   },
   "Quest 11": {
     "question": "Congratulations you have completed the quest.",

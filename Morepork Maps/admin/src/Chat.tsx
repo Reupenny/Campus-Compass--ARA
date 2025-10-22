@@ -491,19 +491,18 @@ function Chat({ currentTab }: {
                             <div className="form-group">
                                 <button
                                     onClick={createNewContact}
-                                    className="btn btn-new btn-full"
+                                    className="btn btn-secondary btn-full"
                                 >
                                     + Add New Contact
                                 </button>
                                 <button
                                     onClick={() => saveContacts(contacts, lastId)}
                                     className="btn btn-primary btn-full"
-                                    style={{ marginTop: '10px' }}
                                 >
                                     Save Contacts
                                 </button>
                             </div>
-                            <div className="contact-list">
+                            <div className="panel-left-group">
                                 {contacts.map(contact => (
                                     <div
                                         key={contact.id}
@@ -511,8 +510,6 @@ function Chat({ currentTab }: {
                                         className={`contact-item ${selectedContact?.id === contact.id ? 'contact-selected' : ''}`}
                                     >
                                         <div className="contact-name">{contact.name || 'Unnamed Contact'}</div>
-                                        <div className="contact-details">{contact.jobTitle}</div>
-                                        <div className="contact-details">{contact.officeNumber}</div>
                                         <button
                                             onClick={(e) => {
                                                 e.stopPropagation();
@@ -683,7 +680,7 @@ function Chat({ currentTab }: {
 
                     <div className="split-panel">
                         {/* Template List */}
-                        <div className="panel-left-narrow">
+                        <div className="panel-left">
                             <div className="form-group">
                                 <input
                                     type="text"
@@ -693,7 +690,7 @@ function Chat({ currentTab }: {
                                 />
                                 <button
                                     onClick={addNewTemplate}
-                                    className="btn btn-new btn-full"
+                                    className="btn btn-secondary btn-full"
                                 >
                                     + Add Template
                                 </button>
@@ -706,7 +703,7 @@ function Chat({ currentTab }: {
                                 </button>
                             </div>
 
-                            <div className="template-list">
+                            <div className="panel-left-group">
                                 {Object.keys(templateData).map(templateName => (
                                     <div
                                         key={templateName}
@@ -852,11 +849,11 @@ function Chat({ currentTab }: {
 
                     <div className="split-panel">
                         {/* Quest List */}
-                        <div className="panel-left-narrow">
+                        <div className="panel-left">
                             <div className="form-group">
                                 <button
                                     onClick={addNewQuest}
-                                    className="btn btn-new btn-full"
+                                    className="btn btn-secondary btn-full"
                                 >
                                     + Add New Quest
                                 </button>
@@ -869,7 +866,7 @@ function Chat({ currentTab }: {
                                 </button>
                             </div>
 
-                            <div className="template-list">
+                            <div className="panel-left-group">
                                 {Object.keys(questData).map(questKey => (
                                     <div
                                         key={questKey}

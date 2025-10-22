@@ -30,7 +30,7 @@ function ChatSidebar({ currentTab, setCurrentTab }: {
                     <button
                         key={tab.key}
                         onClick={() => setCurrentTab(tab.key as any)}
-                        className={`sidebar-nav-button ${currentTab === tab.key ? 'active' : ''}`}
+                        className={`btn btn-secondary btn-full ${currentTab === tab.key ? 'active' : ''}`}
                     >
                         {tab.label}
                     </button>
@@ -167,29 +167,22 @@ function App() {
     return (
         <>
             <aside>
-                <h1 style={{ margin: 0, marginRight: '20px' }}>Admin Panel</h1>
                 <div><button
                     onClick={() => setCurrentView('chat')}
+                    className='btn btn-secondary btn-wide'
                     style={{
-                        padding: '8px 16px',
                         backgroundColor: currentView === 'chat' ? '#007bff' : '#fff',
                         color: currentView === 'chat' ? '#fff' : '#000',
-                        border: '1px solid #007bff',
-                        borderRadius: '4px',
-                        cursor: 'pointer'
                     }}
                 >
                     Chat
                 </button>
                     <button
                         onClick={() => setCurrentView('360-editor')}
+                        className='btn btn-secondary btn-wide'
                         style={{
-                            padding: '8px 16px',
                             backgroundColor: currentView === '360-editor' ? '#007bff' : '#fff',
                             color: currentView === '360-editor' ? '#fff' : '#000',
-                            border: '1px solid #007bff',
-                            borderRadius: '4px',
-                            cursor: 'pointer'
                         }}
                     >
                         Quest Editor
