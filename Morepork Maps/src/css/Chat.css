@@ -36,7 +36,7 @@ input {
 }
 
 #chat-window {
-    padding: 10em 0em;
+    padding-bottom: 10em;
     margin: 0 1em;
     overflow-y: scroll;
     scrollbar-width: none;
