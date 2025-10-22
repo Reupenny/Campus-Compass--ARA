@@ -104,9 +104,7 @@ function appendMessage(sender, text) {
 }
 function appendTemplate(template) {
     if (template) {
-        const templateDiv = document.createElement("div");
-        templateDiv.innerHTML = template;
-        aiShow.appendChild(templateDiv);
+        aiShow.insertAdjacentHTML('beforeend', template);
         aiShow.scrollTop = aiShow.scrollHeight;
     }
 }

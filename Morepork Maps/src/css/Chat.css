@@ -46,13 +46,17 @@ input {
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 10px;
     width: 100%;
     align-items: center;
     z-index: 2;
+    overflow: scroll;
+    scrollbar-width: none;
+    height: 100vh;
+    padding-bottom: 10em;
 }
 
 #ai-show div {
+    margin: 10px;
     width: 90%;
     max-width: 500px;
     padding: .5em;
