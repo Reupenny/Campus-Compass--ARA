@@ -106,7 +106,7 @@ function appendTemplate(template) {
     if (template) {
         const templateDiv = document.createElement("div");
         templateDiv.innerHTML = template;
-        aiShow.innerHTML = templateDiv.innerHTML;
+        aiShow.appendChild(templateDiv);
         aiShow.scrollTop = aiShow.scrollHeight;
     }
 }
