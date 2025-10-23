@@ -75,11 +75,18 @@ const Sidebar: React.FC<SidebarProps> = ({
 }) => {
     return (
         <div className="sidebar">
+            {/* Save Button */}
+            <button
+                onClick={onSaveTourData}
+                className="btn btn-primary btn-full"
+            >
+                Save Tour Data
+            </button>
             <div className="sidebar-header">
                 <h2>Scenes</h2>
                 <button
                     onClick={onAddNewScene}
-                    className="add-scene-btn"
+                    className="btn add-scene-btn"
                 >
                     + Add Scene
                 </button>
@@ -94,18 +101,15 @@ const Sidebar: React.FC<SidebarProps> = ({
                             className={`scene-card ${selectedScene?.id === scene.id ? 'selected' : ''}`}
                         >
                             <div className="scene-name">{scene.name}</div>
-                            <div>
-                                {scene.hotspots.length} hotspots
-                            </div>
                             <div className="scene-actions">
                                 <button
                                     onClick={(e) => {
                                         e.stopPropagation();
                                         onEditScene(scene);
                                     }}
-                                    className="scene-action-btn edit-scene-btn"
+                                    className="btn btn-secondary btn-small"
                                 >
-                                    ✏️
+                                    Edit
                                 </button>
                                 <button
                                     onClick={(e) => {
@@ -114,9 +118,9 @@ const Sidebar: React.FC<SidebarProps> = ({
                                             onDeleteScene(scene.id);
                                         }
                                     }}
-                                    className="scene-action-btn delete-scene-btn"
+                                    className="btn btn-danger btn-small"
                                 >
-                                    ×
+                                    Delete
                                 </button>
                             </div>
                         </div>
@@ -127,7 +131,6 @@ const Sidebar: React.FC<SidebarProps> = ({
             {/* View Direction Controls */}
             {selectedScene && currentScene && (
                 <div className="view-controls">
-                    <h3>View Direction</h3>
                     <div className="view-controls-grid">
                         <div>
                             <label>Yaw (°):</label>
@@ -189,7 +192,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                     </div>
                     <button
                         onClick={onSetDefaultView}
-                        className="set-default-view-btn"
+                        className="btn btn-secondary"
                     >
                         Set as Default View
                     </button>
@@ -201,53 +204,17 @@ const Sidebar: React.FC<SidebarProps> = ({
                 <h3>Add Hotspots</h3>
                 <button
                     onClick={() => onCreateHotspot('info')}
-                    className="hotspot-btn add-info-btn"
+                    className="btn btn-primary"
                 >
                     Add Info Point
                 </button>
                 <button
                     onClick={() => onCreateHotspot('waypoint')}
-                    className="hotspot-btn add-waypoint-btn"
+                    className="btn btn-primary"
                 >
                     Add Waypoint
                 </button>
             </div>
-
-            {/* Selected Scene Hotspots */}
-            {selectedScene && (
-                <div className="hotspots-list">
-                    <h3>Current Hotspots</h3>
-                    {selectedScene.hotspots.map((hotspot, index) => (
-                        <div
-                            key={index}
-                            className="hotspot-item"
-                        >
-                            <div className="hotspot-type">
-                                {hotspot.type === 'info' ? '📍' : '🚪'} {hotspot.type}
-                            </div>
-                            <div className="hotspot-text">{hotspot.text}</div>
-                            <div className="hotspot-coords">
-                                Yaw: {(hotspot.yaw * 180 / Math.PI).toFixed(1)}°,
-                                Pitch: {(hotspot.pitch * 180 / Math.PI).toFixed(1)}°
-                            </div>
-                            <button
-                                onClick={() => onDeleteHotspot(index)}
-                                className="delete-hotspot-btn"
-                            >
-                                ×
-                            </button>
-                        </div>
-                    ))}
-                </div>
-            )}
-
-            {/* Save Button */}
-            <button
-                onClick={onSaveTourData}
-                className="save-tour-btn"
-            >
-                Save Tour Data
-            </button>
         </div>
     );
 };
@@ -1012,7 +979,6 @@ const Edit360 = React.forwardRef<any, Edit360Props>(({ onReady }, ref) => {
             {editingHotspot && (
                 <div className="modal-overlay">
                     <div className="modal-content">
-                        <h3>Edit {editingHotspot.hotspot.type} Hotspot</h3>
                         {editingHotspot.hotspot.type === 'info' && (
                             <div className="form-group">
                                 <label className="form-label">Text:</label>
@@ -1084,13 +1050,13 @@ const Edit360 = React.forwardRef<any, Edit360Props>(({ onReady }, ref) => {
                         <div className="modal-actions">
                             <button
                                 onClick={() => setEditingHotspot(null)}
-                                className="modal-btn modal-btn-cancel"
+                                className="btn btn-secondary"
                             >
                                 Cancel
                             </button>
                             <button
                                 onClick={() => updateHotspot(editingHotspot.hotspot)}
-                                className="modal-btn modal-btn-save"
+                                className="btn btn-primary"
                             >
                                 Save
                             </button>
@@ -1103,7 +1069,6 @@ const Edit360 = React.forwardRef<any, Edit360Props>(({ onReady }, ref) => {
             {showSceneEditor && editingScene && (
                 <div className="modal-overlay">
                     <div className="modal-content">
-                        <h3>Edit Scene</h3>
                         <div className="form-group">
                             <label className="form-label">Scene Name:</label>
                             <input
@@ -1133,21 +1098,21 @@ const Edit360 = React.forwardRef<any, Edit360Props>(({ onReady }, ref) => {
                                 <button
                                     type="button"
                                     onClick={() => setImageSelectionMode('select')}
-                                    className={`image-mode-btn ${imageSelectionMode === 'select' ? 'active' : ''}`}
+                                    className={` btn btn-secondary btn-small ${imageSelectionMode === 'select' ? 'active' : ''}`}
                                 >
                                     Select Existing
                                 </button>
                                 <button
                                     type="button"
                                     onClick={() => setImageSelectionMode('upload')}
-                                    className={`image-mode-btn ${imageSelectionMode === 'upload' ? 'active' : ''}`}
+                                    className={` btn btn-secondary btn-small ${imageSelectionMode === 'upload' ? 'active' : ''}`}
                                 >
                                     Upload New
                                 </button>
                                 <button
                                     type="button"
                                     onClick={() => setImageSelectionMode('url')}
-                                    className={`image-mode-btn ${imageSelectionMode === 'url' ? 'active' : ''}`}
+                                    className={` btn btn-secondary btn-small ${imageSelectionMode === 'url' ? 'active' : ''}`}
                                 >
                                     Custom URL
                                 </button>
@@ -1227,7 +1192,7 @@ const Edit360 = React.forwardRef<any, Edit360Props>(({ onReady }, ref) => {
                                     setShowSceneEditor(false);
                                     setEditingScene(null);
                                 }}
-                                className="modal-btn modal-btn-cancel"
+                                className="btn btn-secondary"
                             >
                                 Cancel
                             </button>
@@ -1239,7 +1204,7 @@ const Edit360 = React.forwardRef<any, Edit360Props>(({ onReady }, ref) => {
                                         setEditingScene(null);
                                     }
                                 }}
-                                className="modal-btn modal-btn-save"
+                                className="btn btn-primary"
                             >
                                 Save
                             </button>

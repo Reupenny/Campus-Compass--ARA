@@ -39,9 +39,9 @@
         }
       ],
       "defaultView": {
-        "yaw": -2.614893903095613,
-        "pitch": 0.11937066655286266,
-        "fov": 1.6529256029253694
+        "yaw": -2.522574309351967,
+        "pitch": 0.04251981493409218,
+        "fov": 1.7609416508726674
       },
       "lowResUrl": "tour_images/image-1760430786152-623133469_lowres.webp",
       "dimensions": {
@@ -182,17 +182,17 @@
         },
         {
           "type": "info",
-          "pitch": 0.1556277502052943,
-          "yaw": -0.24507969425700438,
+          "pitch": 0.14721555577078327,
+          "yaw": -1.8461900720088593,
           "text": "Printing",
           "description": "printing starts from $0.05 for A4 black and white and $0.15 for A4 Colour.</br>\nThe library also offers spiral binding and laminating services.",
           "url": "https://myara.ara.ac.nz/pages/explore/student-admin/it/printing"
         }
       ],
       "defaultView": {
-        "yaw": 1.7458828200494043,
-        "pitch": 0.26356911751716616,
-        "fov": 1.5707963267948966
+        "yaw": 1.999189090966576,
+        "pitch": 0.19695670592262005,
+        "fov": 1.6335958311224454
       },
       "lowResUrl": "tour_images/image-1760430854933-981521734_lowres.webp",
       "dimensions": {
@@ -511,8 +511,8 @@
         }
       ],
       "defaultView": {
-        "yaw": 0.4508608205172777,
-        "pitch": 0.1470089414170701,
+        "yaw": 0.057395051124565555,
+        "pitch": 0.198102981898451,
         "fov": 1.5707963267948966
       },
       "lowResUrl": "tour_images/image-1760431049585-402080821_lowres.webp",

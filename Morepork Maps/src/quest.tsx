@@ -157,7 +157,8 @@ function Quest() {
                                 // Create a high-res layer and add it to the existing scene
                                 const highResLayer = scene.createLayer({
                                     source: Marzipano.ImageUrlSource.fromString(sceneData.imageUrl),
-                                    geometry: new Marzipano.EquirectGeometry([{ width: sceneData.geometry.width }])
+                                    geometry: new Marzipano.EquirectGeometry([{ width: sceneData.geometry.width }]),
+                                    view: new Marzipano.RectilinearView(sceneData.defaultView, zoomLimiter)
                                 });
 
                                 // Store the high-res layer reference
@@ -192,7 +193,7 @@ function Quest() {
                 const scene = newViewer.createScene({
                     source: Marzipano.ImageUrlSource.fromString(lowResUrl),
                     geometry: new Marzipano.EquirectGeometry([{ width: sceneData.geometry.width }]),
-                    view: new Marzipano.RectilinearView(undefined, zoomLimiter)
+                    view: new Marzipano.RectilinearView(sceneData.defaultView, zoomLimiter)
                 });
 
                 scenes[sceneData.id] = scene;

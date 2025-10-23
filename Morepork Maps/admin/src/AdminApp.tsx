@@ -21,11 +21,9 @@ function ChatSidebar({ currentTab, setCurrentTab }: {
 
     return (
         <div className="chat-sidebar">
-            <h2>Chat Knowledge Base</h2>
 
             {/* Tab Navigation */}
             <div className="sidebar-nav-section">
-                <h3>Sections:</h3>
                 {tabs.map(tab => (
                     <button
                         key={tab.key}
@@ -169,21 +167,13 @@ function App() {
             <aside>
                 <div><button
                     onClick={() => setCurrentView('chat')}
-                    className='btn btn-secondary btn-wide'
-                    style={{
-                        backgroundColor: currentView === 'chat' ? '#007bff' : '#fff',
-                        color: currentView === 'chat' ? '#fff' : '#000',
-                    }}
+                    className={`btn btn-secondary btn-wide ${currentView === 'chat' ? 'active' : ''}`}
                 >
                     Chat
                 </button>
                     <button
                         onClick={() => setCurrentView('360-editor')}
-                        className='btn btn-secondary btn-wide'
-                        style={{
-                            backgroundColor: currentView === '360-editor' ? '#007bff' : '#fff',
-                            color: currentView === '360-editor' ? '#fff' : '#000',
-                        }}
+                        className={`btn btn-secondary btn-wide ${currentView === '360-editor' ? 'active' : ''}`}
                     >
                         Quest Editor
                     </button></div>

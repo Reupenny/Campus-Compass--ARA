@@ -36,6 +36,7 @@ a {
     --accent: light-dark(oklch(0.9627 0.0144 244.7157), oklch(0.3729 0.0306 259.7328));
     --accent-foreground: light-dark(oklch(0.6083 0.1593 249.6767), oklch(0.9822 0.0041 271.3701));
     --destructive: light-dark(oklch(0.6368 0.2078 25.3313), oklch(0.3958 0.1331 25.7230));
+    --destructive-dark: light-dark(oklch(0.5368 0.2078 25.3313), oklch(0.2958 0.1331 25.7230));
     --destructive-foreground: light-dark(oklch(1.0000 0 0), oklch(0.9822 0.0041 271.3701));
     --border: light-dark(oklch(0.9288 0.0126 255.5078), oklch(0.3729 0.0306 259.7328));
     --input: light-dark(oklch(0.9288 0.0126 255.5078), oklch(0.3729 0.0306 259.7328));
@@ -205,7 +206,8 @@ main {
     font-size: 14px;
     transition: var(--transition);
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    margin-right: 5px;
 }
 
 .btn-primary {
@@ -234,11 +236,11 @@ main {
 
 .btn-danger {
     background-color: var(--destructive);
-    color: var(--destructive-foreground);
+    color: white;
 }
 
 .btn-danger:hover {
-    background-color: var(--destructive-foreground);
+    background-color: var(--destructive-dark);
 }
 
 .btn-full {
@@ -282,7 +284,8 @@ main {
 }
 
 /* Template List Items */
-.template-list-item {
+.template-list-item,
+.scene-card {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -295,12 +298,14 @@ main {
     transition: var(--transition);
 }
 
-.template-list-item:hover {
+.template-list-item:hover,
+.scene-card:hover {
     background-color: var(--accent);
     border-color: var(--primary);
 }
 
-.template-list-item.selected {
+.template-list-item.selected,
+.scene-card.selected {
     background-color: var(--primary-light);
     border: 2px solid var(--primary);
 }
