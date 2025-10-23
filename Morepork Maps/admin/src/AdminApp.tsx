@@ -34,14 +34,6 @@ function ChatSidebar({ currentTab, setCurrentTab }: {
                     </button>
                 ))}
             </div>
-
-            {/* Current Section Info */}
-            <div className="sidebar-info-panel">
-                <h4>Current Section:</h4>
-                <p>
-                    <strong>{tabs.find(tab => tab.key === currentTab)?.label}:</strong> {tabs.find(tab => tab.key === currentTab)?.description}
-                </p>
-            </div>
         </div>
     );
 }
@@ -165,6 +157,7 @@ function App() {
     return (
         <>
             <aside>
+                <img src="./img/logo.webp" alt="logo" width="50%" />
                 <div><button
                     onClick={() => setCurrentView('chat')}
                     className={`btn btn-secondary btn-wide ${currentView === 'chat' ? 'active' : ''}`}

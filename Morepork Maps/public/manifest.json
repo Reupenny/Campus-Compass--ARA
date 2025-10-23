@@ -1,0 +1,16 @@
+{
+    "name": "Campus Compass - ARA",
+    "short_name": "Campus Compass",
+    "description": "Interactive campus tour app for ARA Institute of Canterbury",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#007acc",
+    "icons": [
+        {
+            "src": "/icon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml"
+        }
+    ]
+}
