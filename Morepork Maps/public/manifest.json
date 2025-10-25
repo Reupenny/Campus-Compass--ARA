@@ -5,26 +5,32 @@
     "start_url": "/",
     "display": "standalone",
     "background_color": "#007acc",
+    "theme_color": "#007acc",
+    "orientation": "portrait-primary",
     "icons": [
-        {
-            "src": "/iconx128.png",
-            "sizes": "128x128",
-            "type": "image/png"
-        },
         {
             "src": "/iconx256.png",
             "sizes": "256x256",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any maskable"
         },
         {
             "src": "/iconx512.png",
             "sizes": "512x512",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/iconx128.png",
+            "sizes": "128x128",
+            "type": "image/png",
+            "purpose": "any"
         },
         {
             "src": "/icon.svg",
             "sizes": "any",
-            "type": "image/svg+xml"
+            "type": "image/svg+xml",
+            "purpose": "any"
         }
     ]
 }
