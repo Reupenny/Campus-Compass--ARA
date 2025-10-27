@@ -51,7 +51,8 @@ input {
     z-index: 2;
     overflow: scroll;
     scrollbar-width: none;
-    height: 50vh;
+    max-height: 50vh;
+    min-height: 5px;
     padding-bottom: 1em;
 }
 
@@ -159,6 +160,8 @@ input {
 
 #user-input {
     background: transparent;
+    height: 35px;
+    padding-left: 10px;
 }
 
 /* AI SHOW CSS */
