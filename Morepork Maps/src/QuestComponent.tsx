@@ -33,20 +33,6 @@ function QuestComponent() {
         }
     }, []);
 
-    // Load from localStorage (only if not completed)
-    useEffect(() => {
-        const saved = localStorage.getItem('questProgress');
-        if (saved) {
-            const { index, ans, t, comp } = JSON.parse(saved);
-            if (!comp) {
-                setCurrentIndex(index);
-                setAnswers(ans);
-                setTime(t);
-                setStarted(true);
-            }
-        }
-    }, []);
-
     // Timer
     useEffect(() => {
         if (started && !completed) {
@@ -72,7 +58,6 @@ function QuestComponent() {
             }
             setHistory(updatedHistory);
             localStorage.setItem('questHistory', JSON.stringify(updatedHistory));
-            localStorage.removeItem('questProgress'); // Remove progress after completion
         }
     }, [completed]);
 
@@ -101,7 +86,6 @@ function QuestComponent() {
     };
 
     const handleReset = () => {
-        localStorage.removeItem('questProgress');
         setCurrentIndex(0);
         setAnswers([]);
         setTime(0);
