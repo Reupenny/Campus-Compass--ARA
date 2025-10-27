@@ -1,5 +1,5 @@
 {
-  "buttons": "<button class='start-button'>Click Me</button>",
+  "buttons": "<button class='buttons'><a href=\"{BUTTON LINK}\">{BUTTON NAME}</a></button>",
   "rooms": "<div class='rooms'><h2>{roomNumber}</h2><p>Building: {buildingName} ({buildingLetter})</p><p>Location: {location}</p></div>",
   "contactTemplate": "<div class='contactTemplate'>\n  <h2>{name}</h2>\n <p>Email: <a href=\"mailto:{email}\">{email}</a></p>\n  <p>Phone: <a href=\"tel:{phone}\">{phone}</a></p>\n  <p>Hours: {hours}</p>\n  <p>Office: {officeNumber}</p>\n  <p>Job Title: {jobTitle}</p>\n  <button class='start-button email'><a href=\"mailto: {email}\">Email</a></button>\n  <button class='start-button call'><a href=\"tel: {phone}\">Call</a></button>\n  </div>"
 }

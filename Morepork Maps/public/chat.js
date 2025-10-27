@@ -197,10 +197,11 @@ json
 }
 
 - If a template exists for the information, **you must use it**.
-- If no template applies, set "template": null.
 - If multiple templates apply, provide only the **first one**.
 - Templates are displayed above the message — **do not repeat information** in both places.
-- If no existing template fits, create one consistent with the existing standards.
+- When providing links always use the button template. DO NOT just provide raw links.
+- If no existing template fits the current data, create one consistent with the existing standards that fit the data to show.
+- If no template applies, set "template": null.
 
 ---
 
