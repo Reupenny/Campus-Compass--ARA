@@ -31,12 +31,12 @@ input {
     margin: 0px auto;
     height: 100vh;
     overflow: hidden;
-    flex-direction: column-reverse;
+    /* flex-direction: column-reverse; */
     display: flex;
 }
 
 #chat-window {
-    padding-bottom: 10em;
+    padding-bottom: calc(10em + 10vh);
     margin: 0 1em;
     overflow-y: scroll;
     scrollbar-width: none;
