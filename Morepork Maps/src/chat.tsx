@@ -98,8 +98,8 @@ function Chat({ setCurrentPage }: { setCurrentPage: (page: 'chat' | 'explore' | 
                     </div>
                     <div className="message bot-message start-chat">
                         <p>Welcome to ARA, <br />
-                            My name is A.C.E. and I am here to answer all you questuions.<br />
-                            Start chatting with me below of if your up for a challenge I have set up a quest around the Campus help you get familiar.</p>
+                            My name is A.C.E. and I am here to answer all your questions.<br />
+                            Start chatting with me below, or if you're up for a challenge I have set up a quest around the Campus to help you get familiar.</p>
                     </div>
                     <button onClick={() => setCurrentPage('quest')} className="start-button chat-button" data-umami-event="In chat Quest button">START QUEST</button>
                     <div className="ACE_image">
