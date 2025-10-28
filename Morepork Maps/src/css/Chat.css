@@ -38,7 +38,7 @@ input {
 #chat-container::after {
     content: '';
     position: absolute;
-    height: 15em;
+    height: 12em;
     pointer-events: none;
     left: 0;
     right: 0;
