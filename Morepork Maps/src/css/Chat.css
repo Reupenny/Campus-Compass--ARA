@@ -35,8 +35,20 @@ input {
     display: flex;
 }
 
+#chat-container::after {
+    content: '';
+    position: absolute;
+    height: 15em;
+    pointer-events: none;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0), var(--background));
+    /* z-index: 1; */
+}
+
 #chat-window {
-    padding-bottom: calc(10em + 10vh);
+    padding-bottom: calc(10em + 5vh);
     margin: 0 1em;
     overflow-y: scroll;
     scrollbar-width: none;

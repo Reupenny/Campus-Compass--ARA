@@ -203,7 +203,7 @@
     max-width: 500px;
     width: 90vw;
     max-height: 100vh;
-    margin-bottom: 100px;
+    /* margin-bottom: 100px; */
     position: absolute;
     overflow: hidden;
     display: flex;
