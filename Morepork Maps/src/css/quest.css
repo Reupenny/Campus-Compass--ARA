@@ -46,6 +46,7 @@
 .next-button:hover,
 .reset-button:hover {
     background-color: var(--secondary);
+    color: var(--primary-foreground);
 }
 
 .reset-button {
