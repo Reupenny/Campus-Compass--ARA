@@ -1105,8 +1105,9 @@
           "type": "info",
           "pitch": -0.15870786034864004,
           "yaw": -0.7526960225333639,
-          "text": "New Info Point",
-          "description": "Description here"
+          "text": "Ōtautahi House (Student Accomidation)",
+          "description": "The Ōtautahi House (O-House) student accommodation facility is operated by Ara Institute of Canterbury, located centrally on the corner of St Asaph and Madras Streets (Christchurch). The accommodation comprises five blocks in four purpose built buildings –two built in 1995, and three opened in January 2017. In total, the facility has 36 flats with a maximum capacity of 192resident-students.",
+          "url": "https://www.ara.ac.nz/explore/accommodation/otautahi-house/"
         },
         {
           "type": "waypoint",
@@ -1127,7 +1128,8 @@
           "pitch": -0.10274644125120602,
           "yaw": -2.3018385689842162,
           "text": "The Box Quad",
-          "description": "Description here"
+          "description": "Lots of independent businesses and great lunch options.",
+          "url": "https://www.boxedquarter.co.nz/"
         }
       ],
       "defaultView": {
