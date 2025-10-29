@@ -204,8 +204,8 @@ json
 - If multiple templates apply, provide only the **first one**.
 - Templates are displayed above the message — **do not repeat information** in both places.
 - When providing links always use the button template. DO NOT just provide raw links.
-- If no existing template fits the current data, create one consistent with the existing standards that fit the data to show.
-- If no template applies, set "template": null.
+- If information seems important for the user but there is no template, create a template consistent with existing standards. DO NOT fill in the template with paragraphs of text, only include key information in a summarised format or as a list.
+- If no template applies or one is not needed, set "template": null.
 
 ---
 
