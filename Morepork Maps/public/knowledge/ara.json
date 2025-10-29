@@ -1,278 +1,278 @@
 {
-    "ara_information": {
-        "name": "ARA Institute of Canterbury",
-        "location": "Christchurch, New Zealand",
-        "type": "Vocational Education Provider",
-        "description": "ARA provides a wide range of programs, including foundation studies, certificates, diplomas, degrees, and graduate diplomas."
-    },
-    "ara_campus_map": {
-        "streets": [
-            {
-                "name": "Tuam St",
-                "position": "Northern edge of the main campus block",
-                "details": "one way going east"
-            },
-            {
-                "name": "St Asaph St",
-                "position": "Runs through the campus, between Tuam St and Southwark St",
-                "details": "one way going west"
-            },
-            {
-                "name": "High St",
-                "position": "Runs diagonally from Madras St and St Asaph St",
-                "details": "starts on the corner of Madras St and St Asaph St"
-            },
-            {
-                "name": "Madras St",
-                "position": "Western edge of the main campus block",
-                "details": "one way going north"
-            },
-            {
-                "name": "Southwark St",
-                "position": "Parallel to St Asaph St, between St Asaph St and Allen St",
-                "details": "Runs parallel to St Asaph St, starts at Madras St"
-            },
-            {
-                "name": "Allen St",
-                "position": "Parallel to Southwark St, near Moorhouse Ave",
-                "details": "Runs parallel to Southwark St, starts at Madras St"
-            },
-            {
-                "name": "Ferry Rd",
-                "position": "Runs from St Asaph St towards Barbadoes St",
-                "details": "starts half way down St Asaph St to Barbadoes St"
-            },
-            {
-                "name": "Coventry St",
-                "position": "Between Williams St and Barbadoes St",
-                "details": "Short street starting on Barbadoes St and turns 90 degrees into Williams St"
-            },
-            {
-                "name": "Williams St",
-                "position": "Between Ferry Rd and Coventry St",
-                "details": "Short street starting on Ferry Rd and turns 90 degrees into Coventry St"
-            },
-            {
-                "name": "Barbadoes St",
-                "position": "Eastern edge of the main campus block",
-                "details": "one way going south"
-            },
-            {
-                "name": "Moorhouse Ave",
-                "position": "Southern edge of the main campus block",
-                "details": "big main road"
-            }
-        ],
-        "buildings": [
-            {
-                "label": "PX",
-                "name": "Püakiaku (Hairdressing)",
-                "location": "Corner of High St and Tuam St",
-                "description": "Houses Hairdressing and Barbering.",
-                "number_of_floors": "3"
-            },
-            {
-                "label": "JZ",
-                "name": "Music Arts",
-                "location": "Adjacent to PX, on High St near Madras St",
-                "description": "The specialised building for music programs.",
-                "number_of_floors": "3"
-            },
-            {
-                "label": "P",
-                "name": "Te Wahapa (Plains FM & Broadcasting)",
-                "location": "On Madras St, near St Asaph St, adjacent to S & N buildings",
-                "description": "Home of the New Zealand Broadcasting School and Plains FM radio station.",
-                "number_of_floors": "2"
-            },
-            {
-                "label": "T",
-                "name": "Taipari (IT Services)",
-                "location": "Next to G and U buildings, adjacent to the main courtyard (eastern side)",
-                "description": "IT and printing services.",
-                "number_of_floors": "1"
-            },
-            {
-                "label": "OH",
-                "name": "Otautahi House (Student Accommodation)",
-                "location": "Across St Asaph St from the main campus block, on the west side of Madras St",
-                "description": "On site accommodation for students.",
-                "number_of_floors": "3"
-            },
-            {
-                "label": "OEDT",
-                "name": "Student Accommodation",
-                "location": "Across St Asaph St from the main campus block, next to OH",
-                "description": "On site accommodation for students.",
-                "number_of_floors": "4"
-            },
-            {
-                "label": "U",
-                "name": "Ihutai (Hospitality, Cookery, Cafe)",
-                "location": "Adjacent to the main courtyard (Ferry Rd side), near Ferry Rd",
-                "description": "Contains 'Visions' the on Campus Restaurant, 'The pantry' a cafe run by staff and students, Hospitality and Tourism, and Cookery and Bakery.",
-                "number_of_floors": "3"
-            },
-            {
-                "label": "S",
-                "name": "Tawhaki (Applied Sciences & Computing)",
-                "location": "Central campus, adjacent to the main courtyard (western side), near Madras St, above N building",
-                "description": "Houses Computing and is part of Applied Sciences and Social Practice. Shares central elevators with N building.",
-                "number_of_floors": "7"
-            },
-            {
-                "label": "N",
-                "name": "Tōrea (Business & Early Childhood)",
-                "location": "Adjacent to the main courtyard (western side), near Madras St, above X building and shares central elevators with S building.",
-                "description": "Home to Early Childhood Education.",
-                "number_of_floors": "7"
-            },
-            {
-                "label": "D",
-                "name": "Marokura (Design Block)",
-                "location": "On Madras St, adjacent to Moorhouse Ave, next to DL and DW",
-                "description": "Home to Art and Design and Photography. Contains studios and workshops.",
-                "number_of_floors": "4"
-            },
-            {
-                "label": "L",
-                "name": "Library",
-                "location": "Part of the Rakaia center, adjacent to the main courtyard (east of X building)",
-                "description": "The main campus Library, houses Disability Services, Learning Services, and the Learning Self Access Centre.",
-                "number_of_floors": "2"
-            },
-            {
-                "label": "X",
-                "name": "Student Support / Academic Division",
-                "location": "Part of the Rakaia center, adjacent to the Madras St main carpark, below N building",
-                "description": "Houses the Information Desk / Admissions & Enrolments, Career Centre, and International Student Advisors. Contains the main Rakaia Center elevators.",
-                "number_of_floors": "3"
-            },
-            {
-                "label": "A",
-                "name": "Administration / Academic",
-                "location": "Part of the Rakaia center, next to L block and C block, adjacent to CH building",
-                "description": "The main administrative hub, containing Business, Academic Records, Executive, Teacher Education, and the Imagitech Theatre.",
-                "number_of_floors": "2"
-            },
-            {
-                "label": "G",
-                "name": "Te Kei (Administration / Support)",
-                "location": "On Williams St, below and attached to T building, adjacent to TM building",
-                "description": "Houses Finance, People & Culture, International, Marketing, and Health & Safety Manager.",
-                "number_of_floors": "2"
-            },
-            {
-                "label": "TM",
-                "name": "Te Puna Wānaka (Māori & Pacific Studies)",
-                "location": "Near Barbadoes St, above CH building",
-                "description": "The centre for Māori and Pacific Studies.",
-                "number_of_floors": "2"
-            },
-            {
-                "label": "CH",
-                "name": "Te Waka Piki Kōtuku (Childcare)",
-                "location": "Near Barbadoes St, above W and E buildings",
-                "description": "Childcare Facilities.",
-                "number_of_floors": "1"
-            },
-            {
-                "label": "W",
-                "name": "Whareora (Sport & Health)",
-                "location": "Large building on Moorhouse Ave and Barbadoes St, adjacent to the main student parking",
-                "description": "Contains the Gym Health Centre, The Zone, and Supported Learning.",
-                "number_of_floors": "2"
-            },
-            {
-                "label": "K",
-                "name": "Kahukura (Engineering)",
-                "location": "Large building on Moorhouse Ave and west of Barbadoes St, adjacent to the main student parking",
-                "description": "Houses Engineering and Architectural Studies.",
-                "number_of_floors": "3"
-            },
-            {
-                "label": "E",
-                "name": "Te Pūtahi (NASDA)",
-                "location": "Above K building and next to W building (shares an entrance)",
-                "description": "Houses the National Academy of Singing and Dramatic Arts (NASDA).",
-                "number_of_floors": "2"
-            },
-            {
-                "label": "C",
-                "name": "Tahatika (Fashion & Student Lounge)",
-                "location": "On Madras St, above D and DL buildings",
-                "description": "Houses Fashion, the Student Lounge, Student Voice and Student Events. a good place to meet friends for lunch.",
-                "number_of_floors": "2"
-            },
-            {
-                "label": "DL",
-                "name": "Tuawera (Lecture Theatre)",
-                "location": "On Madras St, next to D building",
-                "description": "A large, dedicated lecture hall.",
-                "number_of_floors": "1"
-            },
-            {
-                "label": "HS",
-                "name": null,
-                "location": "On Ferry Road, next to the Bus Stop",
-                "description": "Houses the Citizens Advice Bureau and Outdoor Education.",
-                "number_of_floors": "Unknown"
-            },
-            {
-                "label": "FM",
-                "name": "Facilities Management",
-                "location": "Near Ferry Rd and Barbadoes St, adjacent to the M blocks",
-                "description": "Houses Facilities Management.",
-                "number_of_floors": "Unknown"
-            },
-            {
-                "label": "O",
-                "name": "Kotare (Osteopathic Clinic)",
-                "location": "Adjacent to the main courtyard, near Madras St",
-                "description": "Houses the Osteopathic Clinic.",
-                "number_of_floors": "Unknown"
-            },
-            {
-                "name": "Rakaia Center",
-                "location": "Central campus, connected L, A and X buildings",
-                "description": "An interconnected atrium that combines L, A and X buildings into one space, it is a central hub for student services."
-            },
-            {
-                "name": "main courtyard",
-                "location": "Surrounded by N, S, U, T, G, L, and X buildings",
-                "description": "A nice grass area, with seating and trees"
-            }
-        ],
-        "parking_areas": [
-            {
-                "name": "Madras St main carpark",
-                "location": "Located on Madras St, between X building and C building, adjacent to N building",
-                "details": "Limited guest parking and drop off area"
-            },
-            {
-                "name": "Student Parking (More Student Carpark)",
-                "location": "Down Allen St",
-                "details": "Large student parking lot. Located near the TV and ST buildings."
-            },
-            {
-                "name": "Main student parking",
-                "location": "On the corner of Barbadoes St and Moorhouse Ave, surrounds W building and extends along Barbadoes St past CH and TM buildings",
-                "details": "Large student parking lot"
-            }
-        ],
-        "public_transport": [
-            {
-                "type": "bus_stop",
-                "location": "Along Ferry Rd"
-            },
-            {
-                "type": "bus_stop",
-                "location": "Along Moorhouse Ave"
-            },
-            {
-                "type": "bus_stop",
-                "location": "Along St Asaph St"
-            }
-        ]
-    }
+  "ara_information": {
+    "name": "ARA Institute of Canterbury",
+    "location": "Christchurch, New Zealand",
+    "type": "Vocational Education Provider",
+    "description": "ARA provides a wide range of programs, including foundation studies, certificates, diplomas, degrees, and graduate diplomas."
+  },
+  "ara_campus_map": {
+    "streets": [
+      {
+        "name": "Tuam St",
+        "position": "Northern edge of the main campus block",
+        "details": "one way going east"
+      },
+      {
+        "name": "St Asaph St",
+        "position": "Runs through the campus, between Tuam St and Southwark St",
+        "details": "one way going west"
+      },
+      {
+        "name": "High St",
+        "position": "Runs diagonally from Madras St and St Asaph St",
+        "details": "starts on the corner of Madras St and St Asaph St"
+      },
+      {
+        "name": "Madras St",
+        "position": "Western edge of the main campus block",
+        "details": "one way going north"
+      },
+      {
+        "name": "Southwark St",
+        "position": "Parallel to St Asaph St, between St Asaph St and Allen St",
+        "details": "Runs parallel to St Asaph St, starts at Madras St"
+      },
+      {
+        "name": "Allen St",
+        "position": "Parallel to Southwark St, near Moorhouse Ave",
+        "details": "Runs parallel to Southwark St, starts at Madras St"
+      },
+      {
+        "name": "Ferry Rd",
+        "position": "Runs from St Asaph St towards Barbadoes St",
+        "details": "starts half way down St Asaph St to Barbadoes St"
+      },
+      {
+        "name": "Coventry St",
+        "position": "Between Williams St and Barbadoes St",
+        "details": "Short street starting on Barbadoes St and turns 90 degrees into Williams St"
+      },
+      {
+        "name": "Williams St",
+        "position": "Between Ferry Rd and Coventry St",
+        "details": "Short street starting on Ferry Rd and turns 90 degrees into Coventry St"
+      },
+      {
+        "name": "Barbadoes St",
+        "position": "Eastern edge of the main campus block",
+        "details": "one way going south"
+      },
+      {
+        "name": "Moorhouse Ave",
+        "position": "Southern edge of the main campus block",
+        "details": "big main road"
+      }
+    ],
+    "buildings": [
+      {
+        "label": "PX",
+        "name": "Püakiaku (Hairdressing)",
+        "location": "Corner of High St and Tuam St",
+        "description": "Houses Hairdressing and Barbering.",
+        "number_of_floors": "3"
+      },
+      {
+        "label": "JZ",
+        "name": "Music Arts",
+        "location": "Adjacent to PX, on High St near Madras St",
+        "description": "The specialised building for music programs.",
+        "number_of_floors": "3"
+      },
+      {
+        "label": "P",
+        "name": "Te Wahapa (Plains FM & Broadcasting)",
+        "location": "On Madras St, near St Asaph St, adjacent to S & N buildings",
+        "description": "Home of the New Zealand Broadcasting School and Plains FM radio station.",
+        "number_of_floors": "2"
+      },
+      {
+        "label": "T",
+        "name": "Taipari (IT Services)",
+        "location": "Next to G and U buildings, adjacent to the main courtyard (eastern side)",
+        "description": "IT and printing services.",
+        "number_of_floors": "1"
+      },
+      {
+        "label": "OH",
+        "name": "Otautahi House (Student Accommodation)",
+        "location": "Across St Asaph St from the main campus block, on the west side of Madras St",
+        "description": "On site accommodation for students.",
+        "number_of_floors": "3"
+      },
+      {
+        "label": "OEDT",
+        "name": "Student Accommodation",
+        "location": "Across St Asaph St from the main campus block, next to OH",
+        "description": "On site accommodation for students.",
+        "number_of_floors": "4"
+      },
+      {
+        "label": "U",
+        "name": "Ihutai (Hospitality, Cookery, Cafe)",
+        "location": "Adjacent to the main courtyard (Ferry Rd side), near Ferry Rd",
+        "description": "Contains 'Visions' the on Campus Restaurant, 'The pantry' a cafe run by staff and students, Hospitality and Tourism, and Cookery and Bakery.",
+        "number_of_floors": "3"
+      },
+      {
+        "label": "S",
+        "name": "Tawhaki (Applied Sciences & Computing)",
+        "location": "Central campus, adjacent to the main courtyard (western side), near Madras St, above N building",
+        "description": "Houses Computing and is part of Applied Sciences and Social Practice. Shares central elevators with N building.",
+        "number_of_floors": "6"
+      },
+      {
+        "label": "N",
+        "name": "Tōrea (Business & Early Childhood)",
+        "location": "Adjacent to the main courtyard (western side), near Madras St, above X building and shares central elevators with S building.",
+        "description": "Home to Early Childhood Education.",
+        "number_of_floors": "6"
+      },
+      {
+        "label": "D",
+        "name": "Marokura (Design Block)",
+        "location": "On Madras St, adjacent to Moorhouse Ave, next to DL and DW",
+        "description": "Home to Art and Design and Photography. Contains studios and workshops.",
+        "number_of_floors": "4"
+      },
+      {
+        "label": "L",
+        "name": "Library",
+        "location": "Part of the Rakaia center, adjacent to the main courtyard (east of X building)",
+        "description": "The main campus Library, houses Disability Services, Learning Services, and the Learning Self Access Centre.",
+        "number_of_floors": "2"
+      },
+      {
+        "label": "X",
+        "name": "Student Support / Academic Division",
+        "location": "Part of the Rakaia center, adjacent to the Madras St main carpark, below N building",
+        "description": "Houses the Information Desk / Admissions & Enrolments, Career Centre, and International Student Advisors. Contains the main Rakaia Center elevators.",
+        "number_of_floors": "3"
+      },
+      {
+        "label": "A",
+        "name": "Administration / Academic",
+        "location": "Part of the Rakaia center, next to L block and C block, adjacent to CH building",
+        "description": "The main administrative hub, containing Business, Academic Records, Executive, Teacher Education, and the Imagitech Theatre.",
+        "number_of_floors": "2"
+      },
+      {
+        "label": "G",
+        "name": "Te Kei (Administration / Support)",
+        "location": "On Williams St, below and attached to T building, adjacent to TM building",
+        "description": "Houses Finance, People & Culture, International, Marketing, and Health & Safety Manager.",
+        "number_of_floors": "2"
+      },
+      {
+        "label": "TM",
+        "name": "Te Puna Wānaka (Māori & Pacific Studies)",
+        "location": "Near Barbadoes St, above CH building",
+        "description": "The centre for Māori and Pacific Studies.",
+        "number_of_floors": "2"
+      },
+      {
+        "label": "CH",
+        "name": "Te Waka Piki Kōtuku (Childcare)",
+        "location": "Near Barbadoes St, above W and E buildings",
+        "description": "Childcare Facilities.",
+        "number_of_floors": "1"
+      },
+      {
+        "label": "W",
+        "name": "Whareora (Sport & Health)",
+        "location": "Large building on Moorhouse Ave and Barbadoes St, adjacent to the main student parking",
+        "description": "Contains the Gym Health Centre, The Zone, and Supported Learning.",
+        "number_of_floors": "2"
+      },
+      {
+        "label": "K",
+        "name": "Kahukura (Engineering)",
+        "location": "Large building on Moorhouse Ave and west of Barbadoes St, adjacent to the main student parking",
+        "description": "Houses Engineering and Architectural Studies.",
+        "number_of_floors": "3"
+      },
+      {
+        "label": "E",
+        "name": "Te Pūtahi (NASDA)",
+        "location": "Above K building and next to W building (shares an entrance)",
+        "description": "Houses the National Academy of Singing and Dramatic Arts (NASDA).",
+        "number_of_floors": "2"
+      },
+      {
+        "label": "C",
+        "name": "Tahatika (Fashion & Student Lounge)",
+        "location": "On Madras St, above D and DL buildings",
+        "description": "Houses Fashion, the Student Lounge, Student Voice and Student Events. a good place to meet friends for lunch.",
+        "number_of_floors": "2"
+      },
+      {
+        "label": "DL",
+        "name": "Tuawera (Lecture Theatre)",
+        "location": "On Madras St, next to D building",
+        "description": "A large, dedicated lecture hall.",
+        "number_of_floors": "1"
+      },
+      {
+        "label": "HS",
+        "name": null,
+        "location": "On Ferry Road, next to the Bus Stop",
+        "description": "Houses the Citizens Advice Bureau and Outdoor Education.",
+        "number_of_floors": "Unknown"
+      },
+      {
+        "label": "FM",
+        "name": "Facilities Management",
+        "location": "Near Ferry Rd and Barbadoes St, adjacent to the M blocks",
+        "description": "Houses Facilities Management.",
+        "number_of_floors": "Unknown"
+      },
+      {
+        "label": "O",
+        "name": "Kotare (Osteopathic Clinic)",
+        "location": "Adjacent to the main courtyard, near Madras St",
+        "description": "Houses the Osteopathic Clinic.",
+        "number_of_floors": "Unknown"
+      },
+      {
+        "name": "Rakaia Center",
+        "location": "Central campus, connected L, A and X buildings",
+        "description": "An interconnected atrium that combines L, A and X buildings into one space, it is a central hub for student services."
+      },
+      {
+        "name": "main courtyard",
+        "location": "Surrounded by N, S, U, T, G, L, and X buildings",
+        "description": "A nice grass area, with seating and trees"
+      }
+    ],
+    "parking_areas": [
+      {
+        "name": "Madras St main carpark",
+        "location": "Located on Madras St, between X building and C building, adjacent to N building",
+        "details": "Limited guest parking and drop off area"
+      },
+      {
+        "name": "Student Parking (More Student Carpark)",
+        "location": "Down Allen St",
+        "details": "Large student parking lot. Located near the TV and ST buildings."
+      },
+      {
+        "name": "Main student parking",
+        "location": "On the corner of Barbadoes St and Moorhouse Ave, surrounds W building and extends along Barbadoes St past CH and TM buildings",
+        "details": "Large student parking lot"
+      }
+    ],
+    "public_transport": [
+      {
+        "type": "bus_stop",
+        "location": "Along Ferry Rd"
+      },
+      {
+        "type": "bus_stop",
+        "location": "Along Moorhouse Ave"
+      },
+      {
+        "type": "bus_stop",
+        "location": "Along St Asaph St"
+      }
+    ]
+  }
 }
