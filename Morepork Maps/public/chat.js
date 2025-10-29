@@ -140,7 +140,6 @@ Never invent or guess information.
 ---
 
 ### 3. ROOM & LOCATION LOGIC
-- Use the **Campus locations** to find buildings and rooms.
 - When asked about a room (e.g. "X301"):  
   - "X" = Block name  
   - "3" = Floor number  
@@ -207,6 +206,7 @@ json
 - If information seems important for the user but there is no template, create a template consistent with existing standards. DO NOT fill in the template with paragraphs of text, only include key information in a summarised format or as a list.
 - Use the **List** template for lists of items (e.g. courses, people, locations and anything that is more than 2 points ).
 - If no template applies or one is not needed, set "template": null.
+- ALWAYS USE TEMPLATES WHERE POSSIBLE!!!!!!!!!
 
 ---
 
