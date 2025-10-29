@@ -49,6 +49,10 @@
     color: var(--primary-foreground);
 }
 
+.start-button a:hover {
+    color: var(--primary-foreground);
+}
+
 .reset-button {
     position: absolute;
     top: 5px;
