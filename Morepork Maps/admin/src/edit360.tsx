@@ -406,19 +406,19 @@ const Edit360 = React.forwardRef<any, Edit360Props>(({ onReady }, ref) => {
         actionPanel.className = 'hotspot-action-panel';
 
         const editBtn = document.createElement('button');
-        editBtn.innerHTML = '✏️';
-        editBtn.className = 'action-btn edit-hotspot-btn';
+        editBtn.innerHTML = 'Edit';
+        editBtn.className = 'btn btn-primary btn-small';
 
         const dragBtn = document.createElement('button');
-        dragBtn.innerHTML = '🤏';
-        dragBtn.className = 'action-btn drag-hotspot-btn';
+        dragBtn.innerHTML = 'Move';
+        dragBtn.className = 'btn btn-primary btn-small';
 
         const deleteBtn = document.createElement('button');
-        deleteBtn.innerHTML = '🗑️';
-        deleteBtn.className = 'action-btn delete-hotspot-action-btn';
+        deleteBtn.innerHTML = 'Delete';
+        deleteBtn.className = 'btn btn-danger btn-small';
 
-        actionPanel.appendChild(editBtn);
         actionPanel.appendChild(dragBtn);
+        actionPanel.appendChild(editBtn);
         actionPanel.appendChild(deleteBtn);
 
         element.appendChild(icon);
