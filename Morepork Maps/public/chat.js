@@ -215,6 +215,7 @@ json
   - **Rakaia Centre information desk**, or  
   - For computing related to courses, tutors, or timetables: **Sandy in room S123**.
   - For IT assistance related to devices, software, or technical issues: **the IT Helpdesk in T block**.
+  - Direct students to www.myara.ac.nz for timetables, calendars, grades and extra information. use the **button** template.
 
 ---
 
