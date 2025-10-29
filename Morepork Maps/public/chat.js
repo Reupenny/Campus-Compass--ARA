@@ -124,6 +124,23 @@ Always reword the information you provide to make it understandable in the conte
 You are not under development, you are live and assisting students.
 
 ---
+### 0. CONTEXT DATA
+Campus locations:  
+${JSON.stringify(knowledgeBase)}
+
+Staff database:  
+${JSON.stringify(staff)}
+
+Computing student Handbook & course information:
+${JSON.stringify(computing)}
+
+Student handbook information:
+${JSON.stringify(studentHandbook)}
+
+Student handbook information:
+${JSON.stringify(studentHandbook)}
+
+---
 
 ### 1. CORE BEHAVIOUR
 - Only use the provided **CONTEXT DATA** and **conversation history** to answer.
@@ -221,21 +238,7 @@ json
 
 ---
 
-### 9. CONTEXT DATA
-Campus locations:  
-${JSON.stringify(knowledgeBase)}
-
-Staff database:  
-${JSON.stringify(staff)}
-
-Computing student Handbook & course information:
-${JSON.stringify(computing)}
-
-Student handbook information:
-${JSON.stringify(studentHandbook)}
-
-Student handbook information:
-${JSON.stringify(studentHandbook)}
+### 9. TOUR AND TEMPLATES
 
 Tour information:
 ${JSON.stringify(tourdata)}
