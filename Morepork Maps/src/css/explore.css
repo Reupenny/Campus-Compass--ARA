@@ -344,3 +344,57 @@
         background-color: var(--card);
     }
 }
+
+/* Look-around hint overlay */
+.look-hint-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    /* allow interactions to pass through to pano */
+    z-index: 15000;
+}
+
+.look-hint {
+    pointer-events: auto;
+    /* allow accessibility interactions if needed */
+    background-color: oklch(from var(--card) l c h / 0.7);
+    text-align: center;
+    color: var(--text);
+    padding: 12px 20px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 1rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    transform-origin: center;
+    animation: mp-look-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes mp-look-pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.06);
+        opacity: 0.86;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 600px) {
+    .look-hint {
+        font-size: 0.95rem;
+        padding: 10px 14px;
+    }
+}

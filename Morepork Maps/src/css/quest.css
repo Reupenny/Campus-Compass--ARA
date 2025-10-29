@@ -157,6 +157,10 @@
 
 }
 
+.look-hint-overlay {
+    z-index: 150;
+}
+
 @media (max-width: 768px) {
     .quest-container {
         max-width: calc(100vw - 20px);

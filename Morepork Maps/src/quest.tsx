@@ -12,6 +12,10 @@ function Quest() {
     const viewerRef = useRef<any>(null);
     const protectionTimeoutRef = useRef<NodeJS.Timeout | null>(null);
     const [currentScene, setCurrentScene] = useState<string>('');
+    // Show a centered look-around hint until the user swipes/drags to look around
+    const [showLookHint, setShowLookHint] = useState(true);
+    const pointerDownRef = useRef(false);
+    const pointerStartRef = useRef<{ x: number; y: number } | null>(null);
 
     const initializeViewer = async () => {
         // Don't initialize if already done, loading, has error, or no data
@@ -265,6 +269,60 @@ function Quest() {
         };
     }, [tourData, loading, error]);
 
+    // Attach pointer/touch listeners to the pano element so we can hide the look-around hint
+    useEffect(() => {
+        const panoElement = document.getElementById('pano');
+        if (!panoElement) return;
+
+        const THRESHOLD = 10; // pixels moved to consider a swipe/drag
+
+        const onDown = (e: any) => {
+            pointerDownRef.current = true;
+            const cx = e.clientX ?? (e.touches && e.touches[0]?.clientX) ?? 0;
+            const cy = e.clientY ?? (e.touches && e.touches[0]?.clientY) ?? 0;
+            pointerStartRef.current = { x: cx, y: cy };
+        };
+
+        const onMove = (e: any) => {
+            if (!pointerDownRef.current || !pointerStartRef.current) return;
+            const cx = e.clientX ?? (e.touches && e.touches[0]?.clientX) ?? 0;
+            const cy = e.clientY ?? (e.touches && e.touches[0]?.clientY) ?? 0;
+            const dx = Math.abs(cx - pointerStartRef.current.x);
+            const dy = Math.abs(cy - pointerStartRef.current.y);
+            if (dx > THRESHOLD || dy > THRESHOLD) {
+                setShowLookHint(false);
+                pointerDownRef.current = false;
+                pointerStartRef.current = null;
+            }
+        };
+
+        const onUp = () => {
+            pointerDownRef.current = false;
+            pointerStartRef.current = null;
+        };
+
+        const onKey = () => {
+            // If user interacts with keyboard, hide the hint as well
+            setShowLookHint(false);
+        };
+
+        panoElement.addEventListener('pointerdown', onDown);
+        panoElement.addEventListener('pointermove', onMove);
+        panoElement.addEventListener('pointerup', onUp);
+        panoElement.addEventListener('touchstart', onDown, { passive: true });
+        panoElement.addEventListener('touchmove', onMove, { passive: true });
+        window.addEventListener('keyup', onKey);
+
+        return () => {
+            panoElement.removeEventListener('pointerdown', onDown);
+            panoElement.removeEventListener('pointermove', onMove);
+            panoElement.removeEventListener('pointerup', onUp);
+            panoElement.removeEventListener('touchstart', onDown as any);
+            panoElement.removeEventListener('touchmove', onMove as any);
+            window.removeEventListener('keyup', onKey);
+        };
+    }, [tourData]);
+
     // Handle loading states
     if (loading) return <div className="loading-container">Loading tour...</div>;
     if (error) return <div className="error-container">Error: {error}</div>;
@@ -282,6 +340,11 @@ function Quest() {
             </div>
             <div id="pano" className="pano-container">
             </div>
+            {showLookHint && (
+                <div className="look-hint-overlay" role="note" aria-hidden={!showLookHint}>
+                    <div className="look-hint">Swipe to look around</div>
+                </div>
+            )}
         </>
     );
 }
