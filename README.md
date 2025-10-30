@@ -1,5 +1,7 @@
-![Digital Technology Online Orientation Logo Placeholder](./assets/Logo.webp)
+![Digital Technology Online Orientation Logo Placeholder](./App/public/img/Logo.webp)
 This project is a **Digital Technology Online Orientation** experience developed for the **Digital Technologies department (IT department)** at Ara Institute of Canterbury. The projects aim is to **streamline** the orientation process for new students and staff.
+
+## [Go To Live Site Here ara.reubendavern.com](https://ara.reubendavern.com)
 
 ## Course Information
 - **Course:** Software Development Project (BCDE311)
@@ -36,13 +38,15 @@ The app delivers a range of features designed to make the onboarding process cle
 In the project directory, you can run the following commands:
 
 - `npm run 2.admin`
-  Runs the admin dashborad for editing the main app Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-- `npm run 3.Preview`
-  Runs the app in development mode. Open [http://localhost:4173](http://localhost:4173) to view it in the browser.
-- `npm run 1.build-admin`
-  Builds the admin dashboard for editing the main application.
+  Runs the admin dashboard for editing the main app Open [http://localhost:3001](http://localhost:3001) to view it in the browser.
 - `npm run 2.build`
   Builds the app for production to the `dist` folder.
+- `npm run 5.Dev`
+  Runs the app in development mode. Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
+- `npm run 1.build-admin`
+  Builds the admin dashboard for editing the main application.
+- `npm run 3.Preview`
+  Runs the app in Preview mode. App must be built first. Open [http://localhost:4173](http://localhost:4173) to view it in the browser.
 
 ## Screenshots (Campus Compass)
 *(Below are placeholders for the completed application screenshots)*

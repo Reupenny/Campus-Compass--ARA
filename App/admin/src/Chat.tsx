@@ -1,6 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
+// Sidebar component for the Chat admin view
+export function Sidebar({ currentTab, setCurrentTab }: {
+    currentTab: 'contacts' | 'character' | 'templates' | 'ara' | 'computing' | 'student-handbook' | 'quests';
+    setCurrentTab: (tab: 'contacts' | 'character' | 'templates' | 'ara' | 'computing' | 'student-handbook' | 'quests') => void;
+}) {
+    const tabs = [
+        { key: 'contacts', label: 'Staff Contacts' },
+        { key: 'character', label: 'Character Settings' },
+        { key: 'templates', label: 'HTML Templates' },
+        { key: 'ara', label: 'ARA Campus Info' },
+        { key: 'computing', label: 'Computing Handbook' },
+        { key: 'student-handbook', label: 'Student Handbook' },
+        { key: 'quests', label: 'Campus Quests' }
+    ];
+
+    return (
+        <div className="chat-sidebar">
+            <div className="sidebar-nav-section">
+                {tabs.map(tab => (
+                    <button
+                        key={tab.key}
+                        onClick={() => setCurrentTab(tab.key as any)}
+                        className={`btn btn-secondary btn-full ${currentTab === tab.key ? 'active' : ''}`}
+                    >
+                        {tab.label}
+                    </button>
+                ))}
+            </div>
+        </div>
+    );
+}
+
 interface ContactType {
     id: number;
     name: string;
@@ -349,7 +381,7 @@ function Chat({ currentTab }: {
 
     const createNewContact = () => {
         const newContact: ContactType = {
-            id: 0, // Will be set by addContact
+            id: 0,
             name: 'New Contact',
             email: '',
             phone: '',

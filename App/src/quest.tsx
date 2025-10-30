@@ -12,13 +12,11 @@ function Quest() {
     const viewerRef = useRef<any>(null);
     const protectionTimeoutRef = useRef<NodeJS.Timeout | null>(null);
     const [currentScene, setCurrentScene] = useState<string>('');
-    // Show a centered look-around hint until the user swipes/drags to look around
     const [showLookHint, setShowLookHint] = useState(true);
     const pointerDownRef = useRef(false);
     const pointerStartRef = useRef<{ x: number; y: number } | null>(null);
 
     const initializeViewer = async () => {
-        // Don't initialize if already done, loading, has error, or no data
         if (initializationRef.current || loading || error || !tourData) return;
 
         const panoElement = document.getElementById('pano');
@@ -27,7 +25,7 @@ function Quest() {
             return;
         }
 
-        // Safari height fix - set explicit dimensions
+        // Safari height fix
         const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
         if (isSafari) {
             panoElement.style.width = `${window.innerWidth}px`;
@@ -67,7 +65,7 @@ function Quest() {
                 clearTimeout(protectionTimeoutRef.current);
             }
             protectionTimeoutRef.current = setTimeout(() => {
-            }, 5000); // Protect for 5 seconds after initialization
+            }, 5000); // Protect for 5 seconds after initialisation
 
             const minZoomInVFOV = 80;
             const maxZoomOutVFOV = 100;
@@ -140,7 +138,7 @@ function Quest() {
             // Function to load high-res layer for a scene with delay
             const loadHighResWithDelay = (sceneId: string, delay: number = 2000) => {
                 setTimeout(() => {
-                    if (highResLoaded[sceneId] || !viewerRef.current || !isViewerHealthy()) return; // Already loaded or viewer destroyed/corrupted
+                    if (highResLoaded[sceneId] || !viewerRef.current || !isViewerHealthy()) return; // Already loaded or viewer destroyed
 
                     const sceneData = tourData.scenes.find((s: SceneData) => s.id === sceneId);
                     if (!sceneData) return;
@@ -203,7 +201,7 @@ function Quest() {
                 scenes[sceneData.id] = scene;
                 highResLoaded[sceneData.id] = false;
 
-                // Add hotspots to the scene (only once)
+                // Add hotspots to the scene
                 addHotspotsToScene(scene, sceneData);
             });
 
@@ -215,7 +213,7 @@ function Quest() {
             const firstSceneId = tourData.scenes[0].id;
             scenes[firstSceneId].switchTo();
             setCurrentScene(firstSceneId);
-            loadHighResWithDelay(firstSceneId, 1500); // Add high-res layer after 1.5 seconds
+            loadHighResWithDelay(firstSceneId, 1000); // Add high-res layer after 1 second
 
         } catch (error) {
             console.error('Error initializing viewer:', error);

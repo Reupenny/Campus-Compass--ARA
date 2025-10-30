@@ -1,42 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './App.css';
 import '../../src/css/App.css';
-import Edit360, { Sidebar } from './edit360';
-import Chat from './Chat';
+import Edit360, { Sidebar as Edit360Sidebar } from './edit360';
+import Chat, { Sidebar as ChatSidebar } from './Chat';
 
-// Chat sidebar component
-function ChatSidebar({ currentTab, setCurrentTab }: {
-    currentTab: 'contacts' | 'character' | 'templates' | 'ara' | 'computing' | 'student-handbook' | 'quests';
-    setCurrentTab: (tab: 'contacts' | 'character' | 'templates' | 'ara' | 'computing' | 'student-handbook' | 'quests') => void;
-}) {
-    const tabs = [
-        { key: 'contacts', label: 'Staff Contacts', description: 'Manage contact details for ARA staff members. This data is used by the chatbot to provide staff information and contact details.' },
-        { key: 'character', label: 'Character Settings', description: 'Configure the chatbot\'s personality, tone, and behavior guidelines. Define how A.C.E. responds to users.' },
-        { key: 'templates', label: 'HTML Templates', description: 'Edit the HTML templates used for formatting chatbot responses including buttons, room displays, and contact cards.' },
-        { key: 'ara', label: 'ARA Campus Info', description: 'Comprehensive campus information including buildings, streets, parking, and facilities data.' },
-        { key: 'computing', label: 'Computing Handbook', description: 'Course handbook data extracted from PDF files. Contains program details, assessments, and policies.' },
-        { key: 'student-handbook', label: 'Student Handbook', description: 'General student information extracted from PDF files. Contains support services, facilities, and procedures.' },
-        { key: 'quests', label: 'Campus Quests', description: 'Manage interactive campus quest questions and answers for the virtual tour experience.' }
-    ];
-
-    return (
-        <div className="chat-sidebar">
-
-            {/* Tab Navigation */}
-            <div className="sidebar-nav-section">
-                {tabs.map(tab => (
-                    <button
-                        key={tab.key}
-                        onClick={() => setCurrentTab(tab.key as any)}
-                        className={`btn btn-secondary btn-full ${currentTab === tab.key ? 'active' : ''}`}
-                    >
-                        {tab.label}
-                    </button>
-                ))}
-            </div>
-        </div>
-    );
-}
 
 function App() {
     const [currentView, setCurrentView] = useState<'chat' | '360-editor'>('chat');
@@ -49,14 +16,10 @@ function App() {
     });
     const edit360Ref = useRef<any>(null);
 
-    // Callback to notify when Edit360 is ready
     const handleEdit360Ready = () => {
-        // Add small delay to ensure ref is fully populated
         setTimeout(() => {
             setEdit360Ready(true);
-            // Initial data sync
             updateSidebarData();
-            // Start periodic sync when in 360-editor mode
             startPeriodicSync();
         }, 100);
     };
@@ -69,7 +32,7 @@ function App() {
             } else if (currentView === 'chat') {
                 clearInterval(interval);
             }
-        }, 1000); // Sync every second when in 360-editor mode
+        }, 1000);
     };
 
     // Effect to sync when view changes
@@ -95,7 +58,6 @@ function App() {
     const handleSelectScene = (scene: any) => {
         if (edit360Ref.current) {
             edit360Ref.current.handleSelectScene(scene);
-            // Update sidebar data after scene selection
             setTimeout(updateSidebarData, 50);
         }
     };
@@ -124,7 +86,7 @@ function App() {
     const handleCreateHotspot = (type: 'info' | 'waypoint') => {
         if (edit360Ref.current) {
             edit360Ref.current.createHotspot(type);
-            setTimeout(updateSidebarData, 100); // Longer delay for hotspot creation
+            setTimeout(updateSidebarData, 100);
         }
     };
 
@@ -174,7 +136,7 @@ function App() {
                     <ChatSidebar currentTab={currentChatTab} setCurrentTab={setCurrentChatTab} />
                 ) : (
                     edit360Ready && edit360Ref.current ? (
-                        <Sidebar
+                        <Edit360Sidebar
                             tourData={sidebarData.tourData}
                             selectedScene={sidebarData.selectedScene}
                             currentScene={sidebarData.currentScene}

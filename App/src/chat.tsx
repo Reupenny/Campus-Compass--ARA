@@ -7,10 +7,8 @@ function Chat({ setCurrentPage }: { setCurrentPage: (page: 'chat' | 'explore' | 
     const [hasContent, setHasContent] = useState(false);
 
     useEffect(() => {
-        // Clear the initialized flag when component mounts
         isInitialized.current = false;
 
-        // Load the marked library for markdown rendering if not already loaded
         const loadMarked = () => {
             return new Promise<void>((resolve) => {
                 if ((window as any).marked) {
@@ -25,15 +23,14 @@ function Chat({ setCurrentPage }: { setCurrentPage: (page: 'chat' | 'explore' | 
             });
         };
 
-        // Initialize chat functionality
+        // Initialise chat functionality
         const initChat = async () => {
             if (isInitialized.current) return;
 
             await loadMarked();
 
-            // Small delay to ensure DOM is ready
+            // Delay to ensure DOM is ready
             setTimeout(() => {
-                // Remove and re-add chat script to force re-initialization
                 const existingScript = document.querySelector('script[data-chat-script]');
                 if (existingScript) {
                     existingScript.remove();

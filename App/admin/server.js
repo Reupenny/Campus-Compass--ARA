@@ -12,10 +12,9 @@ const app = express();
 const PORT = 3001;
 const contactsFile = path.join(__dirname, '../public/knowledge/contacts.json');
 const tourFile = path.join(__dirname, '../public/data/tour.json');
-const tourFileChat = path.join(__dirname, '../public/data/tour_chat.json');
 const tourImagesDir = path.join(__dirname, '../public/tour_images');
 
-// Ensure tour_images directory exists
+// Ensure tour images directory exists
 if (!fs.existsSync(tourImagesDir)) {
     fs.mkdirSync(tourImagesDir, { recursive: true });
 }

@@ -256,7 +256,7 @@ const Edit360 = React.forwardRef<any, Edit360Props>(({ onReady }, ref) => {
                 if (data.scenes.length > 0) {
                     setSelectedScene(data.scenes[0]);
                 }
-                // Notify parent that component is ready
+
                 if (onReady) {
                     onReady();
                 }
@@ -267,7 +267,6 @@ const Edit360 = React.forwardRef<any, Edit360Props>(({ onReady }, ref) => {
                     scenes: []
                 };
                 setTourData(defaultTour);
-                // Notify parent that component is ready even with default data
                 if (onReady) {
                     onReady();
                 }
@@ -292,7 +291,7 @@ const Edit360 = React.forwardRef<any, Edit360Props>(({ onReady }, ref) => {
         loadAvailableImages();
     }, []);
 
-    // Initialize Marzipano viewer
+    // Initialise Marzipano viewer
     useEffect(() => {
         if (viewerRef.current && !viewer) {
             const viewerOpts = {
@@ -316,14 +315,13 @@ const Edit360 = React.forwardRef<any, Edit360Props>(({ onReady }, ref) => {
         }
     }, [viewer, selectedScene, preventSceneReload]);
 
-    // Auto-select first scene when tour data is loaded
+    // Auto select first scene when tour data is loaded
     useEffect(() => {
         if (tourData && tourData.scenes.length > 0 && !selectedScene) {
             setSelectedScene(tourData.scenes[0]);
         }
     }, [tourData, selectedScene]);
 
-    // Expose methods and state to parent component
     useImperativeHandle(ref, () => ({
         tourData,
         selectedScene,
@@ -349,10 +347,8 @@ const Edit360 = React.forwardRef<any, Edit360Props>(({ onReady }, ref) => {
     const loadScene = (scene: Scene) => {
         if (!viewer) return;
 
-        // Clear previous hotspot refs
         hotspotRefs.current = {};
 
-        // Create geometry for equirectangular panorama
         const geometry = new Marzipano.EquirectGeometry([
             { width: scene.geometry.width }
         ]);
@@ -401,7 +397,7 @@ const Edit360 = React.forwardRef<any, Edit360Props>(({ onReady }, ref) => {
         iconImg.alt = hotspot.type === 'info' ? 'Info' : 'Waypoint';
         icon.appendChild(iconImg);
 
-        // Create action buttons (initially hidden)
+        // Create action buttons
         const actionPanel = document.createElement('div');
         actionPanel.className = 'hotspot-action-panel';
 
@@ -497,7 +493,7 @@ const Edit360 = React.forwardRef<any, Edit360Props>(({ onReady }, ref) => {
         let isDraggingThis = false;
         let startPos: { x: number, y: number } | null = null;
         let startHotspotPos: { yaw: number, pitch: number } | null = null;
-        let startViewParams: any = null; // Store initial view state
+        let startViewParams: any = null;
 
         const startDrag = (e: MouseEvent) => {
             e.preventDefault();
@@ -542,13 +538,10 @@ const Edit360 = React.forwardRef<any, Edit360Props>(({ onReady }, ref) => {
                         const updatedHotspots = selectedScene.hotspots.map((h, i) =>
                             i === index ? { ...h, yaw: worldCoords.yaw, pitch: worldCoords.pitch } : h
                         );
-                        // This direct mutation is okay within the Marzipano event handler context
                         selectedScene.hotspots = updatedHotspots;
                     }
                 }
             } catch (error) {
-                // This can happen if the cursor is outside the viewer canvas during a rapid drag.
-                // We can ignore it as the next mousemove event will correct it.
             }
         };
 
@@ -560,14 +553,13 @@ const Edit360 = React.forwardRef<any, Edit360Props>(({ onReady }, ref) => {
             actionPanel.classList.remove('visible');
             icon.style.transform = 'scale(1)';
 
-            // Re-enable viewer controls after hotspot drag
             if (viewer) {
                 viewer.controls().enable();
             }
 
             // Save the final position without scene reload
             if (startHotspotPos && selectedScene && tourData) {
-                setPreventSceneReload(true); // Ensure scene reload is prevented
+                setPreventSceneReload(true);
 
                 // Create a fresh updated version of the hotspots array
                 const updatedHotspots = selectedScene.hotspots.map((h, i) =>
@@ -614,8 +606,6 @@ const Edit360 = React.forwardRef<any, Edit360Props>(({ onReady }, ref) => {
 
     const createHotspot = (type: 'info' | 'waypoint') => {
         if (!currentScene || !selectedScene || !tourData) return;
-
-        // Prevent scene reload during hotspot creation
         setPreventSceneReload(true);
 
         // Get the current view center position
@@ -639,7 +629,7 @@ const Edit360 = React.forwardRef<any, Edit360Props>(({ onReady }, ref) => {
             ...(type === 'info' ? { description: 'Description here' } : { target: targetSceneId })
         };
 
-        // Add to selected scene data - but don't reload the scene
+        // Add to selected scene data
         const updatedScene = {
             ...selectedScene,
             hotspots: [...selectedScene.hotspots, newHotspot]
@@ -655,10 +645,8 @@ const Edit360 = React.forwardRef<any, Edit360Props>(({ onReady }, ref) => {
         };
         setTourData(updatedTourData);
 
-        // Add hotspot to current scene directly without reloading
         addHotspotToScene(currentScene, newHotspot, selectedScene.hotspots.length);
 
-        // Re-enable scene reloads after a short delay
         setTimeout(() => setPreventSceneReload(false), 100);
     };
 
@@ -744,8 +732,6 @@ const Edit360 = React.forwardRef<any, Edit360Props>(({ onReady }, ref) => {
         setEditingHotspot(null);
     }; const updateHotspotPosition = (index: number, newYaw: number, newPitch: number, shouldReload = false) => {
         if (!selectedScene || !tourData) return;
-
-        // Prevent scene reload during hotspot updates
         setPreventSceneReload(true);
 
         const updatedHotspots = selectedScene.hotspots.map((h, i) =>
@@ -765,8 +751,6 @@ const Edit360 = React.forwardRef<any, Edit360Props>(({ onReady }, ref) => {
             )
         };
         setTourData(updatedTourData);
-
-        // Re-enable scene reloads after a short delay
         setTimeout(() => setPreventSceneReload(false), 100);
     };
 
@@ -787,8 +771,6 @@ const Edit360 = React.forwardRef<any, Edit360Props>(({ onReady }, ref) => {
             )
         };
         setTourData(updatedTourData);
-
-        // Reload scene to remove the hotspot visually (this is necessary for deletion)
         loadScene(updatedScene);
     };
 
@@ -932,7 +914,7 @@ const Edit360 = React.forwardRef<any, Edit360Props>(({ onReady }, ref) => {
 
     // Handler functions for sidebar
     const handleSelectScene = (scene: Scene) => {
-        setPreventSceneReload(false); // Allow scene reload for scene switching
+        setPreventSceneReload(false);
         setSelectedScene(scene);
         loadScene(scene);
     };
@@ -944,20 +926,6 @@ const Edit360 = React.forwardRef<any, Edit360Props>(({ onReady }, ref) => {
 
     return (
         <div className="edit360-container">
-            {/* <Sidebar
-                tourData={tourData}
-                selectedScene={selectedScene}
-                currentScene={currentScene}
-                onAddNewScene={addNewScene}
-                onSelectScene={handleSelectScene}
-                onEditScene={handleEditScene}
-                onDeleteScene={deleteScene}
-                onSetViewDirection={setViewDirection}
-                onCreateHotspot={createHotspot}
-                onDeleteHotspot={deleteHotspot}
-                onSetDefaultView={setDefaultView}
-                onSaveTourData={saveTourData}
-            /> */}
 
             {/* 360 Viewer */}
             <div className="viewer-container">
