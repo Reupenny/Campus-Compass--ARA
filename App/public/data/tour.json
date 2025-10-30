@@ -856,7 +856,7 @@
           "pitch": -0.03445323609832762,
           "yaw": 1.6390970044526556,
           "text": "Security Office",
-          "description": "This is where you can get your student ID card. </br>\n<h6>Hours</h6>\n8.00am - 4.30pm Monday to Friday\n<h6>Phone</h6>\n940 8076",
+          "description": "This is where you can get your student ID card, Locate lost property and other security related issues.</br>\n<h6>Hours</h6>\n8.00am - 4.30pm Monday to Friday\n<h6>Phone</h6>\n027 540 8076",
           "url": "https://www.ara.ac.nz/student-services/student-id-card/"
         }
       ],
@@ -991,7 +991,7 @@
           "pitch": 0.13495006163350887,
           "yaw": 2.451931238425283,
           "text": "Sandys Desk",
-          "description": "Description here"
+          "description": "This is Sandy's Desk.\nShe is your go to person for all information about timetables and computing courses."
         }
       ],
       "defaultView": {

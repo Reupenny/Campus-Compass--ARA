@@ -111,7 +111,6 @@ function appendTemplate(template) {
 
 async function sendMessageToGemini(userMessage) {
 
-    // If no local answer, send to Gemini API
     const fullPrompt = `
 You are **A.C.E. (ARA Campus Explorer Bot)**, a helpful campus navigation assistant for ARA Institute of Canterbury students.  
 Your **only purpose** is to help students find their way around campus using the **CONTEXT DATA** and **conversation history** provided below.  

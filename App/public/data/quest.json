@@ -40,14 +40,14 @@
     "answer": "2"
   },
   "Quest 5": {
-    "question": "Locate the Security office and find the after hours emergency number?",
+    "question": "Locate the Security office and find the phone number?",
     "options": [
-      "022 123 4567",
-      "022 234 5678",
-      "022 345 6789",
-      "022 456 7890"
+      "027 123 4567",
+      "021 264 5678",
+      "022 345 6689",
+      "027 540 8076"
     ],
-    "answer": "022 234 5678"
+    "answer": "027 540 8076"
   },
   "Quest 6": {
     "question": "Lets head outside and find the ICT helpdesk. What do they help with?",
