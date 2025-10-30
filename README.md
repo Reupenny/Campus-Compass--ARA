@@ -1,4 +1,5 @@
 ![Digital Technology Online Orientation Logo Placeholder](./App/public/img/Logo.webp)
+
 This project is a **Digital Technology Online Orientation** experience developed for the **Digital Technologies department (IT department)** at Ara Institute of Canterbury. The projects aim is to **streamline** the orientation process for new students and staff.
 
 ## [Go To Live Site Here ara.reubendavern.com](https://ara.reubendavern.com)
