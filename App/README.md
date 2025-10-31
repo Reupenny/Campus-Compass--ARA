@@ -1,5 +1,6 @@
-
 ## Setting up the files
+
+The app is live at [https://ara.reubendavern.com](https://ara.reubendavern.com)
 
 The files attached with this document are the final
 prototype of the app, To use and test the app follow these instructions.
