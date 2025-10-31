@@ -34,7 +34,7 @@
           "type": "waypoint",
           "pitch": -0.02541763469130487,
           "yaw": -1.9556497422494719,
-          "text": "Center Walkway",
+          "text": "Center Walkway (1)",
           "target": "scene1760246894225"
         }
       ],
@@ -125,7 +125,7 @@
           "type": "waypoint",
           "pitch": 0.018140028322719104,
           "yaw": -1.4222445220271283,
-          "text": "Rakaia Hallway",
+          "text": "Rakaia Centre (Hallway)",
           "target": "scene1760417043354"
         }
       ],
@@ -248,7 +248,7 @@
           "type": "waypoint",
           "pitch": -0.013474616431548014,
           "yaw": 1.8942549165966058,
-          "text": "Center Walkway",
+          "text": "Center Walkway (1)",
           "target": "scene1760246894225"
         }
       ],
@@ -266,7 +266,7 @@
     },
     {
       "id": "scene1760246894225",
-      "name": "Center Walkway",
+      "name": "Center Walkway (1)",
       "imageUrl": "tour_images/image-1760430920588-151039184.webp",
       "geometry": {
         "width": 4000
@@ -297,7 +297,7 @@
           "type": "waypoint",
           "pitch": -0.020849063056800787,
           "yaw": -0.3633334784344555,
-          "text": "Center Walkway 2",
+          "text": "Center Walkway (2)",
           "target": "scene1760247134107"
         }
       ],
@@ -310,7 +310,7 @@
     },
     {
       "id": "scene1760247134107",
-      "name": "Center Walkway 2",
+      "name": "Center Walkway (2)",
       "imageUrl": "tour_images/image-1760430972722-233134076.webp",
       "geometry": {
         "width": 4000
@@ -320,21 +320,21 @@
           "type": "waypoint",
           "pitch": 0.019074577314171393,
           "yaw": -1.2302416696457765,
-          "text": "Inside Rakaia",
+          "text": "Rakaia Centre (A Block)",
           "target": "scene1760413520439"
         },
         {
           "type": "waypoint",
           "pitch": 0.002093660876784753,
           "yaw": -0.0160679549657754,
-          "text": "Center Walkway 3",
+          "text": "Center Walkway (3)",
           "target": "scene1760248825576"
         },
         {
           "type": "waypoint",
           "pitch": 0.004450037940326723,
           "yaw": -2.8578874638639764,
-          "text": "Center Walkway",
+          "text": "Center Walkway (1)",
           "target": "scene1760246894225"
         },
         {
@@ -369,7 +369,7 @@
           "type": "waypoint",
           "pitch": -0.01499711220167832,
           "yaw": 2.6420308782272848,
-          "text": "Center Walkway",
+          "text": "Center Walkway (1)",
           "target": "scene1760246894225"
         },
         {
@@ -391,7 +391,7 @@
           "type": "waypoint",
           "pitch": -0.030676501161936542,
           "yaw": 2.9151221312137947,
-          "text": "Center Walkway 2",
+          "text": "Center Walkway (2)",
           "target": "scene1760247134107"
         },
         {
@@ -548,7 +548,7 @@
           "type": "waypoint",
           "pitch": 0.007998817834831584,
           "yaw": -1.4669283434796654,
-          "text": "Center Walkway",
+          "text": "Center Walkway (1)",
           "target": "scene1760246894225"
         },
         {
@@ -584,7 +584,7 @@
           "type": "waypoint",
           "pitch": -0.016451529216745087,
           "yaw": -1.8322990871056355,
-          "text": "Rakaia Cafe Entrance",
+          "text": "Rakaia Centre (Cafe)",
           "target": "scene1760413622275"
         },
         {
@@ -598,7 +598,7 @@
           "type": "waypoint",
           "pitch": -0.013701488785940796,
           "yaw": -1.030331425683709,
-          "text": "Center Walkway",
+          "text": "Center Walkway (1)",
           "target": "scene1760246894225"
         },
         {
@@ -640,7 +640,7 @@
           "type": "waypoint",
           "pitch": 0.01121236906784695,
           "yaw": -1.6034267829147453,
-          "text": "Rakaia Hallway",
+          "text": "Rakaia Centre (Hallway)",
           "target": "scene1760417043354"
         },
         {
@@ -679,7 +679,7 @@
     },
     {
       "id": "scene1760248825576",
-      "name": "Center Walkway 3",
+      "name": "Center Walkway (3)",
       "imageUrl": "tour_images/image-1760431128961-224266330.webp",
       "geometry": {
         "width": 4000
@@ -689,7 +689,7 @@
           "type": "waypoint",
           "pitch": -0.01830648857721684,
           "yaw": -2.0701652022255477,
-          "text": "Center Walkway 2",
+          "text": "Center Walkway (2)",
           "target": "scene1760247134107"
         },
         {
@@ -703,7 +703,7 @@
           "type": "waypoint",
           "pitch": -0.016568362231149436,
           "yaw": -0.21194872265717812,
-          "text": "Rakaia Hallway",
+          "text": "Rakaia Centre (Hallway)",
           "target": "scene1760417043354"
         }
       ],
@@ -716,7 +716,7 @@
     },
     {
       "id": "scene1760413520439",
-      "name": "Rakaia, A block",
+      "name": "Rakaia Centre (A Block)",
       "imageUrl": "tour_images/image-1760431162171-585199670.webp",
       "geometry": {
         "width": 4000
@@ -726,14 +726,14 @@
           "type": "waypoint",
           "pitch": 0.008360925827307852,
           "yaw": -2.582301357266317,
-          "text": "Center Walkway 2",
+          "text": "Center Walkway (2)",
           "target": "scene1760247134107"
         },
         {
           "type": "waypoint",
           "pitch": 0.024914490009079415,
           "yaw": 0.6077852686771443,
-          "text": "Rakaia Cafe Entrance",
+          "text": "Rakaia Centre (Cafe)",
           "target": "scene1760413622275"
         },
         {
@@ -759,7 +759,7 @@
     },
     {
       "id": "scene1760413622275",
-      "name": "Rakaia Cafe Entrance",
+      "name": "Rakaia Centre (Cafe)",
       "imageUrl": "tour_images/image-1760431208007-605219270.webp",
       "geometry": {
         "width": 4000
@@ -769,7 +769,7 @@
           "type": "waypoint",
           "pitch": -0.018670663964375223,
           "yaw": -0.3971079031785667,
-          "text": "Center Walkway",
+          "text": "Center Walkway (1)",
           "target": "scene1760246894225"
         },
         {
@@ -783,7 +783,7 @@
           "type": "waypoint",
           "pitch": -0.003100175082449752,
           "yaw": -1.7155500864322182,
-          "text": "Rakaia, A block",
+          "text": "Rakaia Centre (A Block)",
           "target": "scene1760413520439"
         },
         {
@@ -826,14 +826,14 @@
           "type": "waypoint",
           "pitch": 0.006860196440928945,
           "yaw": 0.2701032874889364,
-          "text": "Rakaia Cafe Entrance",
+          "text": "Rakaia Centre (Cafe)",
           "target": "scene1760413622275"
         },
         {
           "type": "waypoint",
           "pitch": 0.003445875471779658,
           "yaw": -3.074564521586005,
-          "text": "Rakaia Hallway",
+          "text": "Rakaia Centre (Hallway)",
           "target": "scene1760417043354"
         },
         {
@@ -884,14 +884,14 @@
           "type": "waypoint",
           "pitch": -0.03007111824888753,
           "yaw": -0.09404745586281216,
-          "text": "Center Walkway 3",
+          "text": "Center Walkway (3)",
           "target": "scene1760248825576"
         },
         {
           "type": "waypoint",
           "pitch": -0.03387158607948315,
           "yaw": 0.7182937805023428,
-          "text": "Rakaia Hallway",
+          "text": "Rakaia Centre (Hallway)",
           "target": "scene1760417043354"
         },
         {
@@ -934,7 +934,7 @@
           "type": "waypoint",
           "pitch": 0.00880808307140235,
           "yaw": 2.57691679861409,
-          "text": "Hospotality",
+          "text": "Hospitality ",
           "target": "scene1760417512210"
         },
         {
@@ -948,7 +948,7 @@
           "type": "waypoint",
           "pitch": -0.03282645235481496,
           "yaw": -0.16795562266681863,
-          "text": "Rakaia Hallway",
+          "text": "Rakaia Centre (Hallway)",
           "target": "scene1760417043354"
         },
         {
@@ -1008,7 +1008,7 @@
     },
     {
       "id": "scene1760417043354",
-      "name": "Rakaia Hallway",
+      "name": "Rakaia Centre (Hallway)",
       "imageUrl": "tour_images/image-1760431496179-597644875.webp",
       "geometry": {
         "width": 4000
@@ -1032,7 +1032,7 @@
           "type": "waypoint",
           "pitch": 0.11345610909506121,
           "yaw": -3.1146969114719276,
-          "text": "Center Walkway 3",
+          "text": "Center Walkway (3)",
           "target": "scene1760248825576"
         },
         {
@@ -1052,7 +1052,7 @@
     },
     {
       "id": "scene1760417512210",
-      "name": "Hospotality",
+      "name": "Hospitality ",
       "imageUrl": "tour_images/image-1760431594044-935994762.webp",
       "geometry": {
         "width": 4000
@@ -1113,7 +1113,7 @@
           "type": "waypoint",
           "pitch": -0.021981481555924276,
           "yaw": 1.759073583062623,
-          "text": "Hospotality",
+          "text": "Hospitality ",
           "target": "scene1760417512210"
         },
         {

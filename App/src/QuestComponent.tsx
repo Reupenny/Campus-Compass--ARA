@@ -107,7 +107,11 @@ function QuestComponent() {
                 {!isMinimized && (
                     <div className="quest-container">
                         <h2>Campus Quest</h2>
-                        <p>Explore Ara Institute of Canterbury and answer questions along the way!</p>
+                        <p>Explore Ara by finding the answers to questions.</p>
+                        <p>All the answers can be found in the information bubbles.</p>
+                        <p>But Hold up! There’s no cheating aloud, so navigating back to the Chat or Explore tabs will reset your progress.</p>
+                        <br />
+                        <p>To hide the quest while you hunt for the answer, press the minimize button in the top left corner.</p>
                         {history.length > 0 && (
                             <div className="quest-history">
                                 <h3>Quest History</h3>
