@@ -1060,15 +1060,15 @@
       "hotspots": [
         {
           "type": "waypoint",
-          "pitch": -0.027551420248627778,
-          "yaw": 0.8241940907349168,
+          "pitch": -0.030445760394172794,
+          "yaw": 0.7532016016002743,
           "text": "St Asaph St Corner",
           "target": "scene1760417698551"
         },
         {
           "type": "info",
-          "pitch": -0.0613063745738156,
-          "yaw": 1.006365019522276,
+          "pitch": -0.13937661699011983,
+          "yaw": 1.0319334816556953,
           "text": "The Pantry & Visions",
           "description": "<h5>The Pantry</h5>\n<p>As the Pantry is used as part of our teaching, you will find different choices each day. Come in and see what we have to offer.</p>\n<h6>Hours</h6>\n<p>During term time we are usually open Monday to Friday from 8am to 4pm.</p>\n<h5>Visions</h5>\nAt Visions, students studying our cookery, hospitality and hospitality management programmes are involved in all aspects of your dining experience, from preparing and serving your meal to managing the running of the restaurant and operating the bar with its substantial wine and beverage list.",
           "url": "https://myara.ara.ac.nz/app/ara.events/events"
